@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Directory &amp; Sectors — Architects' Nook Private Limited</title>
+  <meta name="description" content="Architects' Nook Private Limited client directory showcasing partnerships with industrial leaders, real estate developers, and municipal bodies since 1969.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- REFINED ARCHITECTURAL PANEL HEADER (TEKT ARCHITECTURE MATCH) -->
+  <header id="site-header">
+    <div class="header-grid">
+      
+      <!-- LEFT STRUCTURAL PANELS: 5 NAV ITEMS WITH HORIZONTAL EXPANSION ON HOVER -->
+      <nav class="desktop-nav">
+        <ul class="nav-panel-list">
+          <li class="nav-panel-cell"><a href="Index.html#hero" class="nav-panel-link">Home</a></li>
+          <li class="nav-panel-cell"><a href="Index.html#about" class="nav-panel-link">About Us</a></li>
+          <li class="nav-panel-cell has-dropdown" id="projects-nav-cell" tabindex="0" aria-haspopup="true" aria-expanded="false">
+            <a href="projects.html" class="nav-panel-link">Projects</a>
+            <ul class="projects-editorial-panel" id="projects-editorial-panel" role="menu" aria-label="Projects Categories">
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=commercial" class="editorial-panel-link" role="menuitem" data-category-link="commercial">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Commercial</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=residential" class="editorial-panel-link" role="menuitem" data-category-link="residential">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Residential</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=industrial" class="editorial-panel-link" role="menuitem" data-category-link="industrial">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Industrial</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=institutional" class="editorial-panel-link" role="menuitem" data-category-link="institutional">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Institutional</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=interior" class="editorial-panel-link" role="menuitem" data-category-link="interior">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Interior</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=religious" class="editorial-panel-link" role="menuitem" data-category-link="religious">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Religious</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-panel-cell"><a href="clients.html" class="nav-panel-link">Clients</a></li>
+          <li class="nav-panel-cell"><a href="Index.html#contact" class="nav-panel-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- FAR-RIGHT STRUCTURAL PANEL: 2.5x DOMINANT LOGO ANCHOR -->
+      <div class="logo-panel-right">
+        <a href="Index.html" class="header-logo-link" aria-label="Architects' NOOK Home">
+          <img src="assets/logo.png" alt="Architects' NOOK Logo" class="header-logo-img">
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-toggle-btn" aria-label="Toggle Navigation Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Fullscreen Drawer Overlay -->
+    <div id="mobile-drawer">
+      <button id="mobile-drawer-close" aria-label="Close Menu">&times;</button>
+      <ul class="mobile-drawer-list">
+        <li><a href="Index.html#hero" class="mobile-drawer-link">Home</a></li>
+        <li><a href="Index.html#about" class="mobile-drawer-link">About Us</a></li>
+        <li class="mobile-nav-has-dropdown">
+          <div class="mobile-dropdown-header">
+            <a href="projects.html" class="mobile-drawer-link">Projects</a>
+            <span class="mobile-dropdown-arrow">&darr;</span>
+          </div>
+          <ul class="mobile-dropdown-menu">
+            <li><a href="projects.html?category=commercial" class="mobile-drawer-sublink" data-category-link="commercial">Commercial</a></li>
+            <li><a href="projects.html?category=residential" class="mobile-drawer-sublink" data-category-link="residential">Residential</a></li>
+            <li><a href="projects.html?category=industrial" class="mobile-drawer-sublink" data-category-link="industrial">Industrial</a></li>
+            <li><a href="projects.html?category=institutional" class="mobile-drawer-sublink" data-category-link="institutional">Institutional</a></li>
+            <li><a href="projects.html?category=interior" class="mobile-drawer-sublink" data-category-link="interior">Interior</a></li>
+            <li><a href="projects.html?category=religious" class="mobile-drawer-sublink" data-category-link="religious">Religious</a></li>
+          </ul>
+        </li>
+        <li><a href="clients.html" class="mobile-drawer-link">Clients</a></li>
+        <li><a href="Index.html#contact" class="mobile-drawer-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main style="padding-top: 160px; padding-bottom: 128px;">
+    <div class="container">
+      
+      <!-- PAGE HEADER -->
+      <div class="projects-header reveal-item" style="margin-bottom: 64px; flex-direction: column; align-items: flex-start; gap: 24px;">
+        <div class="label-caps" style="color: var(--text-secondary);">ESTEEMED CLIENTS &amp; PARTNERSHIPS</div>
+        <h1 class="display-title">CLIENT<br>DIRECTORY</h1>
+        <p class="sub-title" style="max-width: 720px;">
+          Personal recommendations form a significant part of our heritage. Private clients and corporate entities return to Architects' Nook as their developments grow.
+        </p>
+      </div>
+
+      <!-- 16 CLIENT MATRIX GRID -->
+      <div class="clients-grid reveal-item" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="client-cell">
+          <div class="client-name">GIDC GUJARAT</div>
+          <div class="client-location">INDUSTRIAL DEVELOPMENT</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">TIRUPATI GROUP</div>
+          <div class="client-location">COMMERCIAL REAL ESTATE</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">HEENA GROUP</div>
+          <div class="client-location">RETAIL &amp; INFRASTRUCTURE</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">VALSAD CIVIC BODIES</div>
+          <div class="client-location">MUNICIPAL INFRASTRUCTURE</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">SOUTH GUJARAT IND.</div>
+          <div class="client-location">MANUFACTURING &amp; PARKS</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">DAHEJ PETROHUB</div>
+          <div class="client-location">INDUSTRIAL MASTER PLANNING</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">UMBERGAON TECH</div>
+          <div class="client-location">INDUSTRIAL PARKS</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">PUNE DEVELOPERS</div>
+          <div class="client-location">COMMERCIAL &amp; HOUSING</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">SILVASSA CORP</div>
+          <div class="client-location">UT INFRASTRUCTURE</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">VAPI COMMERCIAL ASSOC.</div>
+          <div class="client-location">RETAIL &amp; OFFICE HUBS</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">HEALTHCARE TRUSTS</div>
+          <div class="client-location">HOSPITALS &amp; CLINICS</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">EDUCATIONAL TRUSTS</div>
+          <div class="client-location">INSTITUTIONAL CAMPUSES</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">RELIGIOUS FOUNDATIONS</div>
+          <div class="client-location">TEMPLES &amp; COMPLEXES</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">VALSAD RESIDENTIAL</div>
+          <div class="client-location">BESPOKE HOUSING</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">ECOLOGICAL PARKS</div>
+          <div class="client-location">GREEN ARCHITECTURE</div>
+        </div>
+        <div class="client-cell">
+          <div class="client-name">VALUATION ADVISORY</div>
+          <div class="client-location">CIVIL &amp; PROPERTY</div>
+        </div>
+      </div>
+
+      <!-- EDITORIAL PHILOSOPHY BLOCK -->
+      <div style="margin-top: 96px; padding: 64px; background-color: var(--bg-secondary); border: 1px solid var(--border-color);" class="reveal-item">
+        <div class="label-caps" style="margin-bottom: 16px; color: var(--text-secondary);">WORK CULTURE &amp; INTEGRITY</div>
+        <h2 class="sub-title" style="margin-bottom: 24px; color: var(--text-primary);">
+          "The essence of our work culture is our constant commitment to stand up to the expectations of our esteemed clients through continuous skill training, technological upgradation, and leveraging our combined team efforts."
+        </h2>
+        <div class="mono-meta">— ARCHITECTS' NOOK MISSION STATEMENT</div>
+      </div>
+
+      <!-- RETURN TO HOME LINK -->
+      <div class="center-btn-wrapper reveal-item" style="margin-top: 64px;">
+        <a href="Index.html#hero" class="btn-editorial">
+          &larr; RETURN TO HOMEPAGE
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 1969–2026 ARCHITECTS' NOOK PRIVATE LIMITED. ALL RIGHTS RESERVED.</div>
+        <a href="Index.html#hero" class="back-to-top">HOMEPAGE &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

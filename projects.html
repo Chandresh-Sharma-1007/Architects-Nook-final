@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio &amp; Archives — Architects' Nook Private Limited</title>
+  <meta name="description" content="Explore the architectural portfolio of Architects' Nook Private Limited featuring residential, commercial, industrial, institutional, healthcare, and religious projects since 1969.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- REFINED ARCHITECTURAL PANEL HEADER (TEKT ARCHITECTURE MATCH) -->
+  <header id="site-header">
+    <div class="header-grid">
+      
+      <!-- LEFT STRUCTURAL PANELS: 5 NAV ITEMS WITH HORIZONTAL EXPANSION ON HOVER -->
+      <nav class="desktop-nav">
+        <ul class="nav-panel-list">
+          <li class="nav-panel-cell"><a href="Index.html#hero" class="nav-panel-link">Home</a></li>
+          <li class="nav-panel-cell"><a href="Index.html#about" class="nav-panel-link">About Us</a></li>
+          <li class="nav-panel-cell has-dropdown" id="projects-nav-cell" tabindex="0" aria-haspopup="true" aria-expanded="false">
+            <a href="projects.html" class="nav-panel-link">Projects</a>
+            <ul class="projects-editorial-panel" id="projects-editorial-panel" role="menu" aria-label="Projects Categories">
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=commercial" class="editorial-panel-link" role="menuitem" data-category-link="commercial">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Commercial</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=residential" class="editorial-panel-link" role="menuitem" data-category-link="residential">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Residential</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=industrial" class="editorial-panel-link" role="menuitem" data-category-link="industrial">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Industrial</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=institutional" class="editorial-panel-link" role="menuitem" data-category-link="institutional">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Institutional</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=interior" class="editorial-panel-link" role="menuitem" data-category-link="interior">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Interior</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=religious" class="editorial-panel-link" role="menuitem" data-category-link="religious">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Religious</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-panel-cell"><a href="clients.html" class="nav-panel-link">Clients</a></li>
+          <li class="nav-panel-cell"><a href="Index.html#contact" class="nav-panel-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- FAR-RIGHT STRUCTURAL PANEL: 2.5x DOMINANT LOGO ANCHOR -->
+      <div class="logo-panel-right">
+        <a href="Index.html" class="header-logo-link" aria-label="Architects' NOOK Home">
+          <img src="assets/logo.png" alt="Architects' NOOK Logo" class="header-logo-img">
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-toggle-btn" aria-label="Toggle Navigation Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Fullscreen Drawer Overlay -->
+    <div id="mobile-drawer">
+      <button id="mobile-drawer-close" aria-label="Close Menu">&times;</button>
+      <ul class="mobile-drawer-list">
+        <li><a href="Index.html#hero" class="mobile-drawer-link">Home</a></li>
+        <li><a href="Index.html#about" class="mobile-drawer-link">About Us</a></li>
+        <li class="mobile-nav-has-dropdown">
+          <div class="mobile-dropdown-header">
+            <a href="projects.html" class="mobile-drawer-link">Projects</a>
+            <span class="mobile-dropdown-arrow">&darr;</span>
+          </div>
+          <ul class="mobile-dropdown-menu">
+            <li><a href="projects.html?category=commercial" class="mobile-drawer-sublink" data-category-link="commercial">Commercial</a></li>
+            <li><a href="projects.html?category=residential" class="mobile-drawer-sublink" data-category-link="residential">Residential</a></li>
+            <li><a href="projects.html?category=industrial" class="mobile-drawer-sublink" data-category-link="industrial">Industrial</a></li>
+            <li><a href="projects.html?category=institutional" class="mobile-drawer-sublink" data-category-link="institutional">Institutional</a></li>
+            <li><a href="projects.html?category=interior" class="mobile-drawer-sublink" data-category-link="interior">Interior</a></li>
+            <li><a href="projects.html?category=religious" class="mobile-drawer-sublink" data-category-link="religious">Religious</a></li>
+          </ul>
+        </li>
+        <li><a href="clients.html" class="mobile-drawer-link">Clients</a></li>
+        <li><a href="Index.html#contact" class="mobile-drawer-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main style="padding-top: 160px; padding-bottom: 128px;">
+    <div class="container">
+      
+      <!-- PAGE HEADER -->
+      <div class="projects-header reveal-item" style="margin-bottom: 48px; flex-direction: column; align-items: flex-start; gap: 24px;">
+        <div class="label-caps" style="color: var(--text-secondary);">ARCHITECTS' NOOK PRIVATE LIMITED — SELECTED WORKS</div>
+        <h1 class="display-title">PORTFOLIO<br>COLLECTION</h1>
+        <p class="sub-title" style="max-width: 820px;">
+          "We commit to satisfy our valued clients up to the brim of their expectations by continually upgrading our skills with application of new trends with a pragmatic approach. We are characterized by distinct ideas, disparate missions, contrasting convictions and divergent preferences."
+        </p>
+      </div>
+
+      <!-- CATEGORY FILTER TABS -->
+      <div class="projects-category-nav reveal-item">
+        <div class="category-tabs-scroll-container">
+          <button class="category-tab active" data-category-target="all">ALL</button>
+          <button class="category-tab" data-category-target="commercial">COMMERCIAL</button>
+          <button class="category-tab" data-category-target="residential">RESIDENTIAL</button>
+          <button class="category-tab" data-category-target="industrial">INDUSTRIAL</button>
+          <button class="category-tab" data-category-target="institutional">INSTITUTIONAL</button>
+          <button class="category-tab" data-category-target="interior">INTERIOR</button>
+          <button class="category-tab" data-category-target="religious">RELIGIOUS</button>
+        </div>
+      </div>
+
+      <!-- AUTOMATICALLY LOADED PROJECTS GRID -->
+      <div class="projects-grid">
+        
+        <!-- Commercial Project -->
+        <article class="project-card reveal-item" data-category="commercial" data-cursor-label="VIEW">
+          <div class="project-image-container">
+            <img src="assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg" alt="Sunshine Resort &amp; Skyvillas" class="project-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-row">
+              <span class="project-category">COMMERCIAL</span>
+            </div>
+            <h3 class="project-title">SUNSHINE RESORT &amp; SKYVILLAS</h3>
+            <div class="project-location">DAMAN, INDIA</div>
+          </div>
+        </article>
+
+        <!-- Industrial Project -->
+        <article class="project-card reveal-item" data-category="industrial" data-cursor-label="VIEW">
+          <div class="project-image-container">
+            <img src="assets/Industrial/ATG Tires, Dahej,.jpg" alt="ATG Tires" class="project-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-row">
+              <span class="project-category">INDUSTRIAL</span>
+            </div>
+            <h3 class="project-title">ATG TIRES</h3>
+            <div class="project-location">DAHEJ</div>
+          </div>
+        </article>
+
+        <!-- Institutional Project -->
+        <article class="project-card reveal-item" data-category="institutional" data-cursor-label="VIEW">
+          <div class="project-image-container">
+            <img src="assets/Instituitional/Aadarsh Enterprise School, Kalvada, Gujarat, India.jpg" alt="Aadarsh Enterprise School" class="project-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-row">
+              <span class="project-category">INSTITUTIONAL</span>
+            </div>
+            <h3 class="project-title">AADARSH ENTERPRISE SCHOOL</h3>
+            <div class="project-location">KALVADA, GUJARAT, INDIA</div>
+          </div>
+        </article>
+
+        <!-- Residential Project -->
+        <article class="project-card reveal-item" data-category="residential" data-cursor-label="VIEW">
+          <div class="project-image-container">
+            <img src="assets/Residential/Bobby Kundra, Silvassa,.jpg" alt="Bobby Kundra Residence" class="project-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-row">
+              <span class="project-category">RESIDENTIAL</span>
+            </div>
+            <h3 class="project-title">BOBBY KUNDRA RESIDENCE</h3>
+            <div class="project-location">SILVASSA</div>
+          </div>
+        </article>
+
+        <!-- Religious Project -->
+        <article class="project-card reveal-item" data-category="religious" data-cursor-label="VIEW">
+          <div class="project-image-container">
+            <img src="assets/Religious/Nav Grah Temple, Uplat,.jpg" alt="Nav Grah Temple" class="project-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-row">
+              <span class="project-category">RELIGIOUS</span>
+            </div>
+            <h3 class="project-title">NAV GRAH TEMPLE</h3>
+            <div class="project-location">UPLAT</div>
+          </div>
+        </article>
+
+        <!-- Interior Project Fallback -->
+        <article class="project-card reveal-item" data-category="interior" data-cursor-label="VIEW">
+          <div class="project-image-container">
+            <img src="assets/project-placeholder.jpg" alt="Corporate Interiors Hub" class="project-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-row">
+              <span class="project-category">INTERIOR</span>
+            </div>
+            <h3 class="project-title">INTERIOR DESIGN STUDIO</h3>
+            <div class="project-location">VAPI, GUJARAT</div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- RETURN TO HOME LINK -->
+      <div class="center-btn-wrapper reveal-item" style="margin-top: 64px;">
+        <a href="Index.html#hero" class="btn-editorial">
+          &larr; RETURN TO HOMEPAGE
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 1969–2026 ARCHITECTS' NOOK PRIVATE LIMITED. ALL RIGHTS RESERVED.</div>
+        <a href="Index.html#hero" class="back-to-top">HOMEPAGE &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
