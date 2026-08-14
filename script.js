@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarDropdown();
   initProjectsCategoryFilter();
   initAboutStatsCounter();
+  initAboutEditorialAnimation();
   initTEKTProcessStepper();
   initBlueprintScrollAnimation();
   initScrollReveals();
@@ -19,62 +20,63 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. CUSTOM MAGNETIC CURSOR WITH DYNAMIC TEXT BADGES
+   1. CUSTOM DUAL-LAYER MONOCHROME CURSOR (INNER DOT + OUTER RING)
    ========================================================================== */
 function initCustomCursor() {
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    return;
+  }
+
   let cursor = document.getElementById('custom-cursor');
   if (!cursor) {
     cursor = document.createElement('div');
     cursor.id = 'custom-cursor';
-    
-    const labelSpan = document.createElement('span');
-    labelSpan.id = 'custom-cursor-label';
-    cursor.appendChild(labelSpan);
-    
     document.body.appendChild(cursor);
   }
 
-  const cursorLabel = document.getElementById('custom-cursor-label');
+  let cursorDot = document.getElementById('custom-cursor-dot');
+  if (!cursorDot) {
+    cursorDot = document.createElement('div');
+    cursorDot.id = 'custom-cursor-dot';
+    document.body.appendChild(cursorDot);
+  }
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let cursorX = mouseX;
-  let cursorY = mouseY;
+  let mouseX = -100;
+  let mouseY = -100;
+  let cursorX = -100;
+  let cursorY = -100;
+  let hasMoved = false;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!hasMoved) {
+      cursorX = mouseX;
+      cursorY = mouseY;
+      hasMoved = true;
+    }
+    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
   });
 
   function renderCursor() {
-    cursorX += (mouseX - cursorX) * 0.22;
-    cursorY += (mouseY - cursorY) * 0.22;
-    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+    if (hasMoved) {
+      cursorX += (mouseX - cursorX) * 0.18;
+      cursorY += (mouseY - cursorY) * 0.18;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+    }
     requestAnimationFrame(renderCursor);
   }
   requestAnimationFrame(renderCursor);
 
   document.addEventListener('mouseover', (e) => {
-    const targetWithLabel = e.target.closest('[data-cursor-label]');
-    if (targetWithLabel) {
-      const badgeText = targetWithLabel.getAttribute('data-cursor-label');
-      if (cursorLabel) cursorLabel.textContent = badgeText;
-      cursor.classList.add('has-label');
-    } else if (e.target.closest('a, button, input, textarea, .project-card, .client-cell, .series-card, .finish-card')) {
-      cursor.classList.remove('has-label');
-      cursor.style.width = '48px';
-      cursor.style.height = '48px';
-      cursor.style.backgroundColor = 'rgba(17, 17, 17, 0.1)';
+    if (e.target.closest('a, button, input, textarea, select, .project-card, .project-monograph-row, .project-view-action, .cat-filter-btn, .dossier-close-btn, .client-cell, .sector-card, .pillar-item, .service-card, .process-step-item, .process-media-display, .tekt-cta-box, .about-image-wrapper')) {
+      cursor.classList.add('is-hover');
     }
   });
 
   document.addEventListener('mouseout', (e) => {
-    if (e.target.closest('[data-cursor-label]')) {
-      cursor.classList.remove('has-label');
-    } else if (e.target.closest('a, button, input, textarea, .project-card, .client-cell, .series-card, .finish-card')) {
-      cursor.style.width = '18px';
-      cursor.style.height = '18px';
-      cursor.style.backgroundColor = 'rgba(17, 17, 17, 0.08)';
+    if (e.target.closest('a, button, input, textarea, select, .project-card, .project-monograph-row, .project-view-action, .cat-filter-btn, .dossier-close-btn, .client-cell, .sector-card, .pillar-item, .service-card, .process-step-item, .process-media-display, .tekt-cta-box, .about-image-wrapper')) {
+      cursor.classList.remove('is-hover');
     }
   });
 }
@@ -133,24 +135,44 @@ function initSplashScreen() {
 }
 
 /* ==========================================================================
-   3. REFINED ARCHITECTURAL HEADER CONTROLLER (STICKY HIDE/SHOW & MOBILE DRAWER)
+   3. REFINED ARCHITECTURAL HEADER CONTROLLER (TRANSPARENT-TO-BLUR & STICKY)
    ========================================================================== */
 function initArchitecturalHeader() {
   const header = document.getElementById('site-header');
   const mobileToggle = document.getElementById('mobile-toggle-btn');
   const mobileClose = document.getElementById('mobile-drawer-close');
-  const mobileLinks = document.querySelectorAll('.mobile-drawer-link');
+  const mobileLinks = document.querySelectorAll('.mobile-drawer-link, .mobile-drawer-sublink');
 
   if (!header) return;
+
+  const heroSection = document.getElementById('hero');
+
+  function updateHeaderBackdrop() {
+    const currentScrollY = window.scrollY;
+    if (heroSection) {
+      if (currentScrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    } else {
+      // Non-hero content page: start with backdrop blur active
+      header.classList.add('header-scrolled');
+    }
+  }
+
+  // Initial state check
+  updateHeaderBackdrop();
 
   let lastScrollY = window.scrollY;
   const scrollThreshold = 100;
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
+    updateHeaderBackdrop();
 
     if (currentScrollY > scrollThreshold) {
-      if (currentScrollY > lastScrollY) {
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
         header.classList.add('nav-hidden');
       } else {
         header.classList.remove('nav-hidden');
@@ -160,7 +182,7 @@ function initArchitecturalHeader() {
     }
 
     lastScrollY = currentScrollY;
-  });
+  }, { passive: true });
 
   if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
@@ -239,58 +261,139 @@ function initAboutStatsCounter() {
 }
 
 /* ==========================================================================
+   4B. SWISS ARCHITECTURAL ABOUT SECTION EDITORIAL REVEAL ENGINE
+   ========================================================================== */
+function initAboutEditorialAnimation() {
+  const aboutSection = document.querySelector('#about.about-editorial-section');
+  if (!aboutSection) return;
+
+  const heading = aboutSection.querySelector('.about-editorial-heading');
+  const leadPara = aboutSection.querySelector('.about-lead-paragraph');
+  const supportingPara = aboutSection.querySelector('.about-supporting-paragraph');
+  const scopePara = aboutSection.querySelector('.about-scope-paragraph');
+  const footnote = aboutSection.querySelector('.about-editorial-footnote');
+
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: aboutSection,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    if (heading) {
+      tl.fromTo(heading, 
+        { opacity: 0, y: 28 }, 
+        { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out' }
+      );
+    }
+
+    if (leadPara) {
+      tl.fromTo(leadPara, 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 
+        '-=0.75'
+      );
+    }
+
+    if (supportingPara) {
+      tl.fromTo(supportingPara, 
+        { opacity: 0, y: 18 }, 
+        { opacity: 1, y: 0, duration: 0.85, ease: 'power2.out' }, 
+        '-=0.65'
+      );
+    }
+
+    if (scopePara) {
+      tl.fromTo(scopePara, 
+        { opacity: 0, y: 18 }, 
+        { opacity: 1, y: 0, duration: 0.85, ease: 'power2.out' }, 
+        '-=0.65'
+      );
+    }
+
+    if (footnote) {
+      tl.fromTo(footnote, 
+        { opacity: 0, y: 14 }, 
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 
+        '-=0.6'
+      );
+    }
+  } else {
+    // Fallback IntersectionObserver reveal
+    const items = [heading, leadPara, supportingPara, scopePara, footnote].filter(Boolean);
+    items.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            }, index * 140);
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(aboutSection);
+  }
+}
+
+/* ==========================================================================
    5. INTERACTIVE TEKT PROCESS STEPPER
    ========================================================================== */
 function initTEKTProcessStepper() {
   const processSteps = [
     {
       step: '01',
-      title: 'Groundwork & Site Consultation',
-      desc: 'During an initial consultation, we learn about your vision and assess the site to determine design possibilities, costings, build timeframes, and next steps.',
-      image: 'assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg',
-      meta: 'PHASE 01 // INITIAL SITE CONSULTATION &amp; FEASIBILITY'
+      title: 'Blue Star',
+      desc: '',
+      image: 'assets/Industrial/Blue Star, Silvassa.jpg',
+      meta: 'INDUSTRIAL // SILVASSA'
     },
     {
       step: '02',
-      title: 'Concept & Spatial Design',
-      desc: 'Select from our Urban, Rural, or Coastal Series, or opt for a custom build. Review the design package, including floor plans, elevations, and specifications ready for quoting.',
-      image: 'assets/Residential/Bobby Kundra, Silvassa,.jpg',
-      meta: 'PHASE 02 // ARCHITECTURAL SCHEMATIC &amp; 3D MODELING'
+      title: 'Sunshine Resort',
+      desc: '',
+      image: 'assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg',
+      meta: 'COMMERCIAL // DAMAN'
     },
     {
       step: '03',
-      title: 'Shaping the Architectural System',
-      desc: 'Through an iterative, collaborative process, we guide, refine, and resolve all design decisions to arrive at your final, considered Architects\' Nook system.',
-      image: 'assets/Industrial/ATG Tires, Dahej,.jpg',
-      meta: 'PHASE 03 // STRUCTURAL SPECIFICATIONS &amp; MATERIAL FINISHES'
+      title: 'Param Packaging',
+      desc: '',
+      image: 'assets/Industrial/Param Packaging Pvt. Ltd, Degam.jpg',
+      meta: 'INDUSTRIAL // DEGAM'
     },
     {
       step: '04',
-      title: 'Regulatory & Building Approvals',
-      desc: 'We liaise with all consultants and regulators to facilitate a smooth, efficient building approval process across soil, energy, wind, fire, civil engineering, and town planning.',
-      image: 'assets/Instituitional/Aadarsh Enterprise School, Kalvada, Gujarat, India.jpg',
-      meta: 'PHASE 04 // MUNICIPAL COMPLIANCE &amp; STATUTORY PERMITS'
+      title: 'Nav Grah Temple',
+      desc: '',
+      image: 'assets/Religious/Nav Grah Temple, Uplat,.jpg',
+      meta: 'RELIGIOUS // UPLAT'
     },
     {
       step: '05',
-      title: 'Considered Construction & Engineering',
-      desc: 'Assembly takes place under stringent quality control. Our engineering team manages precision at every step and keeps you informed of progress with frequent updates.',
-      image: 'assets/Religious/Nav Grah Temple, Uplat,.jpg',
-      meta: 'PHASE 05 // STRUCTURAL EXECUTION &amp; QUALITY AUDITS'
-    },
-    {
-      step: '06',
-      title: 'Seamless Handover & Delivery',
-      desc: 'We handle all logistics from studio engineering to on-site installation, including final inspection and post-handover support for complete peace of mind.',
+      title: 'Mohini Bunglow',
+      desc: '',
       image: 'assets/Residential/Mohini Bunglow, Vapi,.jpg',
-      meta: 'PHASE 06 // TURNKEY HANDOVER &amp; WARRANTY SUPPORT'
+      meta: 'RESIDENTIAL // VAPI'
     }
   ];
 
   const stepItems = document.querySelectorAll('.process-step-item');
   const mediaImg = document.getElementById('process-active-img');
-  const mediaMeta = document.getElementById('process-active-meta');
-  const mediaTitle = document.getElementById('process-active-title');
 
   if (!stepItems.length || !mediaImg) return;
 
@@ -309,8 +412,6 @@ function initTEKTProcessStepper() {
     mediaImg.style.opacity = '0';
     setTimeout(() => {
       mediaImg.src = data.image;
-      if (mediaMeta) mediaMeta.innerHTML = data.meta;
-      if (mediaTitle) mediaTitle.textContent = `${data.step} ${data.title}`;
       mediaImg.style.opacity = '1';
     }, 200);
   }
@@ -331,7 +432,7 @@ function initScrollReveals() {
   const observerOptions = {
     root: null,
     rootMargin: '0px 0px -80px 0px',
-    threshold: 0.1
+    threshold: 0.02
   };
 
   const observer = new IntersectionObserver((entries, obs) => {
@@ -452,15 +553,12 @@ function initNavbarDropdown() {
    9. PROJECTS CATEGORY FILTER & URL PARAMETER ENGINE
    ========================================================================== */
 function initProjectsCategoryFilter() {
-  const categoryTabs = document.querySelectorAll('.category-tab');
-  const projectCards = document.querySelectorAll('.project-card[data-category]');
+  const categoryTabs = document.querySelectorAll('.category-tab, .cat-filter-btn');
   const dropdownItems = document.querySelectorAll('[data-category-link]');
-
-  if (!categoryTabs.length && !projectCards.length && !dropdownItems.length) return;
 
   function filterCategory(targetCategory) {
     const normCategory = (targetCategory || 'all').toLowerCase().trim();
-    const currentCards = document.querySelectorAll('.project-card[data-category]');
+    const currentCards = document.querySelectorAll('.project-monograph-row[data-category], .project-editorial-entry[data-category], .project-card[data-category]');
 
     // 1. Update Category Tabs active state
     categoryTabs.forEach(tab => {
@@ -486,11 +584,20 @@ function initProjectsCategoryFilter() {
     currentCards.forEach(card => {
       const cardCategory = (card.getAttribute('data-category') || '').toLowerCase().trim();
       if (normCategory === 'all' || cardCategory === normCategory) {
+        card.style.display = '';
         card.classList.remove('is-hidden');
       } else {
+        card.style.display = 'none';
         card.classList.add('is-hidden');
       }
     });
+
+    // Re-initialize 4-panel architectural reveal for visible cards
+    initProjectQuadReveals();
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
   }
 
   // Check URL query params on page load
@@ -500,7 +607,8 @@ function initProjectsCategoryFilter() {
 
   // Tab button click listeners
   categoryTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
       const targetCat = tab.getAttribute('data-category-target') || 'all';
       filterCategory(targetCat);
 
@@ -519,6 +627,7 @@ function initProjectsCategoryFilter() {
     filterCategory(popCat);
   });
 }
+
 
 /* ==========================================================================
    10. AUTOMATIC CATEGORY IMAGE LOADER & DYNAMIC CARD GENERATOR (OFFICIAL ANPL PORTFOLIO)
@@ -1065,168 +1174,221 @@ const PORTFOLIO_PROJECTS = [
   }
 ];
 
-function createProjectCardHTML(p, isHomePreview = false) {
+function createProjectCardHTML(p, index = 0, isHomePreview = false) {
   const imagePath = p.filename ? `assets/${p.folder}/${p.filename}` : 'assets/project-placeholder.jpg';
-  const tag = isHomePreview ? 'a' : 'article';
-  const hrefAttr = isHomePreview ? `href="projects.html?category=${p.category}"` : '';
+  
+  if (isHomePreview) {
+    return `
+      <a href="projects.html?category=${p.category}" class="project-card reveal-item" data-category="${p.category}" data-project-id="${p.id}" style="text-decoration: none; color: inherit;">
+        <div class="project-image-container">
+          <img src="${imagePath}" 
+               alt="${p.title.replace(/"/g, '&quot;')}" 
+               class="project-image" 
+               loading="lazy" 
+               decoding="async" 
+               style="width: 100%; height: 100%; object-fit: cover;"
+               onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+        </div>
+        <div class="project-info">
+          <div class="project-meta-row">
+            <span class="project-category">${p.categoryLabel}</span>
+          </div>
+          <h3 class="project-title">${p.title}</h3>
+          <div class="project-location">${p.location.toUpperCase()}</div>
+        </div>
+      </a>
+    `;
+  }
+
+  const formattedNum = String(index + 1).padStart(2, '0');
 
   return `
-    <${tag} ${hrefAttr} class="project-card reveal-item" data-category="${p.category}" data-project-id="${p.id}" data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
-      <div class="project-image-container">
+    <article class="project-monograph-row reveal-item" data-category="${p.category}" data-project-id="${p.id}">
+      <div class="project-monograph-frame">
         <img src="${imagePath}" 
              alt="${p.title.replace(/"/g, '&quot;')}" 
-             class="project-image" 
+             class="project-monograph-img" 
              loading="lazy" 
              decoding="async" 
-             style="width: 100%; height: 100%; object-fit: cover;"
              onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
-      </div>
-      <div class="project-info">
-        <div class="project-meta-row">
-          <span class="project-category">${p.categoryLabel}</span>
-        </div>
-        <h3 class="project-title">${p.title}</h3>
-        <div class="project-location">${p.location.toUpperCase()}</div>
-        <p class="project-card-desc">${p.desc}</p>
-        <div class="project-specs-pill">
-          <span>AREA: <span class="spec-tag">${p.siteArea}</span></span>
-          <span>SCOPE: <span class="spec-tag">${p.scope}</span></span>
+        <div class="project-reveal-quad" aria-hidden="true">
+          <div class="quad-panel panel-tl"></div>
+          <div class="quad-panel panel-tr"></div>
+          <div class="quad-panel panel-bl"></div>
+          <div class="quad-panel panel-br"></div>
         </div>
       </div>
-    </${tag}>
+      <div class="project-monograph-meta">
+        <div class="project-meta-kicker">${formattedNum} // ${p.categoryLabel}</div>
+        <div class="project-meta-main">
+          <h2 class="project-monograph-title">${p.title}</h2>
+          <p class="project-monograph-summary">${p.desc}</p>
+        </div>
+        <button type="button" class="project-view-action" aria-label="View details for ${p.title.replace(/"/g, '&quot;')}">
+          <span>VIEW</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </article>
   `;
 }
 
 function renderDynamicProjectCards() {
-  const projectsGrid = document.querySelector('.projects-grid');
-  if (!projectsGrid) return;
+  const streamContainer = document.querySelector('.projects-monograph-stream') || document.querySelector('.projects-editorial-stream') || document.querySelector('.projects-grid');
+  if (!streamContainer) return;
 
   const pathname = window.location.pathname.toLowerCase();
   const isProjectsPage = pathname.includes('projects.html');
   const isHomePage = document.getElementById('hero') !== null || pathname.endsWith('index.html') || pathname.endsWith('/') || pathname === '';
 
-  // 1. PROJECTS PAGE: Render all 33 ANPL Portfolio Projects
+  // 1. PROJECTS PAGE: Render all 33 ANPL Portfolio Projects into the monograph stream
   if (isProjectsPage) {
     let allCardsHTML = '';
-    PORTFOLIO_PROJECTS.forEach(project => {
-      allCardsHTML += createProjectCardHTML(project, false);
+    PORTFOLIO_PROJECTS.forEach((project, idx) => {
+      allCardsHTML += createProjectCardHTML(project, idx, false);
     });
-    projectsGrid.innerHTML = allCardsHTML;
+    streamContainer.innerHTML = allCardsHTML;
+
+    // Initialize 4-panel architectural reveal for every project image
+    initProjectQuadReveals();
   }
-  // 2. HOMEPAGE: Show 6 representative categories
+  // 2. HOMEPAGE: Show 4 representative categories
   else if (isHomePage) {
-    const homeProjectsGrid = document.querySelector('#projects .projects-grid') || projectsGrid;
+    const homeProjectsGrid = document.querySelector('#projects .projects-grid') || streamContainer;
     if (homeProjectsGrid) {
       let homeCardsHTML = '';
-      const categories = ['commercial', 'residential', 'industrial', 'institutional', 'interior', 'religious'];
+      const categories = ['commercial', 'residential', 'industrial', 'institutional'];
       
-      categories.forEach(cat => {
+      categories.forEach((cat, idx) => {
         const reprProject = PORTFOLIO_PROJECTS.find(p => p.category === cat) || PORTFOLIO_PROJECTS[0];
-        homeCardsHTML += createProjectCardHTML(reprProject, true);
+        homeCardsHTML += createProjectCardHTML(reprProject, idx, true);
       });
 
       homeProjectsGrid.innerHTML = homeCardsHTML;
     }
   }
 
-  // Initialize interactive details modal
-  initProjectModal();
+  // Initialize interactive Monograph Dossier
+  initProjectDossierOverlay();
 }
 
-function initProjectModal() {
-  let modal = document.getElementById('project-modal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'project-modal';
-    modal.innerHTML = `
-      <div class="modal-container">
-        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Project Details">&times;</button>
-        <div class="modal-grid">
-          <div class="modal-media">
-            <img id="modal-img" src="" alt="Project Image">
+function initProjectDossierOverlay() {
+  let overlay = document.getElementById('project-dossier-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'project-dossier-overlay';
+    overlay.className = 'project-dossier-overlay';
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+      <div class="dossier-sheet-wrapper">
+        <header class="dossier-top-bar">
+          <div class="dossier-tag" id="dossier-category-tag">ARCHITECTS' NOOK // PROJECT DOSSIER</div>
+          <button class="dossier-close-btn" id="dossier-close-btn" aria-label="Close Project Dossier">
+            <span>CLOSE</span>
+            <span style="font-size: 1.25rem; line-height: 1;">&times;</span>
+          </button>
+        </header>
+
+        <div class="dossier-scroll-content">
+          <div class="dossier-image-hero">
+            <img id="dossier-img" src="" alt="Project Image" class="dossier-main-img">
+            <div class="dossier-img-caption" id="dossier-caption">PROJECT // LOCATION</div>
           </div>
-          <div class="modal-content">
-            <div>
-              <div class="modal-header-meta" id="modal-cat-meta">TYPOLOGY</div>
-              <h2 class="modal-title" id="modal-title">PROJECT TITLE</h2>
-              <div class="modal-location" id="modal-location">LOCATION</div>
-              <div class="modal-specs-table">
-                <div>
-                  <div class="spec-item-label">Typology</div>
-                  <div class="spec-item-val" id="modal-typology">Industrial</div>
-                </div>
-                <div>
-                  <div class="spec-item-label">Site Area</div>
-                  <div class="spec-item-val" id="modal-site-area">1,56,076.00 sq.ft</div>
-                </div>
-                <div>
-                  <div class="spec-item-label">Gross Floor Area</div>
-                  <div class="spec-item-val" id="modal-gfa">82,927.00 sq.ft</div>
-                </div>
-                <div style="grid-column: span 2;">
-                  <div class="spec-item-label">Architectural Scope</div>
-                  <div class="spec-item-val" id="modal-scope">Architecture, Structural Design</div>
-                </div>
-              </div>
-              <div class="modal-description" id="modal-desc">
-                Project description text...
-              </div>
+
+          <div class="dossier-details-container">
+            <div class="dossier-title-row">
+              <h2 class="dossier-project-title" id="dossier-title">PROJECT TITLE</h2>
+              <div class="dossier-location-text" id="dossier-location">LOCATION</div>
+            </div>
+
+            <div class="dossier-specs-grid" id="dossier-specs-grid"></div>
+
+            <div class="dossier-narrative-block">
+              <div class="dossier-section-label">PROJECT NARRATIVE &amp; ARCHITECTURAL INTENT</div>
+              <p class="dossier-description-p" id="dossier-desc"></p>
             </div>
           </div>
         </div>
       </div>
     `;
-    document.body.appendChild(modal);
+    document.body.appendChild(overlay);
   }
 
-  const closeBtn = document.getElementById('modal-close-btn');
+  const closeBtn = document.getElementById('dossier-close-btn');
   if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeProjectDossier);
   }
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeProjectDossier();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') closeProjectDossier();
   });
 
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
   document.addEventListener('click', (e) => {
-    const card = e.target.closest('.project-card[data-project-id]');
-    if (!card) return;
+    const trigger = e.target.closest('[data-project-id]');
+    if (!trigger) return;
 
-    const projId = parseInt(card.getAttribute('data-project-id'), 10);
+    const projId = parseInt(trigger.getAttribute('data-project-id'), 10);
     const project = PORTFOLIO_PROJECTS.find(p => p.id === projId);
     if (!project) return;
 
-    if (card.tagName === 'A' && card.hasAttribute('href') && !window.location.pathname.toLowerCase().includes('projects.html')) {
+    if (trigger.tagName === 'A' && trigger.hasAttribute('href') && !window.location.pathname.toLowerCase().includes('projects.html')) {
       return;
     }
 
     e.preventDefault();
-    openModal(project);
+    openProjectDossier(project);
   });
-
-  function openModal(p) {
-    const imgPath = p.filename ? `assets/${p.folder}/${p.filename}` : 'assets/project-placeholder.jpg';
-    document.getElementById('modal-img').src = imgPath;
-    document.getElementById('modal-cat-meta').textContent = `${p.typology.toUpperCase()}`;
-    document.getElementById('modal-title').textContent = p.title;
-    document.getElementById('modal-location').textContent = p.location;
-    document.getElementById('modal-typology').textContent = p.typology;
-    document.getElementById('modal-site-area').textContent = p.siteArea || 'N/A';
-    document.getElementById('modal-gfa').textContent = p.gfa || 'N/A';
-    document.getElementById('modal-scope').textContent = p.scope || 'Architecture';
-    document.getElementById('modal-desc').textContent = p.desc;
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
 }
+
+function openProjectDossier(p) {
+  const overlay = document.getElementById('project-dossier-overlay');
+  if (!overlay) return;
+
+  const imgPath = p.filename ? `assets/${p.folder}/${p.filename}` : 'assets/project-placeholder.jpg';
+  document.getElementById('dossier-img').src = imgPath;
+  document.getElementById('dossier-category-tag').textContent = `${(p.typology || p.categoryLabel || 'PROJECT').toUpperCase()} // ARCHITECTURAL DOSSIER`;
+  document.getElementById('dossier-title').textContent = p.title;
+  document.getElementById('dossier-location').textContent = p.location ? p.location.toUpperCase() : '';
+  document.getElementById('dossier-caption').textContent = `${p.title} // ${(p.location || '').toUpperCase()}`;
+  document.getElementById('dossier-desc').textContent = p.desc || '';
+
+  // Populate Structured Specs Grid (ONLY fields that actually exist)
+  const specsContainer = document.getElementById('dossier-specs-grid');
+  if (specsContainer) {
+    let specsHTML = '';
+    if (p.typology) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Typology</span><span class="dossier-spec-val">${p.typology}</span></div>`;
+    if (p.location) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Location</span><span class="dossier-spec-val">${p.location}</span></div>`;
+    if (p.year) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Year / Period</span><span class="dossier-spec-val">${p.year}</span></div>`;
+    if (p.status) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Project Status</span><span class="dossier-spec-val">${p.status}</span></div>`;
+    if (p.siteArea) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Site Area</span><span class="dossier-spec-val">${p.siteArea}</span></div>`;
+    if (p.gfa) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Gross Floor Area</span><span class="dossier-spec-val">${p.gfa}</span></div>`;
+    if (p.scope) specsHTML += `<div class="dossier-spec-item" style="grid-column: 1 / -1;"><span class="dossier-spec-lbl">Architectural Scope</span><span class="dossier-spec-val">${p.scope}</span></div>`;
+    specsContainer.innerHTML = specsHTML;
+    specsContainer.style.display = specsHTML ? 'grid' : 'none';
+  }
+
+  overlay.classList.add('active');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  const scrollable = overlay.querySelector('.dossier-scroll-content');
+  if (scrollable) scrollable.scrollTop = 0;
+}
+
+function closeProjectDossier() {
+  const overlay = document.getElementById('project-dossier-overlay');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
 
 /* ==========================================================================
    11. BLUEPRINT TO REALITY SCROLL-TRIGGERED ANIMATION ENGINE
@@ -1253,20 +1415,15 @@ function initBlueprintScrollAnimation() {
     {
       title: "03 / Construction Grid",
       desc: "Injecting concrete, structural steel, and raw monolithic frames onto the site."
-    },
-    {
-      title: "04 / Completed Masterpiece",
-      desc: "The final spatial execution — where light, texture, and silence meet form."
     }
   ];
 
   const bpHeading = document.getElementById('blueprint-heading');
   const bpDesc = document.getElementById('blueprint-desc');
 
-  // Hide layers 2, 3, and 4 initially using clip-path inset
+  // Hide layers 2 and 3 initially using clip-path inset
   gsap.set('#bp-layer-2', { clipPath: "inset(0% 100% 0% 0%)" });
   gsap.set('#bp-layer-3', { clipPath: "inset(0% 100% 0% 0%)" });
-  gsap.set('#bp-layer-4', { clipPath: "inset(0% 100% 0% 0%)" });
 
   // 1. Perspective tilt-in animation as the section scrolls into view
   gsap.fromTo('#blueprint-3d-wrapper', 
@@ -1346,18 +1503,132 @@ function initBlueprintScrollAnimation() {
       duration: 0.05, 
       onStart: () => updateBlueprintStep(3),
       onReverseComplete: () => updateBlueprintStep(2)
-    }, '<')
-    
-    // Phase 3 -> 4 (Reveal Final Completed Layer)
-    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: '#ffffff', boxShadow: '0 0 12px #ffffff' })
-    .to('#bp-layer-4', { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'none' })
-    .to('#bp-scanline', { left: '100%', duration: 1, ease: 'none' }, '<')
-    .to('#bp-scanline', { opacity: 0, duration: 0.1 })
-    .to({}, { 
-      duration: 0.05, 
-      onStart: () => updateBlueprintStep(4),
-      onReverseComplete: () => updateBlueprintStep(3)
     }, '<');
 }
+
+/* ==========================================================================
+   4-PANEL ARCHITECTURAL REVEAL ENGINE (SCROLL-DRIVEN, REVERSIBLE, CONTINUOUS)
+   ========================================================================== */
+function initProjectQuadReveals() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  // Clear existing quad triggers
+  ScrollTrigger.getAll().forEach(st => {
+    if (st.vars && st.vars.id && String(st.vars.id).startsWith('quad-reveal-')) {
+      st.kill();
+    }
+  });
+
+  const projectRows = document.querySelectorAll('.project-monograph-row');
+  if (!projectRows.length) return;
+
+  projectRows.forEach((row, idx) => {
+    if (row.style.display === 'none' || row.classList.contains('is-hidden')) return;
+
+    const frame = row.querySelector('.project-monograph-frame');
+    if (!frame) return;
+
+    const pTL = frame.querySelector('.panel-tl');
+    const pTR = frame.querySelector('.panel-tr');
+    const pBL = frame.querySelector('.panel-bl');
+    const pBR = frame.querySelector('.panel-br');
+    const img = frame.querySelector('.project-monograph-img');
+
+    if (!pTL || !pTR || !pBL || !pBR) return;
+
+    // Initial state: panels meet seamlessly at center with 0% gap
+    gsap.set([pTL, pTR, pBL, pBR], { xPercent: 0, yPercent: 0 });
+
+    // ScrollTrigger timeline:
+    // 0%–5%   -> 0% revealed (100% covered)
+    // 5%–15%  -> 0%–10% revealed (subtle initial opening from center)
+    // 15%–30% -> 10%–35% revealed (gradual acceleration)
+    // 30%–45% -> 35%–65% revealed (progressive exposure with depth)
+    // 45%–55% -> 65%–90% revealed (major opening phase)
+    // 55%–60% -> 90%–100% revealed (reaches 100% open at 60%)
+    // 60%–100% -> 100% visible, fully stable, zero movement
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        id: `quad-reveal-${idx}`,
+        trigger: frame,
+        start: 'top 95%',
+        end: 'bottom 15%',
+        scrub: 0.3,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // Top-Left Panel
+    tl.to(pTL, {
+      keyframes: [
+        { xPercent: 0, yPercent: 0, duration: 0.05, ease: 'none' },
+        { xPercent: -10, yPercent: -10, duration: 0.10, ease: 'power1.in' },
+        { xPercent: -35, yPercent: -35, duration: 0.15, ease: 'power1.out' },
+        { xPercent: -65, yPercent: -65, duration: 0.15, ease: 'power2.inOut' },
+        { xPercent: -90, yPercent: -90, duration: 0.10, ease: 'power2.out' },
+        { xPercent: -103, yPercent: -103, duration: 0.05, ease: 'power1.out' },
+        { xPercent: -103, yPercent: -103, duration: 0.40, ease: 'none' }
+      ]
+    }, 0);
+
+    // Top-Right Panel (subtle organic offset)
+    tl.to(pTR, {
+      keyframes: [
+        { xPercent: 0, yPercent: 0, duration: 0.05, ease: 'none' },
+        { xPercent: 8, yPercent: -9, duration: 0.10, ease: 'power1.in' },
+        { xPercent: 32, yPercent: -34, duration: 0.15, ease: 'power1.out' },
+        { xPercent: 63, yPercent: -66, duration: 0.15, ease: 'power2.inOut' },
+        { xPercent: 88, yPercent: -91, duration: 0.10, ease: 'power2.out' },
+        { xPercent: 103, yPercent: -103, duration: 0.05, ease: 'power1.out' },
+        { xPercent: 103, yPercent: -103, duration: 0.40, ease: 'none' }
+      ]
+    }, 0);
+
+    // Bottom-Left Panel (subtle organic offset)
+    tl.to(pBL, {
+      keyframes: [
+        { xPercent: 0, yPercent: 0, duration: 0.05, ease: 'none' },
+        { xPercent: -9, yPercent: 8, duration: 0.10, ease: 'power1.in' },
+        { xPercent: -34, yPercent: 33, duration: 0.15, ease: 'power1.out' },
+        { xPercent: -66, yPercent: 64, duration: 0.15, ease: 'power2.inOut' },
+        { xPercent: -91, yPercent: 89, duration: 0.10, ease: 'power2.out' },
+        { xPercent: -103, yPercent: 103, duration: 0.05, ease: 'power1.out' },
+        { xPercent: -103, yPercent: 103, duration: 0.40, ease: 'none' }
+      ]
+    }, 0);
+
+    // Bottom-Right Panel
+    tl.to(pBR, {
+      keyframes: [
+        { xPercent: 0, yPercent: 0, duration: 0.05, ease: 'none' },
+        { xPercent: 10, yPercent: 10, duration: 0.10, ease: 'power1.in' },
+        { xPercent: 36, yPercent: 36, duration: 0.15, ease: 'power1.out' },
+        { xPercent: 67, yPercent: 67, duration: 0.15, ease: 'power2.inOut' },
+        { xPercent: 92, yPercent: 92, duration: 0.10, ease: 'power2.out' },
+        { xPercent: 103, yPercent: 103, duration: 0.05, ease: 'power1.out' },
+        { xPercent: 103, yPercent: 103, duration: 0.40, ease: 'none' }
+      ]
+    }, 0);
+
+    // Subtle Image Scaling
+    if (img) {
+      tl.to(img, {
+        keyframes: [
+          { scale: 1.03, duration: 0.05, ease: 'none' },
+          { scale: 1.026, duration: 0.10, ease: 'power1.in' },
+          { scale: 1.018, duration: 0.15, ease: 'power1.out' },
+          { scale: 1.01, duration: 0.15, ease: 'power2.inOut' },
+          { scale: 1.004, duration: 0.10, ease: 'power2.out' },
+          { scale: 1.0, duration: 0.05, ease: 'power1.out' },
+          { scale: 1.0, duration: 0.40, ease: 'none' }
+        ]
+      }, 0);
+    }
+  });
+
+  ScrollTrigger.refresh();
+}
+
+
 
 

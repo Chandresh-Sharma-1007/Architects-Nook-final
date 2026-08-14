@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects &amp; Selected Works — Architects' Nook Private Limited</title>
+  <title>Contact — Architects' Nook Private Limited</title>
   <meta name="description"
-    content="Explore selected architectural, structural engineering, and interior works by Architects' Nook Private Limited since 1969.">
+    content="Contact Architects' Nook Private Limited — Architecture, Engineering, Planning, Interior Design & Valuation studio in Vapi, Gujarat, India.">
 
-  <!-- Master Stylesheet (Helvetica, 0px border-radius, Monochrome Palette) -->
+  <!-- Master TEKT-Style Stylesheet (Helvetica, 0px border-radius, Monochrome Palette) -->
   <link rel="stylesheet" href="style.css">
 
   <!-- GSAP & ScrollTrigger Animation Libraries -->
@@ -18,8 +18,8 @@
 
 <body>
 
-  <!-- REFINED ARCHITECTURAL PANEL HEADER (TEKT ARCHITECTURE MATCH) -->
-  <header id="site-header" class="header-blur">
+  <!-- REFINED ARCHITECTURAL PANEL HEADER -->
+  <header id="site-header">
     <div class="header-grid">
 
       <!-- LEFT STRUCTURAL PANELS: 6 NAV ITEMS WITH HORIZONTAL EXPANSION ON HOVER -->
@@ -131,47 +131,145 @@
     </div>
   </header>
 
-  <!-- MAIN PROJECTS CONTENT (SINGLE UNIFIED ARCHITECTURAL MONOGRAPH) -->
-  <main class="projects-page-main">
-    <div class="projects-monograph-container">
+  <!-- MAIN CONTENT CONTAINER -->
+  <main>
 
-      <!-- ================================================================
-           HERO SECTION (MINIMAL, EDITORIAL OPENING)
-           ================================================================ -->
-      <section class="projects-hero-section reveal-item">
-        <div class="projects-hero-kicker">ARCHITECTS' NOOK // SELECTED ARCHITECTURAL WORKS</div>
-        <h1 class="projects-hero-title">PROJECTS</h1>
-        <p class="projects-hero-lead">
-          Selected architectural works across commercial, residential, industrial, institutional and interior typologies.
-        </p>
-      </section>
+    <!-- CONTACT HERO SECTION -->
+    <section class="contact-hero">
+      <div class="container">
+        <div class="reveal-item">
+          <h1 class="contact-hero-title">
+            LET'S BUILD<br>
+            SOMETHING<br>
+            MEANINGFUL.
+          </h1>
 
-      <!-- ================================================================
-           CATEGORY FILTER BAR (NON-STICKY, NATURAL DOCUMENT FLOW)
-           ================================================================ -->
-      <nav class="projects-category-bar reveal-item" aria-label="Project Category Filter">
-        <div class="category-tabs-container">
-          <button type="button" class="cat-filter-btn active" data-category-target="all">ALL</button>
-          <button type="button" class="cat-filter-btn" data-category-target="commercial">COMMERCIAL</button>
-          <button type="button" class="cat-filter-btn" data-category-target="residential">RESIDENTIAL</button>
-          <button type="button" class="cat-filter-btn" data-category-target="industrial">INDUSTRIAL</button>
-          <button type="button" class="cat-filter-btn" data-category-target="institutional">INSTITUTIONAL</button>
-          <button type="button" class="cat-filter-btn" data-category-target="interior">INTERIOR</button>
-          <button type="button" class="cat-filter-btn" data-category-target="religious">RELIGIOUS</button>
         </div>
-      </nav>
-
-      <!-- ================================================================
-           PROJECTS MONOGRAPH STREAM (SINGLE UNIFIED ARCHITECTURAL STRUCTURE)
-           ================================================================ -->
-      <div class="projects-monograph-stream">
-        <!-- Generated dynamically from PORTFOLIO_PROJECTS dataset in script.js -->
       </div>
+    </section>
 
+    <!-- FINE EDITORIAL DIVIDER -->
+    <div class="container reveal-item">
+      <div class="contact-divider"></div>
     </div>
+
+    <!-- CONTACT DETAILS & FORM SECTION -->
+    <section class="contact-page-section">
+      <div class="container">
+        <div class="grid-12">
+
+          <!-- Left Column: Verified Contact Info + Google Maps -->
+          <div class="contact-left reveal-item">
+            <div>
+              <div class="contact-info-block">
+                <!-- <div class="contact-label">STUDIO</div> -->
+                <div class="contact-value" style="font-weight: 700; text-transform: uppercase;">
+                  ARCHITECTS' NOOK PRIVATE LIMITED
+                </div>
+              </div>
+
+              <div class="contact-info-block">
+                <div class="contact-label">ADDRESS</div>
+                <div class="contact-value" style="font-size: 1.125rem; line-height: 1.6;">
+                  201 Tirupati Towers,<br>
+                  Vapi-Silvassa Road,<br>
+                  Opp. Heena Arcade &amp; Furniture Park,<br>
+                  Near GIDC Char Rasta,<br>
+                  Vapi - 396 195,<br>
+                  Dist. Valsad,<br>
+                  Gujarat - India.
+                </div>
+              </div>
+
+              <div class="contact-info-block">
+                <div class="contact-label">TELEPHONE</div>
+                <div class="contact-value" style="font-size: 1.125rem; line-height: 1.6;">
+                  <a href="tel:+9102602431770" style="display: block; cursor: none;">+91 0260 2431770</a>
+                  <a href="tel:+9102602430326" style="display: block; cursor: none;">+91 0260 2430326</a>
+                </div>
+              </div>
+
+              <div class="contact-info-block" style="margin-bottom: 0;">
+                <div class="contact-label">EMAIL</div>
+                <div class="contact-value" style="font-size: 1.125rem; line-height: 1.6;">
+                  <a href="mailto:mails@architectsnook.com" style="cursor: none;">mails@architectsnook.com</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Responsive Google Maps Embed Area -->
+            <div class="map-container">
+              <iframe 
+                src="https://maps.google.com/maps?q=Architects'%20Nook%20Private%20Limited%2C%20201%20Tirupati%20Towers%2C%20Vapi-Silvassa%20Road%2C%20Near%20GIDC%20Char%20Rasta%2C%20Vapi%2C%20Gujarat%20396195%2C%20India&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                style="border:0; width: 100%; height: 100%; display: block;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Architects' Nook Office Location">
+              </iframe>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Enquiry Form / Success State -->
+          <div class="contact-right reveal-item">
+            
+            <!-- Enquiry Form -->
+            <form id="contact-enquiry-form" method="POST" action="#">
+              <div class="form-group">
+                <label for="name" class="form-label">YOUR NAME</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="form-label">PHONE NUMBER</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">EMAIL ADDRESS</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="yourname@domain.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">TELL US ABOUT YOUR PROJECT</label>
+                <textarea id="message" name="message" class="form-input" placeholder="Specify your requirements (Architecture, Engineering, Interior Design, Valuation)..." required></textarea>
+              </div>
+
+              <button type="submit" class="form-submit-btn">SEND ENQUIRY &rarr;</button>
+            </form>
+
+            <!-- Premium Success State (hidden initially) -->
+            <div id="contact-success-state" class="success-card" style="display: none;">
+              <div class="success-header">
+                <h2 class="section-title" style="margin-bottom: var(--space-32); line-height: 1.1;">
+                  THANK YOU.<br>WE'VE RECEIVED YOUR ENQUIRY.
+                </h2>
+              </div>
+              
+              <div class="success-body" style="margin-bottom: var(--space-48);">
+                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; margin-bottom: var(--space-32);">
+                  Your enquiry has been successfully received. Our team will review your message and get back to you within 3 working days.
+                </p>
+                <div style="font-weight: 700; color: var(--text-primary); text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.08em; line-height: 1.4;">
+                  Architects' Nook Private Limited
+                </div>
+              </div>
+
+              <a href="index.html" class="form-submit-btn" style="display: inline-block; text-align: center; text-decoration: none;">
+                BACK TO HOME &rarr;
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- FOOTER (TEKT-STYLE EDITORIAL FOOTER WITH ACCURATE LIVE METADATA) -->
+  <!-- FOOTER -->
   <footer id="footer">
     <div class="container">
       <div class="footer-top">
@@ -218,15 +316,19 @@
   </footer>
 
   <!-- WHATSAPP FLOATING BUTTON (ORIGINAL AUTHENTIC LOGO) -->
-  <a href="https://wa.me/912602431770" target="_blank" rel="noopener noreferrer" id="whatsapp-float" aria-label="Contact us on WhatsApp">
+  <a href="https://wa.me/912602431770" target="_blank" rel="noopener noreferrer" id="whatsapp-float"
+    aria-label="Contact us on WhatsApp">
     <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#25D366" d="M24 4C12.95 4 4 12.95 4 24c0 3.53.92 6.99 2.67 10.02L4 44l10.28-2.63C17.21 43.1 20.57 44 24 44c11.05 0 20-8.95 20-20S35.05 4 24 4z"/>
-      <path fill="#FFF" fill-rule="evenodd" clip-rule="evenodd" d="M34.54 28.52c-.58-.29-3.41-1.68-3.94-1.87-.53-.2-.91-.29-1.3.29-.38.58-1.49 1.87-1.82 2.26-.34.38-.67.43-1.25.14-.58-.29-2.44-.9-4.65-2.87-1.72-1.53-2.88-3.43-3.22-4.01-.34-.58-.04-.89.25-1.18.26-.26.58-.67.87-1.01.29-.34.38-.58.58-.96.19-.38.1-.72-.05-1.01-.14-.29-1.3-3.13-1.78-4.29-.47-1.12-.95-.97-1.3-.99-.34-.02-.72-.02-1.11-.02-.38 0-1.01.14-1.54.72-.53.58-2.02 1.97-2.02 4.81 0 2.84 2.07 5.58 2.36 5.96.29.38 4.07 6.22 9.87 8.72 1.38.59 2.46.95 3.3 1.22 1.39.44 2.65.38 3.65.23 1.11-.17 3.41-1.39 3.89-2.74.48-1.34.48-2.5.34-2.74-.15-.24-.53-.38-1.11-.67z"/>
+      <path fill="#25D366"
+        d="M24 4C12.95 4 4 12.95 4 24c0 3.53.92 6.99 2.67 10.02L4 44l10.28-2.63C17.21 43.1 20.57 44 24 44c11.05 0 20-8.95 20-20S35.05 4 24 4z" />
+      <path fill="#FFF" fill-rule="evenodd" clip-rule="evenodd"
+        d="M34.54 28.52c-.58-.29-3.41-1.68-3.94-1.87-.53-.2-.91-.29-1.3.29-.38.58-1.49 1.87-1.82 2.26-.34.38-.67.43-1.25.14-.58-.29-2.44-.9-4.65-2.87-1.72-1.53-2.88-3.43-3.22-4.01-.34-.58-.04-.89.25-1.18.26-.26.58-.67.87-1.01.29-.34.38-.58.58-.96.19-.38.1-.72-.05-1.01-.14-.29-1.3-3.13-1.78-4.29-.47-1.12-.95-.97-1.3-.99-.34-.02-.72-.02-1.11-.02-.38 0-1.01.14-1.54.72-.53.58-2.02 1.97-2.02 4.81 0 2.84 2.07 5.58 2.36 5.96.29.38 4.07 6.22 9.87 8.72 1.38.59 2.46.95 3.3 1.22 1.39.44 2.65.38 3.65.23 1.11-.17 3.41-1.39 3.89-2.74.48-1.34.48-2.5.34-2.74-.15-.24-.53-.38-1.11-.67z" />
     </svg>
   </a>
 
-  <!-- Master JavaScript Module -->
+  <!-- Master JavaScript Modules -->
   <script src="script.js"></script>
+  <script src="contact.js"></script>
 </body>
 
 </html>

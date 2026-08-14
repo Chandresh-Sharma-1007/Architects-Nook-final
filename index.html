@@ -39,14 +39,14 @@
   <header id="site-header">
     <div class="header-grid">
 
-      <!-- LEFT STRUCTURAL PANELS: 5 NAV ITEMS WITH HORIZONTAL EXPANSION ON HOVER -->
+      <!-- LEFT STRUCTURAL PANELS: 6 NAV ITEMS WITH HORIZONTAL EXPANSION ON HOVER -->
       <nav class="desktop-nav">
         <ul class="nav-panel-list">
           <li class="nav-panel-cell"><a href="#hero" class="nav-panel-link">HOME</a></li>
-          <li class="nav-panel-cell"><a href="#about" class="nav-panel-link">ABOUT US</a></li>
+          <li class="nav-panel-cell"><a href="About.html" class="nav-panel-link">ABOUT US</a></li>
           <li class="nav-panel-cell has-dropdown" id="projects-nav-cell" tabindex="0" aria-haspopup="true"
             aria-expanded="false">
-            <a href="projects.html" class="nav-panel-link">PORTFOLIO</a>
+            <a href="projects.html" class="nav-panel-link">PROJECTS</a>
             <ul class="projects-editorial-panel" id="projects-editorial-panel" role="menu"
               aria-label="Projects Categories">
               <li class="editorial-panel-item" role="none">
@@ -93,8 +93,9 @@
               </li>
             </ul>
           </li>
+          <li class="nav-panel-cell"><a href="SERVICE.html" class="nav-panel-link">SERVICES</a></li>
           <li class="nav-panel-cell"><a href="clients.html" class="nav-panel-link">CLIENTS</a></li>
-          <li class="nav-panel-cell"><a href="#contact" class="nav-panel-link">CONTACT</a></li>
+          <li class="nav-panel-cell"><a href="contact.html" class="nav-panel-link">CONTACT</a></li>
         </ul>
       </nav>
 
@@ -119,10 +120,10 @@
       <button id="mobile-drawer-close" aria-label="Close Menu">&times;</button>
       <ul class="mobile-drawer-list">
         <li><a href="#hero" class="mobile-drawer-link">HOME</a></li>
-        <li><a href="#about" class="mobile-drawer-link">ABOUT US</a></li>
+        <li><a href="About.html" class="mobile-drawer-link">ABOUT US</a></li>
         <li class="mobile-nav-has-dropdown">
           <div class="mobile-dropdown-header">
-            <a href="projects.html" class="mobile-drawer-link">PORTFOLIO</a>
+            <a href="projects.html" class="mobile-drawer-link">PROJECTS</a>
             <span class="mobile-dropdown-arrow">&darr;</span>
           </div>
           <ul class="mobile-dropdown-menu">
@@ -140,8 +141,9 @@
                 data-category-link="religious">Religious</a></li>
           </ul>
         </li>
+        <li><a href="SERVICE.html" class="mobile-drawer-link">SERVICES</a></li>
         <li><a href="clients.html" class="mobile-drawer-link">CLIENTS</a></li>
-        <li><a href="#contact" class="mobile-drawer-link">CONTACT</a></li>
+        <li><a href="contact.html" class="mobile-drawer-link">CONTACT</a></li>
       </ul>
     </div>
   </header>
@@ -149,12 +151,8 @@
   <!-- MAIN CONTENT CONTAINER -->
   <main>
 
-    <!-- 3. LUXURY CINEMATIC HERO SECTION WITH AUTOPLAY BACKGROUND VIDEO -->
+    <!-- 3. HERO SECTION (MINIMAL PLAIN WHITE) -->
     <section id="hero">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto">
-        <source src="assets/video.mp4" type="video/mp4">
-      </video>
-
       <!-- Vertically and Horizontally Centered Tagline -->
       <div class="hero-center-content">
         <h1 class="hero-tagline">
@@ -172,70 +170,64 @@
       <div class="pillar-item">ECO-SUSTAINABLE SOLUTIONS</div>
     </div>
 
-    <!-- 5. ABOUT US SECTION (WITH ANIMATED COUNTER DATA ATTRIBUTES) -->
-    <section id="about">
+    <!-- 5. ABOUT US SECTION — SWISS ARCHITECTURAL EDITORIAL COMPOSITION -->
+    <section id="about" class="about-editorial-section">
       <div class="container">
-        <div class="grid-12">
+        <div class="about-editorial-grid">
 
-          <!-- Column 1-5: Architectural Photography -->
-          <div class="about-image-wrapper reveal-item" data-cursor-label="VIEW">
-            <img src="assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg" alt="Architects Nook Landmark"
-              class="about-image" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
+          <!-- Primary Visual Anchor / Architectural Headline (Columns 1–9) -->
+          <h2 class="about-editorial-heading">
+            Architecture Built on Experience, Precision &amp; Purpose.
+          </h2>
 
-          <!-- Column 6-12: Studio Heritage & Vision -->
-          <div class="about-text-wrapper reveal-item">
-            <div class="label-caps" style="margin-bottom: 16px; color: var(--text-secondary);">ABOUT ARCHITECTS' NOOK
-            </div>
-            <h2 class="sub-title about-statement">
-              "We commit to satisfy our valued clients up to the brim of their expectations by continually upgrading our
-              skills with application of new trends with a pragmatic approach."
-            </h2>
-            <p class="body-large" style="margin-bottom: 24px;">
-              Architects' Nook Private Limited is a multi-disciplinary architecture firm designing almost all typologies
-              of buildings — residential, commercial, industrial, institutional, healthcare, and religious complexes. It
-              has been our dream to create an image that upholds design integrity and professional rigor, and earn the
-              unquestioned loyalty of our esteemed clients.
-            </p>
-            <p class="body-regular" style="margin-bottom: 32px;">
-              Our practice offers comprehensive architectural, civil engineering, interior design, project management,
-              and valuation services. Personal recommendations form a great part of our heritage and private clients
-              often return when they move homes or when their family grows.
+          <!-- Editorial Body & Supporting Architecture Scope (Columns 5–12) -->
+          <div class="about-editorial-content">
+
+            <!-- Main / Lead About Paragraph -->
+            <p class="about-lead-paragraph">
+              <strong>Architects’ Nook</strong> is a multi-disciplinary architecture firm designing almost all
+              typologies of buildings — <strong>residential</strong>, <strong>commercial</strong>,
+              <strong>industrial</strong>, <strong>institutional</strong>, <strong>healthcare</strong>, and
+              <strong>religious complexes</strong>. It has been our dream to create an image that upholds design
+              integrity and professional rigor, and earn the unquestioned loyalty of our esteemed clients.
             </p>
 
-            <!-- 4 Architectural Heritage Stats (Animated via IntersectionObserver) -->
-            <div class="about-stats-grid">
-              <div class="stat-item">
-                <span class="stat-number" data-target="55" data-suffix="+" data-start="0"
-                  data-duration="3000">55+</span>
-                <span class="stat-label">Years Heritage</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number" data-target="1969" data-start="1900" data-duration="3200">1969</span>
-                <span class="stat-label">Established</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number" data-target="2007" data-start="1900" data-duration="3200">2007</span>
-                <span class="stat-label">Incorporated</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number" data-target="6" data-suffix="+" data-start="0" data-duration="2800">6+</span>
-                <span class="stat-label">Typologies</span>
-              </div>
-            </div>
+            <!-- Supporting Team & Practice Growth -->
+            <p class="about-supporting-paragraph">
+              We attribute our continued growth and strong design reputation to the expertise, creativity, tenacity and
+              unwavering commitment of our team. Here <strong>architects</strong>, <strong>designers</strong>,
+              <strong>engineers</strong> all work in tandem with other specialized teams.
+            </p>
+
+            <!-- Comprehensive Scope & Sustainable Solutions -->
+            <p class="about-scope-paragraph">
+              Our practice offers comprehensive <strong>architectural</strong>, <strong>civil engineering</strong>,
+              <strong>interior design</strong>, <strong>project management</strong> and <strong>valuation
+                services</strong>. It assists clients in the cost-effective ecological sustaining solutions.
+            </p>
+
+            <!-- Subtle Typographic Metadata Footnote -->
+            <!-- <div class="about-editorial-footnote">
+              <span class="about-foot-item">55+ YEARS HERITAGE</span>
+              <span class="about-foot-divider">/</span>
+              <span class="about-foot-item">EST. 1969 &bull; INC. 2007</span>
+              <span class="about-foot-divider">/</span>
+              <span class="about-foot-item">MULTI-DISCIPLINARY PRACTICE</span>
+            </div> -->
 
           </div>
 
         </div>
+      </div>
     </section>
 
-    <!-- 6. INTERACTIVE NARRATIVE PROCESS STEPPER ("OUR PROCESS: A NARRATIVE OF ASSEMBLY") -->
+    <!-- 6. INTERACTIVE NARRATIVE PROCESS STEPPER ("SIGNATURE WORKS") -->
     <section id="process">
       <div class="container">
 
         <div class="reveal-item" style="margin-bottom: 48px;">
-          <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">METHODOLOGY</div>
-          <h2 class="section-title" style="margin-bottom: 0;">OUR PROCESS: A NARRATIVE OF ASSEMBLY</h2>
+          <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">PORTFOLIO</div>
+          <h2 class="section-title" style="margin-bottom: 0;">SIGNATURE WORKS</h2>
         </div>
 
         <div class="process-layout reveal-item">
@@ -243,74 +235,33 @@
           <!-- Left Column: Interactive Nav Steps -->
           <div class="process-nav">
 
-            <div class="process-step-item active" data-cursor-label="SELECT">
-              <!-- <div class="process-step-num">01 GROUNDWORK</div> -->
-              <div class="process-step-title">Blue </div>
-              <!-- <div class="process-step-desc">
-                During an initial consultation, we learn about your vision and assess the site to determine design
-                possibilities, costings, build timeframes, and next steps.
-              </div> -->
+            <div class="process-step-item active">
+              <div class="process-step-title">Blue Star</div>
             </div>
 
-            <div class="process-step-item" data-cursor-label="SELECT">
-              <div class="process-step-num">02 CONCEPT DESIGN</div>
-              <div class="process-step-title">Schematics &amp; 3D Modeling</div>
-              <div class="process-step-desc">
-                Select from our Urban, Rural, or Coastal Series, or opt for a custom build. Review the complete design
-                package, including floor plans, 3D visual elevations, and specifications ready for quoting.
-              </div>
+            <div class="process-step-item">
+              <div class="process-step-title">Sunshine Resort</div>
             </div>
 
-            <div class="process-step-item" data-cursor-label="SELECT">
-              <div class="process-step-num">03 SHAPING THE SYSTEM</div>
-              <div class="process-step-title">Design Refinement &amp; Details</div>
-              <div class="process-step-desc">
-                Through an iterative, collaborative process, we guide, refine, and resolve all spatial decisions to
-                arrive at your final, considered Architects' Nook system.
-              </div>
+            <div class="process-step-item">
+              <div class="process-step-title">Param Packaging</div>
             </div>
 
-            <div class="process-step-item" data-cursor-label="SELECT">
-              <div class="process-step-num">04 BUILDING APPROVALS</div>
-              <div class="process-step-title">Regulatory &amp; Statutory Permits</div>
-              <div class="process-step-desc">
-                We liaise with all consultants and regulators to facilitate a smooth, efficient building approval
-                process across soil, energy, wind, fire, civil engineering, and town planning.
-              </div>
+            <div class="process-step-item">
+              <div class="process-step-title">Nav Grah Temple</div>
             </div>
 
-            <div class="process-step-item" data-cursor-label="SELECT">
-              <div class="process-step-num">05 CONSIDERED CONSTRUCTION</div>
-              <div class="process-step-title">Assembly &amp; Quality Engineering</div>
-              <div class="process-step-desc">
-                Assembly takes place under controlled quality supervision. Our engineering team manages precision at
-                every step and keeps you informed of progress with frequent updates.
-              </div>
-            </div>
-
-            <div class="process-step-item" data-cursor-label="SELECT">
-              <div class="process-step-num">06 SEAMLESS DELIVERY</div>
-              <div class="process-step-title">Handover &amp; Post-Build Service</div>
-              <div class="process-step-desc">
-                We handle all logistics from studio engineering to on-site installation, including final inspection and
-                post-handover support for complete peace of mind.
-              </div>
+            <div class="process-step-item">
+              <div class="process-step-title">Mohini Bunglow</div>
             </div>
 
           </div>
 
           <!-- Right Column: Interactive Dynamic Media Showcase -->
-          <div class="process-media-display" data-cursor-label="VIEW">
-            <img src="assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg" alt="Process Assembly Render"
+          <div class="process-media-display">
+            <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Selected Signature Work"
               id="process-active-img" class="process-media-img" loading="lazy" decoding="async"
               style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="process-media-info-box">
-              <div class="label-caps" id="process-active-meta"
-                style="color: var(--text-secondary); margin-bottom: 8px;">PHASE 01 // INITIAL SITE CONSULTATION &amp;
-                FEASIBILITY</div>
-              <div class="process-step-title" id="process-active-title" style="margin-bottom: 0; font-size: 1.25rem;">01
-                Initial Site Consultation</div>
-            </div>
           </div>
 
         </div>
@@ -320,7 +271,7 @@
 
     <!-- 7. BLUEPRINT TO REALITY SCROLL-TRIGGERED ANIMATION SECTION -->
     <section id="blueprint-reality" class="blueprint-section">
-      
+
       <!-- Pinned Viewport Container -->
       <div class="bp-sticky-container">
 
@@ -340,8 +291,10 @@
                 <line x1="80" y1="20" x2="80" y2="100" stroke="currentColor" />
                 <line x1="120" y1="20" x2="120" y2="100" stroke="currentColor" />
                 <path d="M30 110 h140 M30 107 v6 M170 107 v6" stroke="currentColor" stroke-width="0.5" />
-                <text x="100" y="116" fill="currentColor" font-size="5" text-anchor="middle" font-family="Helvetica, sans-serif">14,000 mm</text>
-                <text x="35" y="32" fill="currentColor" font-size="4" font-family="monospace">N-01 ELEVATION STUDY</text>
+                <text x="100" y="116" fill="currentColor" font-size="5" text-anchor="middle"
+                  font-family="Helvetica, sans-serif">14,000 mm</text>
+                <text x="35" y="32" fill="currentColor" font-size="4" font-family="Helvetica, sans-serif">N-01 ELEVATION
+                  STUDY</text>
               </svg>
             </div>
 
@@ -361,12 +314,8 @@
 
             <!-- Layer 3: Under Construction Phase -->
             <div class="blueprint-layer" id="bp-layer-3">
-              <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Construction Site" class="bp-img-element" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
-            </div>
-
-            <!-- Layer 4: Final Architectural Masterpiece -->
-            <div class="blueprint-layer" id="bp-layer-4">
-              <img src="assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg" alt="Completed Villa" class="bp-img-element" onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
+              <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Construction Site" class="bp-img-element"
+                onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
             </div>
 
             <!-- Laser Scanline Indicator -->
@@ -386,7 +335,6 @@
               <div class="bp-dot active" id="bp-dot-1"></div>
               <div class="bp-dot" id="bp-dot-2"></div>
               <div class="bp-dot" id="bp-dot-3"></div>
-              <div class="bp-dot" id="bp-dot-4"></div>
             </div>
 
           </div>
@@ -403,7 +351,7 @@
           <div>
             <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">PORTFOLIO HIGHLIGHTS
             </div>
-            <h2 class="section-title" style="margin-bottom: 0;">FEATURED PROJECTS</h2>
+            <h2 class="section-title" style="margin-bottom: 0;">FLAGSHIP PROJECTS</h2>
           </div>
           <div class="mono-meta">ILLUSTRIOUS ARCHIVES 1969 — 2026</div>
         </div>
@@ -413,7 +361,7 @@
 
           <!-- Category 1: Commercial -->
           <a href="projects.html?category=commercial" class="project-card reveal-item" data-category="commercial"
-            data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
+             style="text-decoration: none; color: inherit;">
             <div class="project-image-container">
               <img src="assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg"
                 alt="Sunshine Resort &amp; Skyvillas" class="project-image" loading="lazy" decoding="async"
@@ -431,7 +379,7 @@
 
           <!-- Category 2: Residential -->
           <a href="projects.html?category=residential" class="project-card reveal-item" data-category="residential"
-            data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
+             style="text-decoration: none; color: inherit;">
             <div class="project-image-container">
               <img src="assets/Residential/Bobby Kundra, Silvassa,.jpg" alt="Bobby Kundra Residence"
                 class="project-image" loading="lazy" decoding="async"
@@ -449,7 +397,7 @@
 
           <!-- Category 3: Industrial -->
           <a href="projects.html?category=industrial" class="project-card reveal-item" data-category="industrial"
-            data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
+             style="text-decoration: none; color: inherit;">
             <div class="project-image-container">
               <img src="assets/Industrial/ATG Tires, Dahej,.jpg" alt="ATG Tires" class="project-image" loading="lazy"
                 decoding="async" style="width: 100%; height: 100%; object-fit: cover;"
@@ -466,7 +414,7 @@
 
           <!-- Category 4: Institutional -->
           <a href="projects.html?category=institutional" class="project-card reveal-item" data-category="institutional"
-            data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
+             style="text-decoration: none; color: inherit;">
             <div class="project-image-container">
               <img src="assets/Instituitional/Aadarsh Enterprise School, Kalvada, Gujarat, India.jpg"
                 alt="Aadarsh Enterprise School" class="project-image" loading="lazy" decoding="async"
@@ -482,115 +430,35 @@
             </div>
           </a>
 
-          <!-- Category 5: Interior -->
-          <a href="projects.html?category=interior" class="project-card reveal-item" data-category="interior"
-            data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
-            <div class="project-image-container">
-              <img src="assets/project-placeholder.jpg" alt="Corporate Interiors Hub" class="project-image"
-                loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"
-                onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
-            </div>
-            <div class="project-info">
-              <div class="project-meta-row">
-                <span class="project-category">INTERIOR</span>
-              </div>
-              <h3 class="project-title">INTERIOR DESIGN STUDIO</h3>
-              <div class="project-location">VAPI, GUJARAT</div>
-            </div>
-          </a>
-
-          <!-- Category 6: Religious -->
-          <a href="projects.html?category=religious" class="project-card reveal-item" data-category="religious"
-            data-cursor-label="VIEW" style="text-decoration: none; color: inherit;">
-            <div class="project-image-container">
-              <img src="assets/Religious/Nav Grah Temple, Uplat,.jpg" alt="Nav Grah Temple" class="project-image"
-                loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;"
-                onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
-            </div>
-            <div class="project-info">
-              <div class="project-meta-row">
-                <span class="project-category">RELIGIOUS</span>
-              </div>
-              <h3 class="project-title">NAV GRAH TEMPLE</h3>
-              <div class="project-location">UPLAT</div>
-            </div>
-          </a>
-
         </div>
 
         <!-- View More Projects Link Button -->
-        <div class="center-btn-wrapper reveal-item">
+        <!-- <div class="center-btn-wrapper reveal-item">
           <a href="projects.html" class="btn-editorial">
             VIEW MORE PROJECTS
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
-        </div>
+        </div> -->
 
       </div>
     </section>
 
-    <!-- 9. WHO WE BUILD FOR -->
-    <section id="sectors">
-      <div class="container">
-
-        <div class="reveal-item" style="margin-bottom: 64px;">
-          <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">TYPOLOGIES</div>
-          <h2 class="section-title" style="margin-bottom: 0;">WHO WE BUILD FOR</h2>
-        </div>
-
-        <div class="sectors-grid reveal-item">
-
-          <div class="sector-card">
-            <div class="sector-num">01</div>
-            <h3 class="sector-title">Bespoke Residential</h3>
-            <p class="sector-desc">
-              Custom luxury residences, multi-dwelling enclaves, and rural sanctuaries designed with architectural
-              precision.
-            </p>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-num">02</div>
-            <h3 class="sector-title">Commercial &amp; Retail</h3>
-            <p class="sector-desc">
-              Corporate headquarters, retail arcades, and high-density office complexes optimized for long-term utility.
-            </p>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-num">03</div>
-            <h3 class="sector-title">Industrial Master Planning</h3>
-            <p class="sector-desc">
-              Large-scale industrial parks, manufacturing hubs, and logistics complexes planned for efficient assembly.
-            </p>
-          </div>
-
-          <div class="sector-card">
-            <div class="sector-num">04</div>
-            <h3 class="sector-title">Institutional &amp; Healthcare</h3>
-            <p class="sector-desc">
-              Educational campuses, medical centers, and religious complexes built with enduring structural solidity.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
 
     <!-- 10. TEKT HIGH-IMPACT CTA BANNER -->
     <section class="tekt-cta-section">
       <div class="container">
-        <div class="tekt-cta-box reveal-item" data-cursor-label="CONTACT">
+        <div class="tekt-cta-box reveal-item">
           <div>
-            <div class="label-caps" style="color: var(--border-color); margin-bottom: 16px;">BESPOKE DESIGNS: HAVE IT
-              YOUR OWN WAY</div>
-            <h2 class="tekt-cta-title">Tell us a little about your vision and build.</h2>
+            <div class="label-caps" style="color: var(--border-color); margin-bottom: 16px;">A CLOSER LOOK AT</div>
+            <h2 class="tekt-cta-title">OUR WORK.</h2>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 1rem; margin-top: 16px; line-height: 1.6; max-width: 600px; font-family: 'Helvetica', sans-serif; font-weight: 300;">
+              Discover a selection of projects that define our approach — where architectural clarity, structural intelligence and purposeful design come together across generations.
+            </p>
           </div>
-          <a href="#contact" class="tekt-cta-btn">
-            GET IN TOUCH &rarr;
+          <a href="contact.html" class="tekt-cta-btn">
+            REQUEST OUR PORTFOLIO &rarr;
           </a>
         </div>
       </div>
@@ -600,45 +468,63 @@
     <section id="clients">
       <div class="container">
 
-        <div class="reveal-item">
-          <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">ESTEEMED CLIENTS &amp;
-            SECTORS</div>
-          <h2 class="section-title">SELECTED CLIENTS</h2>
+        <div class="reveal-item" style="margin-bottom: 48px;">
+          <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary); font-family: 'Helvetica' !important;">CLIENTS</div>
+          <h2 class="section-title" style="margin-bottom: 16px; font-family: 'Helvetica' !important;">SELECTED CLIENTS</h2>
+          <p style="font-family: 'Helvetica' !important; color: var(--text-secondary); font-size: 1rem; max-width: 650px; line-height: 1.6; margin: 0;">
+            Built through long-standing collaborations, trusted partnerships and a shared commitment to meaningful design.
+          </p>
         </div>
 
         <!-- B&W Client Matrix Grid -->
         <div class="clients-grid reveal-item">
           <div class="client-cell">
-            <div class="client-name">GIDC GUJARAT</div>
-            <div class="client-location">INDUSTRIAL DEVELOPMENT</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,15 90,85 10,85' stroke='%23555555' stroke-width='4' fill='none'/><polygon points='50,35 75,78 25,78' stroke='%23555555' stroke-width='4' fill='none'/></svg>" alt="CLIENT NAME 01" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 01</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">TIRUPATI GROUP</div>
-            <div class="client-location">COMMERCIAL REAL ESTATE</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50,10 L90,30 L90,70 L50,90 L10,70 L10,30 Z' stroke='%23555555' stroke-width='4' fill='none'/><line x1='50' y1='10' x2='50' y2='90' stroke='%23555555' stroke-width='4'/><line x1='10' y1='30' x2='50' y2='50' stroke='%23555555' stroke-width='4'/><line x1='90' y1='30' x2='50' y2='50' stroke='%23555555' stroke-width='4'/></svg>" alt="CLIENT NAME 02" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 02</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">HEENA GROUP</div>
-            <div class="client-location">RETAIL &amp; INFRASTRUCTURE</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='15' y='15' width='40' height='40' stroke='%23555555' stroke-width='4' fill='none'/><rect x='45' y='45' width='40' height='40' stroke='%23555555' stroke-width='4' fill='none'/></svg>" alt="CLIENT NAME 03" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 03</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">VALSAD CIVIC BODIES</div>
-            <div class="client-location">MUNICIPAL &amp; PUBLIC</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><line x1='20' y1='20' x2='80' y2='20' stroke='%23555555' stroke-width='8'/><line x1='35' y1='20' x2='35' y2='80' stroke='%23555555' stroke-width='8'/><line x1='65' y1='20' x2='65' y2='80' stroke='%23555555' stroke-width='8'/><line x1='20' y1='80' x2='80' y2='80' stroke='%23555555' stroke-width='8'/></svg>" alt="CLIENT NAME 04" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 04</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">SOUTH GUJARAT IND.</div>
-            <div class="client-location">MANUFACTURING &amp; INDUSTRIAL</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='40' cy='50' r='25' stroke='%23555555' stroke-width='4' fill='none'/><circle cx='60' cy='50' r='25' stroke='%23555555' stroke-width='4' fill='none'/></svg>" alt="CLIENT NAME 05" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 05</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">DAHEJ PETROHUB</div>
-            <div class="client-location">INFRASTRUCTURE</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20,80 V20 L80,80 V20' stroke='%23555555' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" alt="CLIENT NAME 06" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 06</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">UMBERGAON TECH</div>
-            <div class="client-location">INDUSTRIAL PARKS</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='35' stroke='%23555555' stroke-width='4' fill='none' stroke-dasharray='10 5'/><circle cx='50' cy='50' r='20' stroke='%23555555' stroke-width='4' fill='none'/></svg>" alt="CLIENT NAME 07" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 07</span>
           </div>
           <div class="client-cell">
-            <div class="client-name">PUNE DEVELOPERS</div>
-            <div class="client-location">COMMERCIAL &amp; HOUSING</div>
+            <div class="client-logo-wrapper">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,10 85,30 85,70 50,90 15,70 15,30' stroke='%23555555' stroke-width='4' fill='none'/><line x1='50' y1='10' x2='50' y2='90' stroke='%23555555' stroke-width='4' stroke-dasharray='2 2'/><line x1='15' y1='30' x2='85' y2='70' stroke='%23555555' stroke-width='4' stroke-dasharray='2 2'/><line x1='15' y1='70' x2='85' y2='30' stroke='%23555555' stroke-width='4' stroke-dasharray='2 2'/></svg>" alt="CLIENT NAME 08" class="client-logo-img">
+            </div>
+            <span class="client-logo-name">CLIENT NAME 08</span>
           </div>
         </div>
 
@@ -652,77 +538,6 @@
       </div>
     </section>
 
-    <!-- 13. CONTACT SECTION (ACCURATE ADDRESS & PHONE FROM ARCHITECTSNOOK.COM) -->
-    <section id="contact">
-      <div class="container">
-        <div class="grid-12">
-
-          <!-- Column 1-5: Accurate Company Contact Metadata -->
-          <div class="contact-left reveal-item">
-            <div>
-              <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">BESPOKE DESIGNS: HAVE
-                IT YOUR OWN WAY</div>
-              <h2 class="section-title" style="margin-bottom: 48px;">CONTACT US</h2>
-            </div>
-
-            <div>
-              <div class="contact-info-block">
-                <div class="contact-label">HEADQUARTERS ADDRESS</div>
-                <div class="contact-value" style="font-size: 1.125rem; line-height: 1.5;">
-                  Architects' Nook Private Limited<br>
-                  201 Tirupati Towers, Vapi-Silvassa Road,<br>
-                  Opp. Heena Arcade &amp; Furniture Park,<br>
-                  Near GIDC Char Rasta, Vapi - 396 195,<br>
-                  Dist. Valsad, Gujarat - India.
-                </div>
-              </div>
-              <div class="contact-info-block">
-                <div class="contact-label">TELEPHONE</div>
-                <div class="contact-value">+91 (0260) 2431770, +91 (0260) 2430326</div>
-              </div>
-              <div class="contact-info-block">
-                <div class="contact-label">EMAIL ADDRESS</div>
-                <div class="contact-value">info@architectsnook.com</div>
-              </div>
-              <div class="contact-info-block" style="margin-bottom: 0;">
-                <div class="contact-label">KEY REGIONS SERVED</div>
-                <div class="contact-value">VAPI &nbsp;|&nbsp; DAHEJ &nbsp;|&nbsp; UMBERGAON &nbsp;|&nbsp; PUNE</div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Column 6-12: Minimal Contact Form -->
-          <div class="contact-right reveal-item">
-            <form action="#" method="POST"
-              onsubmit="event.preventDefault(); alert('Thank you. Your inquiry has been submitted to Architects\' Nook Private Limited.');">
-              <div class="form-group">
-                <label for="name" class="form-label">FULL NAME</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
-              </div>
-              <div class="form-group">
-                <label for="email" class="form-label">EMAIL ADDRESS</label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="yourname@domain.com"
-                  required>
-              </div>
-              <div class="form-group">
-                <label for="phone" class="form-label">PHONE NUMBER</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210">
-              </div>
-              <div class="form-group">
-                <label for="message" class="form-label">PROJECT DETAILS / MESSAGE</label>
-                <textarea id="message" name="message" class="form-input"
-                  placeholder="Specify your requirements (Architecture, Engineering, Interior Design, Valuation)..."
-                  required></textarea>
-              </div>
-              <button type="submit" class="form-submit-btn">SEND INQUIRY</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- 14. FOOTER (TEKT-STYLE EDITORIAL FOOTER WITH OFFICIAL LIVE METADATA) -->
@@ -732,39 +547,55 @@
         <div class="footer-col-1">
           <div class="footer-brand">ARCHITECTS' NOOK</div>
           <p class="footer-intro">
-            Architects' Nook Private Limited (Est. 1969 by Ar. Kirit B. Bhatt) is a multi-disciplinary company designing
-            all building typologies across South Gujarat, Maharashtra, and beyond.
+            Architecture with clarity, structure with purpose, built to endure.
           </p>
         </div>
         <div class="footer-col-2">
           <div class="footer-heading">NAVIGATION</div>
           <ul class="footer-nav">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About Us</a></li>
+            <li><a href="About.html">About Us</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="SERVICE.html">Services</a></li>
             <li><a href="clients.html">Clients</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col-3">
-          <div class="footer-heading">HEAD OFFICE</div>
+          <div class="footer-heading">CONTACT</div>
           <p class="footer-intro" style="margin-bottom: 16px;">
             201 Tirupati Towers, Vapi-Silvassa Road,<br>
             Opp. Heena Arcade &amp; Furniture Park,<br>
-            Near GIDC Char Rasta, Vapi - 396 195, Gujarat, India
+            Near GIDC Char Rasta,<br>
+            Vapi - 396 195, Dist. Valsad, Gujarat - India.
           </p>
-          <div class="mono-meta">GPS COORDINATES: 20.3662° N, 72.9204° E</div>
+          <p class="footer-intro" style="margin-bottom: 16px;">
+            <a href="tel:+9102602431770" style="display: block; color: inherit; transition: color var(--transition-fast);">+91 0260 2431770</a>
+            <a href="tel:+9102602430326" style="display: block; color: inherit; transition: color var(--transition-fast);">+91 0260 2430326</a>
+          </p>
+          <p class="footer-intro" style="margin-bottom: 0;">
+            <a href="mailto:mails@architectsnook.com" style="color: inherit; transition: color var(--transition-fast);">mails@architectsnook.com</a>
+          </p>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div>&copy; 1969–2026 ARCHITECTS' NOOK PRIVATE LIMITED. ALL RIGHTS RESERVED.</div>
-        <a href="#hero" class="back-to-top">
-          BACK TO TOP &uarr;
-        </a>
+        <span class="back-to-top">DESIGNED &amp; DEVELOPED BY DEMURUP MEDIA</span>
       </div>
     </div>
   </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON (ORIGINAL AUTHENTIC LOGO) -->
+  <a href="https://wa.me/912602431770" target="_blank" rel="noopener noreferrer" id="whatsapp-float"
+    aria-label="Contact us on WhatsApp">
+    <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#25D366"
+        d="M24 4C12.95 4 4 12.95 4 24c0 3.53.92 6.99 2.67 10.02L4 44l10.28-2.63C17.21 43.1 20.57 44 24 44c11.05 0 20-8.95 20-20S35.05 4 24 4z" />
+      <path fill="#FFF" fill-rule="evenodd" clip-rule="evenodd"
+        d="M34.54 28.52c-.58-.29-3.41-1.68-3.94-1.87-.53-.2-.91-.29-1.3.29-.38.58-1.49 1.87-1.82 2.26-.34.38-.67.43-1.25.14-.58-.29-2.44-.9-4.65-2.87-1.72-1.53-2.88-3.43-3.22-4.01-.34-.58-.04-.89.25-1.18.26-.26.58-.67.87-1.01.29-.34.38-.58.58-.96.19-.38.1-.72-.05-1.01-.14-.29-1.3-3.13-1.78-4.29-.47-1.12-.95-.97-1.3-.99-.34-.02-.72-.02-1.11-.02-.38 0-1.01.14-1.54.72-.53.58-2.02 1.97-2.02 4.81 0 2.84 2.07 5.58 2.36 5.96.29.38 4.07 6.22 9.87 8.72 1.38.59 2.46.95 3.3 1.22 1.39.44 2.65.38 3.65.23 1.11-.17 3.41-1.39 3.89-2.74.48-1.34.48-2.5.34-2.74-.15-.24-.53-.38-1.11-.67z" />
+    </svg>
+  </a>
 
   <!-- Master JavaScript Module -->
   <script src="script.js"></script>

@@ -76,13 +76,14 @@
     padding: 0;
     box-sizing: border-box;
     border-radius: 0px !important;
+    font-family: "Helvetica" !important;
     /* Strictly 0px rounded corners across all elements */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-    font-family: var(--font-family);
+    font-family: "Helvetica" !important;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     scroll-behavior: smooth;
@@ -91,7 +92,7 @@ html {
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: "Helvetica" !important;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     overflow-x: hidden;
@@ -107,7 +108,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-family);
+    font-family: "Helvetica" !important;
     font-weight: 700;
     letter-spacing: -0.03em;
     color: var(--text-primary);
@@ -179,7 +180,7 @@ button,
 input,
 textarea,
 select {
-    font-family: var(--font-family);
+    font-family: "Helvetica" !important;
     font-size: 1rem;
     color: inherit;
     background: transparent;
@@ -188,55 +189,65 @@ select {
     cursor: none;
 }
 
-/* CUSTOM MAGNETIC CURSOR WITH DYNAMIC TEXT BADGES */
+/* ==========================================================================
+   CUSTOM DUAL-LAYER MONOCHROME CURSOR (INNER DOT + OUTER RING)
+   ========================================================================== */
 #custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
-    width: 18px;
-    height: 18px;
-    border: 1px solid var(--text-primary);
-    background: rgba(17, 17, 17, 0.08);
+    width: 28px;
+    height: 28px;
+    border: 1px solid #111111;
+    background: transparent;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 999999;
+    border-radius: 50% !important;
     transform: translate(-50%, -50%);
-    transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#custom-cursor::after {
-    content: '';
-    width: 3px;
-    height: 3px;
-    background: var(--text-primary);
+#custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background-color: #111111;
+    border-radius: 50% !important;
+    pointer-events: none;
+    z-index: 1000000;
+    transform: translate(-50%, -50%);
     transition: opacity 0.2s ease;
 }
 
-#custom-cursor-label {
-    font-size: 0.625rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--bg-primary);
-    display: none;
-    white-space: nowrap;
+
+#custom-cursor.is-hover {
+    width: 44px;
+    height: 44px;
+    background: rgba(17, 17, 17, 0.06);
+    border-color: #111111;
 }
 
-#custom-cursor.has-label {
-    width: 72px;
-    height: 72px;
-    background: var(--text-primary);
-    border-color: var(--text-primary);
-}
+@media (hover: none) and (pointer: coarse),
+(max-width: 1024px) {
 
-#custom-cursor.has-label::after {
-    opacity: 0;
-}
+    #custom-cursor,
+    #custom-cursor-dot {
+        display: none !important;
+    }
 
-#custom-cursor.has-label #custom-cursor-label {
-    display: block;
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: auto !important;
+    }
 }
 
 /* SPLASH SCREEN LOAD ANIMATION */
@@ -359,16 +370,26 @@ select {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
-    background-color: transparent;
-    border-bottom: none;
+    height: 68px;
+    background: transparent !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid transparent;
     z-index: 1000;
-    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease, border-color 300ms ease;
     box-shadow: none;
 }
 
 #site-header.nav-hidden {
     transform: translateY(-100%);
+}
+
+#site-header.header-scrolled,
+#site-header.header-blur {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
 }
 
 .header-grid {
@@ -381,6 +402,7 @@ select {
 .desktop-nav {
     height: 100%;
     display: flex;
+    padding-left: 36px;
 }
 
 .nav-panel-list {
@@ -388,31 +410,33 @@ select {
     height: 100%;
     list-style: none;
     width: 100%;
-    max-width: 960px;
+    max-width: 1080px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-panel-cell {
     height: 100%;
     flex: 1 1 0px;
-    min-width: 130px;
+    min-width: 90px;
     display: flex;
     align-items: center;
     border-right: none;
-    padding: 0 40px;
+    padding: 0 16px;
     overflow: hidden;
     transition: flex 350ms cubic-bezier(0.16, 1, 0.3, 1), padding 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-panel-cell:hover {
-    flex: 1.6 1 0px;
-    padding: 0 54px;
+    flex: 1.35 1 0px;
+    padding: 0 22px;
 }
 
 .nav-panel-link {
-    font-family: "Helvetica";
-    font-size: 18px;
+    font-family: "Helvetica" !important;
+    font-size: 15px;
     font-weight: 400;
-    letter-spacing: 0;
+    letter-spacing: 0.02em;
     color: #111111;
     text-align: left;
     text-decoration: none;
@@ -429,7 +453,7 @@ select {
 .nav-panel-link::after {
     content: '';
     position: absolute;
-    bottom: 28px;
+    bottom: 18px;
     left: 0;
     width: 100%;
     height: 2px;
@@ -443,13 +467,32 @@ select {
     transform: scaleX(1);
 }
 
+@media (max-width: 1200px) {
+    .desktop-nav {
+        padding-left: 20px;
+    }
+
+    .nav-panel-cell {
+        padding: 0 10px;
+        min-width: 78px;
+    }
+
+    .nav-panel-cell:hover {
+        padding: 0 14px;
+    }
+
+    .nav-panel-link {
+        font-size: 13.5px;
+    }
+}
+
 .logo-panel-right {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-left: 48px;
-    padding-right: 48px;
+    padding-left: 24px;
+    padding-right: 36px;
     border-left: none;
 }
 
@@ -460,8 +503,8 @@ select {
 }
 
 .header-logo-img {
-    height: 85px;
-    max-height: 85px;
+    height: 54px;
+    max-height: 54px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -539,10 +582,7 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 /* ==========================================================================
-   LUXURY ARCHITECTURAL HERO SECTION (FULL-SCREEN BACKGROUND VIDEO)
-   - Full 100vh height with object-fit: cover
-   - Pure, original video quality with zero overlay & zero backdrop blur
-   - Hardware-accelerated smooth playback
+   MINIMAL ARCHITECTURAL HERO SECTION (CLEAN PLAIN WHITE)
    ========================================================================== */
 
 #hero {
@@ -557,40 +597,22 @@ body.mobile-drawer-open #mobile-drawer {
     border-bottom: 1px solid #D9D9D9;
 }
 
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    background-color: #FFFFFF;
-    z-index: 0;
-    pointer-events: none;
-    transform: translateZ(0);
-    will-change: transform;
-}
-
 .hero-center-content {
     position: relative;
     z-index: 2;
-    max-width: 900px;
+    max-width: 920px;
     padding: 0 32px;
     text-align: center;
 }
 
 .hero-tagline {
-    font-family: "Helvetica";
-    font-size: 56px;
+    font-family: "Helvetica" !important;
+    font-size: clamp(2rem, 4.2vw, 3.75rem);
     font-weight: 300;
     line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: #FFFFFF;
-    text-shadow: 
-        0 1px 1px rgba(255, 255, 255, 0.10),
-        0 2px 4px rgba(0, 0, 0, 0.15),
-        0 8px 24px rgba(0, 0, 0, 0.22);
+    letter-spacing: -0.02em;
+    color: #111111;
+    text-shadow: none;
     text-align: center;
     margin: 0;
     opacity: 0;
@@ -636,12 +658,124 @@ body.mobile-drawer-open #mobile-drawer {
     background-color: var(--bg-primary);
 }
 
-/* ABOUT SECTION */
-#about {
-    padding: var(--space-128) 0;
+/* ==========================================================================
+   5. ABOUT US SECTION — SWISS ARCHITECTURAL EDITORIAL COMPOSITION
+   ========================================================================== */
+#about,
+#about.about-editorial-section {
+    padding: clamp(5.5rem, 8.5vw, 9rem) 0;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-primary);
+    width: 100%;
+    position: relative;
 }
+
+#about,
+#about * {
+    font-family: "Helvetica" !important;
+    border-radius: 0 !important;
+}
+
+.about-editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--space-24);
+    row-gap: clamp(2.5rem, 4vw, 4rem);
+    align-items: start;
+    width: 100%;
+}
+
+/* Primary Architectural Headline (Columns 1–9) */
+.about-editorial-heading {
+    grid-column: 1 / span 9;
+    font-family: "Helvetica" !important;
+    font-size: clamp(2.75rem, 4.3vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    color: var(--text-primary);
+    margin: 0;
+    text-align: left;
+    max-width: 980px;
+    text-transform: none;
+}
+
+/* Editorial Body & Supporting Architecture Scope (Columns 5–12) */
+.about-editorial-content {
+    grid-column: 5 / span 8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 820px;
+}
+
+/* Primary / Lead About Paragraph */
+.about-lead-paragraph {
+    font-family: "Helvetica" !important;
+    font-size: clamp(1.125rem, 1.35vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+/* Supporting Team & Practice Growth */
+.about-supporting-paragraph {
+    font-family: "Helvetica" !important;
+    font-size: clamp(1rem, 1.15vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+    color: var(--text-secondary);
+    margin-bottom: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+/* Comprehensive Scope & Sustainability Paragraph */
+.about-scope-paragraph {
+    font-family: "Helvetica" !important;
+    font-size: clamp(1rem, 1.15vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+#about strong {
+    font-family: "Helvetica" !important;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Subtle Typographic Metadata Footnote */
+.about-editorial-footnote {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin-top: clamp(2.25rem, 3.5vw, 3rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+}
+
+.about-foot-item {
+    font-family: "Helvetica" !important;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.about-foot-divider {
+    font-size: 0.75rem;
+    color: var(--border-color);
+    font-weight: 300;
+}
+
+/* Preserved classes for standalone About.html page */
 
 .about-image-wrapper {
     grid-column: span 5;
@@ -707,27 +841,36 @@ body.mobile-drawer-open #mobile-drawer {
 
 /* INTERACTIVE PROCESS STEPPER */
 #process {
-    padding: var(--space-128) 0;
+    padding: var(--space-64) 0;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-secondary);
 }
 
 .process-layout {
     display: grid;
-    grid-template-columns: 5fr 7fr;
+    grid-template-columns: 3fr 7fr;
     gap: var(--space-48);
     border: 1px solid var(--border-color);
     background-color: var(--bg-primary);
+    height: 70vh;
+    max-height: 750px;
+    min-height: 500px;
 }
 
 .process-nav {
     display: flex;
     flex-direction: column;
+    justify-content: stretch;
     border-right: 1px solid var(--border-color);
+    height: 100%;
 }
 
 .process-step-item {
-    padding: var(--space-32);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 var(--space-32);
     border-bottom: 1px solid var(--border-color);
     transition: background-color var(--transition-fast);
     position: relative;
@@ -751,10 +894,15 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .process-step-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--space-12);
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .process-step-desc {
@@ -770,7 +918,7 @@ body.mobile-drawer-open #mobile-drawer {
 
 .process-media-display {
     position: relative;
-    min-height: 600px;
+    height: 100%;
     overflow: hidden;
     background-color: var(--bg-surface);
     display: flex;
@@ -859,12 +1007,7 @@ body.mobile-drawer-open #mobile-drawer {
     line-height: 1.5;
 }
 
-/* WHO WE BUILD FOR */
-#sectors {
-    padding: var(--space-128) 0;
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--bg-primary);
-}
+
 
 .sectors-grid {
     display: grid;
@@ -1129,12 +1272,200 @@ body.mobile-drawer-open #mobile-drawer {
     text-transform: uppercase;
 }
 
+#clients .client-cell {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-32) var(--space-20);
+    height: 180px;
+    transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#clients .client-cell:hover {
+    background-color: #FAFAFA; /* Very subtle background change */
+}
+
+#clients .client-logo-wrapper {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-16);
+    overflow: hidden;
+}
+
+#clients .client-logo-img {
+    height: 100%;
+    width: auto;
+    max-width: 60%;
+    object-fit: contain;
+    opacity: 0.6;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#clients .client-logo-name {
+    font-family: "Helvetica" !important;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #737373;
+    opacity: 0.7;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+}
+
+#clients .client-cell:hover .client-logo-img {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+#clients .client-cell:hover .client-logo-name {
+    opacity: 1;
+    color: #111111;
+}
+
+/* Homepage responsive grid overrides specifically for logo matrix */
+@media (max-width: 1024px) {
+    #clients .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    #clients .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    #clients .clients-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
 /* CONTACT SECTION */
-#contact {
-    padding: var(--space-128) 0;
-    border-bottom: 1px solid var(--border-color);
+.contact-page-section {
+    padding: var(--space-64) 0 var(--space-128);
+    background-color: var(--bg-primary);
+}
+
+.contact-hero {
+    padding: var(--space-128) 0 var(--space-64);
+    background-color: var(--bg-primary);
+}
+
+.contact-hero-title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-32);
+    color: var(--text-primary);
+}
+
+.contact-hero-desc {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+}
+
+.contact-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    width: 100%;
+    margin-bottom: var(--space-64);
+}
+
+/* Inline Form Validation & Notice Styles */
+.form-error-msg {
+    display: none;
+    color: #E03131;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-8);
+}
+
+.input-error {
+    border-color: #E03131 !important;
+}
+
+.form-submit-error {
+    color: #E03131;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: var(--space-24);
+}
+
+.config-pending-notice {
+    border: 1px solid var(--border-color);
+    padding: var(--space-16);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-24);
+}
+
+.config-pending-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+/* Map responsive styling */
+.map-container {
+    margin-top: var(--space-64);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    height: 380px;
+    position: relative;
     background-color: var(--bg-secondary);
 }
+
+.map-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.map-placeholder span {
+    font-family: "Helvetica" !important;
+}
+
+.map-placeholder-sub {
+    font-size: 0.65rem;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+/* Success Card Editorial Confirmation */
+.success-card {
+    border: 1px solid var(--border-color);
+    padding: var(--space-64);
+    background-color: var(--bg-primary);
+}
+
 
 .contact-left {
     grid-column: span 5;
@@ -1310,12 +1641,14 @@ textarea.form-input {
 .reveal-item {
     opacity: 0;
     transform: translateY(30px);
+    pointer-events: none;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-item.in-view {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* RESPONSIVE MEDIA QUERIES (TABLET & MOBILE BREAKPOINTS) */
@@ -1385,6 +1718,15 @@ textarea.form-input {
         padding-left: 0;
     }
 
+    .about-col-left {
+        grid-column: 1 / span 5;
+    }
+
+    .about-col-right {
+        grid-column: 5 / span 8;
+        margin-top: clamp(3.5rem, 6vw, 5.5rem);
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
@@ -1414,22 +1756,34 @@ textarea.form-input {
         display: none;
     }
 
-    #mobile-toggle-btn {
+    .header-grid {
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
     }
 
-    .header-grid {
-        grid-template-columns: 1fr auto;
+    #mobile-toggle-btn {
+        display: flex;
+        order: 1;
+        /* Puts hamburger on the LEFT */
+        padding-left: 24px;
+        padding-right: 16px;
     }
 
     .logo-panel-right {
-        padding-left: 24px;
+        order: 2;
+        /* Puts logo on the RIGHT */
+        padding-left: 16px;
         padding-right: 24px;
-        border-left: none;
+        justify-content: flex-end;
     }
 
     .header-logo-img {
-        height: 54px;
+        height: 48px;
+        max-height: 48px;
     }
 
     .value-pillars-grid {
@@ -1453,6 +1807,17 @@ textarea.form-input {
         gap: var(--space-32);
     }
 
+    .about-editorial-heading {
+        grid-column: 1 / span 12;
+        font-size: clamp(2.25rem, 3.8vw, 3.25rem);
+        max-width: 100%;
+    }
+
+    .about-editorial-content {
+        grid-column: 2 / span 11;
+        max-width: 100%;
+    }
+
     .contact-right {
         padding: var(--space-32);
     }
@@ -1462,11 +1827,76 @@ textarea.form-input {
     .hero-tagline {
         font-size: 30px;
     }
+
+    #about,
+    #about.about-editorial-section {
+        padding: clamp(3.5rem, 8vw, 5rem) 0;
+    }
+
+    .about-editorial-grid {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.75rem, 4.5vw, 2.5rem);
+    }
+
+    .about-editorial-heading {
+        width: 100%;
+        font-size: clamp(1.75rem, 5.5vw, 2.25rem);
+        line-height: 1.15;
+    }
+
+    .about-editorial-content {
+        width: 100%;
+    }
+
+    .about-lead-paragraph {
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+    }
+
+    .about-supporting-paragraph,
+    .about-scope-paragraph {
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+    }
+
+    .about-scope-paragraph {
+        margin-bottom: 0;
+    }
+
+    .about-editorial-footnote {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-top: 1.75rem;
+        padding-top: 1.25rem;
+    }
+
+    .about-foot-divider {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
     .container {
         padding: 0 var(--space-16);
+    }
+
+    #mobile-toggle-btn {
+        padding-left: 16px;
+        padding-right: 12px;
+    }
+
+    .logo-panel-right {
+        padding-left: 12px;
+        padding-right: 16px;
+    }
+
+    .header-logo-img {
+        height: 44px;
+        max-height: 44px;
     }
 
     .display-title {
@@ -1508,9 +1938,9 @@ textarea.form-input {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-12px) scale(0.985);
-    transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), 
-                transform 260ms cubic-bezier(0.22, 1, 0.36, 1), 
-                visibility 260ms;
+    transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 260ms;
     pointer-events: none;
     z-index: 1001;
     border-radius: 0px !important;
@@ -1554,9 +1984,9 @@ textarea.form-input {
     text-decoration: none;
     position: relative;
     background: transparent;
-    transition: padding-left 250ms cubic-bezier(0.22, 1, 0.36, 1), 
-                letter-spacing 250ms cubic-bezier(0.22, 1, 0.36, 1),
-                color 250ms ease;
+    transition: padding-left 250ms cubic-bezier(0.22, 1, 0.36, 1),
+        letter-spacing 250ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 250ms ease;
 }
 
 .editorial-panel-link:hover,
@@ -1597,14 +2027,17 @@ textarea.form-input {
     .projects-editorial-panel {
         width: 320px;
     }
+
     .editorial-panel-item {
         height: 56px;
     }
+
     .editorial-panel-link {
         font-size: 16px;
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .editorial-panel-link:hover,
     .editorial-panel-link:focus {
         padding-left: 30px;
@@ -1813,7 +2246,7 @@ textarea.form-input {
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .modal-close-btn {
@@ -1989,7 +2422,7 @@ textarea.form-input {
     position: absolute;
     inset: 0;
     background-image: linear-gradient(to right, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
 }
 
@@ -2046,7 +2479,7 @@ textarea.form-input {
 
 .bp-meta-tag {
     color: #737373;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica" !important;
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -2056,7 +2489,7 @@ textarea.form-input {
 }
 
 .bp-heading {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica" !important;
     font-size: 1.5rem;
     color: #111111;
     font-weight: 700;
@@ -2066,7 +2499,7 @@ textarea.form-input {
 
 .bp-desc {
     color: #555555;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica" !important;
     font-size: 0.875rem;
     margin: 0;
     line-height: 1.6;
@@ -2101,6 +2534,7 @@ textarea.form-input {
     .bp-card-frame {
         aspect-ratio: 4 / 3;
     }
+
     .bp-text-overlay {
         bottom: 16px;
         left: 16px;
@@ -2108,10 +2542,1589 @@ textarea.form-input {
         max-width: none;
         padding: 16px 20px;
     }
+
     .bp-heading {
         font-size: 1.25rem;
     }
+
     .bp-nav-dots {
         right: 16px;
     }
 }
+
+/* ==========================================================================
+   WHATSAPP FLOATING BUTTON (ORIGINAL AUTHENTIC LOGO + SOFT GLOW)
+   ========================================================================== */
+#whatsapp-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 990;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), filter 250ms ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.12)) drop-shadow(0 0 10px rgba(37, 211, 102, 0.25));
+}
+
+#whatsapp-float:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 14px rgba(37, 211, 102, 0.4));
+}
+
+#whatsapp-float svg {
+    width: 48px;
+    height: 48px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    #whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+
+    #whatsapp-float svg {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* ==========================================================================
+   ABOUT PAGE EDITORIAL STORYTELLING SYSTEM (SWISS ARCHITECTURAL MONOGRAPH)
+   ========================================================================== */
+
+.about-story-page {
+    padding-top: 68px; /* Offset fixed header */
+    padding-bottom: 0;
+}
+
+/* Full-width Canvas Section Wrappers for Background Rhythm */
+.story-section-full {
+    width: 100%;
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.story-bg-white {
+    background-color: var(--bg-primary);
+}
+
+.story-bg-grey {
+    background-color: var(--bg-secondary);
+}
+
+/* 1. Hero Monograph Section */
+.story-hero-section {
+    padding-top: 36px;
+    padding-bottom: 72px;
+}
+
+.story-hero-wrapper {
+    padding: 0;
+}
+
+.story-hero-kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.story-hero-title {
+    font-size: clamp(2.75rem, 6.5vw, 5.75rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    max-width: 1200px;
+}
+
+.story-hero-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-64);
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.story-hero-lead {
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.story-hero-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 1px solid var(--border-color);
+    padding-left: 32px;
+}
+
+.story-meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.8125rem;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.story-meta-label {
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.story-meta-val {
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+/* 2. Common Chapter Headers */
+.chapter-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.chapter-title {
+    font-size: clamp(1.85rem, 3.8vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+}
+
+/* 3. Origin Story Section (Heavy Left -> Light Right) */
+.origin-layout {
+    display: grid;
+    grid-template-columns: 6.5fr 5.5fr;
+    gap: var(--space-64);
+    align-items: center;
+}
+
+.origin-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.origin-lead-p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.origin-body-p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.origin-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.origin-stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.origin-stat-lbl {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+/* Museum-Grade Showcase Image Frame */
+.editorial-showcase-frame {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    overflow: hidden;
+}
+
+.editorial-showcase-img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) contrast(105%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.editorial-showcase-frame:hover .editorial-showcase-img {
+    transform: scale(1.02);
+    filter: grayscale(80%) contrast(110%);
+}
+
+.editorial-showcase-caption {
+    padding: 14px 20px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* 4. Leadership Profiles Section */
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-32);
+    margin-top: 40px;
+}
+
+.person-card {
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+    position: relative;
+}
+
+.person-card:hover {
+    border-color: #111111;
+}
+
+.person-image-container {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #EFEFEF;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.person-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) contrast(105%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.person-card:hover .person-image {
+    transform: scale(1.03);
+    filter: grayscale(0%) contrast(105%);
+}
+
+.person-info {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.person-role {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.person-name {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.15;
+}
+
+.person-edu {
+    font-size: 0.8125rem;
+    color: #888888;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.person-bio {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 400;
+    flex-grow: 1;
+}
+
+.person-accent-bar {
+    width: 0%;
+    height: 2px;
+    background-color: var(--text-primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.person-card:hover .person-accent-bar {
+    width: 100%;
+}
+
+/* 5. Multidisciplinary Practice Section (Heavy Left -> Light Right Showcase) */
+.discipline-layout {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-64);
+    align-items: flex-start;
+    margin-top: 32px;
+}
+
+.disciplines-list {
+    border-top: 1px solid var(--border-color);
+}
+
+.discipline-row {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-color);
+    gap: 16px;
+    align-items: baseline;
+    transition: padding-left 0.25s ease;
+}
+
+.discipline-row:hover {
+    padding-left: 8px;
+}
+
+.disc-num {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+}
+
+.disc-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.disc-desc-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.disc-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.disc-tags {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999999;
+}
+
+/* 6. How We Work (Methodology Sequence) */
+.process-story-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-24);
+    margin-top: 40px;
+}
+
+.process-story-step {
+    padding: 32px 24px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.process-story-step:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-4px);
+}
+
+.step-num-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.step-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* 7. Philosophy & Trust Section (Heavy Left Monument -> Light Right Content) */
+.philosophy-layout {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-64);
+    align-items: flex-start;
+}
+
+.quote-monument {
+    font-size: clamp(1.5rem, 2.75vw, 2.35rem);
+    font-weight: 300;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 32px;
+}
+
+.quote-author-meta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.trust-split-column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border-left: 1px solid var(--border-color);
+    padding-left: 40px;
+}
+
+.trust-block-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.trust-block-p {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+/* 8. Vision & Mission Split Panel */
+.vision-mission-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border-color);
+    margin-top: 32px;
+}
+
+.vision-box,
+.mission-box {
+    padding: 56px 44px;
+}
+
+.vision-box {
+    border-right: 1px solid var(--border-color);
+    background: var(--bg-primary);
+}
+
+.mission-box {
+    background: var(--bg-secondary);
+}
+
+.vm-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.vm-title {
+    font-size: 1.625rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    line-height: 1.15;
+}
+
+.vm-desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.vm-desc:last-child {
+    margin-bottom: 0;
+}
+
+/* 9. Timeline Section (Typographic & Chronology) */
+.timeline-track-wrap {
+    margin-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+.timeline-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border-color);
+    align-items: baseline;
+    transition: background-color 0.2s ease;
+}
+
+.timeline-year-text {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.timeline-content-text {
+    font-size: 1.0625rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 800px;
+}
+
+/* 10. Contemporary Practice & Geography (Heavy Left -> Light Right Showcase) */
+.contemporary-layout {
+    display: grid;
+    grid-template-columns: 6.5fr 5.5fr;
+    gap: var(--space-64);
+    align-items: flex-start;
+    margin-top: 32px;
+}
+
+.geo-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+.geo-badge-card {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    transition: border-color 0.2s ease;
+}
+
+.geo-badge-card:hover {
+    border-color: var(--text-primary);
+}
+
+.geo-badge-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.geo-badge-name {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.geo-badge-desc {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+}
+
+.culture-box {
+    padding: 32px 28px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+/* 11. Closing Monograph Statement */
+.story-closing-wrapper {
+    padding: 48px 0;
+    text-align: center;
+}
+
+.story-closing-title {
+    font-size: clamp(2.25rem, 5vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.story-closing-sub {
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin: 0 auto 40px;
+}
+
+.story-closing-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Responsive Adjustments for About Page */
+@media (max-width: 1024px) {
+    .story-section-full {
+        padding: 72px 0;
+    }
+
+    .story-hero-section {
+        padding-top: 28px;
+        padding-bottom: 56px;
+    }
+
+    .story-hero-grid,
+    .origin-layout,
+    .discipline-layout,
+    .philosophy-layout,
+    .contemporary-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-40);
+    }
+
+    .story-hero-meta-list {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 24px;
+    }
+
+    .trust-split-column {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 32px;
+    }
+
+    .people-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-40);
+    }
+
+    .person-card {
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .process-story-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .vision-mission-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .vision-box {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
+@media (max-width: 768px) {
+    .story-section-full {
+        padding: 56px 0;
+    }
+
+    .story-hero-section {
+        padding-top: 24px;
+        padding-bottom: 48px;
+    }
+
+    .vision-box,
+    .mission-box {
+        padding: 32px 20px;
+    }
+
+    .process-story-grid,
+    .geo-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 24px 0;
+    }
+
+    .origin-stats-strip {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .story-closing-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .story-closing-actions .btn-editorial,
+    .story-closing-actions .btn-editorial-outline {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   SERVICES PORTFOLIO (MINIMAL, IMAGE-LED ARCHITECTURAL EDITORIAL)
+   ========================================================================== */
+
+.services-page-main {
+    padding-top: 68px; /* Fixed navbar height */
+    padding-bottom: 0;
+    background-color: var(--bg-primary);
+}
+
+/* 1. Services Hero Section */
+.services-hero-section {
+    padding: 40px 0 64px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+}
+
+.services-hero-kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.services-hero-title {
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.services-hero-lead {
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+    max-width: 720px;
+}
+
+/* 2. Service Row Section Wrappers (Controlled White & Light Grey Canvas) */
+.service-chapter-section {
+    width: 100%;
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.service-bg-white {
+    background-color: var(--bg-primary);
+}
+
+.service-bg-grey {
+    background-color: var(--bg-secondary); /* #F5F5F5 */
+}
+
+/* 3. Asymmetrical Editorial Layouts */
+/* Layout A: Text on Left (5fr), Image on Right (7fr) */
+.service-layout-text-left {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-64);
+    align-items: center;
+}
+
+/* Layout B: Image on Left (7fr), Text on Right (5fr) */
+.service-layout-image-left {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-64);
+    align-items: center;
+}
+
+/* 4. Text Content Column */
+.service-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.service-num-meta {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.service-title-display {
+    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+
+.service-chapter-section:hover .service-title-display {
+    transform: translateX(4px);
+}
+
+.service-summary-text {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-weight: 400;
+    max-width: 520px;
+}
+
+.service-meta-tags {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888888;
+    padding-top: 16px;
+    margin-top: 8px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 5. Architectural Image Showcase (STRICT NATURAL COLOR) */
+.service-media-frame {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    overflow: hidden;
+    width: 100%;
+}
+
+.service-media-img {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    filter: none !important; /* STRICT NATURAL COLOR */
+    -webkit-filter: none !important;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-chapter-section:hover .service-media-img {
+    transform: scale(1.035);
+}
+
+.service-media-caption {
+    padding: 12px 18px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* 6. Responsive Rules for Services Page */
+@media (max-width: 1024px) {
+    .service-chapter-section {
+        padding: 64px 0;
+    }
+
+    .service-layout-text-left,
+    .service-layout-image-left {
+        grid-template-columns: 1fr;
+        gap: var(--space-32);
+    }
+
+    /* On tablet/mobile, ensure image sits naturally with content */
+    .service-layout-image-left .service-media-frame {
+        order: 2;
+    }
+
+    .service-layout-image-left .service-info-column {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-hero-section {
+        padding: 28px 0 48px;
+    }
+
+    .service-chapter-section {
+        padding: 48px 0;
+    }
+
+    .service-media-img {
+        min-height: 260px;
+        max-height: 340px;
+    }
+
+    .service-summary-text {
+        font-size: 0.9375rem;
+        line-height: 1.55;
+    }
+}
+
+/* ==========================================================================
+   PROJECTS PORTFOLIO (UNIFIED ARCHITECTURAL MONOGRAPH & DOSSIER)
+   ========================================================================== */
+
+.projects-page-main {
+    padding-top: 68px; /* Fixed navbar height */
+    padding-bottom: 96px;
+    background-color: var(--bg-primary);
+}
+
+.projects-monograph-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 1. Minimal Projects Hero */
+.projects-hero-section {
+    padding: 36px 0 20px;
+}
+
+.projects-hero-kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.projects-hero-title {
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
+.projects-hero-lead {
+    font-size: clamp(1rem, 1.4vw, 1.1875rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+    max-width: 680px;
+}
+
+/* 2. Non-Sticky Category Filter Bar (Single-Line Full Width Alignment) */
+.projects-category-bar {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    margin-top: 28px;
+    margin-bottom: 56px;
+    background: var(--bg-primary);
+    position: relative;
+    width: 100%;
+    overflow: visible;
+}
+
+.category-tabs-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
+}
+
+.cat-filter-btn {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    padding: 16px 0;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.cat-filter-btn:hover,
+.cat-filter-btn.active {
+    color: var(--text-primary);
+}
+
+.cat-filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--text-primary);
+}
+
+/* 3. Unified Monograph Project Stream */
+.projects-monograph-stream {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.project-monograph-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 64px;
+    margin-bottom: 64px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.project-monograph-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* 4. Large Panoramic Image Frame (~80% Visual Weight) */
+.project-monograph-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 560px;
+    position: relative;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+}
+
+.project-monograph-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1;
+    transform: scale(1.03);
+    will-change: transform;
+}
+
+.project-monograph-row:hover .project-monograph-img {
+    transform: scale(1.015);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 4-Panel Architectural Reveal Overlay */
+.project-reveal-quad {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.quad-panel {
+    position: absolute;
+    background-color: #FFFFFF;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.panel-tl {
+    top: 0;
+    left: 0;
+    width: calc(50% + 1px);
+    height: calc(50% + 1px);
+}
+
+.panel-tr {
+    top: 0;
+    right: 0;
+    width: calc(50% + 1px);
+    height: calc(50% + 1px);
+}
+
+.panel-bl {
+    bottom: 0;
+    left: 0;
+    width: calc(50% + 1px);
+    height: calc(50% + 1px);
+}
+
+.panel-br {
+    bottom: 0;
+    right: 0;
+    width: calc(50% + 1px);
+    height: calc(50% + 1px);
+}
+
+/* 5. Disciplined Metadata Strip (~20% Visual Weight) */
+.project-monograph-meta {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: 32px;
+    align-items: start;
+    padding-top: 24px;
+    width: 100%;
+}
+
+.project-meta-kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888888;
+    line-height: 1.4;
+}
+
+.project-meta-main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 720px;
+}
+
+.project-monograph-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    line-height: 1.15;
+    transition: transform 0.3s ease;
+}
+
+.project-monograph-row:hover .project-monograph-title {
+    transform: translateX(4px);
+}
+
+.project-monograph-summary {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-view-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    padding: 4px 0;
+    transition: gap 0.25s ease;
+    align-self: flex-start;
+}
+
+.project-monograph-row:hover .project-view-action {
+    gap: 12px;
+}
+
+.project-view-action svg {
+    transition: transform 0.25s ease;
+}
+
+.project-monograph-row:hover .project-view-action svg {
+    transform: translate(2px, -2px);
+}
+
+/* 6. Same-Page Monograph Dossier Overlay */
+.project-dossier-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(17, 17, 17, 0.75);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+}
+
+.project-dossier-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dossier-sheet-wrapper {
+    background: var(--bg-primary);
+    width: 100%;
+    max-width: 1200px;
+    margin: 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--text-primary);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+    transform: translateY(24px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.project-dossier-overlay.active .dossier-sheet-wrapper {
+    transform: translateY(0);
+}
+
+.dossier-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    z-index: 10;
+}
+
+.dossier-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.dossier-close-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.dossier-close-btn:hover {
+    background: #111111;
+    color: #FFFFFF;
+    border-color: #111111;
+}
+
+.dossier-scroll-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 48px 48px 80px;
+}
+
+.dossier-image-hero {
+    width: 100%;
+    margin-bottom: 48px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    position: relative;
+}
+
+.dossier-main-img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+    filter: none !important;
+}
+
+.dossier-img-caption {
+    padding: 12px 20px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.dossier-details-container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.dossier-title-row {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dossier-project-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    line-height: 1.05;
+    margin-bottom: 8px;
+}
+
+.dossier-location-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.dossier-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+    padding: 24px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.dossier-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dossier-spec-lbl {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.dossier-spec-val {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.dossier-narrative-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dossier-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.dossier-description-p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-weight: 300;
+}
+
+/* 7. Responsive Rules for Projects Page */
+@media (max-width: 1024px) {
+    .projects-monograph-container {
+        padding: 0 32px;
+    }
+
+    .cat-filter-btn {
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        padding: 14px 0;
+    }
+
+    .project-monograph-meta {
+        grid-template-columns: 160px 1fr auto;
+        gap: 20px;
+    }
+
+    .project-monograph-row {
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+    }
+
+    .dossier-sheet-wrapper {
+        margin: 16px;
+    }
+
+    .dossier-scroll-content {
+        padding: 32px 24px 64px;
+    }
+
+    .dossier-specs-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-page-main {
+        padding-top: 68px;
+        padding-bottom: 64px;
+    }
+
+    .projects-monograph-container {
+        padding: 0 20px;
+    }
+
+    .projects-hero-section {
+        padding: 24px 0 16px;
+    }
+
+    .projects-category-bar {
+        margin-top: 16px;
+        margin-bottom: 36px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .category-tabs-container {
+        display: flex;
+        justify-content: flex-start;
+        gap: 24px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 2px;
+    }
+
+    .category-tabs-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cat-filter-btn {
+        padding: 12px 0;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        flex-shrink: 0;
+    }
+
+    .cat-filter-btn.active::after {
+        bottom: 0;
+    }
+
+    .project-monograph-row {
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+    }
+
+    .project-monograph-meta {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-top: 16px;
+    }
+
+    .project-monograph-title {
+        font-size: 1.25rem;
+    }
+
+    .dossier-sheet-wrapper {
+        margin: 0;
+        height: 100vh;
+        border: none;
+    }
+
+    .dossier-specs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .dossier-description-p {
+        font-size: 1rem;
+    }
+}
+
+
+

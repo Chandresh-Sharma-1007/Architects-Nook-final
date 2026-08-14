@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us &amp; Studio Heritage — Architects' Nook Private Limited</title>
+  <meta name="description"
+    content="Architects' Nook Private Limited (Est. 1969 by Ar. Kirit B. Bhatt) — 55+ years of multi-disciplinary architectural excellence, civil engineering, interior design, planning, and valuation across South Gujarat, Maharashtra, and beyond.">
+
+  <!-- Master TEKT-Style Stylesheet (Helvetica, 0px border-radius, Monochrome Palette) -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GSAP & ScrollTrigger Animation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <!-- REFINED ARCHITECTURAL PANEL HEADER (TEKT ARCHITECTURE MATCH) -->
+  <header id="site-header" class="header-blur">
+    <div class="header-grid">
+
+      <!-- LEFT STRUCTURAL PANELS: 6 NAV ITEMS WITH HORIZONTAL EXPANSION ON HOVER -->
+      <nav class="desktop-nav">
+        <ul class="nav-panel-list">
+          <li class="nav-panel-cell"><a href="index.html#hero" class="nav-panel-link">HOME</a></li>
+          <li class="nav-panel-cell"><a href="About.html" class="nav-panel-link">ABOUT US</a></li>
+          <li class="nav-panel-cell has-dropdown" id="projects-nav-cell" tabindex="0" aria-haspopup="true"
+            aria-expanded="false">
+            <a href="projects.html" class="nav-panel-link">PROJECTS</a>
+            <ul class="projects-editorial-panel" id="projects-editorial-panel" role="menu"
+              aria-label="Projects Categories">
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=commercial" class="editorial-panel-link" role="menuitem"
+                  data-category-link="commercial">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Commercial</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=residential" class="editorial-panel-link" role="menuitem"
+                  data-category-link="residential">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Residential</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=industrial" class="editorial-panel-link" role="menuitem"
+                  data-category-link="industrial">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Industrial</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=institutional" class="editorial-panel-link" role="menuitem"
+                  data-category-link="institutional">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Institutional</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=interior" class="editorial-panel-link" role="menuitem"
+                  data-category-link="interior">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Interior</span>
+                </a>
+              </li>
+              <li class="editorial-panel-item" role="none">
+                <a href="projects.html?category=religious" class="editorial-panel-link" role="menuitem"
+                  data-category-link="religious">
+                  <span class="editorial-active-bar"></span>
+                  <span class="editorial-panel-text">Religious</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-panel-cell"><a href="SERVICE.html" class="nav-panel-link">SERVICES</a></li>
+          <li class="nav-panel-cell"><a href="clients.html" class="nav-panel-link">CLIENTS</a></li>
+          <li class="nav-panel-cell"><a href="contact.html" class="nav-panel-link">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <!-- FAR-RIGHT STRUCTURAL PANEL: 2.5x DOMINANT LOGO ANCHOR -->
+      <div class="logo-panel-right">
+        <a href="index.html" class="header-logo-link" aria-label="Architects' NOOK Home">
+          <img src="assets/logo.png" alt="Architects' NOOK Logo" class="header-logo-img">
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-toggle-btn" aria-label="Toggle Navigation Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Fullscreen Drawer Overlay -->
+    <div id="mobile-drawer">
+      <button id="mobile-drawer-close" aria-label="Close Menu">&times;</button>
+      <ul class="mobile-drawer-list">
+        <li><a href="index.html#hero" class="mobile-drawer-link">HOME</a></li>
+        <li><a href="About.html" class="mobile-drawer-link">ABOUT US</a></li>
+        <li class="mobile-nav-has-dropdown">
+          <div class="mobile-dropdown-header">
+            <a href="projects.html" class="mobile-drawer-link">PROJECTS</a>
+            <span class="mobile-dropdown-arrow">&darr;</span>
+          </div>
+          <ul class="mobile-dropdown-menu">
+            <li><a href="projects.html?category=commercial" class="mobile-drawer-sublink"
+                data-category-link="commercial">Commercial</a></li>
+            <li><a href="projects.html?category=residential" class="mobile-drawer-sublink"
+                data-category-link="residential">Residential</a></li>
+            <li><a href="projects.html?category=industrial" class="mobile-drawer-sublink"
+                data-category-link="industrial">Industrial</a></li>
+            <li><a href="projects.html?category=institutional" class="mobile-drawer-sublink"
+                data-category-link="institutional">Institutional</a></li>
+            <li><a href="projects.html?category=interior" class="mobile-drawer-sublink"
+                data-category-link="interior">Interior</a></li>
+            <li><a href="projects.html?category=religious" class="mobile-drawer-sublink"
+                data-category-link="religious">Religious</a></li>
+          </ul>
+        </li>
+        <li><a href="SERVICE.html" class="mobile-drawer-link">SERVICES</a></li>
+        <li><a href="clients.html" class="mobile-drawer-link">CLIENTS</a></li>
+        <li><a href="contact.html" class="mobile-drawer-link">CONTACT</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN EDITORIAL STORYTELLING NARRATIVE (RESTING ON DYNAMIC GREY/WHITE CANVASES) -->
+  <main class="about-story-page">
+
+    <!-- ================================================================
+         HERO: THE BEGINNING (EDITORIAL MONOGRAPH OPENING — WHITE CANVAS)
+         ================================================================ -->
+    <section class="story-section-full story-hero-section story-bg-white reveal-item">
+      <div class="container">
+        <div class="story-hero-wrapper">
+          <div class="story-hero-kicker">ARCHITECTS' NOOK // STUDIO MONOGRAPH &amp; HERITAGE</div>
+          
+          <h1 class="story-hero-title">
+            BUILT OVER GENERATIONS.<br>
+            SHAPED BY ARCHITECTURE.
+          </h1>
+
+          <div class="story-hero-grid">
+            <div>
+              <p class="story-hero-lead">
+                From a modest practice in Vapi in 1969 to a multidisciplinary architectural practice, our journey has always been driven by design integrity, technical rigour and long-term relationships.
+              </p>
+            </div>
+            <div class="story-hero-meta-list">
+              <div class="story-meta-item">
+                <span class="story-meta-label">FOUNDED</span>
+                <span class="story-meta-val">1969 — Vapi, Gujarat</span>
+              </div>
+              <div class="story-meta-item">
+                <span class="story-meta-label">PRACTICE</span>
+                <span class="story-meta-val">Architecture &amp; Engineering</span>
+              </div>
+              <div class="story-meta-item">
+                <span class="story-meta-label">INCORPORATED</span>
+                <span class="story-meta-val">Private Limited Entity (2007)</span>
+              </div>
+              <div class="story-meta-item">
+                <span class="story-meta-label">DISCIPLINES</span>
+                <span class="story-meta-val">5 Integrated Practice Areas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 01: WHERE IT BEGAN (ORIGIN STORY — LIGHT GREY CANVAS)
+         Heavy Left (Origin Narrative + Stats) -> Light Right (Archival Media Frame)
+         ================================================================ -->
+    <section class="story-section-full story-bg-grey reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">01 // ORIGIN STORY</div>
+        <h2 class="chapter-title">WHERE IT BEGAN</h2>
+
+        <div class="origin-layout">
+          <!-- Heavy Left: Narrative Text & Statistics -->
+          <div class="origin-narrative">
+            <p class="origin-lead-p">
+              Founded by Ar. Kirit B. Bhatt, Architects' Nook began its practice in Vapi in 1969 after he completed his Bachelor of Architecture from Sir J. J. School of Architecture, Mumbai.
+            </p>
+            <p class="origin-body-p">
+              What began as a modest practice gradually evolved into a multidisciplinary architectural firm with a growing portfolio of landmark buildings across South Gujarat and beyond.
+            </p>
+            <p class="origin-body-p">
+              Since 2007, the practice has evolved into a full-fledged corporate entity, carrying forward the same discipline, curiosity and commitment that shaped its earliest years.
+            </p>
+
+            <div class="origin-stats-strip">
+              <div>
+                <div class="origin-stat-num">1969</div>
+                <div class="origin-stat-lbl">Practice Founded</div>
+              </div>
+              <div>
+                <div class="origin-stat-num">55+</div>
+                <div class="origin-stat-lbl">Years of Practice</div>
+              </div>
+              <div>
+                <div class="origin-stat-num">2007</div>
+                <div class="origin-stat-lbl">Corporate Entity</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Light Right: Archival Media Showcase -->
+          <div class="editorial-showcase-frame">
+            <img src="assets/about/heritage-1969.jpg" 
+                 alt="Architectural Drafting Archives — Architects' Nook Est. 1969" 
+                 class="editorial-showcase-img" 
+                 loading="lazy" 
+                 decoding="async">
+            <div class="editorial-showcase-caption">
+              <span>ARCHIVAL DRAFTING // EST. 1969</span>
+              <span>VAPI, GUJARAT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 02: THE PEOPLE BEHIND THE PRACTICE (LEADERSHIP — WHITE CANVAS)
+         3 Editorial Portrait Cards
+         ================================================================ -->
+    <section class="story-section-full story-bg-white reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">02 // LEADERSHIP</div>
+        <h2 class="chapter-title">THE PEOPLE BEHIND THE PRACTICE</h2>
+
+        <div class="people-grid">
+
+          <!-- Person 1: Ar. Kirit B. Bhatt -->
+          <!-- NOTE FOR CLIENT: Replace 'assets/about/kirit-bhatt.jpg' with actual photograph -->
+          <article class="person-card reveal-item">
+            <div class="person-image-container">
+              <img src="assets/about/kirit-bhatt.jpg" 
+                   alt="Ar. Kirit B. Bhatt — Founder &amp; Principal Architect" 
+                   class="person-image"
+                   loading="lazy" 
+                   decoding="async"
+                   onerror="this.onerror=null; this.src='assets/Residential/Bobby Kundra, Silvassa,.jpg';">
+            </div>
+            <div class="person-info">
+              <div class="person-role">Founder &amp; Principal Architect</div>
+              <h3 class="person-name">Ar. Kirit B. Bhatt</h3>
+              <div class="person-edu">
+                Bachelor of Architecture, Sir J. J. School of Architecture, Mumbai — 1968
+              </div>
+              <p class="person-bio">
+                Started practice in Vapi in 1969. He served as Chairman of the Indian Institute of Architects, Gujarat Chapter for two consecutive terms and represented Dadra &amp; Nagar Haveli in the Council of Architecture, New Delhi. He also served on the Executive Committee of the Indian Institute of Valuers, South Gujarat Branch, alongside various social organisations.
+              </p>
+            </div>
+            <div class="person-accent-bar"></div>
+          </article>
+
+          <!-- Person 2: Er. Manish Bhatt -->
+          <!-- NOTE FOR CLIENT: Replace 'assets/about/manish-bhatt.jpg' with actual photograph -->
+          <article class="person-card reveal-item">
+            <div class="person-image-container">
+              <img src="assets/about/manish-bhatt.jpg" 
+                   alt="Er. Manish Bhatt — Project Director &amp; Structural Engineer" 
+                   class="person-image"
+                   loading="lazy" 
+                   decoding="async"
+                   onerror="this.onerror=null; this.src='assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg';">
+            </div>
+            <div class="person-info">
+              <div class="person-role">Project Director &amp; Structural Engineer</div>
+              <h3 class="person-name">Er. Manish Bhatt</h3>
+              <div class="person-edu">
+                Pune University — 1992
+              </div>
+              <p class="person-bio">
+                Joined the practice in 1994. Responsible for the engineering division, general administration, project management and valuation across major industrial, commercial, and institutional projects.
+              </p>
+            </div>
+            <div class="person-accent-bar"></div>
+          </article>
+
+          <!-- Person 3: Ar. Kashyap Bhatt -->
+          <!-- NOTE FOR CLIENT: Replace 'assets/about/kashyap-bhatt.jpg' with actual photograph -->
+          <article class="person-card reveal-item">
+            <div class="person-image-container">
+              <img src="assets/about/kashyap-bhatt.jpg" 
+                   alt="Ar. Kashyap Bhatt — Principal Architect" 
+                   class="person-image"
+                   loading="lazy" 
+                   decoding="async"
+                   onerror="this.onerror=null; this.src='assets/Residential/Valencia, Vapi.jpg';">
+            </div>
+            <div class="person-info">
+              <div class="person-role">Principal Architect</div>
+              <h3 class="person-name">Ar. Kashyap Bhatt</h3>
+              <div class="person-edu">
+                Pune University — 1992
+              </div>
+              <p class="person-bio">
+                Joined the practice in 2000. Design lead for master planning, architectural detailing, spatial choreography, and in-house 3D visualisation across diverse building typologies.
+              </p>
+            </div>
+            <div class="person-accent-bar"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 03: A MULTIDISCIPLINARY PRACTICE (LIGHT GREY CANVAS)
+         Heavy Left (5 Disciplines List) -> Light Right (Project Showcase Image)
+         ================================================================ -->
+    <section class="story-section-full story-bg-grey reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">03 // INTEGRATED DISCIPLINES</div>
+        <h2 class="chapter-title">A MULTIDISCIPLINARY PRACTICE</h2>
+
+        <div class="discipline-layout">
+          <!-- Heavy Left: Narrative & Disciplines List -->
+          <div>
+            <p class="body-large" style="color: var(--text-primary); margin-bottom: 16px;">
+              Architects' Nook is a multidisciplinary architecture firm designing across almost every major building typology — residential, commercial, industrial, institutional, healthcare and religious complexes.
+            </p>
+            <p class="body-regular" style="margin-bottom: 32px;">
+              Architects, designers, engineers and specialised teams work in tandem to deliver comprehensive solutions from concept to completion.
+            </p>
+
+            <div class="disciplines-list">
+              <div class="discipline-row reveal-item">
+                <div class="disc-num">01</div>
+                <div class="disc-desc-wrap">
+                  <div class="disc-name">ARCHITECTURE</div>
+                  <div class="disc-desc">Comprehensive spatial planning, master design, facade development, and detailing across all typologies.</div>
+                  <div class="disc-tags">Residential &bull; Commercial &bull; Industrial &bull; Institutional &bull; Healthcare &bull; Religious</div>
+                </div>
+              </div>
+
+              <div class="discipline-row reveal-item">
+                <div class="disc-num">02</div>
+                <div class="disc-desc-wrap">
+                  <div class="disc-name">CIVIL ENGINEERING</div>
+                  <div class="disc-desc">Rigorous structural calculations, RCC and structural steel engineering, foundation analysis, and site coordination.</div>
+                  <div class="disc-tags">Structural Analysis &bull; Seismic Resilience &bull; Construction Engineering</div>
+                </div>
+              </div>
+
+              <div class="discipline-row reveal-item">
+                <div class="disc-num">03</div>
+                <div class="disc-desc-wrap">
+                  <div class="disc-name">INTERIOR DESIGN</div>
+                  <div class="disc-desc">Harmonious interior spatial planning, custom joinery, materiality selection, lighting, and acoustics.</div>
+                  <div class="disc-tags">Corporate &bull; Luxury Residential &bull; Hospitality &bull; Institutional</div>
+                </div>
+              </div>
+
+              <div class="discipline-row reveal-item">
+                <div class="disc-num">04</div>
+                <div class="disc-desc-wrap">
+                  <div class="disc-name">PROJECT MANAGEMENT</div>
+                  <div class="disc-desc">Cost forecasting, technical obstacle mitigation, scheduling precision, contractor oversight, and site audits.</div>
+                  <div class="disc-tags">Budget Oversight &bull; Timeline Fidelity &bull; Technical Quality Audits</div>
+                </div>
+              </div>
+
+              <div class="discipline-row reveal-item">
+                <div class="disc-num">05</div>
+                <div class="disc-desc-wrap">
+                  <div class="disc-name">VALUATION</div>
+                  <div class="disc-desc">Authorized property and asset valuation, technical assessments, regulatory compliance, and advisory.</div>
+                  <div class="disc-tags">Asset Advisory &bull; Regulatory Assessment &bull; Technical Auditing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Light Right: Commercial Showcase Media Frame -->
+          <div class="editorial-showcase-frame" style="margin-top: 16px;">
+            <img src="assets/Commercial/Sunshine Resort &amp; Skyvillas,Daman, India.jpg" 
+                 alt="Sunshine Resort &amp; Skyvillas — Architectural Typology Showcase" 
+                 class="editorial-showcase-img" 
+                 loading="lazy" 
+                 decoding="async">
+            <div class="editorial-showcase-caption">
+              <span>TYPOLOGY SHOWCASE // COMMERCIAL &amp; RESORT</span>
+              <span>DAMAN, INDIA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 04: HOW WE WORK (METHODOLOGY SEQUENCE — WHITE CANVAS)
+         4-Stage Typographic Sequence
+         ================================================================ -->
+    <section class="story-section-full story-bg-white reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">04 // METHODOLOGY</div>
+        <h2 class="chapter-title">HOW WE WORK</h2>
+
+        <div class="process-story-grid">
+          <div class="process-story-step reveal-item">
+            <div class="step-num-badge">STAGE 01</div>
+            <h3 class="step-title">UNDERSTAND</h3>
+            <p class="step-desc">
+              Understanding the brief, aspirations, constraints and context to establish a solid foundation for design.
+            </p>
+          </div>
+
+          <div class="process-story-step reveal-item">
+            <div class="step-num-badge">STAGE 02</div>
+            <h3 class="step-title">DEVELOP</h3>
+            <p class="step-desc">
+              Combining architectural thinking, engineering expertise and design exploration into cohesive concepts.
+            </p>
+          </div>
+
+          <div class="process-story-step reveal-item">
+            <div class="step-num-badge">STAGE 03</div>
+            <h3 class="step-title">VISUALISE</h3>
+            <p class="step-desc">
+              Using 3D visualisation, AutoCAD drawings and presentation boards through our in-house technical facilities.
+            </p>
+          </div>
+
+          <div class="process-story-step reveal-item">
+            <div class="step-num-badge">STAGE 04</div>
+            <h3 class="step-title">DELIVER</h3>
+            <p class="step-desc">
+              Identifying costs, technical challenges and possible obstacles before work begins, keeping projects aligned with budgets and timelines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 05 & 06: PHILOSOPHY & CLIENT TRUST (LIGHT GREY CANVAS)
+         Heavy Left (Monument Quote) -> Light Right (Trust Narrative)
+         ================================================================ -->
+    <section class="story-section-full story-bg-grey reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">05 &amp; 06 // PHILOSOPHY &amp; CLIENT TRUST</div>
+        
+        <div class="philosophy-layout">
+          <!-- Heavy Left: Monumental Quotation -->
+          <div>
+            <h2 class="quote-monument">
+              "We commit to satisfying our valued clients up to the brim of their expectations by continually upgrading our skills, applying new trends with a pragmatic approach."
+            </h2>
+            <div class="quote-author-meta">
+              — ARCHITECTS' NOOK FOUNDATIONAL CONVICTION
+            </div>
+          </div>
+
+          <!-- Light Right: Client Trust & Purpose Columns -->
+          <div class="trust-split-column">
+            <div>
+              <h3 class="trust-block-title">DESIGN WITH PURPOSE</h3>
+              <p class="trust-block-p">
+                Distinct ideas, different missions, contrasting convictions and divergent preferences come together through a shared commitment to creating meaningful architecture that endures across decades.
+              </p>
+            </div>
+            <div>
+              <h3 class="trust-block-title">BUILT ON TRUST</h3>
+              <p class="trust-block-p">
+                Personal recommendations form a great part of our heritage, and private clients often return when they move homes or when their families grow. Our growth has always been closely connected to the trust of the people we work with.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 07 & 08: VISION & MISSION (WHITE CANVAS)
+         Dual Architectural Split Panel
+         ================================================================ -->
+    <section class="story-section-full story-bg-white reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">07 &amp; 08 // DIRECTION &amp; PURPOSE</div>
+        <h2 class="chapter-title">VISION &amp; MISSION</h2>
+
+        <div class="vision-mission-panel reveal-item">
+          <!-- Vision Column -->
+          <div class="vision-box">
+            <div class="vm-tag">VISION</div>
+            <h3 class="vm-title">LONG &amp; HEALTHY ASSOCIATIONS</h3>
+            <p class="vm-desc">
+              We attribute our growth and reputation for designing outstanding buildings and spaces to the skills, expertise, creativity, tenacity and commitment of our team.
+            </p>
+            <p class="vm-desc">
+              We aspire to be forerunners in architecture, civil engineering and allied services — creating work that inspires, earns trust and contributes to generations of architects to come.
+            </p>
+          </div>
+
+          <!-- Mission Column -->
+          <div class="mission-box">
+            <div class="vm-tag">MISSION</div>
+            <h3 class="vm-title">WE ARE DEPENDABLE.</h3>
+            <p class="vm-desc">
+              The essence of our work culture is a constant commitment to meeting the expectations of our clients through continuous skill development, technological upgradation and the combined strength of our team.
+            </p>
+            <p class="vm-desc">
+              Every blueprint, structural calculation, and interior detail is executed with uncompromising technical discipline and aesthetic clarity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 09: THE LEGACY (TIMELINE 1969 TO TODAY — LIGHT GREY CANVAS)
+         Typographic Chronology
+         ================================================================ -->
+    <section class="story-section-full story-bg-grey reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">09 // HISTORICAL TIMELINE</div>
+        <h2 class="chapter-title">FROM 1969 TO TODAY</h2>
+
+        <div class="timeline-track-wrap">
+          <div class="timeline-row reveal-item">
+            <div class="timeline-year-text">1969</div>
+            <div class="timeline-content-text">
+              Practice founded in Vapi by Ar. Kirit B. Bhatt following his graduation from Sir J. J. School of Architecture, Mumbai.
+            </div>
+          </div>
+
+          <div class="timeline-row reveal-item">
+            <div class="timeline-year-text">1994</div>
+            <div class="timeline-content-text">
+              Er. Manish Bhatt joins the practice, establishing integrated structural engineering and valuation capabilities.
+            </div>
+          </div>
+
+          <div class="timeline-row reveal-item">
+            <div class="timeline-year-text">2000</div>
+            <div class="timeline-content-text">
+              Ar. Kashyap Bhatt joins the practice, leading spatial planning, architectural detailing and 3D visualisation.
+            </div>
+          </div>
+
+          <div class="timeline-row reveal-item">
+            <div class="timeline-year-text">2007</div>
+            <div class="timeline-content-text">
+              The practice evolves into a full-fledged corporate entity as Architects' Nook Private Limited.
+            </div>
+          </div>
+
+          <div class="timeline-row reveal-item">
+            <div class="timeline-year-text">TODAY</div>
+            <div class="timeline-content-text">
+              A multidisciplinary practice working across South Gujarat, Maharashtra and beyond on landmark projects.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 10 & 11: TODAY & THE FUTURE (WHITE CANVAS)
+         Heavy Left (Scale, Geography, Culture) -> Light Right (Industrial Showcase Image)
+         ================================================================ -->
+    <section class="story-section-full story-bg-white reveal-item">
+      <div class="container">
+        <div class="chapter-eyebrow">10 &amp; 11 // TODAY &amp; THE FUTURE</div>
+        <h2 class="chapter-title">A PRACTICE STILL EVOLVING</h2>
+
+        <div class="contemporary-layout">
+          <!-- Heavy Left: Geography & Studio Culture -->
+          <div>
+            <p class="body-large" style="color: var(--text-primary); margin-bottom: 20px;">
+              We have grown from humble beginnings into a multidisciplinary practice with a strong technical team, austere work ethic and experience across large ongoing projects.
+            </p>
+            
+            <div class="geo-cards-grid">
+              <div class="geo-badge-card">
+                <div class="geo-badge-num">01</div>
+                <div class="geo-badge-name">South Gujarat</div>
+                <div class="geo-badge-desc">Vapi Studio &amp; Central Operations</div>
+              </div>
+              <div class="geo-badge-card">
+                <div class="geo-badge-num">02</div>
+                <div class="geo-badge-name">Dahej</div>
+                <div class="geo-badge-desc">Industrial &amp; SEZ Infrastructure</div>
+              </div>
+              <div class="geo-badge-card">
+                <div class="geo-badge-num">03</div>
+                <div class="geo-badge-name">Umbergaon</div>
+                <div class="geo-badge-desc">Manufacturing Complexes</div>
+              </div>
+              <div class="geo-badge-card">
+                <div class="geo-badge-num">04</div>
+                <div class="geo-badge-name">Pune &amp; Beyond</div>
+                <div class="geo-badge-desc">Commercial, Residential &amp; Institutions</div>
+              </div>
+            </div>
+
+            <div class="culture-box">
+              <div class="label-caps" style="margin-bottom: 12px; color: var(--text-secondary);">PEOPLE &amp; THE FUTURE</div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; line-height: 1.3; margin-bottom: 16px; color: var(--text-primary);">
+                A rewarding environment where talent thrives.
+              </h3>
+              <p class="body-regular" style="margin-bottom: 12px;">
+                We are a fascinating and rewarding place to work — a place where skilled and talented people bring new ideas and creativity that become integral to our success.
+              </p>
+              <p class="body-regular">
+                We welcome people who bring fresh thinking, new skills and the ability to contribute to the continuing evolution of the practice.
+              </p>
+            </div>
+          </div>
+
+          <!-- Light Right: Industrial & Infrastructure Showcase Media Frame -->
+          <div class="editorial-showcase-frame" style="margin-top: 8px;">
+            <img src="assets/Industrial/ATG Tires, Dahej,.jpg" 
+                 alt="ATG Tires Dahej — Industrial Masterplan Infrastructure by Architects' Nook" 
+                 class="editorial-showcase-img" 
+                 loading="lazy" 
+                 decoding="async">
+            <div class="editorial-showcase-caption">
+              <span>REGIONAL FOOTPRINT // DAHEJ SEZ</span>
+              <span>GUJARAT, INDIA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         CHAPTER 12: FINAL CLOSING MONOGRAPH STATEMENT (LIGHT GREY CANVAS)
+         ================================================================ -->
+    <section class="story-section-full story-bg-grey reveal-item">
+      <div class="container">
+        <div class="story-closing-wrapper">
+          <h2 class="story-closing-title">
+            BUILT OVER GENERATIONS.<br>
+            DESIGNED FOR WHAT COMES NEXT.
+          </h2>
+          <p class="story-closing-sub">
+            Architects' Nook continues to evolve — with the same commitment to people, design and purposeful architecture.
+          </p>
+
+          <div class="story-closing-actions">
+            <a href="projects.html" class="btn-editorial">
+              EXPLORE SELECTED WORKS &rarr;
+            </a>
+            <a href="contact.html" class="btn-editorial-outline">
+              START A CONVERSATION &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (TEKT-STYLE EDITORIAL FOOTER WITH ACCURATE LIVE METADATA) -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col-1">
+          <div class="footer-brand">ARCHITECTS' NOOK</div>
+          <p class="footer-intro">
+            Architecture with clarity, structure with purpose, built to endure.
+          </p>
+        </div>
+        <div class="footer-col-2">
+          <div class="footer-heading">NAVIGATION</div>
+          <ul class="footer-nav">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="SERVICE.html">Services</a></li>
+            <li><a href="clients.html">Clients</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-3">
+          <div class="footer-heading">CONTACT</div>
+          <p class="footer-intro" style="margin-bottom: 16px;">
+            201 Tirupati Towers, Vapi-Silvassa Road,<br>
+            Opp. Heena Arcade &amp; Furniture Park,<br>
+            Near GIDC Char Rasta,<br>
+            Vapi - 396 195, Dist. Valsad, Gujarat - India.
+          </p>
+          <p class="footer-intro" style="margin-bottom: 16px;">
+            <a href="tel:+9102602431770" style="display: block; color: inherit; transition: color var(--transition-fast);">+91 0260 2431770</a>
+            <a href="tel:+9102602430326" style="display: block; color: inherit; transition: color var(--transition-fast);">+91 0260 2430326</a>
+          </p>
+          <p class="footer-intro" style="margin-bottom: 0;">
+            <a href="mailto:mails@architectsnook.com" style="color: inherit; transition: color var(--transition-fast);">mails@architectsnook.com</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 1969–2026 ARCHITECTS' NOOK PRIVATE LIMITED. ALL RIGHTS RESERVED.</div>
+        <span class="back-to-top">DESIGNED &amp; DEVELOPED BY DEMURUP MEDIA</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON (ORIGINAL AUTHENTIC LOGO) -->
+  <a href="https://wa.me/912602431770" target="_blank" rel="noopener noreferrer" id="whatsapp-float" aria-label="Contact us on WhatsApp">
+    <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#25D366" d="M24 4C12.95 4 4 12.95 4 24c0 3.53.92 6.99 2.67 10.02L4 44l10.28-2.63C17.21 43.1 20.57 44 24 44c11.05 0 20-8.95 20-20S35.05 4 24 4z"/>
+      <path fill="#FFF" fill-rule="evenodd" clip-rule="evenodd" d="M34.54 28.52c-.58-.29-3.41-1.68-3.94-1.87-.53-.2-.91-.29-1.3.29-.38.58-1.49 1.87-1.82 2.26-.34.38-.67.43-1.25.14-.58-.29-2.44-.9-4.65-2.87-1.72-1.53-2.88-3.43-3.22-4.01-.34-.58-.04-.89.25-1.18.26-.26.58-.67.87-1.01.29-.34.38-.58.58-.96.19-.38.1-.72-.05-1.01-.14-.29-1.3-3.13-1.78-4.29-.47-1.12-.95-.97-1.3-.99-.34-.02-.72-.02-1.11-.02-.38 0-1.01.14-1.54.72-.53.58-2.02 1.97-2.02 4.81 0 2.84 2.07 5.58 2.36 5.96.29.38 4.07 6.22 9.87 8.72 1.38.59 2.46.95 3.3 1.22 1.39.44 2.65.38 3.65.23 1.11-.17 3.41-1.39 3.89-2.74.48-1.34.48-2.5.34-2.74-.15-.24-.53-.38-1.11-.67z"/>
+    </svg>
+  </a>
+
+  <!-- Master JavaScript Module -->
+  <script src="script.js"></script>
+</body>
+
+</html>
