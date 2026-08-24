@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectsCategoryFilter();
   initAboutStatsCounter();
   initAboutEditorialAnimation();
+  initServicesAccordion();
   initTEKTProcessStepper();
   initBlueprintScrollAnimation();
   initScrollReveals();
@@ -69,13 +70,13 @@ function initCustomCursor() {
   requestAnimationFrame(renderCursor);
 
   document.addEventListener('mouseover', (e) => {
-    if (e.target.closest('a, button, input, textarea, select, .project-card, .project-monograph-row, .project-view-action, .cat-filter-btn, .dossier-close-btn, .client-cell, .sector-card, .pillar-item, .service-card, .process-step-item, .process-media-display, .tekt-cta-box, .about-image-wrapper')) {
+    if (e.target.closest('a, button, input, textarea, select, .project-grid-card, .project-card, .project-monograph-row, .project-view-action, .cat-filter-btn, .dossier-close-btn, .client-cell, .sector-card, .pillar-item, .service-card, .service-accordion-trigger, .process-step-item, .process-media-display, .tekt-cta-box, .about-image-wrapper')) {
       cursor.classList.add('is-hover');
     }
   });
 
   document.addEventListener('mouseout', (e) => {
-    if (e.target.closest('a, button, input, textarea, select, .project-card, .project-monograph-row, .project-view-action, .cat-filter-btn, .dossier-close-btn, .client-cell, .sector-card, .pillar-item, .service-card, .process-step-item, .process-media-display, .tekt-cta-box, .about-image-wrapper')) {
+    if (e.target.closest('a, button, input, textarea, select, .project-grid-card, .project-card, .project-monograph-row, .project-view-action, .cat-filter-btn, .dossier-close-btn, .client-cell, .sector-card, .pillar-item, .service-card, .service-accordion-trigger, .process-step-item, .process-media-display, .tekt-cta-box, .about-image-wrapper')) {
       cursor.classList.remove('is-hover');
     }
   });
@@ -448,6 +449,53 @@ function initScrollReveals() {
 }
 
 /* ==========================================================================
+   6.5 SERVICES EDITORIAL ACCORDION CONTROLLER
+   ========================================================================== */
+function initServicesAccordion() {
+  const accordionItems = document.querySelectorAll('.service-accordion-item');
+  if (!accordionItems.length) return;
+
+  accordionItems.forEach((item) => {
+    const trigger = item.querySelector('.service-accordion-trigger');
+    const panel = item.querySelector('.service-accordion-panel');
+
+    if (!trigger || !panel) return;
+
+    trigger.addEventListener('click', () => {
+      const isCurrentlyActive = item.classList.contains('is-active');
+
+      // Close all accordion items first (strictly single item open at a time)
+      accordionItems.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains('is-active')) {
+          otherItem.classList.remove('is-active');
+          const otherTrigger = otherItem.querySelector('.service-accordion-trigger');
+          if (otherTrigger) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      // Toggle current item
+      if (isCurrentlyActive) {
+        item.classList.remove('is-active');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-active');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Keyboard accessibility
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        trigger.click();
+      }
+    });
+  });
+}
+
+/* ==========================================================================
    7. SMOOTH INTERNAL LINK SCROLLING
    ========================================================================== */
 function initSmoothScroll() {
@@ -466,6 +514,19 @@ function initSmoothScroll() {
       }
     });
   });
+
+  // Handle URL hash on page load if user arrives from another page with #services
+  if (window.location.hash) {
+    const initialTarget = document.querySelector(window.location.hash);
+    if (initialTarget) {
+      setTimeout(() => {
+        initialTarget.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 400);
+    }
+  }
 }
 
 /* ==========================================================================
@@ -558,7 +619,7 @@ function initProjectsCategoryFilter() {
 
   function filterCategory(targetCategory) {
     const normCategory = (targetCategory || 'all').toLowerCase().trim();
-    const currentCards = document.querySelectorAll('.project-monograph-row[data-category], .project-editorial-entry[data-category], .project-card[data-category]');
+    const currentCards = document.querySelectorAll('.project-grid-card[data-category], .project-monograph-row[data-category], .project-editorial-entry[data-category], .project-card[data-category]');
 
     // 1. Update Category Tabs active state
     categoryTabs.forEach(tab => {
@@ -591,9 +652,6 @@ function initProjectsCategoryFilter() {
         card.classList.add('is-hidden');
       }
     });
-
-    // Re-initialize 4-panel architectural reveal for visible cards
-    initProjectQuadReveals();
 
     if (typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.refresh();
@@ -1200,59 +1258,46 @@ function createProjectCardHTML(p, index = 0, isHomePreview = false) {
     `;
   }
 
-  const formattedNum = String(index + 1).padStart(2, '0');
-
   return `
-    <article class="project-monograph-row reveal-item" data-category="${p.category}" data-project-id="${p.id}">
-      <div class="project-monograph-frame">
+    <article class="project-grid-card reveal-item" data-category="${p.category}" data-project-id="${p.id}" tabindex="0" role="button" aria-label="View details for ${p.title.replace(/"/g, '&quot;')}">
+      <div class="project-card-frame">
         <img src="${imagePath}" 
              alt="${p.title.replace(/"/g, '&quot;')}" 
-             class="project-monograph-img" 
+             class="project-card-img" 
              loading="lazy" 
              decoding="async" 
              onerror="this.onerror=null; this.src='assets/project-placeholder.jpg';">
-        <div class="project-reveal-quad" aria-hidden="true">
-          <div class="quad-panel panel-tl"></div>
-          <div class="quad-panel panel-tr"></div>
-          <div class="quad-panel panel-bl"></div>
-          <div class="quad-panel panel-br"></div>
+        <div class="project-card-overlay">
+          <div class="project-card-hover-content">
+            <h2 class="project-card-title">${p.title}</h2>
+            <span class="project-card-view-btn" aria-hidden="true">
+              <span>VIEW</span>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="project-monograph-meta">
-        <div class="project-meta-kicker">${formattedNum} // ${p.categoryLabel}</div>
-        <div class="project-meta-main">
-          <h2 class="project-monograph-title">${p.title}</h2>
-          <p class="project-monograph-summary">${p.desc}</p>
-        </div>
-        <button type="button" class="project-view-action" aria-label="View details for ${p.title.replace(/"/g, '&quot;')}">
-          <span>VIEW</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
       </div>
     </article>
   `;
 }
 
 function renderDynamicProjectCards() {
-  const streamContainer = document.querySelector('.projects-monograph-stream') || document.querySelector('.projects-editorial-stream') || document.querySelector('.projects-grid');
+  const streamContainer = document.querySelector('.projects-grid-stream') || document.querySelector('.projects-monograph-stream') || document.querySelector('.projects-editorial-stream') || document.querySelector('.projects-grid');
   if (!streamContainer) return;
 
   const pathname = window.location.pathname.toLowerCase();
   const isProjectsPage = pathname.includes('projects.html');
   const isHomePage = document.getElementById('hero') !== null || pathname.endsWith('index.html') || pathname.endsWith('/') || pathname === '';
 
-  // 1. PROJECTS PAGE: Render all 33 ANPL Portfolio Projects into the monograph stream
+  // 1. PROJECTS PAGE: Render all 33 ANPL Portfolio Projects into the 3-column grid
   if (isProjectsPage) {
     let allCardsHTML = '';
     PORTFOLIO_PROJECTS.forEach((project, idx) => {
       allCardsHTML += createProjectCardHTML(project, idx, false);
     });
     streamContainer.innerHTML = allCardsHTML;
-
-    // Initialize 4-panel architectural reveal for every project image
-    initProjectQuadReveals();
   }
   // 2. HOMEPAGE: Show 4 representative categories
   else if (isHomePage) {

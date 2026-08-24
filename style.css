@@ -839,6 +839,258 @@ body.mobile-drawer-open #mobile-drawer {
     letter-spacing: 0.05em;
 }
 
+/* ==========================================================================
+   5.5 SERVICES SECTION — SWISS ARCHITECTURAL EDITORIAL ACCORDION
+   ========================================================================== */
+#services,
+#services.services-editorial-section {
+    padding: clamp(5.5rem, 8.5vw, 9rem) 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    width: 100%;
+    position: relative;
+    scroll-margin-top: 80px;
+}
+
+#services,
+#services * {
+    font-family: "Helvetica" !important;
+    border-radius: 0 !important;
+}
+
+.services-editorial-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+    width: 100%;
+}
+
+/* Left Column: Editorial Introduction (Natural Non-Sticky Flow) */
+.services-editorial-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 540px;
+}
+
+.services-eyebrow {
+    font-family: "Helvetica" !important;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.services-editorial-heading {
+    font-family: "Helvetica" !important;
+    font-size: clamp(2rem, 3.2vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin: 0;
+    text-transform: none;
+}
+
+/* Right Column: Numbered Service Accordion List */
+.services-accordion-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.service-accordion-item {
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+    background-color: transparent;
+    transition: background-color var(--transition-fast);
+}
+
+.service-accordion-item:last-child {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Trigger Button */
+.service-accordion-trigger {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: clamp(1.35rem, 1.8vw, 1.85rem) 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+    gap: clamp(1rem, 1.5vw, 1.5rem);
+    transition: color var(--transition-fast);
+}
+
+.service-accordion-trigger:focus-visible {
+    outline: 1px dashed var(--text-primary);
+    outline-offset: 4px;
+}
+
+.service-accordion-num {
+    font-family: "Helvetica" !important;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    width: clamp(2rem, 2.5vw, 2.75rem);
+    flex-shrink: 0;
+}
+
+.service-accordion-title {
+    font-family: "Helvetica" !important;
+    font-size: clamp(1.35rem, 2.1vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    flex-grow: 1;
+    text-transform: uppercase;
+    line-height: 1.15;
+    transition: color var(--transition-fast);
+}
+
+.service-accordion-trigger:hover .service-accordion-title {
+    color: #000000;
+}
+
+.service-accordion-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.service-accordion-indicator .indicator-icon {
+    font-family: "Helvetica" !important;
+    font-size: 1.65rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+/* Accordion Collapsible Panel (CSS Grid Transition Engine) */
+.service-accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.service-accordion-item.is-active .service-accordion-panel {
+    grid-template-rows: 1fr;
+}
+
+.service-accordion-item.is-active .service-accordion-indicator .indicator-icon {
+    transform: rotate(45deg);
+}
+
+.service-accordion-body {
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-left: calc(clamp(2rem, 2.5vw, 2.75rem) + clamp(1rem, 1.5vw, 1.5rem));
+    padding-bottom: clamp(1.5rem, 2.2vw, 2.25rem);
+    padding-top: 0.25rem;
+}
+
+.service-accordion-item.is-active .service-accordion-body {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Numbered Service Items List */
+.service-items-list {
+    list-style: none;
+    counter-reset: service-item-counter;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+.service-item-entry {
+    counter-increment: service-item-counter;
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 8px;
+    font-family: "Helvetica" !important;
+    font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    color: var(--text-secondary);
+}
+
+.service-item-entry::before {
+    content: counter(service-item-counter) ".";
+    font-family: "Helvetica" !important;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Responsive Rules for Services Section */
+@media (max-width: 1024px) {
+    .services-editorial-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(2.5rem, 4vw, 3.5rem);
+    }
+
+    .services-editorial-intro {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #services,
+    #services.services-editorial-section {
+        padding: clamp(3.5rem, 6vw, 5rem) 0;
+    }
+
+    .services-editorial-heading {
+        font-size: clamp(1.75rem, 6vw, 2.25rem);
+    }
+
+    .service-accordion-trigger {
+        gap: 0.75rem;
+        padding: 1.25rem 0;
+    }
+
+    .service-accordion-num {
+        width: 1.75rem;
+        font-size: 0.9375rem;
+    }
+
+    .service-accordion-title {
+        font-size: 1.25rem;
+    }
+
+    .service-accordion-body {
+        padding-left: 0;
+        padding-top: 0.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .service-item-entry {
+        font-size: 0.9375rem;
+        grid-template-columns: 20px 1fr;
+        gap: 6px;
+    }
+}
+
 /* INTERACTIVE PROCESS STEPPER */
 #process {
     padding: var(--space-64) 0;
@@ -1223,7 +1475,7 @@ body.mobile-drawer-open #mobile-drawer {
     text-align: center;
 }
 
-/* CLIENTS SECTION */
+/* CLIENTS SECTION & DIRECTORY */
 #clients {
     padding: var(--space-128) 0;
     border-bottom: 1px solid var(--border-color);
@@ -1233,113 +1485,165 @@ body.mobile-drawer-open #mobile-drawer {
 .clients-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
+    border-top: 1px solid #dcd9d4;
+    border-left: 1px solid #dcd9d4;
     margin-bottom: var(--space-64);
+    background-color: #FFFFFF;
 }
 
 .client-cell {
-    height: 160px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-24);
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--bg-primary);
-    transition: background-color var(--transition-fast);
-}
-
-.client-cell:hover {
-    background-color: var(--bg-secondary);
-}
-
-.client-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    margin-bottom: var(--space-8);
-    text-align: center;
-}
-
-.client-location {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-#clients .client-cell {
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--space-32) var(--space-20);
-    height: 180px;
-    transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 28px 20px;
+    min-height: 168px;
+    border-right: 1px solid #dcd9d4;
+    border-bottom: 1px solid #dcd9d4;
+    transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    box-sizing: border-box;
 }
 
-#clients .client-cell:hover {
-    background-color: #FAFAFA; /* Very subtle background change */
+.client-cell:hover {
+    background-color: #FAFAFA;
 }
 
-#clients .client-logo-wrapper {
+.client-logo-wrapper {
     width: 100%;
-    height: 52px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--space-16);
+    margin-bottom: 14px;
     overflow: hidden;
+    position: relative;
 }
 
-#clients .client-logo-img {
+.client-logo-img {
     height: 100%;
     width: auto;
-    max-width: 60%;
+    max-width: 75%;
+    max-height: 52px;
     object-fit: contain;
-    opacity: 0.6;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 0.88;
+    --logo-scale: 1;
+    transform: scale(var(--logo-scale));
+    transform-origin: center center;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#clients .client-logo-name {
+/* Optical balance adjustments for logos with large internal whitespace / margins */
+.client-logo-img[src*="Blue%20star"],
+.client-logo-img[src*="Blue star"] {
+    --logo-scale: 2.1;
+    max-width: 90%;
+}
+
+.client-logo-img[src*="hamilton%20logo"],
+.client-logo-img[src*="hamilton logo"] {
+    --logo-scale: 1.85;
+    max-width: 90%;
+}
+
+.client-logo-img[src*="MWV"] {
+    --logo-scale: 1.65;
+    max-width: 85%;
+}
+
+.client-logo-img[src*="yokohama_oht_logo"] {
+    --logo-scale: 1.4;
+    max-width: 80%;
+}
+
+.client-logo-img[src*="Monsanto-Logo"] {
+    --logo-scale: 1.35;
+    max-width: 85%;
+}
+
+.client-cell:hover .client-logo-img {
+    opacity: 1;
+    transform: scale(calc(var(--logo-scale) * 1.035));
+}
+
+.client-logo-name {
     font-family: "Helvetica" !important;
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #737373;
-    opacity: 0.7;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #767676;
+    opacity: 0.85;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: center;
+    line-height: 1.35;
 }
 
-#clients .client-cell:hover .client-logo-img {
+.client-cell:hover .client-logo-name {
     opacity: 1;
-    transform: scale(1.03);
+    color: #242426;
 }
 
-#clients .client-cell:hover .client-logo-name {
-    opacity: 1;
+/* For clients without logo files - clean Swiss typographic presentation */
+.client-cell-text {
+    padding: 32px 20px;
+}
+
+.client-text-name {
+    font-family: "Helvetica" !important;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #242426;
+    text-align: center;
+    line-height: 1.35;
+    transition: color 0.35s ease;
+}
+
+.client-cell-text:hover .client-text-name {
     color: #111111;
 }
 
-/* Homepage responsive grid overrides specifically for logo matrix */
+/* Responsive grid overrides for both directory and homepage */
 @media (max-width: 1024px) {
+    .clients-grid,
     #clients .clients-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
 @media (max-width: 768px) {
+    .clients-grid,
     #clients .clients-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .client-cell {
+        min-height: 144px;
+        padding: 20px 14px;
+    }
+    .client-logo-wrapper {
+        height: 52px;
+        margin-bottom: 10px;
+    }
+    .client-logo-img {
+        max-height: 46px;
+        max-width: 80%;
+    }
+    .client-logo-name {
+        font-size: 0.625rem;
+    }
+    .client-text-name {
+        font-size: 0.8125rem;
+    }
 }
+
 @media (max-width: 480px) {
+    .clients-grid,
     #clients .clients-grid {
         grid-template-columns: repeat(2, 1fr) !important;
     }
@@ -1907,9 +2211,12 @@ textarea.form-input {
         font-size: 2rem;
     }
 
-    .sectors-grid,
-    .clients-grid {
+    .sectors-grid {
         grid-template-columns: 1fr;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -3549,62 +3856,58 @@ textarea.form-input {
 }
 
 /* ==========================================================================
-   PROJECTS PORTFOLIO (UNIFIED ARCHITECTURAL MONOGRAPH & DOSSIER)
+/* ==========================================================================
+   PROJECTS PORTFOLIO (LUXURY 3-COLUMN ARCHITECTURAL IMAGE GRID)
    ========================================================================== */
 
 .projects-page-main {
     padding-top: 68px; /* Fixed navbar height */
     padding-bottom: 96px;
-    background-color: var(--bg-primary);
+    background-color: #FFFFFF;
 }
 
-.projects-monograph-container {
+.projects-page-container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 40px;
+    width: 100%;
 }
 
-/* 1. Minimal Projects Hero */
+/* 1. Minimal Luxury Projects Hero */
 .projects-hero-section {
-    padding: 36px 0 20px;
+    padding: clamp(3.5rem, 5.5vw, 5rem) 0 clamp(1.5rem, 2.5vw, 2.25rem);
+    width: 100%;
 }
 
 .projects-hero-kicker {
+    font-family: "Helvetica" !important;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: #767676;
     margin-bottom: 16px;
 }
 
 .projects-hero-title {
-    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-family: "Helvetica" !important;
+    font-size: clamp(2.75rem, 6vw, 5rem);
     font-weight: 700;
     line-height: 0.98;
     letter-spacing: -0.04em;
     text-transform: uppercase;
-    color: var(--text-primary);
-    margin-bottom: 18px;
+    color: #242426;
+    margin: 0;
 }
 
-.projects-hero-lead {
-    font-size: clamp(1rem, 1.4vw, 1.1875rem);
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    letter-spacing: -0.01em;
-    max-width: 680px;
-}
-
-/* 2. Non-Sticky Category Filter Bar (Single-Line Full Width Alignment) */
+/* 2. Non-Sticky Category Filter Bar (Natural Document Flow) */
 .projects-category-bar {
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid #dcd9d4;
+    border-bottom: 1px solid #dcd9d4;
     padding: 0;
-    margin-top: 28px;
-    margin-bottom: 56px;
-    background: var(--bg-primary);
+    margin-top: 24px;
+    margin-bottom: 48px;
+    background: #FFFFFF;
     position: relative;
     width: 100%;
     overflow: visible;
@@ -3619,24 +3922,26 @@ textarea.form-input {
 }
 
 .cat-filter-btn {
+    font-family: "Helvetica" !important;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: #767676;
     background: transparent;
     border: none;
     padding: 16px 0;
     position: relative;
     white-space: nowrap;
-    transition: color 0.2s ease;
+    transition: color 0.25s ease;
     text-align: center;
     flex: 0 0 auto;
+    cursor: pointer;
 }
 
 .cat-filter-btn:hover,
 .cat-filter-btn.active {
-    color: var(--text-primary);
+    color: #242426;
 }
 
 .cat-filter-btn.active::after {
@@ -3646,181 +3951,136 @@ textarea.form-input {
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--text-primary);
+    background: #242426;
 }
 
-/* 3. Unified Monograph Project Stream */
-.projects-monograph-stream {
-    display: flex;
-    flex-direction: column;
+/* 3. 3-Column Architectural Project Grid */
+.projects-grid-stream {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
     width: 100%;
 }
 
-.project-monograph-row {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-bottom: 64px;
-    margin-bottom: 64px;
-    border-bottom: 1px solid var(--border-color);
+/* 4. Project Card with Fixed 4:3 Aspect Ratio */
+.project-grid-card {
     position: relative;
-}
-
-.project-monograph-row:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* 4. Large Panoramic Image Frame (~80% Visual Weight) */
-.project-monograph-frame {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    max-height: 560px;
-    position: relative;
+    background-color: #FFFFFF;
+    border: 1px solid #dcd9d4;
     overflow: hidden;
-    background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-.project-monograph-img {
+.project-grid-card:hover,
+.project-grid-card:focus-visible {
+    border-color: #767676;
+}
+
+.project-card-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.project-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     filter: none !important;
     -webkit-filter: none !important;
-    opacity: 1;
-    transform: scale(1.03);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
 }
 
-.project-monograph-row:hover .project-monograph-img {
-    transform: scale(1.015);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.project-grid-card:hover .project-card-img,
+.project-grid-card:focus-visible .project-card-img {
+    transform: scale(1.03);
 }
 
-/* 4-Panel Architectural Reveal Overlay */
-.project-reveal-quad {
+/* 5. #767676 75% Opacity Hover Overlay */
+.project-card-overlay {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    background-color: rgba(118, 118, 118, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
-    z-index: 5;
-    overflow: hidden;
+    z-index: 2;
 }
 
-.quad-panel {
-    position: absolute;
-    background-color: #FFFFFF;
-    will-change: transform;
-    pointer-events: none;
+.project-grid-card:hover .project-card-overlay,
+.project-grid-card:focus-visible .project-card-overlay {
+    opacity: 1;
 }
 
-.panel-tl {
-    top: 0;
-    left: 0;
-    width: calc(50% + 1px);
-    height: calc(50% + 1px);
-}
-
-.panel-tr {
-    top: 0;
-    right: 0;
-    width: calc(50% + 1px);
-    height: calc(50% + 1px);
-}
-
-.panel-bl {
-    bottom: 0;
-    left: 0;
-    width: calc(50% + 1px);
-    height: calc(50% + 1px);
-}
-
-.panel-br {
-    bottom: 0;
-    right: 0;
-    width: calc(50% + 1px);
-    height: calc(50% + 1px);
-}
-
-/* 5. Disciplined Metadata Strip (~20% Visual Weight) */
-.project-monograph-meta {
-    display: grid;
-    grid-template-columns: 200px 1fr auto;
-    gap: 32px;
-    align-items: start;
-    padding-top: 24px;
-    width: 100%;
-}
-
-.project-meta-kicker {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #888888;
-    line-height: 1.4;
-}
-
-.project-meta-main {
+/* 6. Centered Project Title & Understated VIEW ↗ Button */
+.project-card-hover-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-width: 720px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    transform: translateY(6px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 90%;
 }
 
-.project-monograph-title {
-    font-size: 1.5rem;
+.project-grid-card:hover .project-card-hover-content,
+.project-grid-card:focus-visible .project-card-hover-content {
+    transform: translateY(0);
+}
+
+.project-card-title {
+    font-family: "Helvetica" !important;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-primary);
-    line-height: 1.15;
-    transition: transform 0.3s ease;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
-.project-monograph-row:hover .project-monograph-title {
-    transform: translateX(4px);
-}
-
-.project-monograph-summary {
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: var(--text-secondary);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.project-view-action {
+.project-card-view-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    font-family: "Helvetica" !important;
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-primary);
-    background: transparent;
-    border: none;
-    padding: 4px 0;
-    transition: gap 0.25s ease;
-    align-self: flex-start;
+    color: #FFFFFF;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    padding-bottom: 2px;
+    transition: gap 0.25s ease, border-color 0.2s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.project-monograph-row:hover .project-view-action {
-    gap: 12px;
+.project-grid-card:hover .project-card-view-btn,
+.project-grid-card:focus-visible .project-card-view-btn {
+    gap: 9px;
+    border-color: #FFFFFF;
 }
 
-.project-view-action svg {
+.project-card-view-btn svg {
     transition: transform 0.25s ease;
 }
 
-.project-monograph-row:hover .project-view-action svg {
+.project-grid-card:hover .project-card-view-btn svg,
+.project-grid-card:focus-visible .project-card-view-btn svg {
     transform: translate(2px, -2px);
 }
 
@@ -4015,24 +4275,19 @@ textarea.form-input {
 
 /* 7. Responsive Rules for Projects Page */
 @media (max-width: 1024px) {
-    .projects-monograph-container {
+    .projects-page-container {
         padding: 0 32px;
+    }
+
+    .projects-grid-stream {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 
     .cat-filter-btn {
         font-size: 0.6875rem;
         letter-spacing: 0.1em;
         padding: 14px 0;
-    }
-
-    .project-monograph-meta {
-        grid-template-columns: 160px 1fr auto;
-        gap: 20px;
-    }
-
-    .project-monograph-row {
-        padding-bottom: 48px;
-        margin-bottom: 48px;
     }
 
     .dossier-sheet-wrapper {
@@ -4054,7 +4309,7 @@ textarea.form-input {
         padding-bottom: 64px;
     }
 
-    .projects-monograph-container {
+    .projects-page-container {
         padding: 0 20px;
     }
 
@@ -4064,7 +4319,7 @@ textarea.form-input {
 
     .projects-category-bar {
         margin-top: 16px;
-        margin-bottom: 36px;
+        margin-bottom: 32px;
         width: 100%;
         overflow: hidden;
     }
@@ -4095,19 +4350,9 @@ textarea.form-input {
         bottom: 0;
     }
 
-    .project-monograph-row {
-        padding-bottom: 40px;
-        margin-bottom: 40px;
-    }
-
-    .project-monograph-meta {
+    .projects-grid-stream {
         grid-template-columns: 1fr;
-        gap: 12px;
-        padding-top: 16px;
-    }
-
-    .project-monograph-title {
-        font-size: 1.25rem;
+        gap: 20px;
     }
 
     .dossier-sheet-wrapper {
