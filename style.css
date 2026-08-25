@@ -1497,8 +1497,8 @@ body.mobile-drawer-open #mobile-drawer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 28px 20px;
-    min-height: 168px;
+    padding: 28px 20px 24px;
+    min-height: 176px;
     border-right: 1px solid #dcd9d4;
     border-bottom: 1px solid #dcd9d4;
     transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1512,22 +1512,22 @@ body.mobile-drawer-open #mobile-drawer {
 
 .client-logo-wrapper {
     width: 100%;
-    height: 60px;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 14px;
-    overflow: hidden;
+    margin-bottom: 16px;
     position: relative;
 }
 
 .client-logo-img {
-    height: 100%;
+    display: block;
     width: auto;
-    max-width: 75%;
+    height: auto;
+    max-width: 72%;
     max-height: 52px;
     object-fit: contain;
-    display: block;
+    margin: 0 auto;
     filter: none !important;
     -webkit-filter: none !important;
     opacity: 0.88;
@@ -1537,37 +1537,131 @@ body.mobile-drawer-open #mobile-drawer {
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Optical balance adjustments for logos with large internal whitespace / margins */
-.client-logo-img[src*="Blue%20star"],
-.client-logo-img[src*="Blue star"] {
+/* Optical balance adjustments for logos with internal whitespace or thin wordmarks */
+.client-logo-img[src*="blue" i],
+.client-logo-img[src*="Blue" i] {
+    --logo-scale: 2.35;
+    max-width: 90%;
+}
+
+.client-logo-img[src*="hamilton" i],
+.client-logo-img[src*="Hamilton" i] {
+    --logo-scale: 2.5;
+    max-width: 90%;
+}
+
+.client-logo-img[src*="western" i],
+.client-logo-img[src*="Western" i] {
+    --logo-scale: 2.4;
+    max-width: 85%;
+}
+
+.client-logo-img[src*="mwv" i],
+.client-logo-img[src*="MWV" i] {
     --logo-scale: 2.1;
-    max-width: 90%;
+    max-width: 82%;
 }
 
-.client-logo-img[src*="hamilton%20logo"],
-.client-logo-img[src*="hamilton logo"] {
+.client-logo-img[src*="indcon" i],
+.client-logo-img[src*="Indcon" i] {
+    --logo-scale: 2.1;
+    max-width: 85%;
+}
+
+.client-logo-img[src*="monsanto" i],
+.client-logo-img[src*="Monsanto" i] {
     --logo-scale: 1.85;
-    max-width: 90%;
-}
-
-.client-logo-img[src*="MWV"] {
-    --logo-scale: 1.65;
     max-width: 85%;
 }
 
-.client-logo-img[src*="yokohama_oht_logo"] {
-    --logo-scale: 1.4;
-    max-width: 80%;
+.client-logo-img[src*="yokohama" i],
+.client-logo-img[src*="Yokohama" i] {
+    --logo-scale: 1.8;
+    max-width: 82%;
 }
 
-.client-logo-img[src*="Monsanto-Logo"] {
-    --logo-scale: 1.35;
-    max-width: 85%;
+.client-logo-img[src*="swati" i],
+.client-logo-img[src*="Swati" i] {
+    --logo-scale: 1.6;
+    max-height: 54px;
+}
+
+/* Target-calibrated clients: G R Engineering, Kryfs Power Components, Balaji Wires */
+.client-logo--gr,
+.client-logo-img[src*="grengineering" i],
+.client-logo-img[src*="grengineering.png"] {
+    --logo-scale: 1.45;
+    max-width: 86%;
+    max-height: 48px;
+}
+
+.client-logo--kryfs,
+.client-logo-img[src*="kryfs" i],
+.client-logo-img[src*="kryfs.jpg"] {
+    --logo-scale: 1.75;
+    max-width: 78%;
+    max-height: 56px;
+}
+
+.client-logo--balaji,
+.client-logo-img[src*="balaji" i],
+.client-logo-img[src*="balaji.png"] {
+    --logo-scale: 1;
+    max-width: 62%;
+    max-height: 36px;
+}
+
+.client-logo-img[src*="doms" i],
+.client-logo-img[src*="DOMS" i] {
+    max-width: 60%;
+    max-height: 40px;
+}
+
+.client-logo-img[src*="linc" i],
+.client-logo-img[src*="Linc" i] {
+    max-width: 60%;
+    max-height: 38px;
+}
+
+.client-logo-img[src*="hindustan" i],
+.client-logo-img[src*="Hindustan" i] {
+    max-height: 48px;
+    max-width: 68%;
+}
+
+.client-logo-img[src*="waaree" i],
+.client-logo-img[src*="Waaree" i] {
+    max-height: 40px;
+    max-width: 70%;
+}
+
+.client-logo-img[src*="mehali" i],
+.client-logo-img[src*="Mehali" i] {
+    max-height: 40px;
+    max-width: 70%;
+}
+
+.client-logo-img[src*="creative" i],
+.client-logo-img[src*="Creative" i] {
+    max-width: 72%;
+    max-height: 44px;
+}
+
+.client-logo-img[src*="supreme" i],
+.client-logo-img[src*="Supreme" i] {
+    max-height: 44px;
+    max-width: 72%;
+}
+
+.client-logo-img[src*="ponds" i],
+.client-logo-img[src*="Ponds" i] {
+    max-height: 38px;
+    max-width: 70%;
 }
 
 .client-cell:hover .client-logo-img {
     opacity: 1;
-    transform: scale(calc(var(--logo-scale) * 1.035));
+    transform: scale(calc(var(--logo-scale) * 1.04));
 }
 
 .client-logo-name {
@@ -1581,6 +1675,7 @@ body.mobile-drawer-open #mobile-drawer {
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: center;
     line-height: 1.35;
+    display: block;
 }
 
 .client-cell:hover .client-logo-name {
@@ -1623,16 +1718,16 @@ body.mobile-drawer-open #mobile-drawer {
         grid-template-columns: repeat(2, 1fr);
     }
     .client-cell {
-        min-height: 144px;
-        padding: 20px 14px;
+        min-height: 152px;
+        padding: 22px 16px 18px;
     }
     .client-logo-wrapper {
-        height: 52px;
+        height: 60px;
         margin-bottom: 10px;
     }
     .client-logo-img {
-        max-height: 46px;
-        max-width: 80%;
+        max-height: 44px;
+        max-width: 76%;
     }
     .client-logo-name {
         font-size: 0.625rem;
