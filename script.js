@@ -1675,5 +1675,3 @@ function initProjectQuadReveals() {
 }
 
 
-
-
