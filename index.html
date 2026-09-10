@@ -8,6 +8,11 @@
   <meta name="description"
     content="Architects' Nook Private Limited (Est. 1969) — Multi-disciplinary studio founded by Ar. Kirit B. Bhatt. Directors: Er. Manish Bhatt &amp; Ar. Kashyap Bhatt. Offering comprehensive architectural, civil engineering, interior design, planning, valuation, and landscape design services.">
 
+  <!-- Master Google Fonts for Hero & Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Master TEKT-Style Stylesheet (Helvetica, 0px border-radius, Monochrome Palette) -->
   <link rel="stylesheet" href="style.css">
 
@@ -17,6 +22,9 @@
 </head>
 
 <body>
+
+  <!-- Mouse Spotlight Ambient Effect -->
+  <div class="mouse-spotlight"></div>
 
   <!-- 1. SPLASH SCREEN (HORIZONTAL SPLIT CURTAIN REVEAL) -->
   <div id="splash-screen">
@@ -151,24 +159,96 @@
   <!-- MAIN CONTENT CONTAINER -->
   <main>
 
-    <!-- 3. HERO SECTION (MINIMAL PLAIN WHITE) -->
-    <section id="hero">
-      <!-- Vertically and Horizontally Centered Tagline -->
-      <div class="hero-center-content">
-        <h1 class="hero-tagline">
-          When it comes to utility, functionality, aesthetics &amp; solidity, Architects' Nook is the name.
-        </h1>
-      </div>
-    </section>
+    <!-- 3. HERO SECTION (MINIMAL ARCHITECTURAL COMPOSITION) -->
+    <header id="hero" class="hero-section text-glow-trigger">
+      <span id="home"></span>
+      <div class="hero-container grid-2">
+        <!-- Left Side: Editorial Architectural Typography -->
+        <div class="hero-text-side">
+          <div class="hero-eyebrow animate-reveal">
+            <!-- <span class="hero-eyebrow-bar"></span> -->
+            <div class="hero-eyebrow-text">
+              <span>SPACES</span>
+              <span>SHAPED BY</span>
+              <span>PURPOSE.</span>
+            </div>
+          </div>
 
-    <!-- 4. VALUE PILLARS TICKER GRID (SERVICES & HERITAGE FROM ARCHITECTSNOOK.COM) -->
-    <!-- <div class="value-pillars-grid">
-      <div class="pillar-item">ARCHITECTURE &amp; PLANNING</div>
-      <div class="pillar-item">CIVIL ENGINEERING</div>
-      <div class="pillar-item">INTERIOR &amp; LANDSCAPE DESIGN</div>
-      <div class="pillar-item">VALUATION &amp; PROJECT MANAGEMENT</div>
-      <div class="pillar-item">ECO-SUSTAINABLE SOLUTIONS</div>
-    </div> -->
+          <h1 class="hero-title animate-reveal text-spotlight">
+            ARCHITECTS’<br>
+            NOOK
+          </h1>
+
+          <div class="hero-sub-meta animate-reveal">
+            <span>ARCHITECTURE</span>
+            <span class="meta-sep">/</span>
+            <span>INTERIORS</span>
+            <span class="meta-sep">/</span>
+            <span>PLANNING</span>
+          </div>
+
+          <div class="hero-location animate-reveal">
+            <span class="hero-location-text">VAPI, INDIA</span>
+            <span class="hero-location-line"></span>
+          </div>
+        </div>
+
+        <!-- Right Side: CSS 3D Architectural Massing Model -->
+        <div class="hero-visual-side">
+          <div class="scene-container">
+            <!-- Architectural Blueprint Datum Guides -->
+            <!-- <div class="blueprint-guides" aria-hidden="true">
+              <span class="guide-line-h"></span>
+              <span class="guide-line-v"></span>
+              <span class="guide-dot dot-1"></span>
+              <span class="guide-dot dot-2"></span>
+            </div> -->
+
+            <!-- <div class="grid-floor"></div> -->
+            <div class="massing-scene" id="massing-scene">
+              <!-- Stacked Block 1: Main Base -->
+              <div class="block block-base" style="--width: 140px; --height: 180px; --depth: 140px; --x: -20px; --y: 0px; --z: -20px;">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+              </div>
+              <!-- Stacked Block 2: Tall Column -->
+              <div class="block block-tall" style="--width: 80px; --height: 320px; --depth: 80px; --x: 60px; --y: 0px; --z: 40px;">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+              </div>
+              <!-- Stacked Block 3: Cantilever Box -->
+              <div class="block block-cantilever" style="--width: 160px; --height: 80px; --depth: 100px; --x: -50px; --y: 120px; --z: 40px;">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+              </div>
+              <!-- Stacked Block 4: Small top cap -->
+              <div class="block block-cap" style="--width: 60px; --height: 40px; --depth: 60px; --x: 70px; --y: 320px; --z: 50px;">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    
 
     <!-- 5. ABOUT US SECTION — SWISS ARCHITECTURAL EDITORIAL COMPOSITION -->
     <section id="about" class="about-editorial-section">

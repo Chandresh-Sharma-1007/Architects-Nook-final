@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomCursor();
   initSplashScreen();
   initArchitecturalHeader();
+  initHeroSection();
   initNavbarDropdown();
   initProjectsCategoryFilter();
   initAboutStatsCounter();
@@ -1675,3 +1676,118 @@ function initProjectQuadReveals() {
 }
 
 
+/* ==========================================================================
+   HERO SECTION ENGINE (REFINED 3D MASSING PARALLAX & ENTRANCE REVEAL)
+   ========================================================================== */
+function initHeroSection() {
+  const heroSection = document.getElementById('hero') || document.getElementById('home');
+  const massingScene = document.getElementById('massing-scene');
+
+  /* --------------------------------------------------
+   * 1. 3D CSS Massing Model (Refined Mouse Parallax)
+   * -------------------------------------------------- */
+  if (massingScene && heroSection) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      // Normalized offsets (-1 to 1)
+      const normX = Math.max(-1, Math.min(1, x / (rect.width / 2)));
+      const normY = Math.max(-1, Math.min(1, y / (rect.height / 2)));
+
+      // Subtle architectural rotation (Base: Y: 35deg, X: -20deg; Range: +/-12deg H, +/-8deg V)
+      const targetRotateY = (normX * 12) + 35;
+      const targetRotateX = (-normY * 8) - 20;
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(massingScene, {
+          rotateY: targetRotateY,
+          rotateX: targetRotateX,
+          duration: 0.8,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      } else {
+        massingScene.style.transform = `rotateX(${targetRotateX}deg) rotateY(${targetRotateY}deg)`;
+      }
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      // Smoothly bounce back to base default angle
+      if (typeof gsap !== 'undefined') {
+        gsap.to(massingScene, {
+          rotateY: 35,
+          rotateX: -20,
+          duration: 1.5,
+          ease: 'elastic.out(1, 0.5)'
+        });
+      } else {
+        massingScene.style.transform = 'rotateX(-20deg) rotateY(35deg)';
+      }
+    });
+  }
+
+  /* --------------------------------------------------
+   * 2. Ambient Mouse Spotlight Overlay
+   * -------------------------------------------------- */
+  document.addEventListener('mousemove', (e) => {
+    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+  });
+
+  const textGlowTriggers = document.querySelectorAll('.text-glow-trigger');
+  const mouseSpotlight = document.querySelector('.mouse-spotlight');
+  if (mouseSpotlight) {
+    textGlowTriggers.forEach(trigger => {
+      trigger.addEventListener('mouseenter', () => {
+        if (typeof gsap !== 'undefined') {
+          gsap.to(mouseSpotlight, {
+            background: 'radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(217, 217, 217, 0.22), transparent 85%)',
+            duration: 0.4
+          });
+        }
+      });
+      trigger.addEventListener('mouseleave', () => {
+        if (typeof gsap !== 'undefined') {
+          gsap.to(mouseSpotlight, {
+            background: 'radial-gradient(circle 250px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(217, 217, 217, 0.12), transparent 80%)',
+            duration: 0.4
+          });
+        }
+      });
+    });
+  }
+
+  /* --------------------------------------------------
+   * 3. Hero Entrance Animation (Synchronized with GSAP & Splash)
+   * -------------------------------------------------- */
+  if (typeof gsap !== 'undefined') {
+    const playHeroEntrance = () => {
+      const heroEntranceTimeline = gsap.timeline();
+      heroEntranceTimeline
+        .from('.hero-eyebrow, .hero-title, .hero-sub-meta, .hero-location', {
+          y: 35,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 1,
+          ease: 'power3.out'
+        })
+        .from('.hero-visual-side', {
+          opacity: 0,
+          scale: 0.96,
+          duration: 1.2,
+          ease: 'power2.out'
+        }, '-=0.7');
+    };
+
+    const splashScreen = document.getElementById('splash-screen');
+    const hasPlayed = sessionStorage.getItem('architects_nook_splash_played');
+
+    if (!splashScreen || hasPlayed === 'true') {
+      playHeroEntrance();
+    } else {
+      setTimeout(playHeroEntrance, 1200);
+    }
+  }
+}
