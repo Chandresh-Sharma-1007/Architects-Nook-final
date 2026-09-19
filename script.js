@@ -1348,7 +1348,7 @@ function initProjectDossierOverlay() {
         <div class="dossier-scroll-content">
           <div class="dossier-image-hero">
             <img id="dossier-img" src="" alt="Project Image" class="dossier-main-img">
-            <div class="dossier-img-caption" id="dossier-caption">PROJECT // LOCATION</div>
+          
           </div>
 
           <div class="dossier-details-container">
@@ -1404,10 +1404,10 @@ function openProjectDossier(p) {
 
   const imgPath = p.filename ? `assets/${p.folder}/${p.filename}` : 'assets/project-placeholder.jpg';
   document.getElementById('dossier-img').src = imgPath;
-  document.getElementById('dossier-category-tag').textContent = `${(p.typology || p.categoryLabel || 'PROJECT').toUpperCase()} // ARCHITECTURAL DOSSIER`;
+  document.getElementById('dossier-category-tag').textContent = `${(p.typology || p.categoryLabel || 'PROJECT').toUpperCase()} `;
   document.getElementById('dossier-title').textContent = p.title;
   document.getElementById('dossier-location').textContent = p.location ? p.location.toUpperCase() : '';
-  document.getElementById('dossier-caption').textContent = `${p.title} // ${(p.location || '').toUpperCase()}`;
+ 
   document.getElementById('dossier-desc').textContent = p.desc || '';
 
   // Populate Structured Specs Grid (ONLY fields that actually exist)

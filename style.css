@@ -704,13 +704,14 @@ body.mobile-drawer-open #mobile-drawer {
 
 .hero-eyebrow-text {
     font-family: "Helvetica !important";
-    font-size: clamp(0.72rem, 0.88vw, 0.82rem);
+    /* font-size: clamp(0.72rem, 0.88vw, 0.82rem); */
     font-weight: 500;
     letter-spacing: 0.25em;
     line-height: 1.6;
-    color: var(--text-primary, #111111);
+    color: var(--text-muted, #666666);
     display: flex ;
     flex-direction: column;
+    font-size: 15px;
 }
 
 /* Main Title: ARCHITECTS' NOOK (Swiss Architectural Sans-Serif) */
@@ -728,15 +729,16 @@ body.mobile-drawer-open #mobile-drawer {
 /* Sub-meta: ARCHITECTURE / INTERIORS / PLANNING */
 .hero-sub-meta {
     font-family: "Helvetica !important";
-    font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+    /* font-size: clamp(0.68rem, 0.82vw, 0.78rem); */
     font-weight: 400;
     letter-spacing: 0.22em;
-    color: var(--text-secondary, #666666);
+    color: var(--text-muted, #666666);
     text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: clamp(10px, 1.4vw, 18px);
     margin-bottom: clamp(32px, 5vh, 52px);
+    font-size: 15px;
 }
 
 .meta-sep {
@@ -755,7 +757,7 @@ body.mobile-drawer-open #mobile-drawer {
 
 .hero-location-text {
     font-family: "Helvetica !important";
-    font-size: 0.72rem;
+    /* font-size: 0.72rem; */
     font-weight: 600;
     letter-spacing: 0.25em;
     color: var(--text-primary, #111111);
@@ -1026,7 +1028,7 @@ body.mobile-drawer-open #mobile-drawer {
    ========================================== */
 
 /*  Logo colour */
-/* .block-base .face {
+.block-base .face {
     background-color: #dcd9d4;
     border-color: #000000;
 }
@@ -1047,7 +1049,7 @@ body.mobile-drawer-open #mobile-drawer {
 .block-cap .face {
     background-color: #888888;
     border-color: #000000;
-} */
+}
 
 
 /* ==========================================
@@ -1056,7 +1058,7 @@ body.mobile-drawer-open #mobile-drawer {
    ========================================== */
 
 
-.block-base .face {
+/* .block-base .face {
     background-color:
         #767676;
     border-color: #000000;
@@ -1077,7 +1079,7 @@ body.mobile-drawer-open #mobile-drawer {
 .block-cap .face {
     background-color: #dcd9d4;
     border-color: #000000;
-}
+} */
 
 /* ==================================================
    MOBILE HERO SECTION — DEDICATED ARCHITECTURAL COMPOSITION
@@ -1932,8 +1934,8 @@ body.mobile-drawer-open #mobile-drawer {
 
 .tekt-cta-box {
     padding: var(--space-96) var(--space-64);
-    background-color: var(--text-primary);
-    color: var(--bg-primary);
+    background-color: #dcd9d4;
+    color: var(--text-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1943,7 +1945,7 @@ body.mobile-drawer-open #mobile-drawer {
 .tekt-cta-title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 700;
-    color: var(--bg-primary);
+    color: var(--text-primary);
     line-height: 1.05;
     letter-spacing: -0.03em;
     max-width: 700px;
@@ -1962,8 +1964,8 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .tekt-cta-btn:hover {
-    background: var(--bg-secondary);
-    color: var(--hover-accent);
+    background: var(--text-muted);
+    color: var(--bg-secondary);
 }
 
 /* FEATURED PROJECTS SECTION */
@@ -2067,16 +2069,16 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .btn-editorial:hover {
-    background: var(--hover-accent);
+    background: var(--text-muted);
     color: var(--bg-primary);
-    border-color: var(--hover-accent);
+    border-color: var(--text-muted);
 }
 
 .btn-editorial-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-20) var(--space-40);
+    padding: var(--space-24) var(--space-48);
     border: 1px solid var(--border-color);
     background: transparent;
     color: var(--text-primary);
@@ -2088,9 +2090,9 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .btn-editorial-outline:hover {
-    background: var(--hover-accent);
+    background: var(--text-muted);
     color: var(--bg-primary);
-    border-color: var(--hover-accent);
+    border-color: var(--text-muted);
 }
 
 .center-btn-wrapper {
@@ -2565,10 +2567,10 @@ textarea.form-input {
 .form-submit-btn {
     width: 100%;
     padding: var(--space-24);
-    background: var(--text-primary);
-    color: var(--bg-primary);
-    font-size: 0.875rem;
-    font-weight: 700;
+    background: #dcd9d4;
+    color: var(--text-primary);
+    font-size: 0.975rem;
+    font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     border: 1px solid var(--text-primary);
@@ -2576,8 +2578,8 @@ textarea.form-input {
 }
 
 .form-submit-btn:hover {
-    background: var(--hover-accent);
-    color: var(--bg-primary);
+    background: var(--text-muted);
+    color: var(--text-primary);
 }
 
 /* FOOTER */
@@ -2664,7 +2666,7 @@ textarea.form-input {
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-primary);
+    color: var(--text-secondary);
 }
 
 /* SCROLL REVEAL ANIMATIONS */
@@ -5063,7 +5065,7 @@ textarea.form-input {
 }
 
 .dossier-close-btn:hover {
-    background: #111111;
+    background: var(--text-muted);
     color: #FFFFFF;
     border-color: #111111;
 }
@@ -5145,7 +5147,7 @@ textarea.form-input {
 }
 
 .dossier-spec-lbl {
-    font-size: 0.6875rem;
+    /* font-size: 0.6875rem; */
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -5153,7 +5155,7 @@ textarea.form-input {
 }
 
 .dossier-spec-val {
-    font-size: 0.9375rem;
+    /* font-size: 0.9375rem; */
     color: var(--text-primary);
     font-weight: 500;
 }
@@ -5165,7 +5167,7 @@ textarea.form-input {
 }
 
 .dossier-section-label {
-    font-size: 0.75rem;
+    /* font-size: 0.75rem; */
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
