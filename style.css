@@ -48,7 +48,7 @@
     --border-color: #D9D9D9;
     --hover-accent: #000000;
 
-    --font-family: "Helvetica";
+    --font-family: "Helvetica !important";
     --border-radius: 0px;
 
     --max-width: 1440px;
@@ -266,8 +266,11 @@ select {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
     z-index: 10000;
     pointer-events: all;
 }
@@ -300,12 +303,15 @@ select {
 
 .splash-content {
     text-align: center;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 420px;
 }
 
 .splash-logo {
-    font-size: 1.5rem;
+    font-size: clamp(1.15rem, 4vw, 1.5rem);
     font-weight: 700;
-    letter-spacing: 0.3em;
+    letter-spacing: clamp(0.15em, 1.5vw, 0.3em);
     text-transform: uppercase;
     margin-bottom: var(--space-16);
     opacity: 0;
@@ -314,7 +320,7 @@ select {
 }
 
 .splash-progress-container {
-    width: 160px;
+    width: clamp(120px, 35vw, 160px);
     height: 2px;
     background: var(--bg-surface);
     margin: 0 auto var(--space-16);
@@ -362,7 +368,7 @@ select {
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--space-64);
+    padding: 0 clamp(16px, 4vw, 64px);
     width: 100%;
 }
 
@@ -545,17 +551,27 @@ select {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
     background-color: #FFFFFF;
     z-index: 2000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: max(72px, calc(env(safe-area-inset-top, 0px) + 56px)) 20px max(32px, calc(env(safe-area-inset-bottom, 0px) + 20px));
     opacity: 0;
     pointer-events: none;
     transition: opacity 300ms ease;
+}
+
+body.mobile-drawer-open {
+    overflow: hidden;
 }
 
 body.mobile-drawer-open #mobile-drawer {
@@ -568,28 +584,46 @@ body.mobile-drawer-open #mobile-drawer {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: clamp(16px, 2.8vh, 28px);
+    margin: auto 0;
+    padding: 0;
+    width: 100%;
+    max-width: 360px;
 }
 
 .mobile-drawer-link {
     font-family: "Helvetica";
-    font-size: 24px;
+    font-size: clamp(1.2rem, 3.8vw, 1.45rem);
     font-weight: 400;
     color: #111111;
     text-decoration: none;
     text-transform: uppercase;
+    padding: 6px 12px;
+    display: inline-block;
+    letter-spacing: 0.04em;
+    transition: color 200ms ease;
+}
+
+.mobile-drawer-link:hover {
+    color: #000000;
 }
 
 #mobile-drawer-close {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    font-size: 2.5rem;
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top, 16px));
+    right: max(16px, env(safe-area-inset-right, 16px));
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.25rem;
     line-height: 1;
     color: #111111;
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
+    z-index: 2001;
 }
 
 /* ==========================================================================
@@ -669,19 +703,19 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .hero-eyebrow-text {
-    font-family: var(--font-family, "Helvetica"), sans-serif;
+    font-family: "Helvetica !important";
     font-size: clamp(0.72rem, 0.88vw, 0.82rem);
     font-weight: 500;
     letter-spacing: 0.25em;
     line-height: 1.6;
     color: var(--text-primary, #111111);
-    display: flex;
+    display: flex ;
     flex-direction: column;
 }
 
 /* Main Title: ARCHITECTS' NOOK (Swiss Architectural Sans-Serif) */
 .hero-title {
-    font-family: var(--font-family, "Helvetica"), sans-serif;
+    font-family: "Helvetica !important";
     font-size: clamp(3.2rem, 5.2vw, 4.8rem);
     font-weight: 300;
     line-height: 1.05;
@@ -693,7 +727,7 @@ body.mobile-drawer-open #mobile-drawer {
 
 /* Sub-meta: ARCHITECTURE / INTERIORS / PLANNING */
 .hero-sub-meta {
-    font-family: var(--font-family, "Helvetica"), sans-serif;
+    font-family: "Helvetica !important";
     font-size: clamp(0.68rem, 0.82vw, 0.78rem);
     font-weight: 400;
     letter-spacing: 0.22em;
@@ -720,7 +754,7 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .hero-location-text {
-    font-family: var(--font-family, "Helvetica"), sans-serif;
+    font-family: "Helvetica !important";
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.25em;
@@ -757,7 +791,7 @@ body.mobile-drawer-open #mobile-drawer {
     font-weight: 600;
     letter-spacing: 0.2em;
     color: var(--medium-grey, #8A8A8A);
-    font-family: var(--font-family, "Helvetica"), sans-serif;
+    font-family: "Helvetica !important";
     z-index: 2;
 }
 
@@ -786,6 +820,7 @@ body.mobile-drawer-open #mobile-drawer {
         opacity: 1;
         transform: translate(-50%, 0);
     }
+
     100% {
         opacity: 0;
         transform: translate(-50%, 7px);
@@ -808,6 +843,7 @@ body.mobile-drawer-open #mobile-drawer {
     transform: scale(0.82) translateY(100px);
     transform-origin: center center;
 }
+
 /* Architectural Datum Guides / Crosshairs */
 .blueprint-guides {
     position: absolute;
@@ -847,7 +883,8 @@ body.mobile-drawer-open #mobile-drawer {
     top: 32%;
     left: 78%;
     transform: translate(-50%, -50%);
-    border-radius: 0; /* Tiny architectural square crosshair */
+    border-radius: 0;
+    /* Tiny architectural square crosshair */
     width: 4px;
     height: 4px;
 }
@@ -858,17 +895,18 @@ body.mobile-drawer-open #mobile-drawer {
     transform: translate(-50%, -50%);
 }
 
-/* .grid-floor {
+.grid-floor {
     position: absolute;
     width: 300px;
     height: 300px;
     background-image: 
-        linear-gradient(rgba(217, 217, 217, 0.35) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(217, 217, 217, 0.35) 1px, transparent 1px);
+        linear-gradient(rgba(217, 217, 217, 0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(217, 217, 217, 0.4) 1px, transparent 1px);
     background-size: 20px 20px;
     transform: rotateX(75deg) translateZ(-55px);
     opacity: 0.65;
-} */
+    pointer-events: none;
+}
 
 .massing-scene {
     width: 100%;
@@ -876,7 +914,8 @@ body.mobile-drawer-open #mobile-drawer {
     position: absolute;
     transform-style: preserve-3d;
     transform: rotateX(-20deg) rotateY(35deg);
-    transition: transform 0.1s ease-out; /* Smooth hover-responsive rotation */
+    transition: transform 0.1s ease-out;
+    /* Smooth hover-responsive rotation */
     animation: floatScene 6s ease-in-out infinite alternate;
 }
 
@@ -884,6 +923,7 @@ body.mobile-drawer-open #mobile-drawer {
     0% {
         margin-top: -6px;
     }
+
     100% {
         margin-top: 6px;
     }
@@ -1017,9 +1057,9 @@ body.mobile-drawer-open #mobile-drawer {
 
 
 .block-base .face {
-    background-color: 
-    #767676;
-    border-color:#000000;
+    background-color:
+        #767676;
+    border-color: #000000;
 }
 
 
@@ -1039,75 +1079,202 @@ body.mobile-drawer-open #mobile-drawer {
     border-color: #000000;
 }
 
-
 /* ==================================================
- * HERO RESPONSIVE BREAKPOINTS
- * ================================================== */
-@media (max-width: 991px) {
-    .grid-2 {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
-
+   MOBILE HERO SECTION — DEDICATED ARCHITECTURAL COMPOSITION
+   Exact match to reference layout & perfect 100dvh viewport fit
+   ================================================== */
+@media (max-width: 768px) {
+    /* 1. Main Viewport Container — Locks precisely to 1 screen height without scrolling */
     .hero-section {
-        height: auto;
-        min-height: 100vh;
-        max-height: none;
-        padding: 100px 32px 50px 32px;
+        height: 100dvh;
+        min-height: 100dvh;
+        max-height: 100dvh;
+        padding-top: calc(64px + clamp(6px, 1.4vh, 16px));
+        padding-bottom: max(14px, env(safe-area-inset-bottom, 12px));
+        padding-left: clamp(20px, 5.5vw, 32px);
+        padding-right: clamp(20px, 5.5vw, 32px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        overflow: hidden;
+        background-color: var(--white, #FFFFFF);
+        box-sizing: border-box;
     }
 
+    /* 2. Inner Hero Container */
+    .hero-container {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* 3. Grid / Stack — Vertical single-column composition */
+    .grid-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+        gap: 0;
+    }
+
+    /* 4. Text Side as display: contents — lets flexbox order typography at top, 3D in center, location at bottom */
+    .hero-text-side {
+        display: contents;
+    }
+
+    /* 5. Eyebrow: Bar + SPACES SHAPED BY PURPOSE */
+    .hero-eyebrow {
+        order: 1;
+        margin-bottom: clamp(10px, 1.6vh, 18px);
+    }
+
+    .hero-eyebrow-bar {
+        display: block;
+        width: 32px;
+        height: 1.5px;
+        background-color: var(--charcoal, #111111);
+        margin-bottom: clamp(8px, 1.2vh, 12px);
+    }
+
+    .hero-eyebrow-text {
+        font-family: "Helvetica !important";
+        font-size: clamp(0.68rem, 2.2vw, 0.75rem);
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        line-height: 1.55;
+        color: var(--text-primary, #111111);
+    }
+
+    /* 6. Main Title: ARCHITECTS' NOOK */
     .hero-title {
-        font-size: clamp(2.8rem, 7vw, 3.8rem);
+        order: 2;
+        font-family: "Helvetica !important";
+        font-size: clamp(2.35rem, 8.6vw, 3.15rem);
+        font-weight: 300;
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        color: var(--text-primary, #111111);
+        margin-bottom: clamp(8px, 1.4vh, 14px);
     }
 
+    /* 7. Sub-meta: ARCHITECTURE / INTERIORS / PLANNING */
+    .hero-sub-meta {
+        order: 3;
+        font-family: "Helvetica !important";
+        font-size: clamp(0.58rem, 2.3vw, 0.7rem);
+        letter-spacing: clamp(0.12em, 0.5vw, 0.2em);
+        font-weight: 400;
+        color: #222222;
+        display: flex;
+        align-items: center;
+        gap: clamp(8px, 2.2vw, 14px);
+        white-space: nowrap;
+        margin-bottom: clamp(6px, 1.2vh, 12px);
+    }
+
+    .hero-sub-meta .meta-sep {
+        color: #B0B0B0;
+        font-weight: 300;
+    }
+
+    /* 8. 3D Architectural Massing Model — Center visual anchor */
     .hero-visual-side {
-        height: 340px;
+        order: 4;
+        flex: 1 1 auto;
+        min-height: 0;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        z-index: 2;
+        overflow: visible;
     }
 
     .scene-container {
-        transform: scale(0.75) translateY(10px);
+        position: relative;
+        width: 320px;
+        height: 320px;
+        max-width: 100%;
+        transform: scale(clamp(0.64, 0.78 * (100dvh / 820), 0.78)) translateY(6px);
+        transform-origin: center center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
     }
 
+    /* 9. Bottom Location: VAPI, INDIA ─────── */
+    .hero-location {
+        order: 5;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: auto;
+        padding-bottom: clamp(2px, 0.6vh, 6px);
+    }
+
+    .hero-location-text {
+        font-family: "Helvetica !important";
+        font-size: clamp(0.64rem, 2.1vw, 0.72rem);
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        color: var(--text-primary, #111111);
+        white-space: nowrap;
+    }
+
+    .hero-location-line {
+        flex: 1;
+        height: 1px;
+        background-color: var(--border-color, #D9D9D9);
+    }
+
+    /* 10. Hide desktop mouse scroll hint on mobile */
     .scroll-down-hint {
-        left: 32px;
-        bottom: 24px;
+        display: none !important;
     }
 }
 
-@media (max-width: 575px) {
+/* Extra short mobile screens (landscape or compact devices like iPhone SE) */
+@media (max-width: 768px) and (max-height: 660px) {
     .hero-section {
-        padding: 90px 20px 40px 20px;
-    }
-
-    .hero-title {
-        font-size: clamp(2.2rem, 9.5vw, 2.8rem);
-        margin-bottom: 16px;
+        padding-top: calc(58px + 4px);
+        padding-bottom: 10px;
     }
 
     .hero-eyebrow {
-        margin-bottom: 18px;
+        margin-bottom: 6px;
+    }
+
+    .hero-eyebrow-bar {
+        margin-bottom: 6px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.9rem, 7.5vw, 2.3rem);
+        margin-bottom: 6px;
     }
 
     .hero-sub-meta {
-        font-size: 0.65rem;
-        gap: 8px;
-        margin-bottom: 30px;
-    }
-
-    .hero-visual-side {
-        height: 280px;
+        font-size: 0.55rem;
+        margin-bottom: 6px;
     }
 
     .scene-container {
-        width: 280px;
-        height: 280px;
-        transform: scale(0.65) translateY(0);
+        transform: scale(0.56) translateY(2px);
     }
 
-    .scroll-down-hint {
-        position: static;
-        margin-top: 32px;
-        justify-content: flex-start;
+    .hero-location {
+        padding-bottom: 2px;
     }
 }
 
@@ -1122,6 +1289,7 @@ body.mobile-drawer-open #mobile-drawer {
     width: 100%;
     position: relative;
 }
+
 
 #about,
 #about * {
@@ -1508,6 +1676,7 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 @media (max-width: 768px) {
+
     #services,
     #services.services-editorial-section {
         padding: clamp(3.5rem, 6vw, 5rem) 0;
@@ -2159,6 +2328,7 @@ body.mobile-drawer-open #mobile-drawer {
 
 /* Responsive grid overrides for both directory and homepage */
 @media (max-width: 1024px) {
+
     .clients-grid,
     #clients .clients-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -2166,31 +2336,38 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 @media (max-width: 768px) {
+
     .clients-grid,
     #clients .clients-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .client-cell {
         min-height: 152px;
         padding: 22px 16px 18px;
     }
+
     .client-logo-wrapper {
         height: 60px;
         margin-bottom: 10px;
     }
+
     .client-logo-img {
         max-height: 44px;
         max-width: 76%;
     }
+
     .client-logo-name {
         font-size: 0.625rem;
     }
+
     .client-text-name {
         font-size: 0.8125rem;
     }
 }
 
 @media (max-width: 480px) {
+
     .clients-grid,
     #clients .clients-grid {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -2209,9 +2386,9 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .contact-hero-title {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2rem, 7.5vw, 5.5rem);
     font-weight: 700;
-    line-height: 0.95;
+    line-height: 0.98;
     letter-spacing: -0.04em;
     text-transform: uppercase;
     margin-bottom: var(--space-32);
@@ -2435,6 +2612,7 @@ textarea.form-input {
     color: var(--text-secondary);
     max-width: 400px;
     line-height: 1.6;
+    font-family: "Helvetica !important";
 }
 
 .footer-col-2 {
@@ -2503,107 +2681,14 @@ textarea.form-input {
     pointer-events: auto;
 }
 
-/* RESPONSIVE MEDIA QUERIES (TABLET & MOBILE BREAKPOINTS) */
-@media (max-width: 1200px) {
-    .nav-panel-cell {
-        padding: 0 24px;
-        min-width: 110px;
-    }
-
-    .nav-panel-cell:hover {
-        padding: 0 36px;
-    }
-
-    .nav-panel-link {
-        font-size: 16px;
-    }
-
-    .logo-panel-right {
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-
-    .header-logo-img {
-        height: 70px;
-    }
-
-    .design-series-grid,
-    .finishes-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .process-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .process-nav {
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .sectors-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
+/* ==================================================
+   RESPONSIVE — TABLET (1024px and below)
+   ================================================== */
 @media (max-width: 1024px) {
     .container {
         padding: 0 var(--space-32);
     }
 
-    .hero-tagline {
-        font-size: 42px;
-    }
-
-    .value-pillars-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .about-image-wrapper {
-        grid-column: span 12;
-        height: 450px;
-        margin-bottom: var(--space-32);
-    }
-
-    .about-text-wrapper {
-        grid-column: span 12;
-        padding-left: 0;
-    }
-
-    .about-col-left {
-        grid-column: 1 / span 5;
-    }
-
-    .about-col-right {
-        grid-column: 5 / span 8;
-        margin-top: clamp(3.5rem, 6vw, 5.5rem);
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-left {
-        grid-column: span 12;
-        margin-bottom: var(--space-48);
-    }
-
-    .contact-right {
-        grid-column: span 12;
-    }
-
-    .footer-col-1,
-    .footer-col-2,
-    .footer-col-3 {
-        grid-column: span 12;
-    }
-}
-
-@media (max-width: 900px) {
     .desktop-nav {
         display: none;
     }
@@ -2620,16 +2705,14 @@ textarea.form-input {
     #mobile-toggle-btn {
         display: flex;
         order: 1;
-        /* Puts hamburger on the LEFT */
-        padding-left: 24px;
+        padding-left: 20px;
         padding-right: 16px;
     }
 
     .logo-panel-right {
         order: 2;
-        /* Puts logo on the RIGHT */
         padding-left: 16px;
-        padding-right: 24px;
+        padding-right: 20px;
         justify-content: flex-end;
     }
 
@@ -2638,13 +2721,70 @@ textarea.form-input {
         max-height: 48px;
     }
 
-    .value-pillars-grid {
-        grid-template-columns: 1fr;
-    }
-
     .design-series-grid,
     .finishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-layout {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        max-height: none;
+        gap: 0;
+    }
+
+    .process-nav {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+        height: auto;
+    }
+
+    .process-step-item {
+        padding: 16px 24px;
+        min-height: 52px;
+    }
+
+    .process-media-display {
+        height: 380px;
+        width: 100%;
+    }
+
+    .sectors-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-image-wrapper {
+        grid-column: span 12;
+        height: 450px;
+        margin-bottom: var(--space-32);
+    }
+
+    .about-text-wrapper {
+        grid-column: span 12;
+        padding-left: 0;
+    }
+
+    .about-editorial-heading {
+        grid-column: 1 / span 12;
+        font-size: clamp(2.25rem, 3.8vw, 3.25rem);
+        max-width: 100%;
+    }
+
+    .about-editorial-content {
+        grid-column: 1 / span 12;
+        max-width: 100%;
+    }
+
+    .projects-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-32);
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .tekt-cta-box {
@@ -2659,25 +2799,43 @@ textarea.form-input {
         gap: var(--space-32);
     }
 
-    .about-editorial-heading {
-        grid-column: 1 / span 12;
-        font-size: clamp(2.25rem, 3.8vw, 3.25rem);
-        max-width: 100%;
-    }
-
-    .about-editorial-content {
-        grid-column: 2 / span 11;
-        max-width: 100%;
+    .contact-left {
+        grid-column: span 12;
+        margin-bottom: var(--space-48);
     }
 
     .contact-right {
+        grid-column: span 12;
         padding: var(--space-32);
+    }
+
+    .footer-top {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-32);
+    }
+
+    .footer-col-1,
+    .footer-col-2,
+    .footer-col-3 {
+        grid-column: auto;
+        width: 100%;
+        max-width: 100%;
     }
 }
 
+
+/* ==================================================
+   RESPONSIVE — MOBILE (768px and below)
+   ================================================== */
 @media (max-width: 768px) {
-    .hero-tagline {
-        font-size: 30px;
+    .container {
+        padding: 0 var(--space-20);
+    }
+
+    .section-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        margin-bottom: var(--space-32);
     }
 
     #about,
@@ -2693,7 +2851,7 @@ textarea.form-input {
 
     .about-editorial-heading {
         width: 100%;
-        font-size: clamp(1.75rem, 5.5vw, 2.25rem);
+        font-size: clamp(1.65rem, 5.5vw, 2.25rem);
         line-height: 1.15;
     }
 
@@ -2729,34 +2887,158 @@ textarea.form-input {
     .about-foot-divider {
         display: none;
     }
+
+    /* Process Stepper Section */
+    #process {
+        padding: var(--space-48) 0;
+    }
+
+    .process-media-display {
+        height: 280px;
+    }
+
+    .process-step-item {
+        padding: 14px 18px;
+    }
+
+    .process-step-title {
+        font-size: 1.05rem;
+    }
+
+    /* Projects Section */
+    #projects {
+        padding: var(--space-64) 0;
+    }
+
+    .projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: var(--space-32);
+    }
+
+    .project-image-container {
+        height: clamp(240px, 50vw, 340px);
+    }
+
+    .project-info {
+        padding: var(--space-24);
+    }
+
+    .project-title {
+        font-size: 1.35rem;
+    }
+
+    /* Clients Section */
+    #clients {
+        padding: var(--space-64) 0;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: var(--space-48);
+    }
+
+    /* TEKT CTA Section */
+    .tekt-cta-section {
+        padding: var(--space-64) 0;
+    }
+
+    .tekt-cta-box {
+        padding: var(--space-40) var(--space-24);
+    }
+
+    .tekt-cta-title {
+        font-size: clamp(1.75rem, 5.5vw, 2.5rem);
+    }
+
+    .tekt-cta-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        display: inline-flex;
+        padding: 16px 24px;
+    }
+
+    /* Footer Section */
+    #footer {
+        padding: var(--space-64) 0 var(--space-32);
+    }
+
+    .footer-top {
+        padding-bottom: var(--space-40);
+        margin-bottom: var(--space-32);
+    }
+
+    .footer-brand {
+        font-size: 1.25rem;
+        letter-spacing: 0.18em;
+        margin-bottom: var(--space-16);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
 }
 
+
+/* ==================================================
+   RESPONSIVE — SMALL MOBILE (480px and below)
+   ================================================== */
 @media (max-width: 480px) {
     .container {
         padding: 0 var(--space-16);
     }
 
     #mobile-toggle-btn {
-        padding-left: 16px;
-        padding-right: 12px;
+        padding-left: 14px;
+        padding-right: 10px;
     }
 
     .logo-panel-right {
-        padding-left: 12px;
-        padding-right: 16px;
+        padding-left: 10px;
+        padding-right: 14px;
     }
 
     .header-logo-img {
-        height: 44px;
-        max-height: 44px;
+        height: 40px;
+        max-height: 40px;
     }
 
     .display-title {
-        font-size: 2.75rem;
+        font-size: clamp(2rem, 8.5vw, 2.75rem);
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .process-media-display {
+        height: 220px;
+    }
+
+    .process-step-item {
+        padding: 12px 14px;
+    }
+
+    .process-step-title {
+        font-size: 0.95rem;
+    }
+
+    .project-image-container {
+        height: 220px;
+    }
+
+    .project-info {
+        padding: 16px;
+    }
+
+    .project-title {
+        font-size: 1.2rem;
     }
 
     .sectors-grid {
@@ -2764,7 +3046,70 @@ textarea.form-input {
     }
 
     .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .client-cell {
+        min-height: 140px;
+        padding: 18px 10px 14px;
+    }
+
+    .client-logo-wrapper {
+        height: 52px;
+        margin-bottom: 8px;
+    }
+
+    .client-logo-img {
+        max-height: 36px;
+    }
+
+    .client-logo-name {
+        font-size: 0.58rem;
+    }
+
+    .contact-right {
+        padding: 20px 16px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-submit-btn {
+        padding: 16px 20px;
+        min-height: 48px;
+    }
+}
+
+
+/* ==================================================
+   RESPONSIVE — VERY SMALL MOBILE (360px and below)
+   ================================================== */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .header-logo-img {
+        height: 36px;
+        max-height: 36px;
+    }
+
+    .about-editorial-heading {
+        font-size: 1.45rem;
+    }
+
+    .project-title {
+        font-size: 1.1rem;
+    }
+
+    .tekt-cta-title {
+        font-size: 1.5rem;
+    }
+
+    .client-cell {
+        min-height: 130px;
+        padding: 14px 6px 12px;
     }
 }
 
@@ -2829,7 +3174,7 @@ textarea.form-input {
     height: 100%;
     padding-left: 24px;
     padding-right: 24px;
-    font-family: "Helvetica";
+    font-family: "Helvetica !important";
     font-size: 18px;
     font-weight: 600;
     line-height: 1;
@@ -2899,7 +3244,7 @@ textarea.form-input {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .projects-editorial-panel {
         display: none !important;
     }
@@ -2919,11 +3264,13 @@ textarea.form-input {
     justify-content: center;
     gap: 8px;
     cursor: pointer;
+    padding: 4px 8px;
 }
 
 .mobile-dropdown-arrow {
     font-size: 16px;
     transition: transform 250ms ease;
+    display: inline-block;
 }
 
 .mobile-nav-has-dropdown.open .mobile-dropdown-arrow {
@@ -2934,10 +3281,13 @@ textarea.form-input {
     list-style: none;
     display: none;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 16px;
-    padding-left: 0;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 12px 0 6px;
     text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    width: 100%;
 }
 
 .mobile-nav-has-dropdown.open .mobile-dropdown-menu {
@@ -2945,13 +3295,15 @@ textarea.form-input {
 }
 
 .mobile-drawer-sublink {
-    font-family: "Helvetica";
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
+    font-family: "Helvetica !important";
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-secondary);
     text-decoration: none;
+    padding: 6px 14px;
+    display: inline-block;
     transition: color 200ms ease;
 }
 
@@ -2989,7 +3341,7 @@ textarea.form-input {
     background: transparent;
     border: none;
     outline: none;
-    font-family: "Helvetica";
+    font-family: "Helvetica !important";
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -3050,6 +3402,7 @@ textarea.form-input {
     margin-top: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -3460,7 +3813,8 @@ textarea.form-input {
    ========================================================================== */
 
 .about-story-page {
-    padding-top: 68px; /* Offset fixed header */
+    padding-top: 68px;
+    /* Offset fixed header */
     padding-bottom: 0;
 }
 
@@ -3500,7 +3854,7 @@ textarea.form-input {
 }
 
 .story-hero-title {
-    font-size: clamp(2.75rem, 6.5vw, 5.75rem);
+    font-size: clamp(1.85rem, 6.5vw, 5.75rem);
     font-weight: 700;
     line-height: 0.98;
     letter-spacing: -0.04em;
@@ -4201,7 +4555,8 @@ textarea.form-input {
    ========================================================================== */
 
 .services-page-main {
-    padding-top: 68px; /* Fixed navbar height */
+    padding-top: 68px;
+    /* Fixed navbar height */
     padding-bottom: 0;
     background-color: var(--bg-primary);
 }
@@ -4254,7 +4609,8 @@ textarea.form-input {
 }
 
 .service-bg-grey {
-    background-color: var(--bg-secondary); /* #F5F5F5 */
+    background-color: var(--bg-secondary);
+    /* #F5F5F5 */
 }
 
 /* 3. Asymmetrical Editorial Layouts */
@@ -4339,7 +4695,8 @@ textarea.form-input {
     max-height: 480px;
     object-fit: cover;
     display: block;
-    filter: none !important; /* STRICT NATURAL COLOR */
+    filter: none !important;
+    /* STRICT NATURAL COLOR */
     -webkit-filter: none !important;
     transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -4409,7 +4766,8 @@ textarea.form-input {
    ========================================================================== */
 
 .projects-page-main {
-    padding-top: 68px; /* Fixed navbar height */
+    padding-top: 68px;
+    /* Fixed navbar height */
     padding-bottom: 96px;
     background-color: #FFFFFF;
 }
@@ -4439,7 +4797,7 @@ textarea.form-input {
 
 .projects-hero-title {
     font-family: "Helvetica" !important;
-    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-size: clamp(1.85rem, 6vw, 5rem);
     font-weight: 700;
     line-height: 0.98;
     letter-spacing: -0.04em;
@@ -4918,4 +5276,3 @@ textarea.form-input {
         font-size: 1rem;
     }
 }
-

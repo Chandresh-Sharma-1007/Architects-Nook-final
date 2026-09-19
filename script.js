@@ -203,6 +203,12 @@ function initArchitecturalHeader() {
       document.body.classList.remove('mobile-drawer-open');
     });
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('mobile-drawer-open')) {
+      document.body.classList.remove('mobile-drawer-open');
+    }
+  });
 }
 
 /* ==========================================================================
