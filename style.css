@@ -1195,51 +1195,94 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   /* 7. Sub-meta: ARCHITECTURE / INTERIORS / PLANNING */
+  /* 7. Sub-meta: ARCHITECTURE / INTERIORS / PLANNING */
   .hero-sub-meta {
     order: 3;
     font-family: "Helvetica" !important;
-    font-size: clamp(0.85rem, 2.9vw, 0.95rem);
-    letter-spacing: clamp(0.12em, 0.5vw, 0.2em);
+
+    /* Responsive size for narrow + wide phones */
+    font-size: clamp(0.62rem, 2.6vw, 0.95rem);
+
+    /* Reduce spacing automatically on narrow phones */
+    letter-spacing: clamp(0.04em, 0.25vw, 0.12em);
+
     font-weight: 400;
     color: #222222;
+
     display: flex;
     align-items: center;
-    gap: clamp(8px, 2.2vw, 14px);
+
+    /* Responsive space around / */
+    gap: clamp(4px, 1.4vw, 10px);
+
+    /* Must remain one line */
     white-space: nowrap;
+
+    /* Never exceed mobile container */
+    width: 100%;
+    max-width: 100%;
+
     margin-bottom: clamp(6px, 1.2vh, 12px);
   }
 
   .hero-sub-meta .meta-sep {
+    flex-shrink: 0;
     color: #b0b0b0;
     font-weight: 300;
   }
 
   /* 8. 3D Architectural Massing Model — Center visual anchor */
-  .hero-visual-side {
+
+ .hero-visual-side {
     order: 4;
     flex: 1 1 auto;
     min-height: 0;
     height: auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     position: relative;
     width: 100%;
     z-index: 2;
+
+    /* Keep complete 3D composition visible */
     overflow: visible;
-  }
+}
 
   .scene-container {
     position: relative;
-    width: 320px;
-    height: 320px;
+
+    width: min(320px, 88vw);
+    height: min(320px, 88vw);
     max-width: 100%;
-    transform: scale(clamp(0.64, 0.78 * (100dvh / 820), 0.78)) translateY(6px);
+    /* Responsive model size */
+   transform: scale(0.52) translateY(8px);
     transform-origin: center center;
     display: flex;
     align-items: center;
     justify-content: center;
+
     pointer-events: none;
+  }
+
+  /* Extra protection for narrow mobile screens */
+@media (max-width: 390px) {
+    .scene-container {
+        width: 290px;
+        height: 290px;
+        transform: scale(0.52) translateY(8px);
+    }
+}
+
+  /* Very narrow phones */
+  @media (max-width: 350px) {
+    .scene-container {
+      width: 270px;
+      height: 270px;
+      transform: scale(0.56) translateY(24px);
+    }
   }
 
   /* 9. Bottom Location: VAPI, INDIA ─────── */
@@ -1276,10 +1319,10 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 /* Extra short mobile screens (landscape or compact devices like iPhone SE) */
-@media (max-width: 768px) and (max-height: 660px) {
+@media (max-width: 768px) and (max-height: 700px) {
   .hero-section {
     padding-top: calc(58px + 4px);
-    padding-bottom: 10px;
+    padding-bottom: 0px;
   }
 
   .hero-eyebrow {
@@ -1301,7 +1344,7 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   .scene-container {
-    transform: scale(0.56) translateY(2px);
+    transform: scale(0.56) translateY(65px);
   }
 
   .hero-location {
@@ -2879,11 +2922,10 @@ textarea.form-input {
     margin-bottom: var(--space-32);
   }
 
-  #about,
-  #about.about-editorial-section {
-    padding: clamp(3.5rem, 8vw, 5rem) 0;
-  }
-
+#about,
+#about.about-editorial-section {
+    padding: 2rem 0 3rem;
+}
   .about-editorial-grid {
     display: flex;
     flex-direction: column;
@@ -2892,24 +2934,24 @@ textarea.form-input {
 
   .about-editorial-heading {
     width: 100%;
-    font-size: clamp(1.65rem, 5.5vw, 2.25rem);
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
     line-height: 1.15;
-  }
-
+    margin-bottom: 0.5rem;
+}
   .about-editorial-content {
     width: 100%;
   }
 
   .about-lead-paragraph {
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 1.25rem;
   }
 
   .about-supporting-paragraph,
   .about-scope-paragraph {
-    font-size: 0.9375rem;
-    line-height: 1.65;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 1.25rem;
   }
 
