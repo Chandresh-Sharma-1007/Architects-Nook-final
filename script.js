@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAboutEditorialAnimation();
   initServicesAccordion();
   initTEKTProcessStepper();
+  initSignatureMobileCarousel(); /* Mobile-only carousel for Signature Works */
   initBlueprintScrollAnimation();
   initScrollReveals();
   initSmoothScroll();
@@ -1796,4 +1797,177 @@ function initHeroSection() {
       setTimeout(playHeroEntrance, 1200);
     }
   }
+}
+
+/* ==========================================================================
+   SIGNATURE WORKS — MOBILE CAROUSEL ONLY
+   Activates only at max-width: 768px
+   Does NOT modify or interact with the desktop initTEKTProcessStepper()
+   ========================================================================== */
+function initSignatureMobileCarousel() {
+  const carousel = document.querySelector('.signature-mobile-carousel');
+  if (!carousel) return;
+
+  // Only initialize on mobile
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
+  if (!mobileQuery.matches) return;
+
+  const projectNames = [
+    'BLUE STAR',
+    'SUNSHINE RESORT',
+    'PARAM PACKAGING',
+    'NAV GRAH TEMPLE',
+    'MOHINI BUNGLOW'
+  ];
+
+  const images = carousel.querySelectorAll('.signature-mobile-image');
+  const dots = carousel.querySelectorAll('.signature-mobile-dot');
+  const projectNameEl = document.getElementById('signature-mobile-project-name');
+  const prevBtn = document.getElementById('signature-mobile-prev-btn');
+  const nextBtn = document.getElementById('signature-mobile-next-btn');
+  const imageWrap = document.getElementById('signature-mobile-image-wrap');
+
+  if (!images.length || !dots.length || !projectNameEl || !prevBtn || !nextBtn) return;
+
+  const totalSlides = images.length;
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  let isTransitioning = false;
+  const AUTOPLAY_INTERVAL = 4500;
+  const TRANSITION_DURATION = 600;
+
+  function goToSlide(index) {
+    if (isTransitioning || index === currentIndex) return;
+    isTransitioning = true;
+
+    // Fade out current image
+    images[currentIndex].classList.remove('active');
+
+    // Transition project name
+    projectNameEl.classList.add('transitioning');
+
+    // After a short delay, update the name and fade in new image
+    setTimeout(function () {
+      projectNameEl.textContent = projectNames[index];
+      projectNameEl.classList.remove('transitioning');
+    }, 250);
+
+    // Fade in new image
+    images[index].classList.add('active');
+
+    // Update dots
+    dots[currentIndex].classList.remove('active');
+    dots[currentIndex].setAttribute('aria-selected', 'false');
+    dots[index].classList.add('active');
+    dots[index].setAttribute('aria-selected', 'true');
+
+    currentIndex = index;
+
+    // Allow next transition after the crossfade completes
+    setTimeout(function () {
+      isTransitioning = false;
+    }, TRANSITION_DURATION);
+  }
+
+  function nextSlide() {
+    var next = (currentIndex + 1) % totalSlides;
+    goToSlide(next);
+  }
+
+  function prevSlide() {
+    var prev = (currentIndex - 1 + totalSlides) % totalSlides;
+    goToSlide(prev);
+  }
+
+  function resetAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextSlide, AUTOPLAY_INTERVAL);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  // Arrow controls
+  nextBtn.addEventListener('click', function () {
+    nextSlide();
+    resetAutoplay();
+  });
+
+  prevBtn.addEventListener('click', function () {
+    prevSlide();
+    resetAutoplay();
+  });
+
+  // Dot controls
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      var index = parseInt(dot.getAttribute('data-index'), 10);
+      if (index !== currentIndex) {
+        goToSlide(index);
+        resetAutoplay();
+      }
+    });
+  });
+
+  // Touch swipe support
+  var touchStartX = 0;
+  var touchEndX = 0;
+  var touchStartY = 0;
+  var touchEndY = 0;
+  var isSwiping = false;
+
+  if (imageWrap) {
+    imageWrap.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      isSwiping = true;
+    }, { passive: true });
+
+    imageWrap.addEventListener('touchend', function (e) {
+      if (!isSwiping) return;
+      isSwiping = false;
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+
+      var diffX = touchStartX - touchEndX;
+      var diffY = Math.abs(touchStartY - e.changedTouches[0].screenY);
+
+      // Only register horizontal swipes (threshold 50px, and more horizontal than vertical)
+      if (Math.abs(diffX) > 50 && Math.abs(diffX) > diffY) {
+        if (diffX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        resetAutoplay();
+      }
+    }, { passive: true });
+  }
+
+  // Pause autoplay when tab is not visible
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      stopAutoplay();
+    } else {
+      if (mobileQuery.matches) {
+        resetAutoplay();
+      }
+    }
+  });
+
+  // Stop carousel when resized above mobile breakpoint
+  mobileQuery.addEventListener('change', function (e) {
+    if (!e.matches) {
+      stopAutoplay();
+    } else {
+      resetAutoplay();
+    }
+  });
+
+  // Start autoplay
+  resetAutoplay();
 }

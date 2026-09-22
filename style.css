@@ -1720,24 +1720,28 @@ body.mobile-drawer-open #mobile-drawer {
   padding: 0;
 }
 
+/* Individual service detail */
 .service-item-entry {
-  counter-increment: service-item-counter;
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 8px;
-  font-family: "Helvetica" !important;
-  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
-  font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: -0.005em;
-  color: var(--text-secondary);
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    gap: 8px;
+    font-family: "Helvetica" !important;
+    font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    color: var(--text-secondary);
 }
 
+/* Minimal dot instead of numbered list */
 .service-item-entry::before {
-  content: counter(service-item-counter) ".";
-  font-family: "Helvetica" !important;
-  font-weight: 700;
-  color: var(--text-primary);
+    content: "";
+    width: 4px;
+    height: 4px;
+    background-color: var(--text-primary);
+    border-radius: 50%;
+    align-self: start;
+    margin-top: 0.68em;
 }
 
 /* Responsive Rules for Services Section */
@@ -1759,7 +1763,7 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   .services-editorial-heading {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
+     font-size: clamp(1.9rem, 6.5vw, 2.6rem);
   }
 
   .service-accordion-trigger {
@@ -1769,11 +1773,11 @@ body.mobile-drawer-open #mobile-drawer {
 
   .service-accordion-num {
     width: 1.75rem;
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 
   .service-accordion-title {
-    font-size: 1.25rem;
+     font-size: 1.4rem;
   }
 
   .service-accordion-body {
@@ -1783,9 +1787,10 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   .service-item-entry {
-    font-size: 0.9375rem;
-    grid-template-columns: 20px 1fr;
-    gap: 6px;
+    font-size: 1.1rem;
+        grid-template-columns: 20px 1fr;
+        gap: 6px;
+        font-weight: 500;
   }
 }
 
@@ -3022,50 +3027,132 @@ textarea.form-input {
     margin-bottom: var(--space-48);
   }
 
-  /* TEKT CTA Section */
-  .tekt-cta-section {
-    padding: var(--space-64) 0;
+/* ==========================================================
+   TEKT CTA / OUR WORK — MOBILE ONLY
+   ========================================================== */
+
+.tekt-cta-section {
+  padding: var(--space-64) 0;
+}
+
+.tekt-cta-box {
+  padding: 32px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* OUR WORK. */
+.tekt-cta-title {
+  font-size: clamp(2.25rem, 10vw, 2.75rem);
+  line-height: 1.05;
+}
+
+/* A CLOSER LOOK AT */
+.tekt-cta-label {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  letter-spacing: 0.18em;
+}
+
+/* Description paragraph */
+.tekt-cta-text {
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+/* Portfolio Button */
+.tekt-cta-btn {
+  width: 100%;
+  min-height: 60px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 32px;
+  padding: 18px 20px;
+
+  font-size: 0.9rem;
+  text-align: center;
+}
+  /* ==========================================================
+   FOOTER — MOBILE ONLY
+   ========================================================== */
+
+#footer {
+  padding: 72px 24px 32px;
+}
+
+/* Main footer content */
+.footer-top {
+  padding-bottom: 48px;
+  margin-bottom: 28px;
+}
+
+/* ARCHITECTS' NOOK */
+.footer-brand {
+  font-size: 1.5rem;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+/* Bottom copyright + DemuRup */
+.footer-bottom {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+/* Footer normal text — slightly stronger on mobile */
+#footer p,
+#footer a,
+#footer li,
+#footer address {
+  font-weight: 600;
+  font-family: "Helvetica" !important;
+}
+}
+
+/* ==========================================================
+   FLAGSHIP PROJECTS — MOBILE TYPOGRAPHY ONLY
+   Only increases text size. No layout changes.
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+  /* "ILLUSTRIOUS ARCHIVES 1969 — 2026" */
+  #projects .mono-meta {
+    font-size: 1rem; /* 16px */
+    line-height: 1.3;
+    font-family: "Helvetica" !important;
   }
 
-  .tekt-cta-box {
-    padding: var(--space-40) var(--space-24);
+  /* COMMERCIAL / RESIDENTIAL / etc. */
+  #projects .project-category {
+    font-size: 0.9375rem; /* 15px */
+    line-height: 1.3;
+    font-family: "Helvetica" !important;
+    
   }
 
-  .tekt-cta-title {
-    font-size: clamp(1.75rem, 5.5vw, 2.5rem);
+  /* MAIN PROJECT NAME */
+  #projects .project-title {
+    font-size: 1.375rem; /* 22px */
+    line-height: 1.18;
+    font-family: "Helvetica" !important;
   }
 
-  .tekt-cta-btn {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    display: inline-flex;
-    padding: 16px 24px;
+  /* DAMAN, INDIA / VAPI, GUJARAT, INDIA */
+  #projects .project-location {
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.35;
+    font-family: "Helvetica" !important;
   }
 
-  /* Footer Section */
-  #footer {
-    padding: var(--space-64) 0 var(--space-32);
-  }
-
-  .footer-top {
-    padding-bottom: var(--space-40);
-    margin-bottom: var(--space-32);
-  }
-
-  .footer-brand {
-    font-size: 1.25rem;
-    letter-spacing: 0.18em;
-    margin-bottom: var(--space-16);
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    font-size: 0.75rem;
-    line-height: 1.5;
-  }
 }
 
 /* ==================================================
@@ -3826,25 +3913,116 @@ textarea.form-input {
   transform: scale(1.3);
 }
 
+/* ==========================================================
+   BLUEPRINT TO REALITY — MOBILE ONLY
+   Desktop layout and animation remain unchanged
+   ========================================================== */
+
 @media (max-width: 768px) {
+
+  /* Full mobile scroll-trigger viewport */
+  .bp-sticky-container {
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* Remove desktop spacing on mobile */
+  .bp-3d-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  /* Tall mobile architectural canvas */
   .bp-card-frame {
-    aspect-ratio: 4 / 3;
-  }
-
-  .bp-text-overlay {
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
+    width: 100%;
     max-width: none;
-    padding: 16px 20px;
+    height: 100svh;
+    aspect-ratio: auto;
+
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
+  /* All animation layers fill the mobile canvas */
+  .blueprint-layer {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Give blueprint drawings usable space on narrow screens */
+  #bp-layer-1,
+  #bp-layer-2 {
+    padding: 20px;
+  }
+
+  .bp-svg-element {
+    width: 100%;
+    height: 100%;
+  }
+
+.bp-img-element {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+  /* Keep scan animation intact */
+  .bp-scanline {
+    width: 2px;
+  }
+
+  /* Information card */
+  .bp-text-overlay {
+    left: 20px;
+    right: 20px;
+    bottom: clamp(72px, 9svh, 95px);
+
+    max-width: none;
+    padding: 18px 20px;
+
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #d9d9d9;
+    backdrop-filter: blur(8px);
+  }
+
+  /* Small architectural label */
+  .bp-meta-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    margin-bottom: 7px;
+  }
+
+  /* Main phase heading */
   .bp-heading {
-    font-size: 1.25rem;
+    font-size: clamp(1.15rem, 5vw, 1.4rem);
+    line-height: 1.2;
   }
 
+  /* Phase description */
+  .bp-desc {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  /* Phase navigation dots */
   .bp-nav-dots {
-    right: 16px;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 14px;
+  }
+
+  .bp-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .bp-dot.active {
+    transform: scale(1.35);
   }
 }
 
@@ -5378,5 +5556,187 @@ textarea.form-input {
 
   .dossier-description-p {
     font-size: 1rem;
+  }
+}
+
+/* =========================================
+   SIGNATURE WORKS — MOBILE CAROUSEL ONLY
+   Desktop default: hidden
+   ========================================= */
+.signature-mobile-carousel {
+  display: none;
+}
+
+/* =========================================
+   SIGNATURE WORKS — MOBILE CAROUSEL STYLES
+   Applies at 768px and below
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Hide the existing desktop Signature Works presentation on mobile */
+  #process > .container > .reveal-item:first-child {
+    display: none;
+  }
+
+  #process .process-layout {
+    display: none !important;
+  }
+
+  /* Show the mobile carousel */
+  .signature-mobile-carousel {
+    display: block;
+  }
+
+  /* --- Heading --- */
+  .signature-mobile-header {
+    margin-bottom: 0;
+  }
+
+  .signature-mobile-heading {
+    font-family: var(--font-family);
+    font-size: clamp(1.5rem, 6vw, 1.85rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  /* --- Divider --- */
+  .signature-mobile-divider {
+    width: 48px;
+    height: 1px;
+    background-color: var(--border-color);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* --- Project Name --- */
+  .signature-mobile-project {
+    font-family: var(--font-family);
+    font-size: clamp(1rem, 4.2vw, 1.15rem);
+font-weight: 700;
+letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.3;
+    min-height: 1.3em;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .signature-mobile-project.transitioning {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  /* --- Image Stage --- */
+  .signature-mobile-image-wrap {
+    position: relative;
+    width: 100%;
+    height: clamp(330px, 105vw, 430px);
+    overflow: hidden;
+    background-color: var(--bg-surface);
+  }
+
+  .signature-mobile-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .signature-mobile-image.active {
+    opacity: 1;
+  }
+
+  /* --- Pagination Dots --- */
+  .signature-mobile-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  .signature-mobile-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background-color: var(--border-color);
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* Extended touch target */
+  .signature-mobile-dot::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    right: -16px;
+    bottom: -16px;
+  }
+
+  .signature-mobile-dot.active {
+    background-color: var(--text-primary);
+  }
+
+  /* --- Navigation Controls --- */
+  .signature-mobile-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 0;
+  }
+
+  .signature-mobile-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: border-color 0.25s ease, color 0.25s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+  }
+
+  .signature-mobile-nav-btn:active {
+    border-color: var(--text-primary);
+  }
+
+  .signature-mobile-nav-btn svg {
+    display: block;
+    pointer-events: none;
+  }
+}
+
+/* --- Reduced Motion Accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+  .signature-mobile-image {
+    transition: none !important;
+  }
+
+  .signature-mobile-project {
+    transition: none !important;
   }
 }
