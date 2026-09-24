@@ -147,6 +147,7 @@
            CATEGORY FILTER BAR (NON-STICKY, NATURAL DOCUMENT FLOW)
            ================================================================ -->
       <nav class="projects-category-bar reveal-item" aria-label="Project Category Filter">
+        <!-- Desktop Horizontal Category Tabs (Preserved, Hidden on Mobile) -->
         <div class="category-tabs-container">
           <button type="button" class="cat-filter-btn active" data-category-target="all">ALL</button>
           <button type="button" class="cat-filter-btn" data-category-target="commercial">COMMERCIAL</button>
@@ -155,6 +156,63 @@
           <button type="button" class="cat-filter-btn" data-category-target="institutional">INSTITUTIONAL</button>
           <button type="button" class="cat-filter-btn" data-category-target="interior">INTERIOR</button>
           <button type="button" class="cat-filter-btn" data-category-target="religious">RELIGIOUS</button>
+        </div>
+
+        <!-- Mobile Architectural Category Selector (Visible on Mobile <= 768px) -->
+        <div class="mobile-category-selector" id="mobile-category-selector">
+          <button type="button" class="mobile-cat-trigger" id="mobile-cat-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Select Project Category">
+            <span class="mobile-cat-label">CATEGORY</span>
+            <span class="mobile-cat-current-wrap">
+              <span class="mobile-cat-current-val" id="mobile-cat-current-val">ALL</span>
+              <svg class="mobile-cat-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 2L6 6.5L10.5 2" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="mobile-cat-dropdown" id="mobile-cat-dropdown" role="listbox">
+            <button type="button" class="cat-filter-btn mobile-cat-option active" data-category-target="all" role="option" aria-selected="true">
+              <span class="mobile-cat-option-name">ALL</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cat-filter-btn mobile-cat-option" data-category-target="commercial" role="option" aria-selected="false">
+              <span class="mobile-cat-option-name">COMMERCIAL</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cat-filter-btn mobile-cat-option" data-category-target="residential" role="option" aria-selected="false">
+              <span class="mobile-cat-option-name">RESIDENTIAL</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cat-filter-btn mobile-cat-option" data-category-target="industrial" role="option" aria-selected="false">
+              <span class="mobile-cat-option-name">INDUSTRIAL</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cat-filter-btn mobile-cat-option" data-category-target="institutional" role="option" aria-selected="false">
+              <span class="mobile-cat-option-name">INSTITUTIONAL</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cat-filter-btn mobile-cat-option" data-category-target="interior" role="option" aria-selected="false">
+              <span class="mobile-cat-option-name">INTERIOR</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cat-filter-btn mobile-cat-option" data-category-target="religious" role="option" aria-selected="false">
+              <span class="mobile-cat-option-name">RELIGIOUS</span>
+              <svg class="mobile-cat-check" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 5.5L5 9L12.5 1.5" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
 

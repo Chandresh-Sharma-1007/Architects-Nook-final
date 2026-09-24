@@ -7678,6 +7678,23 @@ textarea.form-input {
   transform: translate(2px, -2px);
 }
 
+/* Elements dedicated to mobile layout — hidden on desktop */
+.project-card-location {
+  display: none;
+}
+
+.mobile-category-selector {
+  display: none;
+}
+
+.dossier-back-btn {
+  display: none;
+}
+
+.dossier-brand-right {
+  display: none;
+}
+
 /* 6. Same-Page Monograph Dossier Overlay */
 .project-dossier-overlay {
   position: fixed;
@@ -7901,72 +7918,627 @@ textarea.form-input {
   }
 }
 
+/* =========================================================
+   PROJECTS PAGE — MOBILE
+   ========================================================= */
+
 @media (max-width: 768px) {
+
+  /* ---------------------------------------------------------
+     PAGE LAYOUT
+     --------------------------------------------------------- */
+
   .projects-page-main {
     padding-top: 68px;
     padding-bottom: 64px;
+    background-color: #ffffff;
   }
 
   .projects-page-container {
-    padding: 0 20px;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
 
   .projects-hero-section {
-    padding: 24px 0 16px;
+    padding: 24px 0 14px !important;
+    width: 100% !important;
   }
+
+  .projects-hero-title {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: clamp(28px, 7vw, 32px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.05 !important;
+    color: #111111 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     CATEGORY FILTER BAR & DROPDOWN SELECTOR
+     --------------------------------------------------------- */
 
   .projects-category-bar {
-    margin-top: 16px;
-    margin-bottom: 32px;
-    width: 100%;
-    overflow: hidden;
+    border: none !important;
+    margin-top: 14px !important;
+    margin-bottom: 28px !important;
+    padding: 0 !important;
+    width: 100% !important;
+    position: relative !important;
+    overflow: visible !important;
+    background: transparent !important;
+    z-index: 200 !important;
   }
 
+  /* Remove horizontal scroll category presentation on mobile */
   .category-tabs-container {
-    display: flex;
-    justify-content: flex-start;
-    gap: 24px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-bottom: 2px;
+    display: none !important;
   }
 
-  .category-tabs-container::-webkit-scrollbar {
-    display: none;
+  /* Outlined compact category selector */
+  .mobile-category-selector {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    z-index: 200 !important;
   }
 
-  .cat-filter-btn {
-    padding: 12px 0;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    flex-shrink: 0;
+  .mobile-cat-trigger {
+    width: 100% !important;
+    min-height: 50px !important;
+    height: 50px !important;
+    background: #ffffff !important;
+    border: 1px solid #dddddd !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    cursor: pointer !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    transition: border-color 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
-  .cat-filter-btn.active::after {
-    bottom: 0;
+  .mobile-cat-trigger:active {
+    border-color: #111111 !important;
   }
+
+  .mobile-cat-label {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #888888 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-cat-current-wrap {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .mobile-cat-current-val {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 0.8125rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-cat-chevron {
+    display: block !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .mobile-category-selector.open .mobile-cat-chevron {
+    transform: rotate(180deg) !important;
+  }
+
+  /* Dropdown Options Menu */
+  .mobile-cat-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    border: 1px solid #dddddd !important;
+    border-top: 1px solid #eeeeee !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+    z-index: 100 !important;
+    display: none !important;
+    margin-top: -1px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-category-selector.open .mobile-cat-dropdown {
+    display: block !important;
+  }
+
+  .mobile-cat-option {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 14px 16px !important;
+    border: none !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    background: #ffffff !important;
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em !important;
+    color: #444444 !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+    position: static !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .mobile-cat-option:last-child {
+    border-bottom: none !important;
+  }
+
+  .mobile-cat-option:active,
+  .mobile-cat-option:hover {
+    background: #fafafa !important;
+    color: #111111 !important;
+  }
+
+  .mobile-cat-option.active {
+    font-weight: 700 !important;
+    color: #111111 !important;
+    background: #f5f5f5 !important;
+  }
+
+  .mobile-cat-option.active::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .mobile-cat-option .mobile-cat-check {
+    display: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-cat-option.active .mobile-cat-check {
+    display: block !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     PROJECT GRID — SINGLE COLUMN
+     --------------------------------------------------------- */
 
   .projects-grid-stream {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     PROJECT CARD — MOBILE EDITORIAL PRESENTATION
+     --------------------------------------------------------- */
+
+  .project-grid-card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    cursor: pointer !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .project-card-frame {
+    position: static !important;
+    width: 100% !important;
+    aspect-ratio: auto !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     PROJECT IMAGE (4:3 ARCHITECTURAL RATIO)
+     --------------------------------------------------------- */
+
+  .project-card-img {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    transition: none !important;
+    border: none !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     PERMANENT CONTENT BELOW IMAGE (NO HOVER OVERLAY)
+     --------------------------------------------------------- */
+
+  .project-card-overlay {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 10px 0 0 0 !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    z-index: auto !important;
+  }
+
+  .project-card-hover-content {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     PROJECT NAME & LOCATION
+     --------------------------------------------------------- */
+
+  .project-card-title {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+    text-align: left !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .project-card-location {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 4px !important;
+    padding: 0 !important;
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    color: #777777 !important;
+    text-align: left !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     HIDE VIEW BUTTON ON MOBILE
+     --------------------------------------------------------- */
+
+  .project-card-view-btn {
+    display: none !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     DISABLE ALL HOVER EFFECTS ON MOBILE
+     --------------------------------------------------------- */
+
+  .project-grid-card:hover,
+  .project-grid-card:focus-visible {
+    transform: none !important;
+    border-color: transparent !important;
+  }
+
+  .project-grid-card:hover .project-card-img,
+  .project-grid-card:focus-visible .project-card-img {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .project-grid-card:hover .project-card-overlay,
+  .project-grid-card:focus-visible .project-card-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    background: transparent !important;
+  }
+
+  .project-grid-card:hover .project-card-hover-content,
+  .project-grid-card:focus-visible .project-card-hover-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     PROJECT DOSSIER / PROJECT DETAIL — SCREEN 04 MOBILE
+     --------------------------------------------------------- */
+
+  .project-dossier-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999 !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    display: flex !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
   }
 
   .dossier-sheet-wrapper {
-    margin: 0;
-    height: 100vh;
-    border: none;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    background: #ffffff !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .dossier-top-bar {
+    padding: 14px 20px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    background: #ffffff !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .dossier-tag {
+    display: none !important;
+  }
+
+  .dossier-close-btn {
+    display: none !important;
+  }
+
+  .dossier-back-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .dossier-back-btn svg {
+    flex-shrink: 0 !important;
+  }
+
+  .dossier-brand-right {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .dossier-brand-text {
+    display: block !important;
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    text-transform: lowercase !important;
+    color: #111111 !important;
+    text-align: right !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .dossier-brand-text span {
+    font-size: 8px !important;
+    font-weight: 400 !important;
+    color: #666666 !important;
+    display: block !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  .dossier-brand-logo {
+    height: 26px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .dossier-scroll-content {
+    flex-grow: 1 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 0 56px 0 !important;
+    background: #ffffff !important;
+  }
+
+  .dossier-image-hero {
+    margin: 0 0 20px 0 !important;
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+    overflow: hidden !important;
+  }
+
+  .dossier-main-img {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    display: block !important;
+    filter: none !important;
+  }
+
+  .dossier-details-container {
+    padding: 0 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .dossier-title-row {
+    margin-bottom: 22px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+  }
+
+  .dossier-project-title {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    color: #111111 !important;
+    text-transform: uppercase !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  .dossier-location-text {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 14px !important;
+    color: #777777 !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+    margin: 0 !important;
   }
 
   .dossier-specs-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-bottom: 26px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .dossier-spec-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    width: 100% !important;
+  }
+
+  .dossier-spec-lbl {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #777777 !important;
+    margin: 0 !important;
+  }
+
+  .dossier-spec-val {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    color: #111111 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+  }
+
+  .dossier-narrative-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 8px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #e0e0e0 !important;
+  }
+
+  .dossier-section-label {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #777777 !important;
+    margin: 0 !important;
   }
 
   .dossier-description-p {
-    font-size: 1rem;
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: #333333 !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
   }
+
 }
 
 /* =========================================

@@ -622,78 +622,323 @@ function initNavbarDropdown() {
    9. PROJECTS CATEGORY FILTER & URL PARAMETER ENGINE
    ========================================================================== */
 function initProjectsCategoryFilter() {
-  const categoryTabs = document.querySelectorAll('.category-tab, .cat-filter-btn');
-  const dropdownItems = document.querySelectorAll('[data-category-link]');
+  const categoryTabs = document.querySelectorAll(
+    '.category-tab, .cat-filter-btn'
+  );
+
+  const dropdownItems = document.querySelectorAll(
+    '[data-category-link]'
+  );
+
+  const mobileCatSelector = document.getElementById(
+    'mobile-category-selector'
+  );
+
+  const mobileCatTrigger = document.getElementById(
+    'mobile-cat-trigger'
+  );
+
+  const mobileCatCurrentVal = document.getElementById(
+    'mobile-cat-current-val'
+  );
+
+
+  /* =========================================================
+     FILTER PROJECTS + SYNC ALL CATEGORY UI
+     ========================================================= */
 
   function filterCategory(targetCategory) {
-    const normCategory = (targetCategory || 'all').toLowerCase().trim();
-    const currentCards = document.querySelectorAll('.project-grid-card[data-category], .project-monograph-row[data-category], .project-editorial-entry[data-category], .project-card[data-category]');
 
-    // 1. Update Category Tabs active state
+    const normCategory = (targetCategory || 'all')
+      .toLowerCase()
+      .trim();
+
+    const currentCards = document.querySelectorAll(
+      '.project-grid-card[data-category], ' +
+      '.project-monograph-row[data-category], ' +
+      '.project-editorial-entry[data-category], ' +
+      '.project-card[data-category]'
+    );
+
+
+    /* ---------------------------------------------------------
+       1. DESKTOP CATEGORY TABS ACTIVE STATE
+       --------------------------------------------------------- */
+
     categoryTabs.forEach(tab => {
-      const tabTarget = (tab.getAttribute('data-category-target') || '').toLowerCase().trim();
+
+      const tabTarget = (
+        tab.getAttribute('data-category-target') || ''
+      )
+        .toLowerCase()
+        .trim();
+
       if (tabTarget === normCategory) {
+
         tab.classList.add('active');
+
+        if (tab.hasAttribute('aria-selected')) {
+          tab.setAttribute('aria-selected', 'true');
+        }
+
       } else {
+
         tab.classList.remove('active');
+
+        if (tab.hasAttribute('aria-selected')) {
+          tab.setAttribute('aria-selected', 'false');
+        }
+
       }
+
     });
 
-    // 2. Update Nav Dropdown active state
+
+    /* ---------------------------------------------------------
+       2. UPDATE MOBILE DROPDOWN DISPLAYED VALUE
+       --------------------------------------------------------- */
+
+    if (mobileCatCurrentVal) {
+      mobileCatCurrentVal.textContent =
+        normCategory.toUpperCase();
+    }
+
+
+    /* ---------------------------------------------------------
+       3. UPDATE MOBILE DROPDOWN ACTIVE / CHECKMARK STATE
+       --------------------------------------------------------- */
+
     dropdownItems.forEach(item => {
-      const itemCat = (item.getAttribute('data-category-link') || '').toLowerCase().trim();
-      if (itemCat === normCategory) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
+
+      const itemCat = (
+        item.getAttribute('data-category-link') || ''
+      )
+        .toLowerCase()
+        .trim();
+
+      const isActive = itemCat === normCategory;
+
+      item.classList.toggle('active', isActive);
+
+      if (item.hasAttribute('aria-selected')) {
+        item.setAttribute(
+          'aria-selected',
+          isActive ? 'true' : 'false'
+        );
       }
+
     });
 
-    // 3. Filter Project Cards
+
+    /* ---------------------------------------------------------
+       4. CLOSE MOBILE DROPDOWN
+       --------------------------------------------------------- */
+
+    if (mobileCatSelector) {
+
+      mobileCatSelector.classList.remove('open');
+
+      if (mobileCatTrigger) {
+        mobileCatTrigger.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+      }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       5. FILTER PROJECT CARDS
+       --------------------------------------------------------- */
+
     currentCards.forEach(card => {
-      const cardCategory = (card.getAttribute('data-category') || '').toLowerCase().trim();
-      if (normCategory === 'all' || cardCategory === normCategory) {
+
+      const cardCategory = (
+        card.getAttribute('data-category') || ''
+      )
+        .toLowerCase()
+        .trim();
+
+      if (
+        normCategory === 'all' ||
+        cardCategory === normCategory
+      ) {
+
         card.style.display = '';
         card.classList.remove('is-hidden');
+
       } else {
+
         card.style.display = 'none';
         card.classList.add('is-hidden');
+
       }
+
     });
+
+
+    /* Refresh GSAP ScrollTrigger if available */
 
     if (typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.refresh();
     }
   }
 
-  // Check URL query params on page load
-  const urlParams = new URLSearchParams(window.location.search);
-  const initialCat = urlParams.get('category') || 'all';
-  filterCategory(initialCat);
 
-  // Tab button click listeners
-  categoryTabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
+  /* =========================================================
+     UPDATE CATEGORY URL
+     ========================================================= */
+
+  function updateCategoryURL(category) {
+
+    const normCategory = (category || 'all')
+      .toLowerCase()
+      .trim();
+
+    const newUrl =
+      normCategory === 'all'
+        ? window.location.pathname
+        : `${window.location.pathname}?category=${encodeURIComponent(normCategory)}`;
+
+    window.history.pushState(
+      { category: normCategory },
+      '',
+      newUrl
+    );
+  }
+
+
+  /* =========================================================
+     MOBILE CATEGORY DROPDOWN OPEN / CLOSE
+     ========================================================= */
+
+  if (mobileCatTrigger && mobileCatSelector) {
+
+    mobileCatTrigger.addEventListener('click', (e) => {
+
       e.preventDefault();
-      const targetCat = tab.getAttribute('data-category-target') || 'all';
+      e.stopPropagation();
+
+      const isOpen =
+        mobileCatSelector.classList.toggle('open');
+
+      mobileCatTrigger.setAttribute(
+        'aria-expanded',
+        isOpen ? 'true' : 'false'
+      );
+
+    });
+
+
+    /* Close when clicking outside */
+
+    document.addEventListener('click', (e) => {
+
+      if (!mobileCatSelector.contains(e.target)) {
+
+        mobileCatSelector.classList.remove('open');
+
+        mobileCatTrigger.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+      }
+
+    });
+
+  }
+
+
+  /* =========================================================
+     MOBILE DROPDOWN ITEM CLICK
+     THIS WAS THE MISSING PART
+     ========================================================= */
+
+  dropdownItems.forEach(item => {
+
+    item.addEventListener('click', (e) => {
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const targetCat =
+        item.getAttribute('data-category-link') || 'all';
+
+
+      /* Filter projects + update displayed category */
+
       filterCategory(targetCat);
 
-      // Update URL without page reload
-      const newUrl = targetCat === 'all' 
-        ? window.location.pathname 
-        : `${window.location.pathname}?category=${encodeURIComponent(targetCat)}`;
-      window.history.pushState({ category: targetCat }, '', newUrl);
+
+      /* Update browser URL */
+
+      updateCategoryURL(targetCat);
+
     });
+
   });
 
-  // Handle browser back/forward history navigation
+
+  /* =========================================================
+     DESKTOP CATEGORY TAB CLICK
+     ========================================================= */
+
+  categoryTabs.forEach(tab => {
+
+    tab.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      const targetCat =
+        tab.getAttribute('data-category-target') || 'all';
+
+
+      /* Filter */
+
+      filterCategory(targetCat);
+
+
+      /* Update URL */
+
+      updateCategoryURL(targetCat);
+
+    });
+
+  });
+
+
+  /* =========================================================
+     INITIAL PAGE LOAD
+     ========================================================= */
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  const initialCat =
+    urlParams.get('category') || 'all';
+
+  filterCategory(initialCat);
+
+
+  /* =========================================================
+     BROWSER BACK / FORWARD
+     ========================================================= */
+
   window.addEventListener('popstate', () => {
-    const currentParams = new URLSearchParams(window.location.search);
-    const popCat = currentParams.get('category') || 'all';
-    filterCategory(popCat);
-  });
-}
 
+    const currentParams =
+      new URLSearchParams(window.location.search);
+
+    const popCat =
+      currentParams.get('category') || 'all';
+
+    filterCategory(popCat);
+
+  });
+
+}
 
 /* ==========================================================================
    10. AUTOMATIC CATEGORY IMAGE LOADER & DYNAMIC CARD GENERATOR (OFFICIAL ANPL PORTFOLIO)
@@ -1278,6 +1523,7 @@ function createProjectCardHTML(p, index = 0, isHomePreview = false) {
         <div class="project-card-overlay">
           <div class="project-card-hover-content">
             <h2 class="project-card-title">${p.title}</h2>
+            <div class="project-card-location">${p.location || ''}</div>
             <span class="project-card-view-btn" aria-hidden="true">
               <span>VIEW</span>
               <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1292,38 +1538,140 @@ function createProjectCardHTML(p, index = 0, isHomePreview = false) {
 }
 
 function renderDynamicProjectCards() {
-  const streamContainer = document.querySelector('.projects-grid-stream') || document.querySelector('.projects-monograph-stream') || document.querySelector('.projects-editorial-stream') || document.querySelector('.projects-grid');
+  const streamContainer =
+    document.querySelector('.projects-grid-stream') ||
+    document.querySelector('.projects-monograph-stream') ||
+    document.querySelector('.projects-editorial-stream') ||
+    document.querySelector('.projects-grid');
+
   if (!streamContainer) return;
 
   const pathname = window.location.pathname.toLowerCase();
-  const isProjectsPage = pathname.includes('projects.html');
-  const isHomePage = document.getElementById('hero') !== null || pathname.endsWith('index.html') || pathname.endsWith('/') || pathname === '';
 
-  // 1. PROJECTS PAGE: Render all 33 ANPL Portfolio Projects into the 3-column grid
+  const isProjectsPage = pathname.includes('projects.html');
+
+  const isHomePage =
+    document.getElementById('hero') !== null ||
+    pathname.endsWith('index.html') ||
+    pathname.endsWith('/') ||
+    pathname === '';
+
+
+  /* =========================================================
+     1. PROJECTS PAGE
+     Render all portfolio projects first,
+     THEN apply category from URL.
+     ========================================================= */
+
   if (isProjectsPage) {
+
     let allCardsHTML = '';
+
     PORTFOLIO_PROJECTS.forEach((project, idx) => {
       allCardsHTML += createProjectCardHTML(project, idx, false);
     });
+
+    // First insert all cards into the DOM
     streamContainer.innerHTML = allCardsHTML;
+
+
+    /* ---------------------------------------------------------
+       APPLY CURRENT CATEGORY AFTER CARDS EXIST
+       --------------------------------------------------------- */
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const selectedCategory = (
+      urlParams.get('category') || 'all'
+    ).toLowerCase().trim();
+
+
+    const projectCards = streamContainer.querySelectorAll(
+      '.project-grid-card[data-category]'
+    );
+
+
+    projectCards.forEach(card => {
+
+      const cardCategory = (
+        card.getAttribute('data-category') || ''
+      ).toLowerCase().trim();
+
+
+      if (
+        selectedCategory === 'all' ||
+        cardCategory === selectedCategory
+      ) {
+
+        // Show matching project
+        card.style.display = '';
+        card.classList.remove('is-hidden');
+
+      } else {
+
+        // Hide non-matching project
+        card.style.display = 'none';
+        card.classList.add('is-hidden');
+
+      }
+
+    });
+
   }
-  // 2. HOMEPAGE: Show 4 representative categories
+
+
+  /* =========================================================
+     2. HOMEPAGE
+     Keep existing homepage behaviour unchanged.
+     ========================================================= */
+
   else if (isHomePage) {
-    const homeProjectsGrid = document.querySelector('#projects .projects-grid') || streamContainer;
+
+    const homeProjectsGrid =
+      document.querySelector('#projects .projects-grid') ||
+      streamContainer;
+
     if (homeProjectsGrid) {
+
       let homeCardsHTML = '';
-      const categories = ['commercial', 'residential', 'industrial', 'institutional'];
-      
+
+      const categories = [
+        'commercial',
+        'residential',
+        'industrial',
+        'institutional'
+      ];
+
+
       categories.forEach((cat, idx) => {
-        const reprProject = PORTFOLIO_PROJECTS.find(p => p.category === cat) || PORTFOLIO_PROJECTS[0];
-        homeCardsHTML += createProjectCardHTML(reprProject, idx, true);
+
+        const reprProject =
+          PORTFOLIO_PROJECTS.find(
+            p => (p.category || '').toLowerCase() === cat
+          ) ||
+          PORTFOLIO_PROJECTS[0];
+
+
+        homeCardsHTML += createProjectCardHTML(
+          reprProject,
+          idx,
+          true
+        );
+
       });
 
+
       homeProjectsGrid.innerHTML = homeCardsHTML;
+
     }
+
   }
 
-  // Initialize interactive Monograph Dossier
+
+  /* =========================================================
+     INITIALIZE PROJECT DOSSIER
+     ========================================================= */
+
   initProjectDossierOverlay();
 }
 
@@ -1339,7 +1687,17 @@ function initProjectDossierOverlay() {
     overlay.innerHTML = `
       <div class="dossier-sheet-wrapper">
         <header class="dossier-top-bar">
+          <button class="dossier-back-btn" id="dossier-back-btn" aria-label="Back to Projects">
+            <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>BACK TO PROJECTS</span>
+          </button>
           <div class="dossier-tag" id="dossier-category-tag">ARCHITECTS' NOOK // PROJECT DOSSIER</div>
+          <div class="dossier-brand-right">
+            <div class="dossier-brand-text">architects' nook<br><span>private limited</span></div>
+            <img src="assets/logo.png" alt="Architects' Nook Logo" class="dossier-brand-logo">
+          </div>
           <button class="dossier-close-btn" id="dossier-close-btn" aria-label="Close Project Dossier">
             <span>CLOSE</span>
             <span style="font-size: 1.25rem; line-height: 1;">&times;</span>
@@ -1374,6 +1732,10 @@ function initProjectDossierOverlay() {
   const closeBtn = document.getElementById('dossier-close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', closeProjectDossier);
+  }
+  const backBtn = document.getElementById('dossier-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', closeProjectDossier);
   }
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeProjectDossier();
