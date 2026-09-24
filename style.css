@@ -558,30 +558,51 @@ select {
     transform 300ms ease,
     opacity 300ms ease;
 }
+/* =========================================================
+   MOBILE NAVIGATION DRAWER
+   ARCHITECTURAL / EDITORIAL STYLE
+   ========================================================= */
 
 #mobile-drawer {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+
   width: 100%;
-  height: 100%;
+  height: 100vh;
   height: 100dvh;
-  background-color: #ffffff;
+
+  background: #ffffff;
   z-index: 2000;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
+
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: max(72px, calc(env(safe-area-inset-top, 0px) + 56px)) 20px
-    max(32px, calc(env(safe-area-inset-bottom, 0px) + 20px));
+
+  /* Space for close button */
+  padding:
+  max(58px, calc(env(safe-area-inset-top, 0px) + 50px))
+  24px
+  max(32px, calc(env(safe-area-inset-bottom, 0px) + 24px));
+
+  box-sizing: border-box;
+
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 300ms ease;
+
+  transition:
+    opacity 300ms ease,
+    visibility 300ms ease;
 }
+
+
+/* =========================================================
+   DRAWER OPEN STATE
+   ========================================================= */
 
 body.mobile-drawer-open {
   overflow: hidden;
@@ -589,56 +610,765 @@ body.mobile-drawer-open {
 
 body.mobile-drawer-open #mobile-drawer {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
+  pointer-events: auto;
 }
+
+
+/* =========================================================
+   MAIN NAVIGATION LIST
+   ========================================================= */
 
 .mobile-drawer-list {
   list-style: none;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2.8vh, 28px);
-  margin: auto 0;
+  gap: 0;
+
+  margin: 0 0 0 0; /* reduced gap below X */
+
   padding: 0;
   width: 100%;
   max-width: 360px;
 }
 
+/* =========================================================
+   EACH NAVIGATION ITEM
+   ========================================================= */
+
+.mobile-drawer-list > li {
+  width: 100%;
+
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+
+/* First line at top */
+
+.mobile-drawer-list > li:first-child {
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+
+/* =========================================================
+   MAIN NAVIGATION LINKS
+   ========================================================= */
+
 .mobile-drawer-link {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 19px 0;
+
   font-family: "Helvetica";
-  font-size: clamp(1.2rem, 3.8vw, 1.45rem);
-  font-weight: 400;
+  font-size: clamp(1.35rem, 6vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+
   color: #111111;
+
   text-decoration: none;
   text-transform: uppercase;
-  padding: 6px 12px;
-  display: inline-block;
-  letter-spacing: 0.04em;
-  transition: color 200ms ease;
+
+  box-sizing: border-box;
+
+  transition:
+    opacity 200ms ease,
+    padding-left 250ms ease;
 }
+
+
+/* Desktop hover is harmless;
+   touch devices simply ignore it */
 
 .mobile-drawer-link:hover {
-  color: #000000;
+  color: #111111;
+  opacity: 0.55;
+  padding-left: 5px;
 }
 
+
+/* =========================================================
+   PROJECTS ROW / ARROW
+   ========================================================= */
+
+/*
+   Works if the arrow is inside the Projects link.
+   Example:
+   <span>PROJECTS</span>
+   <span class="mobile-project-arrow">↓</span>
+*/
+
+.mobile-project-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  margin-left: auto;
+
+  transition: transform 300ms ease;
+}
+
+
+/* Rotate arrow when Projects is open */
+
+.mobile-projects-open .mobile-project-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   PROJECTS SUBMENU
+   ========================================================= */
+
+.mobile-projects-submenu {
+  list-style: none;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  max-height: 0;
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition:
+    max-height 400ms ease,
+    opacity 300ms ease,
+    padding 300ms ease;
+}
+
+
+/* OPEN STATE */
+
+.mobile-projects-open .mobile-projects-submenu {
+  max-height: 400px;
+  opacity: 1;
+
+  padding: 0 0 16px 0;
+}
+
+
+/* PROJECT CATEGORY LINKS */
+
+.mobile-projects-submenu a {
+  display: block;
+
+  width: 100%;
+
+  padding: 8px 0 8px 18px;
+
+  font-family: "Helvetica";
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.3;
+
+  letter-spacing: 0.04em;
+
+  color: #555555;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  box-sizing: border-box;
+
+  transition:
+    color 200ms ease,
+    padding-left 200ms ease;
+}
+
+
+.mobile-projects-submenu a:hover {
+  color: #111111;
+  padding-left: 23px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
 #mobile-drawer-close {
-  position: fixed;
-  top: max(16px, env(safe-area-inset-top, 16px));
-  right: max(16px, env(safe-area-inset-right, 16px));
-  width: 44px;
-  height: 44px;
+  position: absolute;
+
+  top: max(18px, env(safe-area-inset-top, 18px));
+  right: max(20px, env(safe-area-inset-right, 20px));
+
+  width: 42px;
+  height: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.25rem;
+
+  padding: 0;
+
+  font-family: "Helvetica";
+  font-size: 1.8rem;
+  font-weight: 300;
   line-height: 1;
+
   color: #111111;
+
   background: transparent;
-  border: none;
+  border: 0;
+
   cursor: pointer;
+
   z-index: 2001;
+
+  transition:
+    opacity 200ms ease,
+    transform 250ms ease;
 }
 
+
+#mobile-drawer-close:hover {
+  opacity: 0.55;
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   MOBILE DRAWER — FINAL ARCHITECTURAL NAV
+   CSS ONLY — NO HTML CHANGES
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Main navigation list */
+  #mobile-drawer .mobile-drawer-list {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 48px 14px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    text-align: left;
+
+    box-sizing: border-box;
+  }
+
+
+  /* Every main navigation row */
+  #mobile-drawer .mobile-drawer-list > li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    text-align: left;
+
+    border-bottom: 1px solid #eeeeee;
+
+    box-sizing: border-box;
+  }
+
+
+  /* First top line */
+  #mobile-drawer .mobile-drawer-list > li:first-child {
+    border-top: 1px solid #eeeeee;
+  }
+
+
+  /* Normal links:
+     HOME / ABOUT / SERVICES / CLIENTS / CONTACT
+  */
+  #mobile-drawer .mobile-drawer-list > li > .mobile-drawer-link {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 18px 0;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+
+    letter-spacing: -0.015em;
+
+    text-align: left !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =====================================================
+     PROJECTS ROW
+     Existing HTML:
+     li.mobile-nav-has-dropdown
+       div.mobile-dropdown-header
+         a.mobile-drawer-link
+         span.mobile-dropdown-arrow
+     ===================================================== */
+
+  #mobile-drawer .mobile-nav-has-dropdown {
+    width: 100%;
+  }
+
+
+  #mobile-drawer .mobile-dropdown-header {
+    width: 100%;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+  }
+
+
+  /* PROJECTS text */
+  #mobile-drawer .mobile-dropdown-header .mobile-drawer-link {
+    display: block;
+
+    flex: 1;
+
+    width: auto;
+
+    margin: 0;
+    padding: 18px 0;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+
+    letter-spacing: -0.015em;
+
+    text-align: left !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* Existing ↓ span */
+  #mobile-drawer .mobile-dropdown-arrow {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 0.9rem;
+    line-height: 1;
+
+    color: #111111;
+
+    text-align: right;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =====================================================
+     PROJECT CATEGORY DROPDOWN
+     Keep your existing functionality
+     ===================================================== */
+
+  #mobile-drawer .mobile-dropdown-menu {
+    width: 100%;
+
+    margin: 0;
+    padding-left: 18px;
+
+    box-sizing: border-box;
+
+    text-align: left;
+  }
+
+
+  #mobile-drawer .mobile-drawer-sublink {
+    display: block;
+
+    width: 100%;
+
+    padding: 9px 0;
+
+    font-size: 0.82rem;
+    font-weight: 400;
+    line-height: 1.25;
+
+    letter-spacing: 0.04em;
+
+    text-align: left;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =====================================================
+     CLOSE BUTTON
+     ===================================================== */
+
+  #mobile-drawer-close {
+    top: 14px;
+    right: 14px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 1.45rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+}
+
+/* =========================================================
+   MOBILE DRAWER — FINAL VISUAL POLISH
+   NO HTML CHANGES
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* -----------------------------------------
+     CLOSE BUTTON — TOP LEFT
+     ----------------------------------------- */
+
+  #mobile-drawer-close {
+    position: fixed !important;
+
+    top: 18px !important;
+    left: 18px !important;
+    right: auto !important;
+
+    width: 34px !important;
+    height: 34px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    font-size: 1.55rem !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+
+    color: #111111;
+    background: transparent;
+    border: 0;
+
+    z-index: 2001;
+  }
+
+
+  /* -----------------------------------------
+     MAIN NAVIGATION
+     ----------------------------------------- */
+
+  #mobile-drawer .mobile-drawer-list {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    /* more breathing room below close button */
+    padding: 82px 14px 28px !important;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+
+  #mobile-drawer .mobile-drawer-list > li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    border-bottom: 1px solid #e8e8e8;
+
+    box-sizing: border-box;
+  }
+
+
+  #mobile-drawer .mobile-drawer-list > li:first-child {
+    border-top: 1px solid #e8e8e8;
+  }
+
+
+  /* HOME / ABOUT / SERVICES / CLIENTS / CONTACT */
+
+  #mobile-drawer
+  .mobile-drawer-list
+  > li
+  > .mobile-drawer-link {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0 !important;
+    padding: 19px 0 !important;
+
+    font-family: "Helvetica", Arial, sans-serif !important;
+
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+
+    letter-spacing: -0.025em !important;
+
+    color: #111111;
+    text-align: left !important;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =========================================
+     PROJECTS MAIN ROW
+     ========================================= */
+
+  #mobile-drawer .mobile-dropdown-header {
+    width: 100%;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box;
+  }
+
+
+  #mobile-drawer
+  .mobile-dropdown-header
+  .mobile-drawer-link {
+
+    flex: 1 1 auto;
+
+    width: auto !important;
+
+    margin: 0 !important;
+    padding: 19px 0 !important;
+
+    font-family: "Helvetica", Arial, sans-serif !important;
+
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+
+    letter-spacing: -0.025em !important;
+
+    color: #111111;
+
+    text-align: left !important;
+    text-transform: uppercase;
+
+    box-sizing: border-box;
+  }
+
+
+  /* Project arrow */
+
+  #mobile-drawer .mobile-dropdown-arrow {
+    flex: 0 0 34px;
+
+    width: 34px !important;
+    height: 34px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 1rem !important;
+    font-weight: 500;
+
+    color: #111111;
+
+    cursor: pointer;
+  }
+
+
+  /* =========================================
+     PROJECTS DROPDOWN
+     ========================================= */
+
+  #mobile-drawer .mobile-dropdown-menu {
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    /* creates deliberate hierarchy */
+    padding: 4px 0 14px 16px !important;
+
+    list-style: none;
+
+    box-sizing: border-box;
+  }
+
+
+  #mobile-drawer .mobile-dropdown-menu li {
+    width: 100%;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+  }
+
+
+  #mobile-drawer .mobile-drawer-sublink {
+    display: block;
+
+    width: 100%;
+
+    margin: 0 !important;
+    padding: 8px 0 !important;
+
+    font-family: "Helvetica", Arial, sans-serif !important;
+
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+
+    letter-spacing: 0.01em !important;
+
+    color: #555555;
+
+    text-align: left !important;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    box-sizing: border-box;
+  }
+
+
+  /* Slight emphasis on hover/touch-capable desktop testing */
+
+  #mobile-drawer .mobile-drawer-sublink:hover {
+    color: #111111;
+  }
+
+}
+
+/* =========================================================
+   PROJECTS DROPDOWN BUTTON — VISIBLE + TOUCH FRIENDLY
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  #mobile-drawer .mobile-dropdown-arrow {
+    /* Proper touch target */
+    width: 50px !important;
+    height: 32px !important;
+    flex: 0 0 38px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    /* Space around the icon */
+    margin: 0 2px 0 10px !important;
+    padding: 8px 15px !important;
+
+    /* Visible button */
+    background: #f4f4f2 !important;
+    border: 1px solid #d4d4d0 !important;
+    border-radius: 2px !important;
+
+    color: transparent !important;
+
+    position: relative;
+    cursor: pointer;
+
+    box-sizing: border-box;
+    text-align: center;
+
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+
+  /* Custom chevron */
+  #mobile-drawer .mobile-dropdown-arrow::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-right: 1.5px solid #111111;
+    border-bottom: 1.5px solid #111111;
+
+    transform: translateY(-2px) rotate(45deg);
+
+    transition: transform 0.25s ease;
+  }
+
+
+  /* Hover / desktop mobile testing */
+  #mobile-drawer .mobile-dropdown-arrow:hover {
+    background: #e9e9e6 !important;
+    border-color: #999999 !important;
+  }
+
+
+  /* Touch feedback */
+  #mobile-drawer .mobile-dropdown-arrow:active {
+    background: #ddddda !important;
+    transform: scale(0.94);
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE REFINEMENT
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  #mobile-drawer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .mobile-drawer-link {
+    font-size: clamp(1.3rem, 6.2vw, 1.6rem);
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .mobile-projects-submenu a {
+    font-size: 0.82rem;
+  }
+}
 /* ==========================================================================
    HERO SECTION & 3D ARCHITECTURAL MASSING MODEL
    ========================================================================== */
@@ -1233,7 +1963,7 @@ body.mobile-drawer-open #mobile-drawer {
 
   /* 8. 3D Architectural Massing Model — Center visual anchor */
 
- .hero-visual-side {
+  .hero-visual-side {
     order: 4;
     flex: 1 1 auto;
     min-height: 0;
@@ -1249,7 +1979,7 @@ body.mobile-drawer-open #mobile-drawer {
 
     /* Keep complete 3D composition visible */
     overflow: visible;
-}
+  }
 
   .scene-container {
     position: relative;
@@ -1258,8 +1988,10 @@ body.mobile-drawer-open #mobile-drawer {
     height: min(320px, 88vw);
     max-width: 100%;
     /* Responsive model size */
-   transform: scale(0.52) translateY(8px);
+    transform: scale(0.52) translateY(8px);
     transform-origin: center center;
+    transform-style: preserve-3d;
+    perspective: 1200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1268,13 +2000,13 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   /* Extra protection for narrow mobile screens */
-@media (max-width: 390px) {
+  @media (max-width: 390px) {
     .scene-container {
-        width: 290px;
-        height: 290px;
-        transform: scale(0.52) translateY(8px);
+      width: 290px;
+      height: 290px;
+      transform: scale(0.52) translateY(8px);
     }
-}
+  }
 
   /* Very narrow phones */
   @media (max-width: 350px) {
@@ -1722,26 +2454,26 @@ body.mobile-drawer-open #mobile-drawer {
 
 /* Individual service detail */
 .service-item-entry {
-    display: grid;
-    grid-template-columns: 12px 1fr;
-    gap: 8px;
-    font-family: "Helvetica" !important;
-    font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: -0.005em;
-    color: var(--text-secondary);
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 8px;
+  font-family: "Helvetica" !important;
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  color: var(--text-secondary);
 }
 
 /* Minimal dot instead of numbered list */
 .service-item-entry::before {
-    content: "";
-    width: 4px;
-    height: 4px;
-    background-color: var(--text-primary);
-    border-radius: 50%;
-    align-self: start;
-    margin-top: 0.68em;
+  content: "";
+  width: 4px;
+  height: 4px;
+  background-color: var(--text-primary);
+  border-radius: 50%;
+  align-self: start;
+  margin-top: 0.68em;
 }
 
 /* Responsive Rules for Services Section */
@@ -1763,7 +2495,7 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   .services-editorial-heading {
-     font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
   }
 
   .service-accordion-trigger {
@@ -1777,7 +2509,7 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   .service-accordion-title {
-     font-size: 1.4rem;
+    font-size: 1.4rem;
   }
 
   .service-accordion-body {
@@ -1788,9 +2520,9 @@ body.mobile-drawer-open #mobile-drawer {
 
   .service-item-entry {
     font-size: 1.1rem;
-        grid-template-columns: 20px 1fr;
-        gap: 6px;
-        font-weight: 500;
+    grid-template-columns: 20px 1fr;
+    gap: 6px;
+    font-weight: 500;
   }
 }
 
@@ -2425,6 +3157,11 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 @media (max-width: 768px) {
+  /* =========================================
+   CLIENTS PAGE — MOBILE
+   SAFE LOGO FIT — NO CROPPING
+   ========================================= */
+
   .clients-grid,
   #clients .clients-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2432,27 +3169,453 @@ body.mobile-drawer-open #mobile-drawer {
 
   .client-cell {
     min-height: 152px;
-    padding: 22px 16px 18px;
+    padding: 22px 12px 18px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Logo area */
   .client-logo-wrapper {
-    height: 60px;
+    width: 100%;
+    height: 64px;
     margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: visible;
   }
 
+  /* ALL LOGOS */
   .client-logo-img {
-    max-height: 44px;
-    max-width: 76%;
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: 130px !important;
+    max-height: 54px !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    margin: 0 auto !important;
+    transform: none !important;
   }
 
+  /* Logo name */
   .client-logo-name {
+    width: 100%;
     font-size: 0.625rem;
+    text-align: center;
   }
 
+  /* Text-only clients */
   .client-text-name {
     font-size: 0.8125rem;
+    text-align: center;
   }
+  /* ==================================================
+   CLIENTS PAGE — WORK CULTURE / MISSION SECTION
+   MOBILE ONLY
+   HTML UNTOUCHED / DESKTOP UNTOUCHED
+   ================================================== */
+
+  /* Grey mission statement box */
+  .clients-grid + .reveal-item {
+    margin-top: 48px !important;
+    padding: 32px 22px !important;
+  }
+
+  /* WORK CULTURE & INTEGRITY */
+  .clients-grid + .reveal-item .label-caps {
+    font-size: 0.72rem !important;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    margin-bottom: 18px !important;
+  }
+
+  /* Main mission quote */
+  .clients-grid + .reveal-item .sub-title {
+    font-size: 1.35rem !important;
+    line-height: 1.35 !important;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px !important;
+  }
+
+  /* ARCHITECTS' NOOK MISSION STATEMENT */
+  .clients-grid + .reveal-item .mono-meta {
+    font-size: 0.72rem !important;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+  }
+
+  /* Return homepage area */
+  .center-btn-wrapper {
+    margin-top: 40px !important;
+    width: 100%;
+  }
+
+  /* Return homepage button */
+  .center-btn-wrapper .btn-editorial {
+    width: 100%;
+    max-width: 100%;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;}
+
+    
+/* =========================================
+   CONTACT PAGE — MOBILE
+   ORDER: HERO → FORM → DETAILS → MAP
+   ========================================= */
+
+
+/* =========================
+   HERO
+   ========================= */
+
+
+.contact-hero {
+  padding-top: 90px !important;
+  padding-bottom: 28px !important;
+  margin: 0 !important;
+
+  min-height: 0 !important;
+  height: auto !important;
 }
+
+.contact-hero-title {
+  font-size: clamp(2.7rem, 11.5vw, 3.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+
+  margin: 0 !important;
+  padding: 0;
+}
+
+
+/* =========================
+   DIVIDER
+   ========================= */
+
+/*
+   The divider is inside its own .container.
+   Remove desktop spacing from that wrapper
+   on mobile.
+*/
+
+.contact-hero + .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.contact-divider {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* =========================
+   CONTACT SECTION
+   ========================= */
+
+.contact-page-section {
+  padding-top: 28px !important;
+  padding-bottom: 40px !important;
+  margin: 0 !important;
+
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+
+/* Remove unwanted desktop spacing */
+
+.contact-page-section > .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+
+/* =========================
+   MOBILE GRID
+   ========================= */
+
+.contact-page-section .grid-12 {
+  display: flex !important;
+  flex-direction: column !important;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  gap: 0 !important;
+}
+
+
+/* =========================
+   FORM — FIRST
+   ========================= */
+
+.contact-right {
+  order: 1 !important;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 !important;
+  padding: 24px 16px;
+
+  box-sizing: border-box;
+}
+
+#contact-enquiry-form {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+
+/* Form Groups */
+
+.form-group {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 0 24px 0;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 24px;
+}
+
+
+/* Labels */
+
+.form-label {
+  display: block;
+
+  font-size: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+
+  margin: 0 0 9px 0;
+}
+
+
+/* Inputs */
+
+.form-input {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 52px;
+
+  padding: 14px;
+
+  font-size: 1rem;
+  line-height: 1.4;
+
+  box-sizing: border-box;
+}
+
+
+/* Textarea */
+
+textarea.form-input {
+  width: 100%;
+  min-height: 150px;
+
+  resize: vertical;
+}
+
+
+/* Send Enquiry Button */
+
+.form-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 100%;
+  min-height: 58px;
+
+  margin: 0;
+  padding: 16px 18px;
+
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   CONTACT LEFT WRAPPER
+   ========================= */
+
+/*
+   display: contents lets the contact-details
+   wrapper and map participate directly in the
+   parent flex ordering.
+*/
+
+.contact-left {
+  display: contents;
+}
+
+
+/* =========================
+   CONTACT DETAILS — SECOND
+   ========================= */
+
+/*
+   Every direct child inside .contact-left
+   except the map becomes the details section.
+*/
+
+.contact-left > div:not(.map-container) {
+  order: 2 !important;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 48px;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* Contact Information Blocks */
+
+.contact-info-block {
+  margin: 0 0 34px 0;
+}
+
+.contact-info-block:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Labels */
+
+.contact-label {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+
+  margin: 0 0 12px 0;
+}
+
+
+/* Values */
+
+.contact-value {
+  font-size: 1.05rem !important;
+  line-height: 1.55 !important;
+
+  margin: 0;
+}
+
+
+/* Company Name */
+
+.contact-left
+  .contact-info-block:first-child
+  .contact-value {
+
+  font-size: 1.15rem !important;
+  line-height: 1.35 !important;
+  font-weight: 600;
+}
+
+
+/* =========================
+   GOOGLE MAP — THIRD
+   ========================= */
+
+.contact-left > .map-container {
+  order: 3 !important;
+
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: 300px;
+
+  margin: 48px 0 0 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.contact-left > .map-container iframe {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+}
+
+
+/* =========================
+   PREVENT MOBILE OVERFLOW
+   ========================= */
+
+.contact-page-section,
+.contact-page-section .container,
+.contact-page-section .grid-12,
+.contact-right,
+.contact-left > div,
+.contact-left > .map-container,
+.form-group,
+.form-input,
+.form-submit-btn {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Prevent inputs / textarea from
+   creating horizontal overflow */
+
+#contact-enquiry-form input,
+#contact-enquiry-form textarea,
+#contact-enquiry-form button {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+  }
+
 
 @media (max-width: 480px) {
   .clients-grid,
@@ -2927,10 +4090,10 @@ textarea.form-input {
     margin-bottom: var(--space-32);
   }
 
-#about,
-#about.about-editorial-section {
+  #about,
+  #about.about-editorial-section {
     padding: 2rem 0 3rem;
-}
+  }
   .about-editorial-grid {
     display: flex;
     flex-direction: column;
@@ -2942,7 +4105,7 @@ textarea.form-input {
     font-size: clamp(1.9rem, 6.5vw, 2.6rem);
     line-height: 1.15;
     margin-bottom: 0.5rem;
-}
+  }
   .about-editorial-content {
     width: 100%;
   }
@@ -3027,94 +4190,94 @@ textarea.form-input {
     margin-bottom: var(--space-48);
   }
 
-/* ==========================================================
+  /* ==========================================================
    TEKT CTA / OUR WORK — MOBILE ONLY
    ========================================================== */
 
-.tekt-cta-section {
-  padding: var(--space-64) 0;
-}
+  .tekt-cta-section {
+    padding: var(--space-64) 0;
+  }
 
-.tekt-cta-box {
-  padding: 32px 24px;
+  .tekt-cta-box {
+    padding: 32px 24px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-/* OUR WORK. */
-.tekt-cta-title {
-  font-size: clamp(2.25rem, 10vw, 2.75rem);
-  line-height: 1.05;
-}
+  /* OUR WORK. */
+  .tekt-cta-title {
+    font-size: clamp(2.25rem, 10vw, 2.75rem);
+    line-height: 1.05;
+  }
 
-/* A CLOSER LOOK AT */
-.tekt-cta-label {
-  font-size: 0.85rem;
-  line-height: 1.3;
-  letter-spacing: 0.18em;
-}
+  /* A CLOSER LOOK AT */
+  .tekt-cta-label {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    letter-spacing: 0.18em;
+  }
 
-/* Description paragraph */
-.tekt-cta-text {
-  font-size: 1.05rem;
-  line-height: 1.55;
-}
-/* Portfolio Button */
-.tekt-cta-btn {
-  width: 100%;
-  min-height: 60px;
+  /* Description paragraph */
+  .tekt-cta-text {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+  /* Portfolio Button */
+  .tekt-cta-btn {
+    width: 100%;
+    min-height: 60px;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-  margin-top: 32px;
-  padding: 18px 20px;
+    margin-top: 32px;
+    padding: 18px 20px;
 
-  font-size: 0.9rem;
-  text-align: center;
-}
+    font-size: 0.9rem;
+    text-align: center;
+  }
   /* ==========================================================
    FOOTER — MOBILE ONLY
    ========================================================== */
 
-#footer {
-  padding: 72px 24px 32px;
-}
+  #footer {
+    padding: 72px 24px 32px;
+  }
 
-/* Main footer content */
-.footer-top {
-  padding-bottom: 48px;
-  margin-bottom: 28px;
-}
+  /* Main footer content */
+  .footer-top {
+    padding-bottom: 48px;
+    margin-bottom: 28px;
+  }
 
-/* ARCHITECTS' NOOK */
-.footer-brand {
-  font-size: 1.5rem;
-  letter-spacing: 0.18em;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
+  /* ARCHITECTS' NOOK */
+  .footer-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.18em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
 
-/* Bottom copyright + DemuRup */
-.footer-bottom {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  /* Bottom copyright + DemuRup */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
 
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-/* Footer normal text — slightly stronger on mobile */
-#footer p,
-#footer a,
-#footer li,
-#footer address {
-  font-weight: 600;
-  font-family: "Helvetica" !important;
-}
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  /* Footer normal text — slightly stronger on mobile */
+  #footer p,
+  #footer a,
+  #footer li,
+  #footer address {
+    font-weight: 600;
+    font-family: "Helvetica" !important;
+  }
 }
 
 /* ==========================================================
@@ -3123,7 +4286,6 @@ textarea.form-input {
    ========================================================== */
 
 @media (max-width: 768px) {
-
   /* "ILLUSTRIOUS ARCHIVES 1969 — 2026" */
   #projects .mono-meta {
     font-size: 1rem; /* 16px */
@@ -3136,7 +4298,6 @@ textarea.form-input {
     font-size: 0.9375rem; /* 15px */
     line-height: 1.3;
     font-family: "Helvetica" !important;
-    
   }
 
   /* MAIN PROJECT NAME */
@@ -3152,7 +4313,6 @@ textarea.form-input {
     line-height: 1.35;
     font-family: "Helvetica" !important;
   }
-
 }
 
 /* ==================================================
@@ -3919,7 +5079,6 @@ textarea.form-input {
    ========================================================== */
 
 @media (max-width: 768px) {
-
   /* Full mobile scroll-trigger viewport */
   .bp-sticky-container {
     height: 100svh;
@@ -3964,12 +5123,12 @@ textarea.form-input {
     height: 100%;
   }
 
-.bp-img-element {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
+  .bp-img-element {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
   /* Keep scan animation intact */
   .bp-scanline {
     width: 2px;
@@ -4086,6 +5245,7 @@ textarea.form-input {
   padding-top: 68px;
   /* Offset fixed header */
   padding-bottom: 0;
+  font-family: "Helvetica" !important;
 }
 
 /* Full-width Canvas Section Wrappers for Background Rhythm */
@@ -4094,6 +5254,7 @@ textarea.form-input {
   padding: 100px 0;
   border-bottom: 1px solid var(--border-color);
   position: relative;
+  font-family: "Helvetica" !important;
 }
 
 .story-bg-white {
@@ -4108,6 +5269,7 @@ textarea.form-input {
 .story-hero-section {
   padding-top: 36px;
   padding-bottom: 72px;
+  font-family: "Helvetica" !important;
 }
 
 .story-hero-wrapper {
@@ -4121,6 +5283,7 @@ textarea.form-input {
   text-transform: uppercase;
   color: var(--text-secondary);
   margin-bottom: 24px;
+  font-family: "Helvetica" !important;
 }
 
 .story-hero-title {
@@ -4132,6 +5295,7 @@ textarea.form-input {
   color: var(--text-primary);
   margin-bottom: 40px;
   max-width: 1200px;
+  font-family: "Helvetica" !important;
 }
 
 .story-hero-grid {
@@ -4140,6 +5304,7 @@ textarea.form-input {
   gap: var(--space-64);
   align-items: flex-start;
   margin-top: 40px;
+  font-family: "Helvetica" !important;
 }
 
 .story-hero-lead {
@@ -4148,6 +5313,7 @@ textarea.form-input {
   line-height: 1.5;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+  font-family: "Helvetica" !important;
 }
 
 .story-hero-meta-list {
@@ -4156,6 +5322,7 @@ textarea.form-input {
   gap: 16px;
   border-left: 1px solid var(--border-color);
   padding-left: 32px;
+  font-family: "Helvetica" !important;
 }
 
 .story-meta-item {
@@ -4165,17 +5332,20 @@ textarea.form-input {
   font-size: 0.8125rem;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-family: "Helvetica" !important;
 }
 
 .story-meta-label {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  font-family: "Helvetica" !important;
   color: var(--text-secondary);
 }
 
 .story-meta-val {
   color: var(--text-primary);
+  font-family: "Helvetica" !important;
   font-weight: 400;
 }
 
@@ -4692,6 +5862,71 @@ textarea.form-input {
   background: var(--bg-secondary);
 }
 
+/* =========================================================
+   MOBILE TYPOGRAPHY — FINAL ADJUSTMENT
+   ========================================================= */
+
+/* Intro paragraph under A PRACTICE STILL EVOLVING */
+.contemporary-layout .body-large {
+  width: 100%;
+  max-width: 100%;
+
+  font-size: 1.18rem !important; /* ~18.9px */
+  line-height: 1.55 !important;
+  font-weight: 400;
+
+  letter-spacing: -0.015em;
+  color: #111111;
+  font-family: "Helvetica" !important;
+  margin: 0 0 38px 0 !important;
+}
+
+/* PEOPLE & THE FUTURE small label */
+.culture-box .label-caps {
+  font-size: 0.78rem !important;
+  line-height: 1.3;
+
+  font-weight: 500;
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+  color: #626262 !important;
+  font-family: "Helvetica" !important;
+  margin-bottom: 14px !important;
+}
+
+/* A rewarding environment where talent thrives. */
+.culture-box h3 {
+  max-width: 100%;
+
+  font-size: 1.55rem !important;
+  line-height: 1.12 !important;
+  font-weight: 700 !important;
+
+  letter-spacing: -0.035em;
+  color: #111111 !important;
+  font-family: "Helvetica" !important;
+  margin: 0 0 20px 0 !important;
+}
+
+/* PEOPLE & THE FUTURE paragraphs */
+.culture-box .body-regular {
+  width: 100%;
+  max-width: 100%;
+
+  font-size: 1.08rem !important; /* ~17.3px */
+  line-height: 1.58 !important;
+  font-weight: 400;
+
+  letter-spacing: -0.01em;
+  color: #5f5f5f;
+  font-family: "Helvetica" !important;
+  margin: 0 0 18px 0 !important;
+}
+
+.culture-box .body-regular:last-child {
+  margin-bottom: 0 !important;
+}
 /* 11. Closing Monograph Statement */
 .story-closing-wrapper {
   padding: 48px 0;
@@ -4787,26 +6022,935 @@ textarea.form-input {
   .story-section-full {
     padding: 56px 0;
   }
+  /* ==========================================================
+   ABOUT HERO — PREMIUM MOBILE LAYOUT
+   ========================================================== */
 
   .story-hero-section {
-    padding-top: 24px;
-    padding-bottom: 48px;
+    padding-top: 42px;
+    padding-bottom: 72px;
   }
 
+  .story-hero-wrapper {
+    width: 100%;
+  }
+
+  /* ARCHITECTS' NOOK // STUDIO MONOGRAPH & HERITAGE */
+  .story-hero-kicker {
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.65;
+    letter-spacing: 0.22em;
+    margin-bottom: 34px;
+    max-width: 290px;
+  }
+
+  /* Main editorial statement */
+  .story-hero-title {
+    display: flex;
+    flex-direction: column;
+    font-family: "Helvetica" !important;
+    font-size: clamp(2.7rem, 11.5vw, 3.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+
+    margin: 0 0 48px 0;
+  }
+
+  /* Intentional architectural gap between:
+   BUILT OVER GENERATIONS.
+   and
+   SHAPED BY ARCHITECTURE.
+*/
+  .story-hero-title > span {
+    display: block;
+    width: 100%;
+  }
+
+  /* REAL visible gap between the two statements */
+  .story-hero-title > span + span {
+    margin-top: 12px;
+  }
+
+  /* Paragraph area */
+  .story-hero-grid {
+    display: block;
+    width: 100%;
+  }
+
+  /* Architectural divider */
+  /* Remove divider between heading and paragraph */
+  .story-hero-grid::before {
+    display: none;
+  }
+  /* Origin story */
+  .story-hero-lead {
+    max-width: 340px;
+    font-size: 1.3rem; /* increased from 1.08rem */
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  /* =========================================================
+   ABOUT PAGE — WHERE IT BEGAN
+   FINAL MOBILE ONLY VERSION
+
+   HTML: UNTOUCHED
+   DESKTOP: UNTOUCHED
+
+   MOBILE ORDER:
+   1. TEXT
+   2. IMAGE + CAPTION
+   3. 1969 | 55+ | 2007
+   ========================================================= */
+
+  /* =========================================================
+   SECTION
+   ========================================================= */
+
+  .story-bg-grey {
+    padding-top: 72px;
+    padding-bottom: 0;
+  }
+
+  /* Mobile width only */
+
+  .story-bg-grey > .container {
+    width: 100%;
+    max-width: none;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* =========================================================
+   TITLE
+   ========================================================= */
+
+  .story-bg-grey .chapter-title {
+    width: 100%;
+    max-width: 310px;
+
+    font-size: clamp(2.9rem, 12vw, 3.5rem);
+    line-height: 0.89;
+
+    font-weight: 700;
+    letter-spacing: -0.055em;
+
+    color: #111111;
+
+    margin: 0 0 48px 0;
+  }
+
+  /* =========================================================
+   MOBILE LAYOUT
+   ========================================================= */
+
+  /*
+   origin-layout becomes the master mobile grid.
+
+   Existing HTML structure remains untouched.
+*/
+
+  .story-bg-grey .origin-layout {
+    display: grid !important;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+
+    width: 100%;
+
+    gap: 0;
+  }
+
+  /*
+   IMPORTANT:
+   On desktop origin-narrative remains a normal element.
+
+   ONLY on mobile we visually remove its wrapper so its
+   paragraphs + stats can participate in origin-layout grid.
+
+   This lets us move the image BEFORE the stats without
+   touching About.html.
+*/
+
+  .story-bg-grey .origin-narrative {
+    display: contents !important;
+  }
+
+  /* =========================================================
+   TEXT
+   ========================================================= */
+
+  /* Intro paragraph */
+
+  .story-bg-grey .origin-lead-p {
+    grid-column: 1;
+
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 1.18rem;
+    line-height: 1.55;
+
+    font-weight: 400;
+    letter-spacing: -0.018em;
+
+    color: #111111;
+
+    margin: 0 0 34px 0;
+  }
+
+  /* Supporting paragraphs */
+
+  .story-bg-grey .origin-body-p {
+    grid-column: 1;
+
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 1.05rem;
+    line-height: 1.62;
+
+    font-weight: 400;
+    letter-spacing: -0.01em;
+
+    color: #626262;
+
+    margin: 0 0 30px 0;
+  }
+
+  /* Last paragraph → space before image */
+
+  .story-bg-grey .origin-body-p:last-of-type {
+    margin-bottom: 42px;
+  }
+
+  /* =========================================================
+   IMAGE
+   ========================================================= */
+
+  /*
+   Image naturally appears after the paragraphs.
+
+   Because origin-narrative uses display: contents,
+   the stats can now be ordered AFTER this element.
+*/
+
+  .story-bg-grey .editorial-showcase-frame {
+    display: flex !important;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    background: #ffffff;
+
+    order: 2;
+  }
+
+  /* Existing image */
+
+  .story-bg-grey .editorial-showcase-img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+
+    height: auto;
+
+    aspect-ratio: 1.18 / 1;
+
+    object-fit: cover;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  /* =========================================================
+   IMAGE CAPTION
+   ========================================================= */
+
+  .story-bg-grey .editorial-showcase-caption {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    gap: 12px;
+
+    padding: 14px 10px 16px;
+
+    background: #ffffff;
+
+    font-size: 0.62rem;
+    line-height: 1.35;
+
+    font-weight: 500;
+
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+
+    color: #555555;
+  }
+
+  .story-bg-grey .editorial-showcase-caption span:first-child {
+    display: block;
+
+    max-width: 62%;
+
+    text-align: left;
+  }
+
+  .story-bg-grey .editorial-showcase-caption span:last-child {
+    display: block;
+
+    max-width: 36%;
+
+    text-align: right;
+
+    white-space: nowrap;
+  }
+
+  /* =========================================================
+   STATISTICS
+   IMAGE → STATS
+   ========================================================= */
+
+  .story-bg-grey .origin-stats-strip {
+    order: 3;
+
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(0, 1fr) !important;
+
+    grid-template-rows: auto !important;
+
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+
+    width: 100%;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.14);
+    border-bottom: 0;
+
+    background: #ffffff;
+  }
+
+  /* =========================================================
+   RESET OLD STAT POSITIONING
+   ========================================================= */
+
+  .story-bg-grey .origin-stats-strip > div {
+    display: block !important;
+
+    position: relative;
+
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 18px 9px 21px !important;
+
+    flex: none !important;
+
+    text-align: left;
+  }
+
+  /* =========================================================
+   FORCE ALL 3 STATS INTO ONE ROW
+   ========================================================= */
+
+  .story-bg-grey .origin-stats-strip > div:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .story-bg-grey .origin-stats-strip > div:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .story-bg-grey .origin-stats-strip > div:nth-child(3) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  /* =========================================================
+   VERTICAL DIVIDERS
+   ========================================================= */
+
+  .story-bg-grey .origin-stats-strip > div:nth-child(1)::after,
+  .story-bg-grey .origin-stats-strip > div:nth-child(2)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 17px;
+    right: 0;
+
+    width: 1px;
+    height: 48px;
+
+    background: rgba(0, 0, 0, 0.14);
+  }
+
+  /* No divider after 2007 */
+
+  .story-bg-grey .origin-stats-strip > div:nth-child(3)::after {
+    content: none !important;
+  }
+
+  /* =========================================================
+   STAT NUMBERS
+   ========================================================= */
+
+  .story-bg-grey .origin-stat-num {
+    font-size: 1.75rem;
+    line-height: 0.95;
+
+    font-weight: 700;
+    letter-spacing: -0.045em;
+
+    color: #111111;
+
+    margin: 0 0 8px 0;
+  }
+
+  /* =========================================================
+   STAT LABELS
+   ========================================================= */
+
+  .story-bg-grey .origin-stat-lbl {
+    width: 100%;
+    max-width: none !important;
+
+    font-size: 0.52rem;
+    line-height: 1.3;
+
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: #555555;
+
+    white-space: normal;
+  }
   .vision-box,
   .mission-box {
     padding: 32px 20px;
   }
 
-  .process-story-grid,
-  .geo-cards-grid {
+  /* =========================================================
+   ABOUT PAGE — A PRACTICE STILL EVOLVING
+   MOBILE ONLY
+   HTML UNTOUCHED / DESKTOP UNTOUCHED
+   ========================================================= */
+
+  /* ---------------------------------------------------------
+   KEEP OTHER PROCESS GRID SINGLE COLUMN
+   --------------------------------------------------------- */
+
+  .process-story-grid {
     grid-template-columns: 1fr;
   }
 
-  .timeline-row {
-    grid-template-columns: 1fr;
+  /* ---------------------------------------------------------
+   MAIN SECTION LAYOUT
+   --------------------------------------------------------- */
+
+  .contemporary-layout {
+    display: block;
+    width: 100%;
+  }
+
+  /* ---------------------------------------------------------
+   INTRO PARAGRAPH
+   --------------------------------------------------------- */
+
+  .contemporary-layout .body-large {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.08rem !important;
+    line-height: 1.58 !important;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin-bottom: 38px !important;
+  }
+
+  /* =========================================================
+   OUR FOOTPRINT — 2 × 2 GRID
+   ========================================================= */
+
+  .geo-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
-    padding: 24px 0;
+    width: 100%;
+    margin: 0 0 30px 0;
+  }
+
+  /* ---------------------------------------------------------
+   LOCATION CARDS
+   --------------------------------------------------------- */
+
+  .geo-badge-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 145px;
+
+    padding: 20px 16px;
+
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+
+    box-shadow: none;
+    border-radius: 0;
+
+    margin: 0;
+  }
+
+  /* ---------------------------------------------------------
+   01 / 02 / 03 / 04
+   --------------------------------------------------------- */
+
+  .geo-badge-num {
+    display: block;
+
+    font-size: 0.72rem;
+    line-height: 1;
+    font-weight: 500;
+
+    letter-spacing: 0.08em;
+    color: #777777;
+
+    margin: 0 0 13px 0;
+  }
+
+  /* ---------------------------------------------------------
+   LOCATION NAME
+   --------------------------------------------------------- */
+
+  .geo-badge-name {
+    display: block;
+
+    font-size: 1.05rem;
+    line-height: 1.08;
+    font-weight: 700;
+
+    letter-spacing: -0.025em;
+    color: #111111;
+
+    margin: 0 0 7px 0;
+
+    overflow-wrap: break-word;
+  }
+
+  /* ---------------------------------------------------------
+   LOCATION DESCRIPTION
+   --------------------------------------------------------- */
+
+  .geo-badge-desc {
+    display: block;
+
+    font-size: 0.82rem;
+    line-height: 1.35;
+    font-weight: 400;
+
+    letter-spacing: -0.01em;
+    color: #666666;
+
+    margin: 0;
+  }
+
+  /* =========================================================
+   PEOPLE & THE FUTURE
+   ========================================================= */
+
+  .culture-box {
+    width: 100%;
+
+    margin: 0;
+    padding: 28px 20px 30px;
+
+    background: #f5f5f5;
+
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* PEOPLE & THE FUTURE label */
+
+  .culture-box .label-caps {
+    display: block;
+
+    font-size: 0.72rem !important;
+    line-height: 1.2;
+    font-weight: 500;
+
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    color: #626262 !important;
+
+    margin-bottom: 14px !important;
+  }
+
+  /* Main culture heading */
+
+  .culture-box h3 {
+    max-width: 100%;
+
+    font-size: 1.5rem !important;
+    line-height: 1.08 !important;
+    font-weight: 700 !important;
+
+    letter-spacing: -0.035em;
+
+    color: #111111 !important;
+
+    margin: 0 0 20px 0 !important;
+  }
+
+  /* Culture paragraphs */
+
+  .culture-box .body-regular {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 0.98rem;
+    line-height: 1.55;
+
+    font-weight: 400;
+    letter-spacing: -0.01em;
+
+    color: #5f5f5f;
+
+    margin: 0 0 16px 0;
+  }
+
+  .culture-box .body-regular:last-child {
+    margin-bottom: 0;
+  }
+
+  /* =========================================================
+   BUILDING IMAGE
+   ========================================================= */
+
+  .contemporary-layout .editorial-showcase-frame {
+    display: block;
+
+    width: 100%;
+
+    margin: 8px 0 0 0 !important;
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* Building image */
+
+  .contemporary-layout .editorial-showcase-img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1.55 / 1;
+
+    object-fit: cover;
+
+    margin: 0;
+  }
+
+  /* =========================================================
+   IMAGE CAPTION
+   ========================================================= */
+
+  .contemporary-layout .editorial-showcase-caption {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    gap: 12px;
+
+    padding: 14px 12px 15px;
+
+    background: #ffffff;
+
+    font-size: 0.61rem;
+    line-height: 1.3;
+    font-weight: 500;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: #626262;
+  }
+
+  /* Left caption */
+
+  .contemporary-layout .editorial-showcase-caption span:first-child {
+    max-width: 65%;
+  }
+
+  /* Right caption */
+
+  .contemporary-layout .editorial-showcase-caption span:last-child {
+    text-align: right;
+    white-space: nowrap;
+  }
+  /* =========================================================
+   ABOUT PAGE — FROM 1969 TO TODAY
+   MOBILE STORY TIMELINE
+   HTML UNTOUCHED / DESKTOP UNTOUCHED
+   ========================================================= */
+
+  /* ---------- TIMELINE WRAPPER ---------- */
+
+  .timeline-track-wrap {
+    position: relative;
+
+    display: block;
+    width: 100%;
+
+    margin-top: 42px;
+    padding: 8px 0 8px 0;
+  }
+
+  /* Main continuous architectural timeline */
+
+  .timeline-track-wrap::before {
+    content: "";
+
+    position: absolute;
+
+    top: 18px;
+    bottom: 48px;
+    left: 14px;
+
+    width: 1px;
+
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  /* =========================================================
+   EACH STORY / YEAR
+   ========================================================= */
+
+  .timeline-row {
+    position: relative;
+
+    display: block !important;
+
+    width: 100%;
+
+    padding: 0 0 58px 52px;
+
+    margin: 0;
+
+    border: 0 !important;
+  }
+
+  /* Timeline milestone dot */
+
+  .timeline-row::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+    left: 9px;
+
+    width: 11px;
+    height: 11px;
+
+    background: #f3f3f3;
+    border: 1.5px solid #111111;
+    border-radius: 50%;
+
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  /* Small center point */
+
+  .timeline-row::after {
+    content: "";
+
+    position: absolute;
+
+    top: 12px;
+    left: 13px;
+
+    width: 3px;
+    height: 3px;
+
+    background: #111111;
+    border-radius: 50%;
+
+    z-index: 3;
+  }
+
+  /* =========================================================
+   YEARS
+   ========================================================= */
+
+  .timeline-year-text {
+    position: relative;
+
+    width: 100%;
+
+    margin: 0 0 15px 0;
+    padding: 0;
+
+    font-size: 1.8rem;
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -0.045em;
+
+    color: #111111;
+  }
+
+  /* =========================================================
+   STORY TEXT
+   ========================================================= */
+
+  .timeline-content-text {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.25rem;
+    line-height: 1.58;
+
+    font-weight: 400;
+
+    letter-spacing: -0.01em;
+
+    color: #626262;
+  }
+
+  /* =========================================================
+   1969 — OPENING / ORIGIN
+   Make the first milestone more important
+   ========================================================= */
+
+  .timeline-row:first-child .timeline-year-text {
+    font-size: 2.25rem;
+  }
+
+  /* Larger starting milestone */
+
+  .timeline-row:first-child::before {
+    width: 15px;
+    height: 15px;
+
+    left: 7px;
+    top: 7px;
+
+    border-width: 1.5px;
+  }
+
+  .timeline-row:first-child::after {
+    width: 3px;
+    height: 3px;
+
+    left: 13px;
+    top: 13px;
+  }
+
+  /* =========================================================
+   TODAY — DESTINATION / PRESENT
+   ========================================================= */
+
+  .timeline-row:last-child {
+    padding-bottom: 10px;
+  }
+
+  /* TODAY gets stronger visual hierarchy */
+
+  .timeline-row:last-child .timeline-year-text {
+    font-size: 2.25rem;
+    line-height: 0.95;
+
+    margin-bottom: 17px;
+  }
+
+  /* Larger final milestone */
+
+  .timeline-row:last-child::before {
+    width: 15px;
+    height: 15px;
+
+    left: 7px;
+    top: 6px;
+
+    background: #111111;
+    border-color: #111111;
+  }
+
+  /* White centre for final point */
+
+  .timeline-row:last-child::after {
+    width: 3px;
+    height: 3px;
+
+    left: 13px;
+    top: 12px;
+
+    background: #ffffff;
+  }
+
+  /* =========================================================
+   SMALL HORIZONTAL ARRIVAL LINE FOR TODAY
+   ========================================================= */
+
+  .timeline-row:last-child .timeline-year-text::after {
+    content: "";
+
+    display: inline-block;
+
+    vertical-align: middle;
+
+    width: 52px;
+    height: 1px;
+
+    margin-left: 15px;
+
+    background: rgba(0, 0, 0, 0.35);
   }
 
   .origin-stats-strip {
@@ -4823,6 +6967,272 @@ textarea.form-input {
   .story-closing-actions .btn-editorial-outline {
     width: 100%;
     text-align: center;
+  }
+
+  /* =========================================================
+   ABOUT PAGE — PHILOSOPHY / CLIENT TRUST
+   MOBILE ONLY
+
+   HTML: UNTOUCHED
+   DESKTOP: UNTOUCHED
+   ========================================================= */
+
+  /* =========================================================
+   MAIN SECTION LAYOUT
+   ========================================================= */
+
+  .philosophy-layout {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remove desktop column behaviour */
+
+  .philosophy-layout > div {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* =========================================================
+   MONUMENT QUOTE
+   ========================================================= */
+
+  .quote-monument {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(1.75rem, 7.4vw, 2.15rem);
+    line-height: 1.18;
+
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+
+    color: #111111;
+  }
+
+  /* =========================================================
+   QUOTE AUTHOR / FOUNDATIONAL CONVICTION
+   ========================================================= */
+
+  .quote-author-meta {
+    position: relative;
+
+    width: fit-content;
+    max-width: calc(100% - 34px);
+
+    margin: 30px 0 0 34px;
+    padding: 0;
+
+    font-size: 0.9rem;
+    line-height: 1.55;
+
+    font-weight: 600;
+
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+
+    color: #666666;
+  }
+
+  /* Small architectural line before attribution */
+
+  .quote-author-meta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0.72em;
+    left: -34px;
+
+    width: 22px;
+    height: 1px;
+
+    background: #222222;
+  }
+
+  /* =========================================================
+   TRUST / PURPOSE AREA
+   ========================================================= */
+
+  .trust-split-column {
+    position: relative;
+
+    display: block !important;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 62px 0 0 0;
+    padding: 0 0 8px 0;
+
+    border: 0 !important;
+  }
+
+  /* Reset desktop blocks */
+
+  .trust-split-column > div {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  /* =========================================================
+   DESIGN WITH PURPOSE
+   ========================================================= */
+
+  .trust-split-column > div:first-child {
+    padding-left: 54px;
+    padding-bottom: 58px;
+  }
+
+  /* Top horizontal architectural line */
+
+  .trust-split-column > div:first-child::before {
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+    left: 18px;
+
+    width: 28px;
+    height: 1px;
+
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  /* Vertical architectural line */
+
+  .trust-split-column > div:first-child::after {
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+    bottom: 0;
+    left: 18px;
+
+    width: 1px;
+
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  /* =========================================================
+   HEADINGS
+   ========================================================= */
+
+  .trust-block-title {
+    width: 100%;
+    max-width: 260px;
+
+    margin: 0 0 20px 0;
+
+    font-size: clamp(1.55rem, 6.5vw, 1.9rem);
+    line-height: 0.98;
+
+    font-weight: 700;
+
+    letter-spacing: -0.035em;
+
+    color: #111111;
+  }
+
+  /* =========================================================
+   BODY COPY
+   ========================================================= */
+
+  .trust-block-p {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: 1.2rem;
+    line-height: 1.58;
+
+    font-weight: 400;
+
+    letter-spacing: -0.01em;
+
+    color: #626262;
+  }
+
+  /* =========================================================
+   BUILT ON TRUST
+   ========================================================= */
+
+  .trust-split-column > div:last-child {
+    position: relative;
+
+    width: calc(100% - 54px);
+    max-width: none;
+
+    margin-left: 54px;
+
+    padding: 0 0 10px 0;
+  }
+
+  /*
+   Continue the architectural line downward,
+   but shift it to create the stepped geometry.
+*/
+
+  .trust-split-column > div:last-child::before {
+    content: "";
+
+    position: absolute;
+
+    top: -58px;
+    left: -36px;
+
+    width: 36px;
+    height: 1px;
+
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .trust-split-column > div:last-child::after {
+    content: "";
+
+    position: absolute;
+
+    top: -58px;
+    bottom: 0;
+    left: 0;
+
+    width: 1px;
+
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  /* Give second block breathing room from its vertical line */
+
+  .trust-split-column > div:last-child .trust-block-title,
+  .trust-split-column > div:last-child .trust-block-p {
+    margin-left: 28px;
+
+    width: calc(100% - 28px);
+  }
+
+  /* BUILT ON TRUST heading spacing */
+
+  .trust-split-column > div:last-child .trust-block-title {
+    margin-top: 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -5572,7 +7982,6 @@ textarea.form-input {
    Applies at 768px and below
    ========================================= */
 @media (max-width: 768px) {
-
   /* Hide the existing desktop Signature Works presentation on mobile */
   #process > .container > .reveal-item:first-child {
     display: none;
@@ -5617,14 +8026,16 @@ textarea.form-input {
   .signature-mobile-project {
     font-family: var(--font-family);
     font-size: clamp(1rem, 4.2vw, 1.15rem);
-font-weight: 700;
-letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
     margin-bottom: 20px;
     line-height: 1.3;
     min-height: 1.3em;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
   }
 
   .signature-mobile-project.transitioning {
@@ -5683,7 +8094,7 @@ letter-spacing: 0.08em;
 
   /* Extended touch target */
   .signature-mobile-dot::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -16px;
     left: -16px;
@@ -5714,7 +8125,9 @@ letter-spacing: 0.08em;
     background: transparent;
     cursor: pointer;
     color: var(--text-primary);
-    transition: border-color 0.25s ease, color 0.25s ease;
+    transition:
+      border-color 0.25s ease,
+      color 0.25s ease;
     -webkit-appearance: none;
     appearance: none;
     padding: 0;

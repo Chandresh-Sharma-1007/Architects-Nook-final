@@ -1691,36 +1691,56 @@ function initHeroSection() {
   const massingScene = document.getElementById('massing-scene');
 
   /* --------------------------------------------------
-   * 1. 3D CSS Massing Model (Refined Mouse Parallax)
+   * 1. 3D CSS Massing Model (Refined Mouse & Touch Parallax)
    * -------------------------------------------------- */
   if (massingScene && heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
+    const updateHeroOrientation = (clientX, clientY, isTouch = false) => {
       const rect = heroSection.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+      let normX, normY;
 
-      // Normalized offsets (-1 to 1)
-      const normX = Math.max(-1, Math.min(1, x / (rect.width / 2)));
-      const normY = Math.max(-1, Math.min(1, y / (rect.height / 2)));
+      if (isTouch) {
+        // Mobile / Touch calculation:
+        // 1. Calculate relative to viewport center to prevent scroll cancellation
+        // 2. Calibrated multipliers to compensate for portrait viewport and scale(0.52)
+        const halfW = (rect.width || window.innerWidth || 390) / 2;
+        const halfH = (window.innerHeight || rect.height || 844) / 2;
+        const x = clientX - (rect.left || 0) - halfW;
+        const y = clientY - halfH;
 
-      // Subtle architectural rotation (Base: Y: 35deg, X: -20deg; Range: +/-12deg H, +/-8deg V)
-      const targetRotateY = (normX * 12) + 35;
-      const targetRotateX = (-normY * 8) - 20;
+        const mobileMultiplierX = 1.8;
+        const mobileMultiplierY = 2.4;
+
+        normX = Math.max(-1, Math.min(1, (x / halfW) * mobileMultiplierX));
+        normY = Math.max(-1, Math.min(1, (y / halfH) * mobileMultiplierY));
+      } else {
+        // Desktop Mouse calculation (Preserved 100% exactly as original)
+        const x = clientX - rect.left - rect.width / 2;
+        const y = clientY - rect.top - rect.height / 2;
+
+        normX = Math.max(-1, Math.min(1, x / (rect.width / 2)));
+        normY = Math.max(-1, Math.min(1, y / (rect.height / 2)));
+      }
+
+      // Subtle architectural rotation (Base: Y: 35deg, X: -20deg)
+      const rangeY = isTouch ? 15 : 12;
+      const rangeX = isTouch ? 12 : 8;
+      const targetRotateY = (normX * rangeY) + 35;
+      const targetRotateX = (-normY * rangeX) - 20;
 
       if (typeof gsap !== 'undefined') {
         gsap.to(massingScene, {
           rotateY: targetRotateY,
           rotateX: targetRotateX,
-          duration: 0.8,
+          duration: isTouch ? 0.35 : 0.8,
           ease: 'power2.out',
           overwrite: 'auto'
         });
       } else {
         massingScene.style.transform = `rotateX(${targetRotateX}deg) rotateY(${targetRotateY}deg)`;
       }
-    });
+    };
 
-    heroSection.addEventListener('mouseleave', () => {
+    const resetHeroOrientation = () => {
       // Smoothly bounce back to base default angle
       if (typeof gsap !== 'undefined') {
         gsap.to(massingScene, {
@@ -1732,7 +1752,28 @@ function initHeroSection() {
       } else {
         massingScene.style.transform = 'rotateX(-20deg) rotateY(35deg)';
       }
+    };
+
+    // Desktop Mouse Parallax (Preserved exactly as existing)
+    heroSection.addEventListener('mousemove', (e) => {
+      updateHeroOrientation(e.clientX, e.clientY, false);
     });
+
+    heroSection.addEventListener('mouseleave', () => {
+      resetHeroOrientation();
+    });
+
+    // Mobile / Touch Parallax (Coexists seamlessly with natural vertical scrolling)
+    const handleTouchMove = (e) => {
+      if (e.touches && e.touches.length > 0) {
+        updateHeroOrientation(e.touches[0].clientX, e.touches[0].clientY, true);
+      }
+    };
+
+    heroSection.addEventListener('touchstart', handleTouchMove, { passive: true });
+    heroSection.addEventListener('touchmove', handleTouchMove, { passive: true });
+    heroSection.addEventListener('touchend', resetHeroOrientation, { passive: true });
+    heroSection.addEventListener('touchcancel', resetHeroOrientation, { passive: true });
   }
 
   /* --------------------------------------------------
