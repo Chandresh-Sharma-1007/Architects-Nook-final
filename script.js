@@ -622,12 +622,16 @@ function initNavbarDropdown() {
    9. PROJECTS CATEGORY FILTER & URL PARAMETER ENGINE
    ========================================================================== */
 function initProjectsCategoryFilter() {
-  const categoryTabs = document.querySelectorAll(
-    '.category-tab, .cat-filter-btn'
+  const desktopCategoryTabs = document.querySelectorAll(
+    '.category-tabs-container .cat-filter-btn, .category-tab'
   );
 
-  const dropdownItems = document.querySelectorAll(
-    '[data-category-link]'
+  const desktopNavItems = document.querySelectorAll(
+    '.editorial-panel-link[data-category-link]'
+  );
+
+  const mobileCategoryOptions = document.querySelectorAll(
+    '.mobile-cat-option'
   );
 
   const mobileCatSelector = document.getElementById(
@@ -665,7 +669,7 @@ function initProjectsCategoryFilter() {
        1. DESKTOP CATEGORY TABS ACTIVE STATE
        --------------------------------------------------------- */
 
-    categoryTabs.forEach(tab => {
+    desktopCategoryTabs.forEach(tab => {
 
       const tabTarget = (
         tab.getAttribute('data-category-target') || ''
@@ -708,10 +712,11 @@ function initProjectsCategoryFilter() {
        3. UPDATE MOBILE DROPDOWN ACTIVE / CHECKMARK STATE
        --------------------------------------------------------- */
 
-    dropdownItems.forEach(item => {
+    const mobileCatOptions = document.querySelectorAll('.mobile-cat-option');
+    mobileCatOptions.forEach(item => {
 
       const itemCat = (
-        item.getAttribute('data-category-link') || ''
+        item.getAttribute('data-category-target') || ''
       )
         .toLowerCase()
         .trim();
@@ -852,13 +857,19 @@ function initProjectsCategoryFilter() {
 
 
   /* =========================================================
-     MOBILE DROPDOWN ITEM CLICK
-     THIS WAS THE MISSING PART
+     DESKTOP NAVIGATION (EDITORIAL PANEL) CLICK
      ========================================================= */
 
-  dropdownItems.forEach(item => {
+  desktopNavItems.forEach(item => {
 
     item.addEventListener('click', (e) => {
+
+      const isProjectsPage = window.location.pathname.toLowerCase().includes('projects.html');
+      
+      if (!isProjectsPage) {
+        // If not on projects.html, allow normal navigation to projects.html
+        return;
+      }
 
       e.preventDefault();
       e.stopPropagation();
@@ -866,26 +877,27 @@ function initProjectsCategoryFilter() {
       const targetCat =
         item.getAttribute('data-category-link') || 'all';
 
-
       /* Filter projects + update displayed category */
-
       filterCategory(targetCat);
 
-
       /* Update browser URL */
-
       updateCategoryURL(targetCat);
+      
+      /* Close desktop dropdown */
+      const editorialPanel = document.getElementById('projects-editorial-panel');
+      if (editorialPanel) {
+        editorialPanel.classList.remove('is-open');
+      }
 
     });
 
   });
 
-
   /* =========================================================
-     DESKTOP CATEGORY TAB CLICK
+     DESKTOP CATEGORY TAB CLICK (projects.html)
      ========================================================= */
 
-  categoryTabs.forEach(tab => {
+  desktopCategoryTabs.forEach(tab => {
 
     tab.addEventListener('click', (e) => {
 
@@ -894,15 +906,28 @@ function initProjectsCategoryFilter() {
       const targetCat =
         tab.getAttribute('data-category-target') || 'all';
 
-
-      /* Filter */
-
       filterCategory(targetCat);
-
-
-      /* Update URL */
-
       updateCategoryURL(targetCat);
+
+    });
+
+  });
+
+  /* =========================================================
+     MOBILE CATEGORY OPTION CLICK (projects.html dropdown)
+     ========================================================= */
+
+  mobileCategoryOptions.forEach(option => {
+
+    option.addEventListener('click', function (e) {
+      
+      e.preventDefault();
+      e.stopPropagation();
+
+      const category = this.getAttribute('data-category-target') || 'all';
+
+      filterCategory(category);
+      updateCategoryURL(category);
 
     });
 
