@@ -1720,7 +1720,7 @@ function initProjectDossierOverlay() {
           </button>
           <div class="dossier-tag" id="dossier-category-tag">ARCHITECTS' NOOK // PROJECT DOSSIER</div>
           <div class="dossier-brand-right">
-            <div class="dossier-brand-text">architects' nook<br><span>private limited</span></div>
+  
             <img src="assets/logo.png" alt="Architects' Nook Logo" class="dossier-brand-logo">
           </div>
           <button class="dossier-close-btn" id="dossier-close-btn" aria-label="Close Project Dossier">
