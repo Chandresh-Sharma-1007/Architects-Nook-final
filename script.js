@@ -973,7 +973,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 1,
     title: 'SWATI INTERIORS',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -989,7 +989,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 2,
     title: 'TUCSON HYDROCONTROLS',
-    location: 'Umbergaon, Gujarat, India',
+    location: 'Umbergaon, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1005,7 +1005,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 3,
     title: 'BLUE STAR MANUFACTURING CAMPUS',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1021,7 +1021,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 4,
     title: 'KRYFS POWER COMPONENTS',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1037,7 +1037,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 5,
     title: 'KARAGWAL DEVELOPERS',
-    location: 'Tumbh, Gujarat, India',
+    location: 'Tumbh, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1053,7 +1053,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 6,
     title: 'INDCON PROJECT',
-    location: 'Dahej, Gujarat, India',
+    location: 'Dahej, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1069,7 +1069,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 7,
     title: 'LINC PEN & PLASTIC LTD',
-    location: 'Umbergaon, Gujarat, India',
+    location: 'Umbergaon, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1085,7 +1085,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 8,
     title: 'ATG TIRES',
-    location: 'Dahej, Gujarat, India',
+    location: 'Dahej, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1101,7 +1101,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 9,
     title: 'MWV',
-    location: 'Morai, Gujarat, India',
+    location: 'Morai, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1117,7 +1117,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 10,
     title: 'PARAM PACKAGING PVT. LTD',
-    location: 'Degam, Gujarat, India',
+    location: 'Degam, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
     folder: 'Industrial',
@@ -1135,7 +1135,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 11,
     title: 'AADARSH ENTERPRISE SCHOOL',
-    location: 'Kalvada, Gujarat, India',
+    location: 'Kalvada, Gujarat',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1151,7 +1151,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 12,
     title: 'LION’S COLLEGE CAMPUS',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1167,7 +1167,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 13,
     title: 'SSR COLLEGE',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1183,7 +1183,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 14,
     title: 'VEDANT SCHOOL',
-    location: 'Valsad, Gujarat, India',
+    location: 'Valsad, Gujarat',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1199,7 +1199,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 15,
     title: 'LION’S SCHOOL',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'Silvassa, Dadra and Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1215,7 +1215,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 16,
     title: 'FELLOWSHIP MISSION SCHOOL',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1231,7 +1231,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 17,
     title: 'DR. C.J. DESAI & JASWANTIBEN DESAI HOSPITAL',
-    location: 'Kolkata, West Bengal, India',
+    location: 'Kolkata, West Bengal',
     category: 'institutional',
     categoryLabel: 'HEALTHCARE & INSTITUTIONAL',
     folder: 'Instituitional',
@@ -1249,7 +1249,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 18,
     title: 'SHRI DIGAMBAR JAIN JINSHARANAM TIRTH',
-    location: 'Uplat, Maharashtra, India',
+    location: 'Uplat, Maharashtra',
     category: 'religious',
     categoryLabel: 'RELIGIOUS',
     folder: 'Religious',
@@ -1265,7 +1265,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 19,
     title: 'NAV GRAH TEMPLE',
-    location: 'Uplat, Maharashtra, India',
+    location: 'Uplat, Maharashtra',
     category: 'religious',
     categoryLabel: 'RELIGIOUS',
     folder: 'Religious',
@@ -1283,7 +1283,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 20,
     title: 'SUNSHINE RESORT & SKYVILLAS',
-    location: 'Daman, India',
+    location: 'Daman',
     category: 'commercial',
     categoryLabel: 'COMMERCIAL',
     folder: 'Commercial',
@@ -1301,7 +1301,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 21,
     title: 'SRI GIGIRAJ LADDHA RESIDENCE',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1317,7 +1317,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 22,
     title: 'SMT. PADMINIBEN CHAUHAN BUNGALOW',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1333,7 +1333,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 23,
     title: 'SHRI DEEPAK CHAUHAN RESIDENCE',
-    location: 'Umbergaon, Gujarat, India',
+    location: 'Umbergaon, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1349,7 +1349,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 24,
     title: 'GUPTA’S RESIDENCE',
-    location: 'Umbergaon, Gujarat, India',
+    location: 'Umbergaon, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1365,7 +1365,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 25,
     title: 'BOBBY KUNDRA RESIDENCE',
-    location: 'Silvassa, Dadra and Nagar Haveli, India',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1381,7 +1381,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 26,
     title: 'SHRI RAMANI FARMHOUSE',
-    location: 'Gujarat, India',
+    location: 'Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1397,7 +1397,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 27,
     title: 'SHRI BHARAT TANK BUNGALOW',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1413,7 +1413,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 28,
     title: 'MOHINI BUNGLOW',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1429,7 +1429,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 29,
     title: 'SKY CREST',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1445,7 +1445,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 30,
     title: 'SHRI HARSHAD RAVASHIA RESIDENCE',
-    location: 'Umbergaon, Gujarat, India',
+    location: 'Umbergaon, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1461,7 +1461,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 31,
     title: 'VALENCIA LUXURY APARTMENTS',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
     folder: 'Residential',
@@ -1477,7 +1477,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 32,
     title: 'H.S ENTERPRISE MIXED-USE',
-    location: 'Pardi, Gujarat, India',
+    location: 'Pardi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL / MIXED-USE',
     folder: 'Residential',
@@ -1495,7 +1495,7 @@ const PORTFOLIO_PROJECTS = [
   {
     id: 33,
     title: 'CORPORATE INTERIORS HUB',
-    location: 'Vapi, Gujarat, India',
+    location: 'Vapi, Gujarat',
     category: 'interior',
     categoryLabel: 'INTERIOR',
     folder: 'Interior',
@@ -1924,7 +1924,7 @@ function initBlueprintScrollAnimation() {
 
   bpTimeline
     // Phase 1 -> 2 (Reveal Wireframe Layer)
-    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: '#2563eb', boxShadow: '0 0 12px #2563eb' })
+    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: 'var(--text-secondary)', boxShadow: '0 0 12px var(--text-secondary)' })
     .to('#bp-layer-2', { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'none' })
     .to('#bp-scanline', { left: '100%', duration: 1, ease: 'none' }, '<')
     .to('#bp-scanline', { opacity: 0, duration: 0.1 })
@@ -1935,7 +1935,7 @@ function initBlueprintScrollAnimation() {
     }, '<')
     
     // Phase 2 -> 3 (Reveal Construction Site Layer)
-    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: '#f97316', boxShadow: '0 0 12px #f97316' })
+    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: 'var(--text-secondary)', boxShadow: '0 0 12px var(--text-secondary)' })
     .to('#bp-layer-3', { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'none' })
     .to('#bp-scanline', { left: '100%', duration: 1, ease: 'none' }, '<')
     .to('#bp-scanline', { opacity: 0, duration: 0.1 })
