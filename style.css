@@ -2267,37 +2267,28 @@ body.mobile-drawer-open #mobile-drawer {
   width: 100%;
   max-width: 400px;
 }
+.services-editorial-heading { 
+  font-family: "Helvetica" !important; 
 
-.services-editorial-heading {
-  font-family: "Helvetica" !important;
-  font-size: clamp(1.375rem, 2.2vw, 1.8rem);
-  font-weight: 400;
-  line-height: 1.14;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin: 0;
-  text-transform: none;
+  /* KEEP UNIVERSAL SUBHEADING SIZE */
+  font-size: clamp(1.375rem, 5vw, 1.8rem); 
 
+  font-weight: 400; 
+  line-height: 1.25;
+  letter-spacing: -0.035em; 
+  color: var(--text-primary); 
+  text-transform: none; 
+
+  /* Control line length */
   width: 100%;
-  text-align: justify;
-  text-align-last: left;
-}
+  max-width: 520px;
 
-.services-editorial-heading {
-  font-family: "Helvetica" !important;
-  font-size: clamp(1.375rem, 2.2vw, 1.8rem);
-  font-weight: 400;
-  line-height: 1.18;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
   margin: 0;
-  text-transform: none;
-
-  width: 100%;
-
-  /* Natural spacing — container controls the text shape */
   text-align: left;
+  text-wrap: balance;
 }
+
+
 
 /* Right Column: Numbered Service Accordion List */
 .services-accordion-list {
@@ -2349,12 +2340,12 @@ body.mobile-drawer-open #mobile-drawer {
 
 .service-accordion-title {
   font-family: "Helvetica" !important;
-  font-size: clamp(1.35rem, 2.1vw, 2rem);
-  font-weight: 700;
+  font-size: clamp(1.375rem, 5vw, 1.8rem);
+  font-weight: 500;
   letter-spacing: -0.025em;
   color: var(--text-primary);
   flex-grow: 1;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   line-height: 1.15;
   transition: color var(--transition-fast);
 }
@@ -2747,7 +2738,7 @@ body.mobile-drawer-open #mobile-drawer {
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   border: 1px solid var(--bg-primary);
   transition:
     background-color var(--transition-fast),
@@ -2842,6 +2833,7 @@ body.mobile-drawer-open #mobile-drawer {
   font-size: 0.9375rem;
   color: var(--text-secondary);
   font-weight: 300;
+  text-transform: none !important;
 }
 
 .btn-editorial {
@@ -2855,7 +2847,7 @@ body.mobile-drawer-open #mobile-drawer {
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast),
@@ -2879,7 +2871,7 @@ body.mobile-drawer-open #mobile-drawer {
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   transition: all var(--transition-fast);
 }
 
@@ -3089,7 +3081,7 @@ body.mobile-drawer-open #mobile-drawer {
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #767676;
   opacity: 0.85;
   transition:
@@ -3125,6 +3117,8 @@ body.mobile-drawer-open #mobile-drawer {
 .client-cell-text:hover .client-text-name {
   color: #111111;
 }
+
+
 
 /* Responsive grid overrides for both directory and homepage */
 @media (max-width: 1024px) {
@@ -3592,13 +3586,13 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .contact-hero-title {
-  font-size: clamp(2rem, 7.5vw, 5.5rem);
-  font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  font-size: clamp(3.2rem, 5.2vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.05;
   margin-bottom: var(--space-32);
-  color: var(--text-primary);
+  font-family: Helvetica !important;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .contact-hero-desc {
@@ -3775,7 +3769,7 @@ textarea.form-input {
   font-size: 0.975rem;
   font-weight: 500;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   border: 1px solid var(--text-primary);
   transition:
     background-color var(--transition-fast),
@@ -3784,7 +3778,7 @@ textarea.form-input {
 
 .form-submit-btn:hover {
   background: var(--text-muted);
-  color: var(--text-primary);
+  color: var(--white);
 }
 
 /* FOOTER */
@@ -3870,7 +3864,7 @@ textarea.form-input {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-secondary);
 }
 
@@ -5393,9 +5387,9 @@ textarea.form-input {
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-primary);
-  margin-bottom: 40px;
+  /* margin-bottom: 20px; */
 }
 
 /* 3. Origin Story Section (Heavy Left -> Light Right) */
@@ -5453,7 +5447,7 @@ textarea.form-input {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-secondary);
 }
 
@@ -5493,7 +5487,7 @@ textarea.form-input {
   font-size: 0.75rem;
   color: var(--text-secondary);
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 /* 4. Leadership Profiles Section */
@@ -5553,7 +5547,7 @@ textarea.form-input {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-secondary);
   margin-bottom: 12px;
 }
@@ -5722,8 +5716,8 @@ textarea.form-input {
 }
 
 .quote-monument {
-  font-size: clamp(1.5rem, 2.75vw, 2.35rem);
-  font-weight: 300;
+   font-size: clamp(1.375rem, 5vw, 1.8rem);
+  font-weight: 400;
   line-height: 1.35;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -5753,7 +5747,7 @@ textarea.form-input {
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-primary);
   margin-bottom: 10px;
 }
@@ -6431,7 +6425,7 @@ textarea.form-input {
     font-weight: 500;
 
     letter-spacing: 0.09em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
     color: #555555;
   }
@@ -6581,7 +6575,7 @@ textarea.form-input {
     font-weight: 500;
 
     letter-spacing: 0.08em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
     color: #555555;
 
@@ -6745,7 +6739,7 @@ textarea.form-input {
     font-weight: 500;
 
     letter-spacing: 0.2em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
     color: #626262 !important;
 
@@ -6843,7 +6837,7 @@ textarea.form-input {
     font-weight: 500;
 
     letter-spacing: 0.1em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
     color: #626262;
   }
@@ -7168,7 +7162,7 @@ textarea.form-input {
     font-weight: 600;
 
     letter-spacing: 0.17em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
     color: #666666;
   }
@@ -7615,11 +7609,11 @@ textarea.form-input {
 
 .projects-hero-title {
   font-family: "Helvetica" !important;
-  font-size: clamp(1.85rem, 6vw, 5rem);
-  font-weight: 700;
+  font-size: clamp(3.2rem, 5.2vw, 4.8rem);
+  font-weight: 300;
   line-height: 0.98;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #242426;
   margin: 0;
 }
@@ -7954,19 +7948,22 @@ textarea.form-input {
 }
 
 .dossier-project-title {
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 700;
+  font-size: clamp(1.375rem, 5vw, 1.8rem);
+  font-weight: 400;
   letter-spacing: -0.03em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-primary);
   line-height: 1.05;
   margin-bottom: 8px;
+  font-family: "Helvetica" !important;
 }
 
 .dossier-location-text {
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
   color: var(--text-secondary);
-  font-weight: 300;
+  font-weight: 400;
+  font-family: "Helvetica" !important;
+
 }
 
 .dossier-specs-grid {
@@ -7986,17 +7983,25 @@ textarea.form-input {
 }
 
 .dossier-spec-lbl {
-  /* font-size: 0.6875rem; */
-  font-weight: 700;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  font-weight: 400;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-secondary);
+  font-family: "Helvetica" !important;
+  text-align: justify; 
+  text-align-last: left;
+
 }
 
 .dossier-spec-val {
-  /* font-size: 0.9375rem; */
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  font-weight: 400;
   color: var(--text-primary);
-  font-weight: 500;
+  font-family: "Helvetica" !important;
+  text-align: justify; 
+  text-align-last: left;
+
 }
 
 .dossier-narrative-block {
@@ -8006,18 +8011,24 @@ textarea.form-input {
 }
 
 .dossier-section-label {
-  /* font-size: 0.75rem; */
-  font-weight: 700;
+   font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  font-weight: 400;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-secondary);
+  font-family: "Helvetica" !important;
+  text-align: justify; 
+  text-align-last: left;
 }
 
 .dossier-description-p {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
   line-height: 1.7;
   color: var(--text-primary);
-  font-weight: 300;
+  font-weight: 400;
+   text-align: justify; 
+  text-align-last: left;
+  font-family: "Helvetica" !important;
 }
 
 /* 7. Responsive Rules for Projects Page */

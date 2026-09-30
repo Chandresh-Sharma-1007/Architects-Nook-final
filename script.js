@@ -972,7 +972,7 @@ const PORTFOLIO_PROJECTS = [
   // --- INDUSTRIAL (1-10) ---
   {
     id: 1,
-    title: 'SWATI INTERIORS',
+    title: 'Swati Interiors',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -988,7 +988,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 2,
-    title: 'TUCSON HYDROCONTROLS',
+    title: 'Tucson Hydrocontrols',
     location: 'Umbergaon, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1004,7 +1004,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 3,
-    title: 'BLUE STAR MANUFACTURING CAMPUS',
+    title: 'Blue Star Manufacturing Campus',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1020,7 +1020,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 4,
-    title: 'KRYFS POWER COMPONENTS',
+    title: 'Kryfs Power Components',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1036,7 +1036,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 5,
-    title: 'KARAGWAL DEVELOPERS',
+    title: 'Karagwal Developers',
     location: 'Tumbh, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1052,7 +1052,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 6,
-    title: 'INDCON PROJECT',
+    title: 'Indcon Project',
     location: 'Dahej, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1068,7 +1068,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 7,
-    title: 'LINC PEN & PLASTIC LTD',
+    title: 'Linc Pen & Plastic Ltd',
     location: 'Umbergaon, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1084,7 +1084,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 8,
-    title: 'ATG TIRES',
+    title: 'ATG Tires',
     location: 'Dahej, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1116,7 +1116,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 10,
-    title: 'PARAM PACKAGING PVT. LTD',
+    title: 'Param Packaging Pvt. Ltd',
     location: 'Degam, Gujarat',
     category: 'industrial',
     categoryLabel: 'INDUSTRIAL',
@@ -1134,7 +1134,7 @@ const PORTFOLIO_PROJECTS = [
   // --- INSTITUTIONAL (11-17) ---
   {
     id: 11,
-    title: 'AADARSH ENTERPRISE SCHOOL',
+    title: 'Aadarsh Enterprise School',
     location: 'Kalvada, Gujarat',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1150,7 +1150,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 12,
-    title: 'LION’S COLLEGE CAMPUS',
+    title: 'Lion’s College Campus',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1166,7 +1166,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 13,
-    title: 'SSR COLLEGE',
+    title: 'Ssr College',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1182,7 +1182,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 14,
-    title: 'VEDANT SCHOOL',
+    title: 'Vedant School',
     location: 'Valsad, Gujarat',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1198,7 +1198,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 15,
-    title: 'LION’S SCHOOL',
+    title: 'Lion’s School',
     location: 'Silvassa, Dadra and Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1214,7 +1214,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 16,
-    title: 'FELLOWSHIP MISSION SCHOOL',
+    title: 'Fellowship Mission School',
     location: 'Vapi, Gujarat',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1230,7 +1230,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 17,
-    title: 'DR. C.J. DESAI & JASWANTIBEN DESAI HOSPITAL',
+    title: 'Dr. C.J. Desai & Jaswantiben Desai Hospital',
     location: 'Kolkata, West Bengal',
     category: 'institutional',
     categoryLabel: 'HEALTHCARE & INSTITUTIONAL',
@@ -1248,7 +1248,7 @@ const PORTFOLIO_PROJECTS = [
   // --- RELIGIOUS (18-19) ---
   {
     id: 18,
-    title: 'SHRI DIGAMBAR JAIN JINSHARANAM TIRTH',
+    title: 'Shri Digambar Jain Jinsharanam Tirth',
     location: 'Uplat, Maharashtra',
     category: 'religious',
     categoryLabel: 'RELIGIOUS',
@@ -1264,7 +1264,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 19,
-    title: 'NAV GRAH TEMPLE',
+    title: 'Nav Grah Temple',
     location: 'Uplat, Maharashtra',
     category: 'religious',
     categoryLabel: 'RELIGIOUS',
@@ -1282,7 +1282,7 @@ const PORTFOLIO_PROJECTS = [
   // --- COMMERCIAL (20) ---
   {
     id: 20,
-    title: 'SUNSHINE RESORT & SKYVILLAS',
+    title: 'Sunshine Resort & Skyvillas',
     location: 'Daman',
     category: 'commercial',
     categoryLabel: 'COMMERCIAL',
@@ -1300,7 +1300,7 @@ const PORTFOLIO_PROJECTS = [
   // --- RESIDENTIAL (21-32) ---
   {
     id: 21,
-    title: 'SRI GIGIRAJ LADDHA RESIDENCE',
+    title: 'Sri Gigiraj Laddha Residence',
     location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1316,7 +1316,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 22,
-    title: 'SMT. PADMINIBEN CHAUHAN BUNGALOW',
+    title: 'Smt. Padminiben Chauhan Bungalow',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1332,7 +1332,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 23,
-    title: 'SHRI DEEPAK CHAUHAN RESIDENCE',
+    title: 'Shri Deepak Chauhan Residence',
     location: 'Umbergaon, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1348,7 +1348,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 24,
-    title: 'GUPTA’S RESIDENCE',
+    title: 'Gupta’s Residence',
     location: 'Umbergaon, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1364,7 +1364,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 25,
-    title: 'BOBBY KUNDRA RESIDENCE',
+    title: 'Bobby Kundra Residence',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1380,7 +1380,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 26,
-    title: 'SHRI RAMANI FARMHOUSE',
+    title: 'Shri Ramani Farmhouse',
     location: 'Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1396,7 +1396,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 27,
-    title: 'SHRI BHARAT TANK BUNGALOW',
+    title: 'Shri Bharat Tank Bungalow',
     location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1412,7 +1412,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 28,
-    title: 'MOHINI BUNGLOW',
+    title: 'Mohini Bunglow',
     location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1428,7 +1428,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 29,
-    title: 'SKY CREST',
+    title: 'Sky Crest',
     location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1444,7 +1444,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 30,
-    title: 'SHRI HARSHAD RAVASHIA RESIDENCE',
+    title: 'Shri Harshad Ravashia Residence',
     location: 'Umbergaon, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1460,7 +1460,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 31,
-    title: 'VALENCIA LUXURY APARTMENTS',
+    title: 'Valencia Luxury Apartments',
     location: 'Vapi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL',
@@ -1476,7 +1476,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 32,
-    title: 'H.S ENTERPRISE MIXED-USE',
+    title: 'H.S Enterprise Mixed-Use',
     location: 'Pardi, Gujarat',
     category: 'residential',
     categoryLabel: 'RESIDENTIAL / MIXED-USE',
@@ -1494,7 +1494,7 @@ const PORTFOLIO_PROJECTS = [
   // --- INTERIOR FALLBACK (33) ---
   {
     id: 33,
-    title: 'CORPORATE INTERIORS HUB',
+    title: 'Corporate Interiors Hub',
     location: 'Vapi, Gujarat',
     category: 'interior',
     categoryLabel: 'INTERIOR',
@@ -1530,7 +1530,7 @@ function createProjectCardHTML(p, index = 0, isHomePreview = false) {
             <span class="project-category">${p.categoryLabel}</span>
           </div>
           <h3 class="project-title">${p.title}</h3>
-          <div class="project-location">${p.location.toUpperCase()}</div>
+          <div class="project-location">${p.location}</div>
         </div>
       </a>
     `;
@@ -1744,7 +1744,7 @@ function initProjectDossierOverlay() {
             <div class="dossier-specs-grid" id="dossier-specs-grid"></div>
 
             <div class="dossier-narrative-block">
-              <div class="dossier-section-label">PROJECT NARRATIVE &amp; ARCHITECTURAL INTENT</div>
+              <div class="dossier-section-label">Project Narrative &amp; Architectural Intent</div>
               <p class="dossier-description-p" id="dossier-desc"></p>
             </div>
           </div>
@@ -1792,9 +1792,9 @@ function openProjectDossier(p) {
 
   const imgPath = p.filename ? `assets/${p.folder}/${p.filename}` : 'assets/project-placeholder.jpg';
   document.getElementById('dossier-img').src = imgPath;
-  document.getElementById('dossier-category-tag').textContent = `${(p.typology || p.categoryLabel || 'PROJECT').toUpperCase()} `;
+  document.getElementById('dossier-category-tag').textContent = `${(p.typology || p.categoryLabel || 'PROJECT')} `;
   document.getElementById('dossier-title').textContent = p.title;
-  document.getElementById('dossier-location').textContent = p.location ? p.location.toUpperCase() : '';
+  document.getElementById('dossier-location').textContent = p.location ? p.location : '';
  
   document.getElementById('dossier-desc').textContent = p.desc || '';
 
