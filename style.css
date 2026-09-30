@@ -2341,7 +2341,7 @@ body.mobile-drawer-open #mobile-drawer {
 .service-accordion-title {
   font-family: "Helvetica" !important;
   font-size: clamp(1.375rem, 5vw, 1.8rem);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--text-primary);
   flex-grow: 1;
@@ -3268,7 +3268,9 @@ body.mobile-drawer-open #mobile-drawer {
   }
 
   .contact-hero-title {
-    font-size: clamp(2.7rem, 11.5vw, 3.4rem);
+    font-family: "Helvetica" !important;
+    font-size: clamp(2.75rem, 10vw, 3.6rem);
+    font-weight: 300;
     line-height: 0.92;
     letter-spacing: -0.05em;
     font-weight: 700;
