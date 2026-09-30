@@ -94,6 +94,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, button, label {
+  overflow-wrap: break-word;
+}
+
 html {
   font-family: "Helvetica" !important;
   background-color: var(--bg-primary);
@@ -3243,6 +3251,8 @@ body.mobile-drawer-open #mobile-drawer {
 
     font-size: 0.78rem;
     letter-spacing: 0.12em;
+    padding: 16px 20px;
+    box-sizing: border-box;
   }
 
   /* =========================================
@@ -3541,8 +3551,10 @@ body.mobile-drawer-open #mobile-drawer {
   .contact-page-section .container,
   .contact-page-section .grid-12,
   .contact-right,
+  .contact-left,
   .contact-left > div,
-  .contact-left > .map-container,
+  .contact-right > div,
+  .map-container,
   .form-group,
   .form-input,
   .form-submit-btn {
@@ -4019,6 +4031,20 @@ textarea.form-input {
     width: 100%;
     max-width: 100%;
   }
+
+  .practice-map-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-40);
+    min-height: auto;
+    padding: 32px 0;
+  }
+
+  .practice-india-map {
+    width: min(100%, 650px);
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+  }
 }
 
 /* ==================================================
@@ -4188,7 +4214,7 @@ textarea.form-input {
    ========================================================== */
 
   #footer {
-    padding: 72px 24px 32px;
+    padding: 56px 0 32px;
   }
 
   /* Main footer content */
@@ -4267,6 +4293,11 @@ textarea.form-input {
     padding: 0 var(--space-16);
   }
 
+  .projects-page-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
   #mobile-toggle-btn {
     padding-left: 14px;
     padding-right: 10px;
@@ -4319,7 +4350,7 @@ textarea.form-input {
   }
 
   .clients-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .client-cell {
@@ -4352,6 +4383,14 @@ textarea.form-input {
     padding: 16px 20px;
     min-height: 48px;
   }
+
+  .btn-editorial,
+  .btn-editorial-outline {
+    padding: 16px 24px;
+    font-size: 0.8125rem;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
 }
 
 /* ==================================================
@@ -4360,6 +4399,11 @@ textarea.form-input {
 @media (max-width: 360px) {
   .container {
     padding: 0 12px;
+  }
+
+  .projects-page-container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
   }
 
   .header-logo-img {
@@ -4379,9 +4423,38 @@ textarea.form-input {
     font-size: 1.5rem;
   }
 
+  .tekt-cta-box {
+    padding: 24px 14px;
+  }
+
+  .tekt-cta-btn {
+    padding: 14px 12px;
+    font-size: 0.78rem;
+    min-height: 50px;
+  }
+
+  .btn-editorial,
+  .btn-editorial-outline {
+    padding: 14px 14px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
   .client-cell {
     min-height: 130px;
-    padding: 14px 6px 12px;
+    padding: 14px 4px 12px;
+  }
+
+  .story-bg-grey .origin-stats-strip > div {
+    padding: 16px 4px 18px !important;
+  }
+
+  .story-bg-grey .origin-stat-num {
+    font-size: 1.5rem;
+  }
+
+  .story-bg-grey .origin-stat-lbl {
+    font-size: 0.48rem;
   }
 }
 
@@ -6246,7 +6319,7 @@ textarea.form-input {
 
   /* Intro paragraph */
 
-  .story-bg-grey {
+  .story-bg-grey .origin-body-p:first-of-type {
     grid-column: 1;
 
     width: 100%;
@@ -7951,6 +8024,22 @@ textarea.form-input {
 @media (max-width: 1024px) {
   .projects-page-container {
     padding: 0 32px;
+  }
+
+  .projects-category-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .projects-category-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-tabs-container {
+    width: max-content;
+    min-width: 100%;
+    gap: 20px;
   }
 
   .projects-grid-stream {
