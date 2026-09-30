@@ -151,7 +151,7 @@ h6 {
   color: var(--text-secondary);
   line-height: 1.4;
   letter-spacing: -0.01em;
-    text-align: justify;
+  text-align: justify;
   text-align-last: left;
   width: 100%;
 }
@@ -2258,7 +2258,6 @@ body.mobile-drawer-open #mobile-drawer {
 
   width: 100%;
   max-width: 400px;
-  
 }
 
 .services-editorial-heading {
@@ -5024,15 +5023,14 @@ textarea.form-input {
    ========================================================== */
 
 @media (max-width: 768px) {
-
   /* =========================================================
    BLUEPRINT TO REALITY — HIDDEN ON MOBILE
    Desktop remains unchanged
    ========================================================= */
 
-#blueprint-reality {
-  display: none !important;
-}
+  #blueprint-reality {
+    display: none !important;
+  }
   /* Full mobile scroll-trigger viewport */
   .bp-sticky-container {
     height: 100svh;
@@ -5346,7 +5344,7 @@ textarea.form-input {
   font-weight: 400;
   line-height: 1.6;
   color: var(--text-primary);
-    text-align: justify;
+  text-align: justify;
   text-align-last: left;
   width: 100%;
 }
@@ -5356,10 +5354,10 @@ textarea.form-input {
   font-weight: 400;
   line-height: 1.6;
   color: var(--text-primary);
-    text-align: justify;
+  text-align: justify;
   text-align-last: left;
   width: 100%;
-} 
+}
 
 .origin-stats-strip {
   display: grid;
@@ -5512,7 +5510,7 @@ textarea.form-input {
   color: var(--text-secondary);
   font-weight: 400;
   flex-grow: 1;
-    text-align: justify;
+  text-align: justify;
   text-align-last: left;
   width: 100%;
 }
@@ -6077,50 +6075,48 @@ textarea.form-input {
   }
 
   /* ARCHITECTS' NOOK // STUDIO MONOGRAPH & HERITAGE */
-  
 
+  /* ABOUT — OPENING */
+  .story-hero-section {
+    min-height: 60svh;
+    padding: 0;
+    background: #ffffff;
 
-/* ABOUT — OPENING */
-.story-hero-section {
-  min-height: 60svh;
-  padding: 0;
-  background: #ffffff;
+    display: flex;
+    align-items: center;
+  }
 
-  display: flex;
-  align-items: center;
-}
+  .story-hero-wrapper {
+    width: 100%;
+    min-height: 60svh;
 
-.story-hero-wrapper {
-  width: 100%;
-  min-height: 60svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .story-hero-grid {
+    width: 100%;
+    display: block;
+  }
 
-.story-hero-grid {
-  width: 100%;
-  display: block;
-}
+  .story-hero-grid::before {
+    display: none;
+  }
 
-.story-hero-grid::before {
-  display: none;
-}
+  .story-hero-lead {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
 
-.story-hero-lead {
-  width: 100%;
-  max-width: 340px;
-  margin: 0 auto;
-
-  font-size:clamp(1.375rem, 5vw, 1.8rem);
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-text-align: justify;
-text-align-last: center ;
-  color: #111;
-}
+    font-size: clamp(1.375rem, 5vw, 1.8rem);
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-align: justify;
+    text-align-last: center;
+    color: #111;
+  }
 
   /* WHERE IT BEGAN */
   .story-bg-grey {
@@ -6132,9 +6128,7 @@ text-align-last: center ;
     line-height: 0.9;
     letter-spacing: -0.055em;
     margin-bottom: 38px;
-    
   }
-
 
   /* ORIGIN TEXT */
   .origin-layout {
@@ -6155,11 +6149,9 @@ text-align-last: center ;
     line-height: 1.58;
     letter-spacing: -0.015em;
     font-weight: 400;
-text-align: justify;
-text-align-last: left;
-   
+    text-align: justify;
+    text-align-last: left;
   }
-
 
   /* =========================================================
    ABOUT PAGE — WHERE IT BEGAN
@@ -8250,11 +8242,16 @@ text-align-last: left;
     height: auto !important;
     aspect-ratio: 4 / 3 !important;
     object-fit: cover !important;
-    filter: none !important;
-    -webkit-filter: none !important;
+    filter: grayscale(100%) !important;
+    -webkit-filter: grayscale(100%) !important;
     transform: none !important;
     transition: none !important;
     border: none !important;
+  }
+
+  .project-grid-card .project-card-img {
+    filter: grayscale(100%) !important;
+    -webkit-filter: grayscale(100%) !important;
   }
 
   /* ---------------------------------------------------------
@@ -8351,7 +8348,8 @@ text-align-last: left;
   .project-grid-card:hover .project-card-img,
   .project-grid-card:focus-visible .project-card-img {
     transform: none !important;
-    filter: none !important;
+    filter: grayscale(100%) !important;
+    -webkit-filter: grayscale(100%) !important;
   }
 
   .project-grid-card:hover .project-card-overlay,
@@ -8502,6 +8500,12 @@ text-align-last: left;
     object-fit: cover !important;
     display: block !important;
     filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  .project-dossier-overlay img {
+    filter: none !important;
+    -webkit-filter: none !important;
   }
 
   .dossier-details-container {
@@ -8787,5 +8791,76 @@ text-align-last: left;
 
   .signature-mobile-project {
     transition: none !important;
+  }
+}
+
+/* =========================================================
+   A PRACTICE STILL EVOLVING — MOBILE
+   Compact natural-height layout
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* SECTION — DO NOT FORCE FULL VIEWPORT HEIGHT */
+  .practice-map-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    gap: 0;
+  }
+
+  /* TEXT BLOCK */
+  .practice-map-content {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .practice-map-content .chapter-title {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 28px;
+  }
+
+  .practice-map-content .body-large {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+
+    text-align: justify;
+    text-align-last: left;
+  }
+
+  /* MAP — DIRECTLY AFTER TEXT */
+  .practice-map-visual {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 42px 0 0;
+    padding: 0;
+  }
+
+  .practice-india-map {
+    position: relative;
+    inset: auto;
+
+    display: block;
+    width: min(80vw, 315px);
+    max-width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+    transform: none;
   }
 }
