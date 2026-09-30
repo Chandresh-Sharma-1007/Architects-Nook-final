@@ -2241,11 +2241,11 @@ function initSignatureMobileCarousel() {
   if (!mobileQuery.matches) return;
 
   const projectNames = [
-    'BLUE STAR',
-    'SUNSHINE RESORT',
-    'PARAM PACKAGING',
-    'NAV GRAH TEMPLE',
-    'MOHINI BUNGLOW'
+    'Blue Star',
+    'Sunshine Resort',
+    'Param Packaging',
+    'Nav Grah Temple',
+    'Mohini Bungalow'
   ];
 
   const images = carousel.querySelectorAll('.signature-mobile-image');

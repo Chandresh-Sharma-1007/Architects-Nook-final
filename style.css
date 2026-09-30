@@ -136,12 +136,12 @@ h6 {
 }
 
 .display-title {
-  font-size: clamp(3.2rem, 7.5vw, 7rem);
-  font-weight: 700;
+  font-family: "Helvetica" !important;
+  font-size: clamp(3.2rem, 5.2vw, 4.8rem);
+  font-weight: 300;
   line-height: 0.95;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
-  font-family: "Helvetica" !important;
+  /* text-transform: uppercase; */
 }
 
 .section-title {
@@ -154,8 +154,8 @@ h6 {
 }
 
 .sub-title {
-  font-size: clamp(1.25rem, 2.2vw, 1.85rem);
-  font-weight: 300;
+  font-size: 1.2rem;
+  /* font-weight: 400; */
   color: var(--text-secondary);
   line-height: 1.4;
   letter-spacing: -0.01em;
@@ -183,9 +183,9 @@ h6 {
 
 .label-caps {
   font-size: 0.75rem;
-  font-weight: 700;
+  /* font-weight: 700; */
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--text-primary);
 }
 
@@ -2464,6 +2464,9 @@ body.mobile-drawer-open #mobile-drawer {
 
   .services-editorial-heading {
     font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
+    text-align: left;
   }
 
   .service-accordion-trigger {
@@ -3150,7 +3153,6 @@ body.mobile-drawer-open #mobile-drawer {
     justify-content: center;
   }
 
-  /* Logo area */
   .client-logo-wrapper {
     width: 100%;
     height: 64px;
@@ -3161,10 +3163,9 @@ body.mobile-drawer-open #mobile-drawer {
     justify-content: center;
 
     overflow: visible;
-  }
+}
 
-  /* ALL LOGOS */
-  .client-logo-img {
+.client-logo-img {
     display: block !important;
 
     width: 100% !important;
@@ -3178,8 +3179,7 @@ body.mobile-drawer-open #mobile-drawer {
 
     margin: 0 auto !important;
     transform: none !important;
-  }
-
+}
   /* Logo name */
   .client-logo-name {
     width: 100%;
@@ -3214,10 +3214,10 @@ body.mobile-drawer-open #mobile-drawer {
 
   /* Main mission quote */
   .clients-grid + .reveal-item .sub-title {
-    font-size: 1.35rem !important;
+        font-size: 1rem !important;
     line-height: 1.35 !important;
-    font-weight: 500;
-    letter-spacing: -0.025em;
+    /* font-weight: 100; */
+    /* letter-spacing: -0.025em; */
     margin-bottom: 24px !important;
   }
 
@@ -4050,7 +4050,9 @@ textarea.form-input {
   }
 
   .section-title {
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
+   font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
     margin-bottom: var(--space-32);
   }
 
@@ -4067,6 +4069,8 @@ textarea.form-input {
   .about-editorial-heading {
     width: 100%;
     font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
     line-height: 1.15;
     margin-bottom: 0.5rem;
   }
@@ -4172,8 +4176,9 @@ textarea.form-input {
 
   /* OUR WORK. */
   .tekt-cta-title {
-    font-size: clamp(2.25rem, 10vw, 2.75rem);
-    line-height: 1.05;
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
   }
 
   /* A CLOSER LOOK AT */
@@ -4309,6 +4314,7 @@ textarea.form-input {
 
   .display-title {
     font-size: clamp(2rem, 8.5vw, 2.75rem);
+    font-weight: 400;
   }
 
   .section-title {
@@ -4384,6 +4390,7 @@ textarea.form-input {
     font-size: 0.8125rem;
     box-sizing: border-box;
     max-width: 100%;
+    text-align: center;
   }
 }
 
@@ -4414,7 +4421,9 @@ textarea.form-input {
   }
 
   .tekt-cta-title {
-    font-size: 1.5rem;
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
   }
 
   .tekt-cta-box {
@@ -5992,10 +6001,10 @@ textarea.form-input {
   font-size: 0.78rem !important;
   line-height: 1.3;
 
-  font-weight: 500;
+  font-weight: 300;
   letter-spacing: 0.18em;
 
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #626262 !important;
   font-family: "Helvetica" !important;
   margin-bottom: 14px !important;
@@ -6063,6 +6072,29 @@ textarea.form-input {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+
+  .story-closing-actions .btn-editorial,
+  .story-closing-actions .btn-editorial-outline {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+  }
+
+  .story-closing-sub{
+    text-align: justify !important;
+    text-align-last: left;
+  }
+
+
+
 }
 
 /* Responsive Adjustments for About Page */
@@ -6175,10 +6207,10 @@ textarea.form-input {
     width: 100%;
     max-width: 340px;
     margin: 0 auto;
-
+    font-family: Helvetica !important;
     font-size: clamp(1.375rem, 5vw, 1.8rem);
-    line-height: 1.5;
     font-weight: 400;
+    line-height: 1.5;
     letter-spacing: -0.015em;
     text-align: justify;
     text-align-last: center;
@@ -6191,7 +6223,9 @@ textarea.form-input {
   }
 
   .chapter-title {
-    font-size: clamp(2.6rem, 12vw, 3.35rem);
+   font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
     line-height: 0.9;
     letter-spacing: -0.055em;
     margin-bottom: 38px;
@@ -6207,11 +6241,11 @@ textarea.form-input {
     gap: 22px;
   }
 
-  .origin-lead-p,
+  
   .origin-body-p {
     width: 100%;
     max-width: none;
-
+    font-family: "Helvetica" !important;
     font-size: 1rem;
     line-height: 1.58;
     letter-spacing: -0.015em;
@@ -6260,10 +6294,12 @@ textarea.form-input {
     width: 100%;
     max-width: 310px;
 
-    font-size: clamp(2.9rem, 12vw, 3.5rem);
+   font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
     line-height: 0.89;
 
-    font-weight: 700;
+    /* font-weight: 700; */
     letter-spacing: -0.055em;
 
     color: #111111;
@@ -6313,7 +6349,7 @@ textarea.form-input {
 
   /* Intro paragraph */
 
-  .story-bg-grey .origin-body-p:first-of-type {
+  .story-bg-grey  {
     grid-column: 1;
 
     width: 100%;
@@ -7087,6 +7123,7 @@ textarea.form-input {
   .story-closing-actions {
     flex-direction: column;
     align-items: stretch;
+    
   }
 
   .story-closing-actions .btn-editorial,
@@ -7127,21 +7164,23 @@ textarea.form-input {
    MONUMENT QUOTE
    ========================================================= */
 
-  .quote-monument {
+  .quote-monument { 
     width: 100%;
-    max-width: 100%;
+    max-width: 620px;
 
-    margin: 0;
+    margin: 0 auto;
 
-    font-size: clamp(1.75rem, 7.4vw, 2.15rem);
-    line-height: 1.18;
-
+    font-family: Helvetica !important;
+    font-size: clamp(1.375rem, 5vw, 1.8rem);
     font-weight: 400;
 
-    letter-spacing: -0.035em;
+    line-height: 1.35;
+
+    text-align: justify;
+    text-align-last: left;
 
     color: #111111;
-  }
+}
 
   /* =========================================================
    QUOTE AUTHOR / FOUNDATIONAL CONVICTION
@@ -7268,10 +7307,9 @@ textarea.form-input {
     margin: 0 0 20px 0;
 
     font-size: clamp(1.55rem, 6.5vw, 1.9rem);
-    line-height: 0.98;
-
-    font-weight: 700;
-
+    font-family: Helvetica !important;
+    font-weight: 350;
+line-height: 1;
     letter-spacing: -0.035em;
 
     color: #111111;
@@ -7764,7 +7802,7 @@ textarea.form-input {
   font-size: clamp(1rem, 1.25vw, 1.25rem);
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #ffffff;
   line-height: 1.25;
   margin: 0;
@@ -8108,12 +8146,12 @@ textarea.form-input {
 
   .projects-hero-title {
     font-family: "Helvetica" !important;
-    font-size: clamp(28px, 7vw, 32px) !important;
-    font-weight: 700 !important;
+    font-size: clamp(2.75rem, 10vw, 3.6rem) !important;
+    font-weight: 300 !important;
     letter-spacing: -0.025em !important;
     line-height: 1.05 !important;
     color: #111111 !important;
-    text-transform: uppercase !important;
+    /* text-transform: uppercase !important; */
     margin: 0 !important;
   }
 
@@ -8402,10 +8440,10 @@ textarea.form-input {
     padding: 0 !important;
     font-family: "Helvetica" !important;
     font-size: 19px !important;
-    font-weight: 700 !important;
+    font-weight: 400 !important;
     line-height: 1.15 !important;
     letter-spacing: -0.02em !important;
-    text-transform: uppercase !important;
+
     color: #111111 !important;
     text-align: left !important;
     text-shadow: none !important;
@@ -8629,7 +8667,7 @@ textarea.form-input {
     line-height: 1.1 !important;
     letter-spacing: -0.02em !important;
     color: #111111 !important;
-    text-transform: uppercase !important;
+    /* text-transform: uppercase !important; */
     margin: 0 0 6px 0 !important;
   }
 
@@ -8662,10 +8700,10 @@ textarea.form-input {
 
   .dossier-spec-lbl {
     font-family: "Helvetica" !important;
-    font-size: 11px !important;
+    font-size: 12px !important;
     font-weight: 700 !important;
     letter-spacing: 0.14em !important;
-    text-transform: uppercase !important;
+    /* text-transform: uppercase !important; */
     color: #777777 !important;
     margin: 0 !important;
   }
@@ -8690,10 +8728,10 @@ textarea.form-input {
 
   .dossier-section-label {
     font-family: "Helvetica" !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: 0.14em !important;
-    text-transform: uppercase !important;
+    /* text-transform: uppercase !important; */
     color: #777777 !important;
     margin: 0 !important;
   }
@@ -8741,10 +8779,10 @@ textarea.form-input {
   }
 
   .signature-mobile-heading {
-    font-family: var(--font-family);
-    font-size: clamp(1.5rem, 6vw, 1.85rem);
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
+    /* letter-spacing: 0.12em; */
     /* text-transform: uppercase; */
     color: var(--text-primary);
     margin: 0;
@@ -8766,9 +8804,9 @@ textarea.form-input {
   .signature-mobile-project {
     font-family: "Helvetica" !important;
     font-size: clamp(1rem, 4.2vw, 1.15rem);
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: var(--text-muted);
     margin-bottom: 20px;
     line-height: 1.3;
@@ -8924,6 +8962,9 @@ textarea.form-input {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 28px;
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    font-weight: 400;
+    font-family: Helvetica !important;
   }
 
   .practice-map-content .body-large {
