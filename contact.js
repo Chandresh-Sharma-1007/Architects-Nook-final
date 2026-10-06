@@ -2,12 +2,12 @@
 // CONTACT FORM CONFIGURATION
 // ==========================================================================
 const CONTACT_CONFIG = {
-  googleFormAction: "GOOGLE_FORM_ACTION_URL_HERE",
+  googleFormAction: "https://docs.google.com/forms/d/e/1FAIpQLSfIsIXbKESfAhUBo7Xlu1RnXgBNg9Bn8XZT-lbzivR-r1skrw/formResponse",
   fields: {
-    name: "ENTRY_NAME_HERE",
-    phone: "ENTRY_PHONE_HERE",
-    email: "ENTRY_EMAIL_HERE",
-    message: "ENTRY_MESSAGE_HERE"
+    name: "entry.1299557800",
+    phone: "entry.145965579",
+    email: "entry.1662735159",
+    message: "entry.1144101200"
   }
 };
 
@@ -164,10 +164,44 @@ function initContactForm() {
     const message = form.querySelector('#message').value.trim();
 
     // Validate fields
-    if (validateContactForm(form, name, phone, email, message)) {
-      // Transition to success card state immediately upon successful client-side validation
-      showContactSuccess(form);
+    if (!validateContactForm(form, name, phone, email, message)) return;
+
+    // Submit to Google Forms via hidden iframe to avoid CORS issues
+    let iframe = document.getElementById('hidden-google-form-iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.id = 'hidden-google-form-iframe';
+      iframe.name = 'hidden-google-form-iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
     }
+
+    const hiddenForm = document.createElement('form');
+    hiddenForm.method = 'POST';
+    hiddenForm.action = CONTACT_CONFIG.googleFormAction;
+    hiddenForm.target = 'hidden-google-form-iframe';
+
+    const fieldMap = {
+      [CONTACT_CONFIG.fields.name]: name,
+      [CONTACT_CONFIG.fields.phone]: phone,
+      [CONTACT_CONFIG.fields.email]: email,
+      [CONTACT_CONFIG.fields.message]: message,
+    };
+
+    Object.entries(fieldMap).forEach(([entryKey, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = entryKey;
+      input.value = value;
+      hiddenForm.appendChild(input);
+    });
+
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
+    document.body.removeChild(hiddenForm);
+
+    // Show success state immediately (optimistic UI — Google Forms accepts the POST)
+    showContactSuccess(form);
   });
 }
 
