@@ -373,31 +373,31 @@ function initTEKTProcessStepper() {
     },
     {
       step: '02',
-      title: 'Sunshine Resort',
-      desc: '',
-      image: 'assets/Commercial/Sunshine Resort & Skyvillas,Daman, India.jpg',
-      meta: 'COMMERCIAL // DAMAN'
-    },
-    {
-      step: '03',
-      title: 'Param Packaging',
-      desc: '',
-      image: 'assets/Industrial/Param Packaging Pvt. Ltd, Degam.jpg',
-      meta: 'INDUSTRIAL // DEGAM'
-    },
-    {
-      step: '04',
-      title: 'Nav Grah Temple',
-      desc: '',
-      image: 'assets/Religious/Nav Grah Temple, Uplat,.jpg',
-      meta: 'RELIGIOUS // UPLAT'
-    },
-    {
-      step: '05',
       title: 'Mohini Bunglow',
       desc: '',
       image: 'assets/Residential/Mohini Bunglow, Vapi,.jpg',
       meta: 'RESIDENTIAL // VAPI'
+    },
+    {
+      step: '03',
+      title: 'Tucson Hydrocontrol',
+      desc: '',
+      image: 'assets/Industrial/Tucson Hydrocontrols, Umbergaon.jpg',
+      meta: 'INDUSTRIAL // UMBERGAON'
+    },
+    {
+      step: '04',
+      title: 'Padmini Residence',
+      desc: '',
+      image: 'assets/Residential/Smt. Padminiben Chauhan , Silvassa,.jpg',
+      meta: 'RESIDENTIAL // SILVASSA'
+    },
+    {
+      step: '05',
+      title: 'Vedant School',
+      desc: '',
+      image: 'assets/Instituitional/Vedant School, Valsad,.jpg',
+      meta: 'INSTITUTIONAL // VALSAD'
     }
   ];
 
@@ -2242,10 +2242,10 @@ function initSignatureMobileCarousel() {
 
   const projectNames = [
     'Blue Star',
-    'Sunshine Resort',
-    'Param Packaging',
-    'Nav Grah Temple',
-    'Mohini Bungalow'
+    'Mohini Bunglow',
+    'Tucson Hydrocontrol',
+    'Padmini Residence',
+    'Vedant School'
   ];
 
   const images = carousel.querySelectorAll('.signature-mobile-image');
