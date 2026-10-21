@@ -1000,7 +1000,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '88,554.48 sq.ft',
     gfa: '92,176.10 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Collaborated with Perkins Eastman Architects as the local architecture partner for the execution and detailed development of the Tucson Hydrocontrols industrial facility, bridging design intent and on-site implementation.'
+    desc: 'We collaborated with Perkins Eastman Architects as the local architecture partner for te execution and detailed development of the Tucson Hydrocontrols industrial facility'
   },
   {
     id: 3,
@@ -1015,8 +1015,8 @@ const PORTFOLIO_PROJECTS = [
     status: 'Under Construction',
     siteArea: '3,59,194.00 sq.ft',
     gfa: '2,09,380.00 sq.ft',
-    scope: 'Architecture, Structural Design, Interior Design, PMC',
-    desc: 'Contemporary industrial development seamlessly integrating manufacturing, research, administration, and support infrastructure within a unified architectural framework prioritized for circulation and future expansion.'
+    scope: 'Architecture, Structural Design, Interior Design, Project Management ',
+    desc: 'The Blue Star Manufacturing Campus is envisioned as a contemporary industrial development that seamlessly integrates manufacturing, research, administration, and support infrastructure within a unified architectural framework. Thoughtful planning prioritises seamless circulation, operational efficiency, and future expansion, resulting in a workplace that is both adaptable and enduring.'
   },
   {
     id: 4,
@@ -1028,11 +1028,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Kryfs Power Components, Silvassa.jpg',
     typology: 'Industrial',
     year: '2024 - 2026',
-    status: 'In Progress',
+    status: 'Uncomplete',
     siteArea: '3,02,658.00 sq.ft',
     gfa: '3,02,658.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Developed for Kryfs Powercomponents, a leading transformer manufacturer, representing the fifth project delivered over a professional relationship spanning more than three decades.'
+    desc: 'Developed for Kryfs Powercomponents, a leading transformer manufacturer, this facility represents the fifth project delivered by us over a professional relationship spanning more than three decades.'
   },
   {
     id: 5,
@@ -1044,11 +1044,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Karagwal Developers, Tumbh.jpg',
     typology: 'Industrial',
     year: '2021 - 2023',
-    status: 'In Progress',
+    status: 'Uncomplete',
     siteArea: '4,07,003.00 sq.ft',
     gfa: '3,30,933.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Large-scale manufacturing and warehousing facility embracing simplicity, efficiency, and honest expression of industrial architecture, punctuated by continuous skylight slits for natural daylighting.'
+    desc: 'Designed as a large-scale manufacturing and warehousing facility, the project embraces simplicity, efficiency, and the honest expression of industrial architecture. The warehouse is punctuated by continuous skylight slits that introduce soft, diffused daylight deep into the workspace.'
   },
   {
     id: 6,
@@ -1060,11 +1060,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Indcon Project, Dahej.jpg',
     typology: 'Industrial',
     year: '2015 - 2016',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '10,71,192.00 sq.ft',
     gfa: '2,53,452.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Contemporary industrial facility demonstrating efficiency and architectural clarity within a pre-engineered building system, creating expansive column-free spaces for flexible manufacturing.'
+    desc: 'Conceived as a contemporary industrial facility, the \'INDCON\' project at Dahej shows how efficiency and architectural clarity can coexist in a pre-engineered building system, with column-free spaces, clean geometries, and a restrained material palette built for constructability, coordination, and long-term performance.'
   },
   {
     id: 7,
@@ -1080,7 +1080,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '1,12,839.00 sq.ft',
     gfa: '51,905.00 sq.ft',
     scope: 'Architecture',
-    desc: 'Communicates a strong corporate identity defined by deep horizontal bands, a highly transparent façade, landscaped forecourt, and a restrained material palette.'
+    desc: 'The proposal conveys a strong corporate identity rather than a conventional industrial facility, with a symmetrical composition of deep horizontal bands, a highly transparent façade, and a restrained material palette that reflects the company’s progressive outlook. A landscaped arrival plaza softens the scale of the development, creating a seamless transition between the corporate environment and the surrounding industrial campus.'
   },
   {
     id: 8,
@@ -1092,11 +1092,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'ATG Tires, Dahej,.jpg',
     typology: 'Industrial',
     year: '2014 - 2017',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '41,00,044.00 sq.ft',
     gfa: '13,89,585.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Brings together operational efficiency and architectural clarity around a pre-engineered building system accommodating large-span manufacturing and administrative functions.'
+    desc: 'For this project, operational efficiency and architectural clarity are brought together. Developed around a pre-engineered building system, the project accommodates large-span manufacturing while integrating administrative and support functions into a cohesive built form.'
   },
   {
     id: 9,
@@ -1108,11 +1108,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'MWV, Morai.jpg',
     typology: 'Industrial',
     year: '2006 - 2008',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '8,64,845.00 sq.ft',
     gfa: '95,142.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Designed as part of a larger industrial campus, establishing a distinct corporate presence while maintaining flexibility and efficiency connected to the manufacturing environment.'
+    desc: 'Designed as part of a larger industrial campus, the building establishes a distinct corporate presence while maintaining a strong connection to its manufacturing environment. The planning is centred around flexibility and efficiency.'
   },
   {
     id: 10,
@@ -1128,7 +1128,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '1,73,452.00 sq.ft',
     gfa: '75,525.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Departs from conventional industrial expressions through fluid geometries, a sweeping roof profile, sculpted entrance, glazed surfaces, and warm stone cladding.'
+    desc: 'The architecture departs from conventional industrial expressions, using fluid geometries and a curated material palette to create a building that is both recognisable and purposeful. A sweeping roof profile and sculpted entrance guide visitors into a transparent, light-filled workplace, while expansive glazing balanced by warm stone cladding creates a dialogue between openness and solidity with a timeless architectural character.'
   },
 
   // --- INSTITUTIONAL (11-17) ---
@@ -1142,11 +1142,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Aadarsh Enterprise School, Kalvada, Gujarat, India.jpg',
     typology: 'Institutional',
     year: '2019 - 2020',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '1,49,311.00 sq.ft',
     gfa: '74,327.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Balances functionality with a warm architectural character, prioritizing clear circulation, naturally lit classrooms, and seamless indoor-outdoor learning environments.'
+    desc: 'The building balances functionality with a warm, welcoming character, offering spaces adaptable to the evolving needs of students and educators, with clear circulation, naturally lit classrooms, and a seamless link between indoor learning and outdoor activity areas. A disciplined rhythm of openings and vertical screening elements gives the façade visual order while moderating daylight and keeping the interior comfortable, and a restrained material palette lends a timeless quality, letting simplicity and proportion define its architectural expression.'
   },
   {
     id: 12,
@@ -1162,11 +1162,11 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '6,99,400.00 sq.ft',
     gfa: '6,54,469.00 sq.ft',
     scope: 'Architecture',
-    desc: 'Comprehensive master plan bringing together academic blocks, administrative facilities, student amenities, and generous open spaces within a unified campus framework.'
+    desc: 'Conceived as a comprehensive master plan, the project brings together academic blocks, administrative facilities, student amenities, and generous open spaces within a unified campus framework that encourages learning, interaction, and community life.'
   },
   {
     id: 13,
-    title: 'Ssr College',
+    title: 'SSR College',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
@@ -1174,11 +1174,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'SSR College, Silvassa,.jpg',
     typology: 'Institutional',
     year: '2020 - 2022',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '5,44,041.00 sq.ft',
     gfa: '1,27,695.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Simple architectural language characterized by clean horizontal lines, generous circulation spaces, and modular planning for economical construction and future adaptation.'
+    desc: 'A simple architectural language, characterised by clean horizontal lines, generous circulation spaces, and repetitive modular planning, ensures economical construction while allowing flexibility for future adaptations.'
   },
   {
     id: 14,
@@ -1190,27 +1190,27 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Vedant School, Valsad,.jpg',
     typology: 'Institutional',
     year: '2015 - 2016',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '1,73,452.00 sq.ft',
     gfa: '75,525.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Conceived as carefully proportioned volumes combining clean white surfaces, exposed brick, textured stone panels, and pitched roof forms for a warm institutional character.'
+    desc: 'Designed as a contemporary educational institution, Vedant School balances functionality with a strong architectural identity, using carefully proportioned volumes of clean white surfaces, exposed brick, textured stone panels, and pitched roof forms to create a warm yet distinguished institutional character. The planning centres on intuitive circulation, naturally lit classrooms, and shared learning spaces that support both academic and extracurricular activities.'
   },
   {
     id: 15,
     title: 'Lion’s School',
-    location: 'Silvassa, Dadra and Nagar Haveli',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'institutional',
     categoryLabel: 'INSTITUTIONAL',
     folder: 'Instituitional',
     filename: 'Lion’s School, Silvassa,.jpg',
     typology: 'Institutional',
     year: '2015 - 2016',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '6,99,400.00 sq.ft',
     gfa: '2,48,058.00 sq.ft',
     scope: 'Architecture, Structural Design, Interior Design, PMC',
-    desc: 'Organized around a clear and repetitive planning module, creating an enduring educational environment through proportion and disciplined detailing.'
+    desc: 'The building is organised around a clear, repetitive planning module that lets classrooms, administrative spaces, and student facilities function seamlessly within a compact footprint. Rather than relying on expressive architectural gestures, the project shows how careful planning, proportion, and disciplined detailing can create an educational environment that is both enduring and responsive to everyday learning, built on simplicity, modular planning, and long-term durability.'
   },
   {
     id: 16,
@@ -1222,11 +1222,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Fellowship Mission School, Vapi,.jpg',
     typology: 'Institutional',
     year: '2014 - 2015',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '1,32,038.00 sq.ft',
     gfa: '1,17,694.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Comprehensive educational infrastructure development combining modular classrooms, administrative wings, and high-capacity assembly facilities.'
+    desc: 'Building on the principles of fluid behavior laid down by Archimedes, Bernoulli, Pascal and Bramah, hydraulics today has changed the way we work, and our goal was to take Indian hydraulics into the 21st century by introducing the cartridge valve as one of the very few wholly Indian car'
   },
   {
     id: 17,
@@ -1238,11 +1238,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Dr. CJ Desai & Jaswantiben Desai.jpg',
     typology: 'Healthcare / Institutional',
     year: '2020 - 2022',
-    status: 'In Progress',
+    status: 'Uncomplete',
     siteArea: '5,44,041.00 sq.ft',
     gfa: '1,27,695.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Healthcare facility designed for the Dr. C.J. Desai & Jaswantiben Desai Foundation, delivering quality patient environments while responding to stringent budgetary constraints.'
+    desc: 'Designed for the Dr. C. J. Desai & Jaswantiben Desai Foundation, this hospital demonstrates how a well-planned healthcare facility can deliver quality patient environments while responding to stringent budgetary constraints'
   },
 
   // --- RELIGIOUS (18-19) ---
@@ -1256,11 +1256,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Shri Digambar Jain Jinsharanam Tirth.jpg',
     typology: 'Religious',
     year: '2015 - 2016',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '2,79,890.00 sq.ft',
     gfa: '90,308.00 sq.ft',
     scope: 'Architecture',
-    desc: 'Sacred space embodying serenity, simplicity, and permanence, balancing traditional Jain temple values with contemporary construction practices for community reflection.'
+    desc: 'The project seeks to create an environment that embodies serenity, simplicity, and permanence, balancing traditional Jain temple values with contemporary construction practices to form a sacred space rooted in cultural heritage while responding to present-day requirements. Beyond serving as a place of worship, the temple is envisioned as a space for community gathering, reflection, and cultural continuity, reinforcing its role as a lasting landmark for generations to come.'
   },
   {
     id: 19,
@@ -1272,18 +1272,18 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Nav Grah Temple, Uplat,.jpg',
     typology: 'Religious',
     year: '2015 - 2016',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '6,99,400.00 sq.ft',
     gfa: '2,48,058.00 sq.ft',
     scope: 'Architecture',
-    desc: 'Conceived as an extension to the Shri Digambar Jain Jinsharanam Tirth Trust, reinforcing the continuity of the temple precinct through restrained architectural language.'
+    desc: 'Conceived as an extension to the Shri Digambar Jain Jinsharanam Tirth Trust, the Nav Grah Temple builds upon the spiritual and architectural language of the existing temple precinct. Rather than establishing a separate identity, the design reinforces the continuity of the campus, creating a seamless relationship between the original shrine and the new place of worship. By extending the existing architectural language with restraint and respect, the project strengthens the precinct as a unified place of worship, where every addition contributes to a shared sense of continuity and spiritual purpose.'
   },
 
   // --- COMMERCIAL (20) ---
   {
     id: 20,
     title: 'Sunshine Resort & Skyvillas',
-    location: 'Daman',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'commercial',
     categoryLabel: 'COMMERCIAL',
     folder: 'Commercial',
@@ -1294,7 +1294,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '1,32,038.00 sq.ft',
     gfa: '1,17,694.00 sq.ft',
     scope: 'Architecture',
-    desc: 'Hospitality destination drawing inspiration from Daman’s rich colonial architectural heritage while embracing a contemporary luxury resort design language.'
+    desc: 'Envisioned as a destination that celebrates both hospitality and place, the Proposed (Unbuilt) hotel and resort draws inspiration from Daman’s rich colonial architectural heritage while embracing a contemporary design language.'
   },
 
   // --- RESIDENTIAL (21-32) ---
@@ -1308,11 +1308,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Sri Gigiraj Laddha, Vapi,.jpg',
     typology: 'Residential',
     year: '2012 - 2013',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '6,883.00 sq.ft',
     gfa: '5,636.00 sq.ft',
     scope: 'Structural Design',
-    desc: 'Complete RCC structural engineering designed to optimize spans and maintain spatial flexibility while ensuring seismic stability and long-term durability.'
+    desc: 'While the architectural design was developed by the project architects, we were entrusted with the complete RCC structural design. The structural system was developed to accommodate the layout, optimise spans, and maintain spatial flexibility while ensuring stability and long-term durability. '
   },
   {
     id: 22,
@@ -1324,11 +1324,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Smt. Padminiben Chauhan , Silvassa,.jpg',
     typology: 'Residential',
     year: '2020 - 2025',
-    status: 'In Progress',
+    status: 'Uncomplete',
     siteArea: '32,295.00 sq.ft',
     gfa: '12,610.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Private bungalow reinterpreting Neo-Classical architecture through grand colonnades, arched openings, layered cornices, and finely detailed mouldings.'
+    desc: 'This private bungalow reinterprets Neo-Classical architecture through a contemporary lens, with symmetry, proportion, and a carefully composed hierarchy of forms creating a residence that conveys elegance while responding to the aspirations of modern living. The façade is articulated through grand colonnades, arched openings, layered cornices, and finely detailed mouldings that establish depth and rhythm without overwhelming the composition, and our scope included the detailed design and documentation of every detail.'
   },
   {
     id: 23,
@@ -1344,7 +1344,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '3,177.50 sq.ft',
     gfa: '5,425.00 sq.ft',
     scope: 'Architecture, Structural Design, Interior Design, PMC',
-    desc: 'Contemporary interpretation of Neo-Classical architecture distilling classical elements into a restrained vocabulary tailored for modern living.'
+    desc: 'This private residence explores a contemporary interpretation of Neo-Classical architecture, drawing on the timeless principles of symmetry, proportion, and order while embracing the simplicity of modern residential design. Rather than replicating traditional forms, the project distils classical elements into a restrained vocabulary that reflects contemporary lifestyles and construction techniques. Through clean forms, refined detailing, and contemporary planning, it creates a home that is timeless in character and relevant to modern living.'
   },
   {
     id: 24,
@@ -1356,11 +1356,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Gupta’s, Umbergaon,.jpg',
     typology: 'Residential',
     year: '2023 - 2026',
-    status: 'In Progress',
+    status: 'Uncomplete',
     siteArea: '3,522.00 sq.ft',
     gfa: '5,363.12 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Achieves identity through vertically proportioned stone-clad planes framing expansive glazed corners for a balanced dialogue between solidity and transparency.'
+    desc: 'The design achieves its identity through carefully proportioned volumes and an emphasis on openness. The façade is articulated through vertically proportioned stoneclad planes that frame expansive glazed corners, establishing a balanced dialogue between solidity and transparency'
   },
   {
     id: 25,
@@ -1372,7 +1372,7 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Bobby Kundra, Silvassa,.jpg',
     typology: 'Residential',
     year: '2017 - 2018',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '3,865.00 sq.ft',
     gfa: '5,250.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
@@ -1388,11 +1388,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Shri Ramani Farmhouse,.jpg',
     typology: 'Residential / Retreat',
     year: '2018 - 2020',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '2,17,800.00 sq.ft',
     gfa: '2,250.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Embraces locally sourced stone, brick, and timber with deep verandahs and shaded outdoor spaces creating a seamless relationship with the natural landscape.'
+    desc: 'The farmhouse draws its identity from its surroundings and the honest use of locally available materials. Rather than imposing a formal architectural statement, the design embraces simplicity, letting natural textures, traditional craftsmanship, and the landscape shape the experience of the home. Locally sourced stone, brick, timber, and other regional materials reduce the environmental footprint while creating a strong sense of place, and deep verandahs, shaded outdoor spaces, and generous openings encourage natural ventilation and a seamless relationship with the landscape.'
   },
   {
     id: 27,
@@ -1404,11 +1404,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Shri Bharat Tank, Vapi.jpg',
     typology: 'Residential',
     year: '2010 - 2012',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '3,165.00 sq.ft',
     gfa: '5,250.00 sq.ft',
     scope: 'Architecture, Interior Design',
-    desc: 'Explores contemporary architecture through an orchestrated composition of intersecting volumes, contrasting pitched roof forms, and bold geometric masses.'
+    desc: 'This residence explores the expressive potential of contemporary architecture through a carefully orchestrated composition of intersecting volumes, contrasting roof forms, and a restrained material palette. By combining bold geometric masses with pitched roof elements, the design challenges the convention of a singular architectural language, creating a home that is both visually distinctive and functionally responsive.'
   },
   {
     id: 28,
@@ -1424,7 +1424,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '3,747.00 sq.ft',
     gfa: '6,094.98 sq.ft',
     scope: 'Architecture, Interior Design',
-    desc: 'Seamless integration of architecture, landscape, and everyday living, allowing the surrounding landscape to become an integral component of the architectural experience.'
+    desc: 'The project explores the seamless integration of architecture, landscape, and everyday living. The design encourages a continuous dialogue between the built form and nature, allowing the landscape to become an integral component of the architectural experience.'
   },
   {
     id: 29,
@@ -1436,11 +1436,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Sky Crest, Vapi,.jpg',
     typology: 'Residential',
     year: '2011 - 2013',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '16,416.00 sq.ft',
     gfa: '52,770.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Premium multi-dwelling residential development deriving character from projecting balconies and deep recesses that introduce depth and shadow across the elevation.'
+    desc: 'This residential development combines efficient planning with a refined architectural expression. The façade derives its character from the interplay of projecting balconies, deep recesses, establishing a balanced rhythm across the elevation while introducing depth and shadow'
   },
   {
     id: 30,
@@ -1452,11 +1452,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Shri Harshad Ravashia, Umbergaon.jpg',
     typology: 'Residential',
     year: '2018 - 2019',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '5,537.00 sq.ft',
     gfa: '7,417.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Contemporary residence informed by classical design principles, featuring tall arched windows, subtle horizontal banding, and vertical proportions.'
+    desc: 'The residence is conceived as an exploration of contemporary architecture informed by the enduring qualities of classical design. Rather than drawing on historical precedents through ornamentation, it interprets classical principles through balanced proportions, vertical emphasis, and a disciplined architectural language. A façade of recessed planes, framed openings, and generous glazing establishes rhythm and visual order, while tall arched windows soften the otherwise rectilinear composition, and subtle horizontal banding and restrained detailing reinforce its timeless character.'
   },
   {
     id: 31,
@@ -1468,11 +1468,11 @@ const PORTFOLIO_PROJECTS = [
     filename: 'Valencia, Vapi.jpg',
     typology: 'Residential',
     year: '2012 - 2014',
-    status: 'Completed',
+    status: 'Uncomplete',
     siteArea: '13,638.00 sq.ft',
     gfa: '18,118.00 sq.ft',
     scope: 'Architecture, Interior Design',
-    desc: 'Premium residential development combining natural stone cladding, recessed openings, and carefully framed windows for an experience of permanence and understated luxury.'
+    desc: 'A premium residential development where elegance is expressed through proportion, materiality, and meticulous detailing rather than excess. A balanced contemporary composition with natural stone cladding, recessed openings, and carefully framed windows creates a façade that conveys permanence, refinement, and understated luxury. Every apartment is designed to maximise natural light, ventilation, and privacy, while a well-defined entrance, landscaped frontage, and thoughtfully integrated lighting enhance the arrival experience and the project\'s premium character.'
   },
   {
     id: 32,
@@ -1488,25 +1488,121 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '25,664.00 sq.ft',
     gfa: '58,694.00 sq.ft',
     scope: 'Architecture, Structural Design',
-    desc: 'Contemporary mixed-use development combining residential apartments with ground-level retail spaces for a vibrant urban community streetscape.'
+    desc: 'A contemporary mixed-use development, combines efficient planning, createS a vibrant urban community. The project integrates residential apartments with retail spaces at the ground level, fostering a dynamic streetscape.'
   },
 
-  // --- INTERIOR FALLBACK (33) ---
+  // --- INTERIOR (33-39) ---
   {
     id: 33,
-    title: 'Corporate Interiors Hub',
+    title: 'Kotak',
+    location: 'Gujarat, India',
+    category: 'interior',
+    categoryLabel: 'INTERIOR',
+    folder: 'Interior',
+    filename: 'Kotak/4.png',
+    typology: 'Residential Interior',
+    year: '2023 - 2024',
+    status: 'Completed',
+    siteArea: 'Not specified',
+    gfa: 'Not specified',
+    scope: 'Interior Design, Space Planning, Custom Furniture & Lighting',
+    desc: 'A sophisticated residential living space balancing warm neutral textures with bespoke architectural wall paneling, integrated ambient cove lighting, and tailored contemporary furnishings.'
+  },
+  {
+    id: 34,
+    title: 'Mohini Bungalow',
     location: 'Vapi, Gujarat',
     category: 'interior',
     categoryLabel: 'INTERIOR',
     folder: 'Interior',
-    filename: null,
-    typology: 'Interior Design',
+    filename: 'Mohini/1.png',
+    typology: 'Residential Interior',
     year: '2024 - 2026',
     status: 'Completed',
-    siteArea: '15,000.00 sq.ft',
-    gfa: '12,500.00 sq.ft',
-    scope: 'Interior Design, Space Planning',
-    desc: 'Bespoke corporate interior design studio incorporating flexible workstation planning, custom timber acoustic panels, and architectural lighting.'
+    siteArea: '3,747.00 sq.ft',
+    gfa: '6,094.98 sq.ft',
+    scope: 'Interior Design, Space Planning, Custom Millwork',
+    desc: 'An elegant residential reading lounge and living interior featuring bespoke floor-to-ceiling timber library shelving, curated classic furnishings, and expansive glazing framing serene landscaped views.'
+  },
+  {
+    id: 35,
+    title: 'Padmini Residence',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
+    category: 'interior',
+    categoryLabel: 'INTERIOR',
+    folder: 'Interior',
+    filename: 'Padmini/3.png',
+    typology: 'Residential Interior',
+    year: '2020 - 2025',
+    status: 'Completed',
+    siteArea: '32,295.00 sq.ft',
+    gfa: '12,610.00 sq.ft',
+    scope: 'Interior Design, Temple Architecture, Bespoke Detailing',
+    desc: 'An opulent private prayer sanctuary and residence interior showcasing neoclassical domed ceiling mouldings, gilded filigree motifs, bespoke marble shrines, and crystal lighting.'
+  },
+  {
+    id: 36,
+    title: 'Swati Interiors',
+    location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
+    category: 'interior',
+    categoryLabel: 'INTERIOR',
+    folder: 'Interior',
+    filename: 'Swarit/1.png',
+    typology: 'Residential Interior',
+    year: '2023 - 2024',
+    status: 'Completed',
+    siteArea: 'Not specified',
+    gfa: 'Not specified',
+    scope: 'Interior Design, Kitchen Design, Space Planning',
+    desc: 'A luminous open-plan dining and kitchen environment defined by clean Scandinavian-inspired timber craftsmanship, seamless marble flooring, and an organic connection to an adjacent green courtyard.'
+  },
+  {
+    id: 37,
+    title: 'Polytech',
+    location: 'Gujarat, India',
+    category: 'interior',
+    categoryLabel: 'INTERIOR',
+    folder: 'Interior',
+    filename: 'Polytech/4.png',
+    typology: 'Corporate Interior',
+    year: '2023 - 2024',
+    status: 'Completed',
+    siteArea: 'Not specified',
+    gfa: 'Not specified',
+    scope: 'Interior Design, Workplace Planning, Custom Workstations',
+    desc: 'A contemporary corporate workplace interior incorporating ergonomic workstation systems, fluted glass privacy partitions, integrated overhead storage, and warm ambient illumination.'
+  },
+  {
+    id: 38,
+    title: 'Urmil Clinic',
+    location: 'Gujarat, India',
+    category: 'interior',
+    categoryLabel: 'INTERIOR',
+    folder: 'Interior',
+    filename: 'Urmil_Clinic/1.png',
+    typology: 'Healthcare Interior',
+    year: '2023 - 2024',
+    status: 'Completed',
+    siteArea: 'Not specified',
+    gfa: 'Not specified',
+    scope: 'Interior Design, Healthcare Space Planning',
+    desc: 'A welcoming clinical reception and patient lounge combining tranquil teal tones, comfortable tailored seating, clean architectural lighting, and floor-to-ceiling garden connectivity.'
+  },
+  {
+    id: 39,
+    title: 'Vida Sample Bungalow',
+    location: 'Gujarat, India',
+    category: 'interior',
+    categoryLabel: 'INTERIOR',
+    folder: 'Interior',
+    filename: 'Vida_sample_bunglow/2.png',
+    typology: 'Residential Interior',
+    year: '2023 - 2025',
+    status: 'Completed',
+    siteArea: 'Not specified',
+    gfa: 'Not specified',
+    scope: 'Interior Design, Show Villa Styling, Lighting Design',
+    desc: 'A state-of-the-art sample bungalow interior showcasing an architectural island kitchen, quartz waterfall surfaces, warm timber accents, and custom geometric ceiling light grids.'
   }
 ];
 
