@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initServicesAccordion();
   initTEKTProcessStepper();
   initSignatureMobileCarousel(); /* Mobile-only carousel for Signature Works */
-  initBlueprintScrollAnimation();
   initScrollReveals();
   initSmoothScroll();
 });
@@ -1925,122 +1924,6 @@ function closeProjectDossier() {
   document.body.style.overflow = '';
 }
 
-
-/* ==========================================================================
-   11. BLUEPRINT TO REALITY SCROLL-TRIGGERED ANIMATION ENGINE
-   ========================================================================== */
-function initBlueprintScrollAnimation() {
-  const bpSection = document.getElementById('blueprint-reality');
-  if (!bpSection) return;
-
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const blueprintSteps = [
-    {
-      title: "01 / Concept Outline",
-      desc: "Mathematical mapping and spatial drafting of the architectural foundation."
-    },
-    {
-      title: "02 / Structural Model",
-      desc: "Projecting geometric axes and weight loads into an open-air vector wireframe."
-    },
-    {
-      title: "03 / Construction Grid",
-      desc: "Injecting concrete, structural steel, and raw monolithic frames onto the site."
-    }
-  ];
-
-  const bpHeading = document.getElementById('blueprint-heading');
-  const bpDesc = document.getElementById('blueprint-desc');
-
-  // Hide layers 2 and 3 initially using clip-path inset
-  gsap.set('#bp-layer-2', { clipPath: "inset(0% 100% 0% 0%)" });
-  gsap.set('#bp-layer-3', { clipPath: "inset(0% 100% 0% 0%)" });
-
-  // 1. Perspective tilt-in animation as the section scrolls into view
-  gsap.fromTo('#blueprint-3d-wrapper', 
-    { 
-      rotateX: 10, 
-      rotateY: -5, 
-      scale: 0.94, 
-      transformPerspective: 1200 
-    },
-    {
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1,
-      scrollTrigger: {
-        trigger: '#blueprint-reality',
-        start: 'top bottom',
-        end: 'top top',
-        scrub: true
-      }
-    }
-  );
-
-  // 2. Smoothly update text & dot indicators between phases
-  function updateBlueprintStep(stepNum) {
-    const data = blueprintSteps[stepNum - 1];
-    if (!data || !bpHeading || !bpDesc) return;
-    
-    gsap.killTweensOf([bpHeading, bpDesc]);
-    gsap.timeline()
-      .to([bpHeading, bpDesc], { opacity: 0, y: -8, duration: 0.18, ease: 'power1.in' })
-      .add(() => {
-        bpHeading.textContent = data.title;
-        bpDesc.textContent = data.desc;
-        
-        // Update dot indicators
-        document.querySelectorAll('.bp-dot').forEach((dot, idx) => {
-          if (idx === stepNum - 1) {
-            dot.classList.add('active');
-            gsap.to(dot, { scale: 1.3, duration: 0.2, overwrite: 'auto' });
-          } else {
-            dot.classList.remove('active');
-            gsap.to(dot, { scale: 1, duration: 0.2, overwrite: 'auto' });
-          }
-        });
-      })
-      .to([bpHeading, bpDesc], { opacity: 1, y: 0, duration: 0.25, ease: 'power1.out' });
-  }
-
-  // 3. Main pinned ScrollTrigger animation timeline
-  const bpTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#blueprint-reality',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.5,
-    }
-  });
-
-  bpTimeline
-    // Phase 1 -> 2 (Reveal Wireframe Layer)
-    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: 'var(--text-secondary)', boxShadow: '0 0 12px var(--text-secondary)' })
-    .to('#bp-layer-2', { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'none' })
-    .to('#bp-scanline', { left: '100%', duration: 1, ease: 'none' }, '<')
-    .to('#bp-scanline', { opacity: 0, duration: 0.1 })
-    .to({}, { 
-      duration: 0.05, 
-      onStart: () => updateBlueprintStep(2),
-      onReverseComplete: () => updateBlueprintStep(1)
-    }, '<')
-    
-    // Phase 2 -> 3 (Reveal Construction Site Layer)
-    .set('#bp-scanline', { left: '0%', opacity: 1, backgroundColor: 'var(--text-secondary)', boxShadow: '0 0 12px var(--text-secondary)' })
-    .to('#bp-layer-3', { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'none' })
-    .to('#bp-scanline', { left: '100%', duration: 1, ease: 'none' }, '<')
-    .to('#bp-scanline', { opacity: 0, duration: 0.1 })
-    .to({}, { 
-      duration: 0.05, 
-      onStart: () => updateBlueprintStep(3),
-      onReverseComplete: () => updateBlueprintStep(2)
-    }, '<');
-}
 
 /* ==========================================================================
    4-PANEL ARCHITECTURAL REVEAL ENGINE (SCROLL-DRIVEN, REVERSIBLE, CONTINUOUS)
