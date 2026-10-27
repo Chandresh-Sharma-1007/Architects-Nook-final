@@ -1525,7 +1525,7 @@ const PORTFOLIO_PROJECTS = [
   },
   {
     id: 35,
-    title: 'Smt. Padminiben Chauhan.',
+    title: 'Smt. Padminiben Chauhan Residence',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'interior',
     categoryLabel: 'INTERIOR',
