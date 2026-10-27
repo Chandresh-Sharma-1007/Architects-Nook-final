@@ -1225,7 +1225,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '1,32,038.00 sq.ft',
     gfa: '1,17,694.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Building on the principles of fluid behavior laid down by Archimedes, Bernoulli, Pascal and Bramah, hydraulics today has changed the way we work, and our goal was to take Indian hydraulics into the 21st century by introducing the cartridge valve as one of the very few wholly Indian car'
+    desc: 'Represents a contemporary approach to educational architecture, where modern design, functional planning, and a welcoming environment come together to create an inspiring space for learning and growth.The building features a striking modern façade defined by clean geometric lines, strong horizontal bands, and a sophisticated combination of warm terracotta tones, textured grey stone, and crisp white architectural elements. Repetitive vertical window openings establish a distinctive rhythm across the elevation, creating a balanced composition that reflects the character of contemporary institutional design.'
   },
   {
     id: 17,
@@ -1375,7 +1375,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '3,865.00 sq.ft',
     gfa: '5,250.00 sq.ft',
     scope: 'Architecture, Structural Design, PMC',
-    desc: 'Bespoke luxury residence incorporating precise structural planning, expansive living areas, and high-end residential finishes.'
+    desc: 'The architectural composition is defined by clean horizontal and vertical lines, projecting box frames, and a striking interplay of solid volumes and transparent glazing. The elegant combination of pristine white surfaces, natural stone textures, warm wood finishes, and bold black pergola elements creates a sophisticated façade that balances modern minimalism with warmth and character. Expansive glass openings establish a seamless visual connection between the interiors and the outdoors, while the generously proportioned terraces and landscaped balconies introduce greenery at multiple levels. The rooftop pavilion, framed by a contemporary architectural canopy, adds a distinctive feature to the building, creating an exclusive space for relaxation and private gatherings.'
   },
   {
     id: 26,
@@ -1493,7 +1493,7 @@ const PORTFOLIO_PROJECTS = [
   // --- INTERIOR (33-39) ---
   {
     id: 33,
-    title: 'Kotak',
+    title: 'Kotak Family',
     location: 'Gujarat, India',
     category: 'interior',
     categoryLabel: 'INTERIOR',
@@ -1505,7 +1505,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: 'Not specified',
     gfa: 'Not specified',
     scope: 'Interior Design, Space Planning, Custom Furniture & Lighting',
-    desc: 'A sophisticated residential living space balancing warm neutral textures with bespoke architectural wall paneling, integrated ambient cove lighting, and tailored contemporary furnishings.'
+    desc: 'This home is a reflection of a lifestyle that values comfort over extravagance, where every design decision is guided by simplicity, warmth, and a sense of belonging. A restrained material palette, soft neutral tones, and clean architectural lines create spaces that feel timeless and inviting. Thoughtful proportions, refined detailing, and tactile textures celebrate understated beauty, while natural light and warm finishes make the atmosphere peaceful and intimate. It is a space where contemporary design meets genuine comfort, creating an environment that is as elegant as it is deeply personal—a home that reflects the quiet confidence and balanced lifestyle of its owners.'
   },
   {
     id: 34,
@@ -1521,11 +1521,11 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '3,747.00 sq.ft',
     gfa: '6,094.98 sq.ft',
     scope: 'Interior Design, Space Planning, Custom Millwork',
-    desc: 'An elegant residential reading lounge and living interior featuring bespoke floor-to-ceiling timber library shelving, curated classic furnishings, and expansive glazing framing serene landscaped views.'
+    desc: 'This residence is a refined expression of contemporary Indian living, shaped by the client’s vision of creating a home that feels effortlessly modern while carrying a subtle essence of Maharashtrian culture. Clean lines, understated elegance, and functional planning are paired with a warm, earthy palette and tactile finishes. Custom furniture, fluted timber, woven textures, and subtle brass accents lend an Indian character, with tradition expressed through materiality and craftsmanship rather than ornamentation. The result is a home that is warm, inviting, and sophisticated; a seamless balance between heritage and modernity that reflects the lifestyle of a contemporary Indian family while preserving the cultural identity they cherish.'
   },
   {
     id: 35,
-    title: 'Padmini Residence',
+    title: 'Smt. Padminiben Chauhan.',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'interior',
     categoryLabel: 'INTERIOR',
@@ -1537,11 +1537,11 @@ const PORTFOLIO_PROJECTS = [
     siteArea: '32,295.00 sq.ft',
     gfa: '12,610.00 sq.ft',
     scope: 'Interior Design, Temple Architecture, Bespoke Detailing',
-    desc: 'An opulent private prayer sanctuary and residence interior showcasing neoclassical domed ceiling mouldings, gilded filigree motifs, bespoke marble shrines, and crystal lighting.'
+    desc: 'Conceived as a celebration of classical architecture and uncompromising luxury, this residence is an expression of timeless grandeur where every space is designed to inspire awe. Carved wooden panels, bespoke mouldings, ornamental ceilings, and handcrafted motifs form the architectural language, while metal inlays, sculpted glass, and luxurious natural stone add layers of richness and refinement. More than a residence, this home is a legacy of refined living—a place where classical artistry, exceptional materiality, and contemporary comfort come together to create an enduring masterpiece of luxury.'
   },
   {
     id: 36,
-    title: 'Swati Interiors',
+    title: 'PRAMUKH SWARIT - 40',
     location: 'UT of Daman & Diu and Dadra & Nagar Haveli',
     category: 'interior',
     categoryLabel: 'INTERIOR',
@@ -1553,7 +1553,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: 'Not specified',
     gfa: 'Not specified',
     scope: 'Interior Design, Kitchen Design, Space Planning',
-    desc: 'A luminous open-plan dining and kitchen environment defined by clean Scandinavian-inspired timber craftsmanship, seamless marble flooring, and an organic connection to an adjacent green courtyard.'
+    desc: 'Designed as an elegant contemporary residence, this home embraces the philosophy that true luxury lies in refinement rather than excess. A restrained palette of warm whites, soft beiges, and natural wood forms a timeless foundation, enriched by Italian marble, stone cladding, POP detailing, and aged brass accents. It is an environment where elegance is defined by proportion, materiality, and meticulous detailing rather than ornamentation—a residence that feels warm, contemporary, and quietly luxurious, reflecting a lifestyle where comfort and sophistication coexist in perfect harmony.'
   },
   {
     id: 37,
@@ -1569,7 +1569,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: 'Not specified',
     gfa: 'Not specified',
     scope: 'Interior Design, Workplace Planning, Custom Workstations',
-    desc: 'A contemporary corporate workplace interior incorporating ergonomic workstation systems, fluted glass privacy partitions, integrated overhead storage, and warm ambient illumination.'
+    desc: 'This workplace is a reflection of the belief that exceptional design is not defined by excess, but by purpose. Conceived as a minimalist office, every element has a clear function and nothing essential is left out. Soft neutrals, warm whites, clean lines, and integrated storage keep the workspace calm, uncluttered, and efficient, while every detail supports daily work. The result is a timeless office that embodies clarity, simplicity, and quiet sophistication, proving that the most effective workspaces are often those designed with restraint, precision, and purpose.'
   },
   {
     id: 38,
@@ -1585,7 +1585,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: 'Not specified',
     gfa: 'Not specified',
     scope: 'Interior Design, Healthcare Space Planning',
-    desc: 'A welcoming clinical reception and patient lounge combining tranquil teal tones, comfortable tailored seating, clean architectural lighting, and floor-to-ceiling garden connectivity.'
+    desc: 'This dermatology clinic has been envisioned as a space where thoughtful design enhances the healing experience. A soft, nature-inspired palette, warm textures, and clean lines promote relaxation, while intuitive circulation, comfortable waiting areas, and well-organized consultation rooms keep every visit seamless. Refined detailing and balanced lighting reflect professionalism and trust, balancing clinical efficiency with human comfort. The result is a healthcare environment that goes beyond functionality—a place where design fosters confidence, comfort, and healing, transforming every visit into a reassuring and positive experience.'
   },
   {
     id: 39,
@@ -1601,7 +1601,7 @@ const PORTFOLIO_PROJECTS = [
     siteArea: 'Not specified',
     gfa: 'Not specified',
     scope: 'Interior Design, Show Villa Styling, Lighting Design',
-    desc: 'A state-of-the-art sample bungalow interior showcasing an architectural island kitchen, quartz waterfall surfaces, warm timber accents, and custom geometric ceiling light grids.'
+    desc: 'This residence is a contemporary composition of bold materiality and refined simplicity, thoughtfully designed for homeowners who appreciate expressive interiors without compromising on comfort. Striking wallpapers, statement colours, rich textures, mirror surfaces, and sculptural pendant lighting add personality and depth, while clean lines and layered lighting keep the spaces warm and livable. The result is a residence that is expressive yet refined—an interior where bold design choices are thoughtfully balanced with timeless elegance, creating a home that is memorable, contemporary, and deeply personal.'
   }
 ];
 
@@ -1885,11 +1885,23 @@ function openProjectDossier(p) {
   const overlay = document.getElementById('project-dossier-overlay');
   if (!overlay) return;
 
+  const isTargetInterior = p.category === 'interior' && p.id >= 33 && p.id <= 39;
+
   const imgPath = p.filename ? `assets/${p.folder}/${p.filename}` : 'assets/project-placeholder.jpg';
   document.getElementById('dossier-img').src = imgPath;
   document.getElementById('dossier-category-tag').textContent = `${(p.typology || p.categoryLabel || 'PROJECT')} `;
   document.getElementById('dossier-title').textContent = p.title;
-  document.getElementById('dossier-location').textContent = p.location ? p.location : '';
+
+  const locationEl = document.getElementById('dossier-location');
+  if (locationEl) {
+    if (!isTargetInterior && p.location) {
+      locationEl.textContent = p.location;
+      locationEl.style.display = '';
+    } else {
+      locationEl.textContent = '';
+      locationEl.style.display = 'none';
+    }
+  }
  
   document.getElementById('dossier-desc').textContent = p.desc || '';
 
@@ -1898,11 +1910,13 @@ function openProjectDossier(p) {
   if (specsContainer) {
     let specsHTML = '';
     if (p.typology) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Typology</span><span class="dossier-spec-val">${p.typology}</span></div>`;
-    if (p.location) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Location</span><span class="dossier-spec-val">${p.location}</span></div>`;
-    if (p.year) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Year / Period</span><span class="dossier-spec-val">${p.year}</span></div>`;
-    if (p.status) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Project Status</span><span class="dossier-spec-val">${p.status}</span></div>`;
-    if (p.siteArea) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Site Area</span><span class="dossier-spec-val">${p.siteArea}</span></div>`;
-    if (p.gfa) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Gross Floor Area</span><span class="dossier-spec-val">${p.gfa}</span></div>`;
+    if (!isTargetInterior) {
+      if (p.location) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Location</span><span class="dossier-spec-val">${p.location}</span></div>`;
+      if (p.year) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Year / Period</span><span class="dossier-spec-val">${p.year}</span></div>`;
+      if (p.status) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Project Status</span><span class="dossier-spec-val">${p.status}</span></div>`;
+      if (p.siteArea) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Site Area</span><span class="dossier-spec-val">${p.siteArea}</span></div>`;
+      if (p.gfa) specsHTML += `<div class="dossier-spec-item"><span class="dossier-spec-lbl">Gross Floor Area</span><span class="dossier-spec-val">${p.gfa}</span></div>`;
+    }
     if (p.scope) specsHTML += `<div class="dossier-spec-item" style="grid-column: 1 / -1;"><span class="dossier-spec-lbl">Architectural Scope</span><span class="dossier-spec-val">${p.scope}</span></div>`;
     specsContainer.innerHTML = specsHTML;
     specsContainer.style.display = specsHTML ? 'grid' : 'none';
