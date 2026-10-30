@@ -1,0 +1,108 @@
+# ==============================================================================
+# Architects' Nook Private Limited — Production Apache Configuration (.htaccess)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Custom 404 Error Document
+# ------------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# ------------------------------------------------------------------------------
+# 2. Canonical Redirects (HTTPS, Non-WWW, Clean URLs)
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect HTTP or www.architectsnook.com to https://architectsnook.com
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.architectsnook\.com$ [NC]
+  RewriteRule ^(.*)$ https://architectsnook.com/$1 [L,R=301]
+
+  # Redirect /index.html directly to root clean URL (/)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+  RewriteRule ^index\.html$ https://architectsnook.com/ [R=301,L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 3. Compression (GZIP / Deflate)
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html \
+                                text/plain \
+                                text/xml \
+                                text/css \
+                                text/javascript \
+                                application/javascript \
+                                application/x-javascript \
+                                application/json \
+                                application/xml \
+                                application/rss+xml \
+                                application/atom+xml \
+                                image/svg+xml \
+                                font/otf \
+                                font/ttf \
+                                font/woff \
+                                font/woff2
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 4. Browser Caching (Expires & Cache-Control)
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML documents — Short caching for rapid updates
+  ExpiresByType text/html "access plus 1 hour"
+
+  # CSS and JavaScript — 1 month
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+
+  # Media (Images, Favicon, SVG) — 1 year
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Web Fonts — 1 year
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+
+  # Application manifests and PDF
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Cache-Control headers
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+
+  <FilesMatch "\.(ico|jpe?g|png|gif|webp|avif|svg|woff|woff2|ttf|otf)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+
+  # ----------------------------------------------------------------------------
+  # 5. Security Headers
+  # ----------------------------------------------------------------------------
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+

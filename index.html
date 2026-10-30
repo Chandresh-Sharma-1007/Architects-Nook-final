@@ -3,11 +3,37 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Architects' Nook Private Limited — Architecture, Planning, Engineering, Interior Design &amp; Valuation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architects' Nook | Architecture, Interior &amp; Planning Since 1969</title>
   <meta name="description"
-    content="Architects' Nook Private Limited (Est. 1969) — Multi-disciplinary studio founded by Ar. Kirit B. Bhatt. Directors: Er. Manish Bhatt &amp; Ar. Kashyap Bhatt. Offering comprehensive architectural, civil engineering, interior design, planning, valuation, and landscape design services.">
+    content="Multi-disciplinary studio founded in 1969 offering architecture, civil engineering, interior design, planning, valuation and landscape design.">
+  <link rel="canonical" href="https://architectsnook.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Architects' Nook Private Limited">
+  <meta name="publisher" content="Architects' Nook Private Limited">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Favicons & App Manifest -->
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Architects' Nook Private Limited">
+  <meta property="og:title" content="Architects' Nook | Architecture, Interior &amp; Planning Since 1969">
+  <meta property="og:description"
+    content="Multi-disciplinary studio founded in 1969 offering architecture, civil engineering, interior design, planning, valuation and landscape design.">
+  <meta property="og:url" content="https://architectsnook.com/">
+  <meta property="og:image" content="https://architectsnook.com/assets/project-placeholder.jpg">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Architects' Nook | Architecture, Interior &amp; Planning Since 1969">
+  <meta name="twitter:description"
+    content="Multi-disciplinary studio founded in 1969 offering architecture, civil engineering, interior design, planning, valuation and landscape design.">
+  <meta name="twitter:image" content="https://architectsnook.com/assets/project-placeholder.jpg">
 
   <!-- Master Google Fonts for Hero & Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +46,66 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- GSAP & ScrollTrigger Animation Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Structured Data: Organization & WebSite Schema -->
+  <!-- TODO for Client: Add official social media URLs (LinkedIn, Instagram, Facebook) to sameAs in the schema below when available -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["ArchitecturalFirm", "Organization"],
+        "@id": "https://architectsnook.com/#organization",
+        "name": "Architects' Nook Private Limited",
+        "url": "https://architectsnook.com/",
+        "logo": "https://architectsnook.com/assets/logo.png",
+        "image": "https://architectsnook.com/assets/project-placeholder.jpg",
+        "foundingDate": "1969",
+        "founder": {
+          "@type": "Person",
+          "name": "Ar. Kirit B. Bhatt",
+          "jobTitle": "Founder & Principal Architect"
+        },
+        "employee": [
+          {
+            "@type": "Person",
+            "name": "Er. Manish Bhatt",
+            "jobTitle": "Director & Structural Engineer"
+          },
+          {
+            "@type": "Person",
+            "name": "Ar. Kashyap Bhatt",
+            "jobTitle": "Director & Principal Architect"
+          }
+        ],
+        "telephone": "+919173428128",
+        "email": "mails@architectsnook.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "201 Tirupati Towers, Near GIDC Char Rasta",
+          "addressLocality": "Vapi",
+          "addressRegion": "Gujarat",
+          "postalCode": "396195",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://wa.me/919173428128"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://architectsnook.com/#website",
+        "url": "https://architectsnook.com/",
+        "name": "Architects' Nook Private Limited",
+        "publisher": {
+          "@id": "https://architectsnook.com/#organization"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -113,7 +197,7 @@
       <!-- FAR-RIGHT STRUCTURAL PANEL: 2.5x DOMINANT LOGO ANCHOR -->
       <div class="logo-panel-right">
         <a href="index.html" class="header-logo-link" aria-label="Architects' NOOK Home">
-          <img src="assets/logo.png" alt="Architects' NOOK Logo" class="header-logo-img">
+          <img src="assets/logo.png" alt="Architects' Nook Private Limited Logo" class="header-logo-img">
         </a>
       </div>
 
@@ -174,17 +258,17 @@
             NOOK
           </h1>
 
-          <div class="hero-sub-meta animate-reveal">
+          <h2 class="hero-sub-meta animate-reveal">
             <span>ARCHITECTURE</span>
             <span class="meta-sep">/</span>
             <span>INTERIORS</span>
             <span class="meta-sep">/</span>
             <span>PLANNING</span>
-          </div>
+          </h2>
 
-          <div class="hero-location animate-reveal">
+          <h3 class="hero-location animate-reveal">
             <span class="hero-location-text">VAPI, INDIA</span>
-          </div>
+          </h3>
         </div>
 
         <!-- Right Side: CSS 3D Architectural Massing Model -->
@@ -293,10 +377,10 @@
           <!-- Left Column: Editorial Introduction (Natural Non-Sticky Flow) -->
           <div class="services-editorial-intro">
             <!-- <div class="label-caps services-eyebrow">SERVICES</div> -->
-            <h1 class="services-editorial-heading">
+            <h2 class="services-editorial-heading">
               Our work spans from master architectural planning to fine execution, always built with precision, not
               shortcuts.
-            </h1>
+            </h2>
           </div>
 
           <!-- Right Column: Numbered Service Accordion List -->
@@ -455,30 +539,30 @@
           <div class="process-nav">
 
             <div class="process-step-item active">
-              <div class="process-step-title">Blue Star</div>
+              <h3 class="process-step-title">Blue Star</h3>
             </div>
 
             <div class="process-step-item">
-              <div class="process-step-title">Mohini Bunglow</div>
+              <h3 class="process-step-title">Mohini Bunglow</h3>
             </div>
 
             <div class="process-step-item">
-              <div class="process-step-title">Tucson Hydrocontrol</div>
+              <h3 class="process-step-title">Tucson Hydrocontrol</h3>
             </div>
 
             <div class="process-step-item">
-              <div class="process-step-title">Padmini Residence</div>
+              <h3 class="process-step-title">Padmini Residence</h3>
             </div>
 
             <div class="process-step-item">
-              <div class="process-step-title">Vedant School</div>
+              <h3 class="process-step-title">Vedant School</h3>
             </div>
 
           </div>
 
           <!-- Right Column: Interactive Dynamic Media Showcase -->
           <div class="process-media-display">
-            <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Selected Signature Work" id="process-active-img"
+            <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Blue Star Industrial Facility in Silvassa by Architects' Nook" id="process-active-img"
               class="process-media-img" loading="lazy" decoding="async"
               style="width: 100%; height: 100%; object-fit: cover;">
           </div>
@@ -502,15 +586,15 @@
           </div>
 
           <div class="signature-mobile-image-wrap" id="signature-mobile-image-wrap">
-            <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Blue Star" class="signature-mobile-image active"
-              decoding="async">
-            <img src="assets/Residential/Mohini Bunglow, Vapi,.jpg" alt="Mohini Bunglow" class="signature-mobile-image"
+            <img src="assets/Industrial/Blue Star, Silvassa.jpg" alt="Blue Star Industrial Facility in Silvassa" class="signature-mobile-image active"
               loading="lazy" decoding="async">
-            <img src="assets/Industrial/Tucson Hydrocontrols, Umbergaon.jpg" alt="Tucson Hydrocontrol"
+            <img src="assets/Residential/Mohini Bunglow, Vapi,.jpg" alt="Mohini Bungalow Architecture in Vapi" class="signature-mobile-image"
+              loading="lazy" decoding="async">
+            <img src="assets/Industrial/Tucson Hydrocontrols, Umbergaon.jpg" alt="Tucson Hydrocontrols Industrial Facility in Umbergaon"
               class="signature-mobile-image" loading="lazy" decoding="async">
-            <img src="assets/Residential/Smt. Padminiben Chauhan , Silvassa,.jpg" alt="Padmini Residence"
+            <img src="assets/Residential/Smt. Padminiben Chauhan , Silvassa,.jpg" alt="Smt. Padminiben Chauhan Residence in Silvassa"
               class="signature-mobile-image" loading="lazy" decoding="async">
-            <img src="assets/Instituitional/Vedant School, Valsad,.jpg" alt="Vedant School"
+            <img src="assets/Instituitional/Vedant School, Valsad,.jpg" alt="Vedant School Campus in Valsad"
               class="signature-mobile-image" loading="lazy" decoding="async">
           </div>
 
@@ -595,7 +679,7 @@
           <!-- 1. Hindustan Unilever Limited -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/hindustan.webp" alt="Hindustan Unilever Limited" class="client-logo-img"
+              <img src="assets/client/hindustan.webp" alt="Hindustan Unilever Limited Logo" class="client-logo-img"
                 loading="lazy">
             </div>
             <span class="client-logo-name">Hindustan Unilever Limited</span>
@@ -604,7 +688,7 @@
           <!-- 2. Blue Star -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/blue.jpg" alt="Blue Star" class="client-logo-img" loading="lazy">
+              <img src="assets/client/blue.jpg" alt="Blue Star Limited Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">Blue Star</span>
           </div>
@@ -612,7 +696,7 @@
           <!-- 3. Zandu -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/zandu.avif" alt="Zandu" class="client-logo-img" loading="lazy">
+              <img src="assets/client/zandu.avif" alt="Zandu Pharmaceutical Works Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">Zandu</span>
           </div>
@@ -620,7 +704,7 @@
           <!-- 4. ATG Tires / Yokohama -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/yokohama.jpg" alt="ATG Tires / Yokohama" class="client-logo-img" loading="lazy">
+              <img src="assets/client/yokohama.jpg" alt="ATG Tires / Yokohama Off-Highway Tires Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">ATG Tires / Yokohama</span>
           </div>
@@ -628,7 +712,7 @@
           <!-- 5. DOMS -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/doms.webp" alt="DOMS" class="client-logo-img" loading="lazy">
+              <img src="assets/client/doms.webp" alt="DOMS Industries Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">DOMS</span>
           </div>
@@ -636,7 +720,7 @@
           <!-- 6. Hamilton -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/hamilton.webp" alt="Hamilton" class="client-logo-img" loading="lazy">
+              <img src="assets/client/hamilton.webp" alt="Hamilton Housewares Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">Hamilton</span>
           </div>
@@ -644,7 +728,7 @@
           <!-- 7. Gulf Oil -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/gulf.png" alt="Gulf Oil" class="client-logo-img" loading="lazy">
+              <img src="assets/client/gulf.png" alt="Gulf Oil Lubricants Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">Gulf Oil</span>
           </div>
@@ -652,7 +736,7 @@
           <!-- 8. Waaree Limited -->
           <div class="client-cell">
             <div class="client-logo-wrapper">
-              <img src="assets/client/waaree.avif" alt="Waaree Limited" class="client-logo-img" loading="lazy">
+              <img src="assets/client/waaree.avif" alt="Waaree Energies Limited Logo" class="client-logo-img" loading="lazy">
             </div>
             <span class="client-logo-name">Waaree Limited</span>
           </div>
@@ -716,7 +800,7 @@
 
       <div class="footer-bottom">
         <div>&copy; 1969–2026 Architects' Nook Private Limited. All Rights Reserved.</div>
-        <span class="back-to-top">Designed &amp; Developed by <a href="https://demurup.com/" target="_blank">DemuRup
+        <span class="back-to-top">Designed &amp; Developed by <a href="https://demurup.com/" target="_blank" rel="noopener noreferrer">DemuRup
             Media</a></span>
       </div>
     </div>
@@ -734,7 +818,7 @@
   </a>
 
   <!-- Master JavaScript Module -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>

@@ -8714,3 +8714,31 @@ line-height: 1;
     transform: none;
   }
 }
+
+/* ==============================================================================
+   SEMANTIC HEADING RESETS (Preserve exact visual appearance & layout)
+   ============================================================================== */
+h2.hero-sub-meta {
+  margin: 0 0 clamp(32px, 5vh, 52px);
+  padding: 0;
+  line-height: inherit;
+}
+
+@media (max-width: 768px) {
+  h2.hero-sub-meta {
+    margin-bottom: 6px;
+  }
+}
+
+h3.hero-location {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
+h3.process-step-title {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
